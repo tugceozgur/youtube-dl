@@ -521,13 +521,14 @@ class InfoExtractor(object):
                         '[debug] Using fake IP %s (%s) as X-Forwarded-For.'
                         % (self._x_forwarded_for_ip, country.upper()))
 
-    def extract(self, url):
+    def extract(self, url, website=''):
         """Extracts URL information and returns it in list of dicts."""
+        print('IN EXTRACT COMMON')
         try:
             for _ in range(2):
                 try:
                     self.initialize()
-                    ie_result = self._real_extract(url)
+                    ie_result = self._real_extract(url, website=website)
                     if self._x_forwarded_for_ip:
                         ie_result['__x_forwarded_for_ip'] = self._x_forwarded_for_ip
                     return ie_result

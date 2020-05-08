@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 import re
-
+import pdb
 from .common import InfoExtractor
 from ..utils import (
     determine_ext,
@@ -51,23 +51,26 @@ class ExpressenIE(InfoExtractor):
                 r'<iframe[^>]+\bsrc=(["\'])(?P<url>(?:https?:)?//(?:www\.)?expressen\.se/(?:tvspelare/video|videoplayer/embed)/tv/.+?)\1',
                 webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
+        print('IN EXPRESSEN')
+        pdb.set_trace()
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        #webpage = self._download_webpage(url, display_id)
+        #print('wensite', website)
 
         def extract_data(name):
             return self._parse_json(
                 self._search_regex(
                     r'data-%s=(["\'])(?P<value>(?:(?!\1).)+)\1' % name,
-                    webpage, 'info', group='value'),
+                    website, 'info', group='value'),
                 display_id, transform_source=unescapeHTML)
 
         info = extract_data('video-tracking-info')
         video_id = info['videoId']
 
         data = extract_data('article-data')
-        stream = data['stream']
+        stream = data['mp4File']
 
         if determine_ext(stream) == 'm3u8':
             formats = self._extract_m3u8_formats(

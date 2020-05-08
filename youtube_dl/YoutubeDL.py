@@ -769,13 +769,13 @@ class YoutubeDL(object):
             info_dict.setdefault(key, value)
 
     def extract_info(self, url, download=True, ie_key=None, extra_info={},
-                     process=True, force_generic_extractor=False):
+                     process=True, force_generic_extractor=False, website=''):
         '''
         Returns a list with a dictionary for each video we find.
         If 'download', also downloads the videos.
         extra_info is a dict containing the extra values to add to each result
         '''
-
+        print("IE KEYYY", ie_key)
         if not ie_key and force_generic_extractor:
             ie_key = 'Generic'
 
@@ -794,7 +794,8 @@ class YoutubeDL(object):
                                     'and will probably not work.')
 
             try:
-                ie_result = ie.extract(url)
+                print('EXTRACT youtubeDL')
+                ie_result = ie.extract(url, website=website)
                 if ie_result is None:  # Finished already (backwards compatibility; listformats and friends should be moved here)
                     break
                 if isinstance(ie_result, list):
@@ -805,7 +806,7 @@ class YoutubeDL(object):
                     }
                 self.add_default_extra_info(ie_result, ie, url)
                 if process:
-                    return self.process_ie_result(ie_result, download, extra_info)
+                    return self.process_ie_result(ie_result, download, extra_info, website=website)
                 else:
                     return ie_result
             except GeoRestrictedError as e:
@@ -838,7 +839,7 @@ class YoutubeDL(object):
             'extractor_key': ie.ie_key(),
         })
 
-    def process_ie_result(self, ie_result, download=True, extra_info={}):
+    def process_ie_result(self, ie_result, download=True, extra_info={}, website=''):
         """
         Take the result of the ie(may be modified) and resolve all unresolved
         references (URLs, playlist items).
@@ -847,7 +848,7 @@ class YoutubeDL(object):
         Returns the resolved ie_result.
         """
         result_type = ie_result.get('_type', 'video')
-
+        print("RESULT TYPE", result_type)
         if result_type in ('url', 'url_transparent'):
             ie_result['url'] = sanitize_url(ie_result['url'])
             extract_flat = self.params.get('extract_flat', False)
@@ -860,19 +861,19 @@ class YoutubeDL(object):
 
         if result_type == 'video':
             self.add_extra_info(ie_result, extra_info)
-            return self.process_video_result(ie_result, download=download)
+            return self.process_video_result(ie_result, download=download, website=website)
         elif result_type == 'url':
             # We have to add extra_info to the results because it may be
             # contained in a playlist
             return self.extract_info(ie_result['url'],
                                      download,
                                      ie_key=ie_result.get('ie_key'),
-                                     extra_info=extra_info)
+                                     extra_info=extra_info, website='')
         elif result_type == 'url_transparent':
             # Use the information from the embedding page
             info = self.extract_info(
                 ie_result['url'], ie_key=ie_result.get('ie_key'),
-                extra_info=extra_info, download=False, process=False)
+                extra_info=extra_info, download=False, process=False, website='')
 
             # extract_info may return None when ignoreerrors is enabled and
             # extraction failed with an error, don't crash and return early
@@ -898,7 +899,7 @@ class YoutubeDL(object):
                 new_result['_type'] = 'url_transparent'
 
             return self.process_ie_result(
-                new_result, download=download, extra_info=extra_info)
+                new_result, download=download, extra_info=extra_info, website='')
         elif result_type in ('playlist', 'multi_video'):
             # We process each entry in the playlist
             playlist = ie_result.get('title') or ie_result.get('id')
@@ -1005,7 +1006,8 @@ class YoutubeDL(object):
 
                 entry_result = self.process_ie_result(entry,
                                                       download=download,
-                                                      extra_info=extra)
+                                                      extra_info=extra,
+                                                      website='')
                 playlist_results.append(entry_result)
             ie_result['entries'] = playlist_results
             self.to_screen('[download] Finished downloading playlist: %s' % playlist)
@@ -1027,7 +1029,7 @@ class YoutubeDL(object):
                 )
                 return r
             ie_result['entries'] = [
-                self.process_ie_result(_fixup(r), download, extra_info)
+                self.process_ie_result(_fixup(r), website, download, extra_info)
                 for r in ie_result['entries']
             ]
             return ie_result
@@ -1409,9 +1411,9 @@ class YoutubeDL(object):
         self.cookiejar.add_cookie_header(pr)
         return pr.get_header('Cookie')
 
-    def process_video_result(self, info_dict, download=True):
+    def process_video_result(self, info_dict, download=True, website=''):
         assert info_dict.get('_type', 'video') == 'video'
-
+        print('INFO DICT', info_dict)
         if 'id' not in info_dict:
             raise ExtractorError('Missing "id" field in extractor result')
         if 'title' not in info_dict:
@@ -2003,7 +2005,7 @@ class YoutubeDL(object):
                     return
                 self.record_download_archive(info_dict)
 
-    def download(self, url_list):
+    def download(self, url_list, website=''):
         """Download a given list of URLs."""
         outtmpl = self.params.get('outtmpl', DEFAULT_OUTTMPL)
         if (len(url_list) > 1
@@ -2016,7 +2018,7 @@ class YoutubeDL(object):
             try:
                 # It also downloads the videos
                 res = self.extract_info(
-                    url, force_generic_extractor=self.params.get('force_generic_extractor', False))
+                    url, force_generic_extractor=self.params.get('force_generic_extractor', False), website='')
             except UnavailableVideoError:
                 self.report_error('unable to download video')
             except MaxDownloadsReached:
@@ -2028,14 +2030,14 @@ class YoutubeDL(object):
 
         return self._download_retcode
 
-    def download_with_info_file(self, info_filename):
+    def download_with_info_file(self, info_filename, website=''):
         with contextlib.closing(fileinput.FileInput(
                 [info_filename], mode='r',
                 openhook=fileinput.hook_encoded('utf-8'))) as f:
             # FileInput doesn't have a read method, we can't call json.load
             info = self.filter_requested_info(json.loads('\n'.join(f)))
         try:
-            self.process_ie_result(info, download=True)
+            self.process_ie_result(info, download=True, website='')
         except DownloadError:
             webpage_url = info.get('webpage_url')
             if webpage_url is not None:

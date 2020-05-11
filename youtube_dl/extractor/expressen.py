@@ -2,7 +2,6 @@
 from __future__ import unicode_literals
 
 import re
-import pdb
 from .common import InfoExtractor
 from ..utils import (
     determine_ext,
@@ -53,7 +52,6 @@ class ExpressenIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         print('IN EXPRESSEN')
-        pdb.set_trace()
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id, website=website)

@@ -27,7 +27,7 @@ class TastyTradeIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         ooyala_code = self._search_regex(
             r'data-media-id=(["\'])(?P<code>(?:(?!\1).)+)\1',

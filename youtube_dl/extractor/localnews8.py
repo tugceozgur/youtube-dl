@@ -29,7 +29,7 @@ class LocalNews8IE(InfoExtractor):
         video_id = mobj.group('id')
         display_id = mobj.group('display_id')
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         partner_id = self._search_regex(
             r'partnerId\s*[:=]\s*(["\'])(?P<id>\d+)\1',

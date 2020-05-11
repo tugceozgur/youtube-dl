@@ -267,7 +267,7 @@ class FranceTVSiteIE(FranceTVBaseInfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         catalogue = None
         video_id = self._search_regex(
@@ -363,7 +363,7 @@ class FranceTVInfoIE(FranceTVBaseInfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         dailymotion_urls = DailymotionIE._extract_urls(webpage)
         if dailymotion_urls:
@@ -400,7 +400,7 @@ class FranceTVInfoSportIE(FranceTVBaseInfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         video_id = self._search_regex(r'data-video="([^"]+)"', webpage, 'video_id')
         return self._make_url_result(video_id, 'Sport-web')
 
@@ -431,7 +431,7 @@ class GenerationWhatIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         youtube_id = self._search_regex(
             r"window\.videoURL\s*=\s*'([0-9A-Za-z_-]{11})';",
@@ -463,7 +463,7 @@ class CultureboxIE(FranceTVBaseInfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         if ">Ce live n'est plus disponible en replay<" in webpage:
             raise ExtractorError(

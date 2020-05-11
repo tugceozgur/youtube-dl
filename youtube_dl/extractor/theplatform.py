@@ -249,7 +249,7 @@ class ThePlatformIE(ThePlatformBaseIE, AdobePassIE):
 
         qs_dict = compat_parse_qs(compat_urllib_parse_urlparse(url).query)
         if 'guid' in qs_dict:
-            webpage = self._download_webpage(url, video_id)
+            webpage = self._download_webpage(url, video_id, website=website)
             scripts = re.findall(r'<script[^>]+src="([^"]+)"', webpage)
             feed_id = None
             # feed id usually locates in the last script.

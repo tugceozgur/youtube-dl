@@ -48,7 +48,7 @@ class AsianCrushIE(InfoExtractor):
         host = mobj.group('host')
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         entry_id, partner_id, title = [None] * 3
 
@@ -116,7 +116,7 @@ class AsianCrushPlaylistIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         entries = []
 

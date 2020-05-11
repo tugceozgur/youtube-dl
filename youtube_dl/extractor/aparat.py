@@ -36,7 +36,7 @@ class AparatIE(InfoExtractor):
         video_id = self._match_id(url)
 
         # Provides more metadata
-        webpage = self._download_webpage(url, video_id, fatal=False)
+        webpage = self._download_webpage(url, video_id, fatal=False, website=website)
 
         if not webpage:
             # Note: There is an easier-to-parse configuration at

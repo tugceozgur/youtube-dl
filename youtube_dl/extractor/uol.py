@@ -103,7 +103,7 @@ class UOLIE(InfoExtractor):
                     embed_page, 'media id', default=None)
 
         if not media_id:
-            webpage = self._download_webpage(url, video_id)
+            webpage = self._download_webpage(url, video_id, website=website)
             media_id = self._search_regex(r'mediaId=(\d+)', webpage, 'media id')
 
         video_data = self._download_json(

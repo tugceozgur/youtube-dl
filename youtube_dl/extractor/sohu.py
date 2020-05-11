@@ -101,7 +101,7 @@ class SohuIE(InfoExtractor):
         video_id = mobj.group('id')
         mytv = mobj.group('mytv') is not None
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         title = re.sub(r' - 搜狐视频$', '', self._og_search_title(webpage))
 

@@ -19,7 +19,7 @@ class DefenseGouvFrIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         title = self._match_id(url)
-        webpage = self._download_webpage(url, title)
+        webpage = self._download_webpage(url, title, website=website)
 
         video_id = self._search_regex(
             r"flashvars.pvg_id=\"(\d+)\";",

@@ -29,7 +29,7 @@ class PressTVIE(InfoExtractor):
         video_id = mobj.group('id')
         display_id = mobj.group('display_id') or video_id
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         # extract video URL from webpage
         video_url = self._hidden_inputs(webpage)['inpPlayback']

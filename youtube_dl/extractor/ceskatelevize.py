@@ -71,7 +71,7 @@ class CeskaTelevizeIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         NOT_AVAILABLE_STRING = 'This content is not available at your territory due to limited copyright.'
         if '%s</p>' % NOT_AVAILABLE_STRING in webpage:
@@ -277,7 +277,7 @@ class CeskaTelevizePoradyIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         data_url = update_url_query(unescapeHTML(self._search_regex(
             (r'<span[^>]*\bdata-url=(["\'])(?P<url>(?:(?!\1).)+)\1',

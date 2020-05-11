@@ -172,7 +172,7 @@ class UstreamIE(InfoExtractor):
             return self.url_result(desktop_url, 'Ustream')
         if m.group('type') == 'embed':
             video_id = m.group('id')
-            webpage = self._download_webpage(url, video_id)
+            webpage = self._download_webpage(url, video_id, website=website)
             content_video_ids = self._parse_json(self._search_regex(
                 r'ustream\.vars\.offAirContentVideoIds=([^;]+);', webpage,
                 'content video IDs'), video_id)
@@ -257,7 +257,7 @@ class UstreamChannelIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         m = re.match(self._VALID_URL, url)
         display_id = m.group('slug')
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         channel_id = self._html_search_meta('ustream:channel_id', webpage)
 
         BASE = 'http://www.ustream.tv'

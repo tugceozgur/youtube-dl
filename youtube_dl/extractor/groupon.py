@@ -39,7 +39,7 @@ class GrouponIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         payload = self._parse_json(self._search_regex(
             r'(?:var\s+|window\.)payload\s*=\s*(.*?);\n', webpage, 'payload'), playlist_id)

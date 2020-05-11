@@ -263,7 +263,7 @@ class CrunchyrollIE(CrunchyrollBaseIE, VRVIE):
         '1080': ('80', '108'),
     }
 
-    def _download_webpage(self, url_or_request, *args, **kwargs):
+    def _download_webpage(self, url_or_request, website, *args, **kwargs):
         # request = (url_or_request if isinstance(url_or_request, compat_urllib_request.Request)
         #            else sanitized_Request(url_or_request))
         # Accept-Language must be set explicitly to accept any language to avoid issues
@@ -275,7 +275,7 @@ class CrunchyrollIE(CrunchyrollBaseIE, VRVIE):
         # the locale lang first in header. However allowing any language seems to workaround the issue.
         # request.add_header('Accept-Language', '*')
         # return super(CrunchyrollBaseIE, self)._download_webpage(request, *args, **kwargs)
-        return 
+        return website
 
     def _decrypt_subtitles(self, data, iv, id):
         data = bytes_to_intlist(compat_b64decode(data))
@@ -417,13 +417,14 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         video_id = mobj.group('video_id')
 
         if mobj.group('prefix') == 'm':
-            mobile_webpage = self._download_webpage(url, video_id, 'Downloading mobile webpage')
+            mobile_webpage = self._download_webpage(url, video_id, website, 'Downloading mobile webpage')
             webpage_url = self._search_regex(r'<link rel="canonical" href="([^"]+)" />', mobile_webpage, 'webpage_url')
         else:
             webpage_url = 'http://www.' + mobj.group('url')
 
         webpage = self._download_webpage(
             self._add_skip_wall(webpage_url), video_id,
+            website,
             headers=self.geo_verification_headers())
         note_m = self._html_search_regex(
             r'<div class="showmedia-trailer-notice">(.+?)</div>',

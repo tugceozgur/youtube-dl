@@ -113,7 +113,8 @@ class XimalayaIE(XimalayaBaseIE):
         audio_id = self._match_id(url)
         webpage = self._download_webpage(url, audio_id,
                                          note='Download sound page for %s' % audio_id,
-                                         errnote='Unable to get sound page')
+                                         errnote='Unable to get sound page',
+                                         website=webite)
 
         audio_info_file = '%s://m.ximalaya.com/tracks/%s.json' % (scheme, audio_id)
         audio_info = self._download_json(audio_info_file, audio_id,

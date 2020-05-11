@@ -25,7 +25,7 @@ class MovingImageIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         formats = self._extract_m3u8_formats(
             self._html_search_regex(r'file\s*:\s*"([^"]+)"', webpage, 'm3u8 manifest URL'),

@@ -46,7 +46,7 @@ class YandexDiskIE(InfoExtractor):
             r'(["\'])sk(?:External)?\1\s*:\s*(["\'])(?P<value>(?:(?!\2).)+)\2',
             status, 'sk', group='value')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         models = self._parse_json(
             self._search_regex(

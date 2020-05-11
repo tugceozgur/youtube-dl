@@ -47,7 +47,7 @@ class SeekerIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id, article_id = re.match(self._VALID_URL, url).groups()
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         entries = []
         for jwp_id in re.findall(r'data-video-id="([a-zA-Z0-9]{8})"', webpage):
             entries.append(self.url_result(

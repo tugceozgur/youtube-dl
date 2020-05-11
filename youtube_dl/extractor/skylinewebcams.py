@@ -23,7 +23,7 @@ class SkylineWebcamsIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         stream_url = self._search_regex(
             r'(?:url|source)\s*:\s*(["\'])(?P<url>(?:https?:)?//.+?\.m3u8.*?)\1', webpage,

@@ -24,7 +24,7 @@ class BFIPlayerIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         entries = []
         for player_el in re.findall(r'(?s)<[^>]+class="player"[^>]*>', webpage):
             player_attr = extract_attributes(player_el)

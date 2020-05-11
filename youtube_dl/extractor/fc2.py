@@ -79,7 +79,7 @@ class FC2IE(InfoExtractor):
         self._login()
         webpage = None
         if not url.startswith('fc2:'):
-            webpage = self._download_webpage(url, video_id)
+            webpage = self._download_webpage(url, video_id, website=website)
             self._downloader.cookiejar.clear_session_cookies()  # must clear
             self._login()
 

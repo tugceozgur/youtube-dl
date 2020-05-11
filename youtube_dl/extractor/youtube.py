@@ -361,7 +361,7 @@ class YoutubePlaylistsBaseInfoExtractor(YoutubeEntryListBaseInfoExtractor):
 
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
         title = self._og_search_title(webpage, fatal=False)
         return self.playlist_result(self._entries(webpage, playlist_id), playlist_id, title)
 
@@ -2997,7 +2997,7 @@ class YoutubeLiveIE(YoutubeBaseInfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         channel_id = mobj.group('id')
         base_url = mobj.group('base_url')
-        webpage = self._download_webpage(url, channel_id, fatal=False)
+        webpage = self._download_webpage(url, channel_id, fatal=False, website=website)
         if webpage:
             page_type = self._og_search_property(
                 'type', webpage, 'page type', default='')
@@ -3119,7 +3119,7 @@ class YoutubeSearchURLIE(YoutubeSearchBaseInfoExtractor):
     def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         query = compat_urllib_parse_unquote_plus(mobj.group('query'))
-        webpage = self._download_webpage(url, query)
+        webpage = self._download_webpage(url, query, website=website)
         return self.playlist_result(self._process_page(webpage), playlist_title=query)
 
 

@@ -268,7 +268,7 @@ class BTArticleIE(InfoExtractor):
     }
 
     def _real_extract(self, url, website=''):
-        webpage = self._download_webpage(url, self._match_id(url))
+        webpage = self._download_webpage(url, self._match_id(url), website=website)
         video_id = self._search_regex(
             r'<video[^>]+data-id="(\d+)"', webpage, 'video id')
         return self.url_result('bttv:%s' % video_id, 'VGTV')

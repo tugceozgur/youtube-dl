@@ -66,7 +66,7 @@ class WatchBoxIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         kind, video_id = mobj.group('kind', 'id')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         player_config = self._parse_json(
             self._search_regex(

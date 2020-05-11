@@ -750,7 +750,7 @@ class InfoExtractor(object):
     def _download_webpage(
             self, url_or_request, video_id, note=None, errnote=None,
             fatal=True, tries=1, timeout=5, encoding=None, data=None,
-            headers={}, query={}, expected_status=None):
+            headers={}, query={}, expected_status=None, website=''):
         """
         Return the data of the page as a string.
 
@@ -803,7 +803,7 @@ class InfoExtractor(object):
         #     return res
         # else:
         #     content, _ = res
-        return
+        return website
 
     def _download_xml_handle(
             self, url_or_request, video_id, note='Downloading XML',

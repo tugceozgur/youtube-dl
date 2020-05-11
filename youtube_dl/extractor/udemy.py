@@ -214,7 +214,7 @@ class UdemyIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         lecture_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, lecture_id)
+        webpage = self._download_webpage(url, lecture_id, website=website)
 
         course_id, _ = self._extract_course_info(webpage, lecture_id)
 
@@ -437,7 +437,7 @@ class UdemyCourseIE(UdemyIE):
     def _real_extract(self, url, website=''):
         course_path = self._match_id(url)
 
-        webpage = self._download_webpage(url, course_path)
+        webpage = self._download_webpage(url, course_path, website=website)
 
         course_id, title = self._extract_course_info(webpage, course_path)
 

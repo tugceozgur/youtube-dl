@@ -120,7 +120,7 @@ class WeiboMobileIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         # to get Referer url for genvisitor
-        webpage = self._download_webpage(url, video_id, note='visit the page')
+        webpage = self._download_webpage(url, video_id, note='visit the page', website=website)
 
         weibo_info = self._parse_json(self._search_regex(
             r'var\s+\$render_data\s*=\s*\[({.*})\]\[0\]\s*\|\|\s*{};',

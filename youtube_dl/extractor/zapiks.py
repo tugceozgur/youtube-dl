@@ -50,7 +50,7 @@ class ZapiksIE(InfoExtractor):
         video_id = mobj.group('id')
         display_id = mobj.group('display_id') or video_id
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         if not video_id:
             video_id = self._search_regex(

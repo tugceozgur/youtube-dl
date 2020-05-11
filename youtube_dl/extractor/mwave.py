@@ -82,7 +82,7 @@ class MwaveMeetGreetIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         clip_id = self._html_search_regex(
             r'<iframe[^>]+src="/mnettv/ifr_clip\.m\?searchVideoDetailVO\.clip_id=(\d+)',
             webpage, 'clip ID')

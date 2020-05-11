@@ -398,7 +398,7 @@ class PornHubPlaylistBaseIE(PornHubBaseIE):
         host = mobj.group('host')
         playlist_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         entries = self._extract_entries(webpage, host)
 

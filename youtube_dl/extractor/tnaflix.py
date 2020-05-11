@@ -83,7 +83,7 @@ class TNAFlixNetworkBaseIE(InfoExtractor):
         else:
             display_id = video_id
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         cfg_url = self._proto_relative_url(self._html_search_regex(
             self._CONFIG_REGEX, webpage, 'flashvars.config', default=None,

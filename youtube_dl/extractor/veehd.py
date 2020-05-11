@@ -56,7 +56,7 @@ class VeeHDIE(InfoExtractor):
         # VeeHD seems to send garbage on the first request.
         # See https://github.com/ytdl-org/youtube-dl/issues/2102
         self._download_webpage(url, video_id, 'Requesting webpage')
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         if 'This video has been removed<' in webpage:
             raise ExtractorError('Video %s has been removed' % video_id, expected=True)

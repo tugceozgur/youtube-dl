@@ -162,7 +162,7 @@ class DVTVIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         timestamp = parse_iso8601(self._html_search_meta(
             'article:published_time', webpage, 'published time', default=None))
 

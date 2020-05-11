@@ -57,7 +57,7 @@ class Laola1TvEmbedIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         flash_vars = self._search_regex(
             r'(?s)flashvars\s*=\s*({.+?});', webpage, 'flash vars')
 
@@ -124,7 +124,7 @@ class Laola1TvEmbedIE(InfoExtractor):
 class Laola1TvBaseIE(Laola1TvEmbedIE):
     def _extract_video(self, url):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         if 'Dieser Livestream ist bereits beendet.' in webpage:
             raise ExtractorError('This live stream has already finished.', expected=True)

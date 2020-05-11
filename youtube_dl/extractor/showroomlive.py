@@ -20,7 +20,7 @@ class ShowRoomLiveIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         broadcaster_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, broadcaster_id)
+        webpage = self._download_webpage(url, broadcaster_id, website=website)
 
         room_id = self._search_regex(
             (r'SrGlobal\.roomId\s*=\s*(\d+)',

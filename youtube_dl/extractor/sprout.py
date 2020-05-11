@@ -27,7 +27,7 @@ class SproutIE(AdobePassIE):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         video_component = self._search_regex(
             r'(?s)(<div[^>]+data-component="video"[^>]*?>)',
             webpage, 'video component', default=None)

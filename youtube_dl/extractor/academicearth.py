@@ -21,7 +21,7 @@ class AcademicEarthCourseIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
         title = self._html_search_regex(
             r'<h1 class="playlist-name"[^>]*?>(.*?)</h1>', webpage, 'title')
         description = self._html_search_regex(

@@ -81,7 +81,7 @@ class CBSLocalIE(AnvatoIE):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         sendtonews_url = SendtoNewsIE._extract_url(webpage)
         if sendtonews_url:

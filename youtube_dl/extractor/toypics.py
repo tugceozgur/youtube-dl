@@ -23,7 +23,7 @@ class ToypicsIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         formats = self._parse_html5_media_entries(
             url, webpage, video_id)[0]['formats']

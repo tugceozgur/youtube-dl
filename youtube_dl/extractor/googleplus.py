@@ -27,7 +27,7 @@ class GooglePlusIE(InfoExtractor):
         video_id = self._match_id(url)
 
         # Step 1, Retrieve post webpage to extract further information
-        webpage = self._download_webpage(url, video_id, 'Downloading entry webpage')
+        webpage = self._download_webpage(url, video_id, 'Downloading entry webpage', website=website)
 
         title = self._og_search_description(webpage).splitlines()[0]
         upload_date = unified_strdate(self._html_search_regex(

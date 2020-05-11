@@ -103,7 +103,7 @@ class PlatziIE(PlatziBaseIE):
     def _real_extract(self, url, website=''):
         lecture_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, lecture_id)
+        webpage = self._download_webpage(url, lecture_id, website=website)
 
         data = self._parse_json(
             self._search_regex(
@@ -184,7 +184,7 @@ class PlatziCourseIE(PlatziBaseIE):
     def _real_extract(self, url, website=''):
         course_name = self._match_id(url)
 
-        webpage = self._download_webpage(url, course_name)
+        webpage = self._download_webpage(url, course_name, website=website)
 
         props = self._parse_json(
             self._search_regex(r'data\s*=\s*({.+?})\s*;', webpage, 'data'),

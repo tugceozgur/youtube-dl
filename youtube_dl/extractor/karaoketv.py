@@ -22,7 +22,7 @@ class KaraoketvIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         api_page_url = self._search_regex(
             r'<iframe[^>]+src=(["\'])(?P<url>https?://www\.karaoke\.co\.il/api_play\.php\?.+?)\1',
             webpage, 'API play URL', group='url')

@@ -945,7 +945,7 @@ class VimeoAlbumIE(VimeoBaseInfoExtractor):
 
     def _real_extract(self, url, website=''):
         album_id = self._match_id(url)
-        webpage = self._download_webpage(url, album_id)
+        webpage = self._download_webpage(url, album_id, website=website)
         viewer = self._parse_json(self._search_regex(
             r'bootstrap_data\s*=\s*({.+?})</script>',
             webpage, 'bootstrap data'), album_id)['viewer']
@@ -1117,7 +1117,7 @@ class VHXEmbedIE(VimeoBaseInfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         config_url = self._parse_json(self._search_regex(
             r'window\.OTTData\s*=\s*({.+})', webpage,
             'ott data'), video_id, js_to_json)['config_url']

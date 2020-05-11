@@ -33,7 +33,7 @@ class AirMozillaIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         video_id = self._html_search_regex(r'//vid\.ly/(.*?)/embed', webpage, 'id')
 
         embed_script = self._download_webpage('https://vid.ly/{0}/embed'.format(video_id), video_id)

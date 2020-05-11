@@ -32,7 +32,7 @@ class DeezerPlaylistIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         playlist_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
         geoblocking_msg = self._html_search_regex(
             r'<p class="soon-txt">(.*?)</p>', webpage, 'geoblocking message',
             default=None)

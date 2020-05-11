@@ -21,7 +21,7 @@ class EHowIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         video_url = self._search_regex(
             r'(?:file|source)=(http[^\'"&]*)', webpage, 'video URL')
         final_url = compat_urllib_parse_unquote(video_url)

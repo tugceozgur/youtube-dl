@@ -80,7 +80,7 @@ class DisneyIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         domain, video_id, display_id = re.match(self._VALID_URL, url).groups()
         if not video_id:
-            webpage = self._download_webpage(url, display_id)
+            webpage = self._download_webpage(url, display_id, website=website)
             grill = re.sub(r'"\s*\+\s*"', '', self._search_regex(
                 r'Grill\.burger\s*=\s*({.+})\s*:',
                 webpage, 'grill data'))

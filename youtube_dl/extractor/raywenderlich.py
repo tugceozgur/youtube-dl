@@ -76,7 +76,7 @@ class RayWenderlichIE(InfoExtractor):
         course_id, lesson_id = mobj.group('course_id', 'id')
         display_id = '%s/%s' % (course_id, lesson_id)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         thumbnail = self._og_search_thumbnail(
             webpage, default=None) or self._html_search_meta(
@@ -160,7 +160,7 @@ class RayWenderlichCourseIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         course_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, course_id)
+        webpage = self._download_webpage(url, course_id, website=website)
 
         entries = []
         lesson_urls = set()

@@ -39,7 +39,7 @@ class KUSIIE(InfoExtractor):
         clip_id = mobj.group('clipId')
         video_id = clip_id or mobj.group('path')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         if clip_id is None:
             video_id = clip_id = self._html_search_regex(

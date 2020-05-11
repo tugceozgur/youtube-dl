@@ -201,7 +201,7 @@ class SVTPlayIE(SVTPlayBaseIE):
         if svt_id:
             return self._extract_by_video_id(svt_id)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         data = self._parse_json(
             self._search_regex(

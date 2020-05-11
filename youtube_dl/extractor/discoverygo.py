@@ -116,7 +116,7 @@ class DiscoveryGoIE(DiscoveryGoBaseIE):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         container = extract_attributes(
             self._search_regex(
@@ -152,7 +152,7 @@ class DiscoveryGoPlaylistIE(DiscoveryGoBaseIE):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         entries = []
         for mobj in re.finditer(r'data-json=(["\'])(?P<json>{.+?})\1', webpage):

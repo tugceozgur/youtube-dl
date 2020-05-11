@@ -132,7 +132,7 @@ class ImdbListIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         list_id = self._match_id(url)
-        webpage = self._download_webpage(url, list_id)
+        webpage = self._download_webpage(url, list_id, website=website)
         entries = [
             self.url_result('http://www.imdb.com' + m, 'Imdb')
             for m in re.findall(r'href="(/list/ls%s/videoplayer/vi[^"]+)"' % list_id, webpage)]

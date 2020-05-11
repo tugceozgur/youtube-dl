@@ -47,7 +47,7 @@ class FourTubeBaseIE(InfoExtractor):
         if kind == 'm' or not display_id:
             url = self._URL_TEMPLATE % video_id
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         title = self._html_search_meta('name', webpage)
         timestamp = parse_iso8601(self._html_search_meta(
@@ -231,7 +231,7 @@ class PornTubeIE(FourTubeBaseIE):
         mobj = re.match(self._VALID_URL, url)
         video_id, display_id = mobj.group('id', 'display_id')
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         video = self._parse_json(
             self._search_regex(

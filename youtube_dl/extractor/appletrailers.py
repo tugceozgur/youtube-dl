@@ -98,7 +98,7 @@ class AppleTrailersIE(InfoExtractor):
         movie = mobj.group('movie')
         uploader_id = mobj.group('company')
 
-        webpage = self._download_webpage(url, movie)
+        webpage = self._download_webpage(url, movie, website=website)
         film_id = self._search_regex(r"FilmId\s*=\s*'(\d+)'", webpage, 'film id')
         film_data = self._download_json(
             'http://trailers.apple.com/trailers/feeds/data/%s.json' % film_id,

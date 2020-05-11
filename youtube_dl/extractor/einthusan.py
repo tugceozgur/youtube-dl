@@ -52,7 +52,7 @@ class EinthusanIE(InfoExtractor):
         host = mobj.group('host')
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         title = self._html_search_regex(r'<h3>([^<]+)</h3>', webpage, 'title')
 

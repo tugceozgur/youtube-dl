@@ -31,7 +31,7 @@ class FreesoundIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         audio_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, audio_id)
+        webpage = self._download_webpage(url, audio_id,  website=website)
 
         audio_url = self._og_search_property('audio', webpage, 'song url')
         title = self._og_search_property('audio:title', webpage, 'song title')

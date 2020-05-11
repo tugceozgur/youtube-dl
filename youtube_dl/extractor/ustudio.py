@@ -45,7 +45,7 @@ class UstudioIE(InfoExtractor):
         formats = extract('video')
         self._sort_formats(formats)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         title = self._og_search_title(webpage)
         upload_date = unified_strdate(self._search_regex(

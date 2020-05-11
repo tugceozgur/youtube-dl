@@ -50,7 +50,7 @@ class DWIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
-        webpage = self._download_webpage(url, media_id)
+        webpage = self._download_webpage(url, media_id,  website=website)
         hidden_inputs = self._hidden_inputs(webpage)
         title = hidden_inputs['media_title']
         media_id = hidden_inputs.get('media_id') or media_id
@@ -100,7 +100,7 @@ class DWArticleIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         article_id = self._match_id(url)
-        webpage = self._download_webpage(url, article_id)
+        webpage = self._download_webpage(url, article_id,  website=website)
         hidden_inputs = self._hidden_inputs(webpage)
         media_id = hidden_inputs['media_id']
         media_path = self._search_regex(r'href="([^"]+av-%s)"\s+class="overlayLink"' % media_id, webpage, 'media url')

@@ -117,7 +117,7 @@ class WSJArticleIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         article_id = self._match_id(url)
-        webpage = self._download_webpage(url, article_id)
+        webpage = self._download_webpage(url, article_id,  website=website)
         video_id = self._search_regex(
             r'data-src=["\']([a-fA-F0-9-]{36})', webpage, 'video id')
         return self.url_result('wsj:%s' % video_id, WSJIE.ie_key(), video_id)

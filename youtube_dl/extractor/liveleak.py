@@ -96,7 +96,7 @@ class LiveLeakIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         video_title = self._og_search_title(webpage).replace('LiveLeak.com -', '').strip()
         video_description = self._og_search_description(webpage)
@@ -181,7 +181,7 @@ class LiveLeakEmbedIE(InfoExtractor):
         kind, video_id = re.match(self._VALID_URL, url).groups()
 
         if kind == 'f':
-            webpage = self._download_webpage(url, video_id)
+            webpage = self._download_webpage(url, video_id, website=website)
             liveleak_url = self._search_regex(
                 r'(?:logourl\s*:\s*|window\.open\()(?P<q1>[\'"])(?P<url>%s)(?P=q1)' % LiveLeakIE._VALID_URL,
                 webpage, 'LiveLeak URL', group='url')

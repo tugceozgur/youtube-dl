@@ -53,7 +53,7 @@ class PyvideoIE(InfoExtractor):
                             'duration': int_or_none(data.get('duration')),
                         })
         else:
-            webpage = self._download_webpage(url, video_id)
+            webpage = self._download_webpage(url, video_id, website=website)
             title = self._og_search_title(webpage)
             media_urls = self._search_regex(
                 r'(?s)Media URL:(.+?)</li>', webpage, 'media urls')

@@ -124,7 +124,7 @@ class ZingMp3IE(ZingMp3BaseInfoExtractor):
     def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, page_id)
+        webpage = self._download_webpage(url, page_id, website=website)
 
         player_json_url = self._search_regex([
             r'data-xml="([^"]+)',

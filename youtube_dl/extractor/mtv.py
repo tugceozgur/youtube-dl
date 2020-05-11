@@ -282,7 +282,7 @@ class MTVServicesInfoExtractor(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         title = url_basename(url)
-        webpage = self._download_webpage(url, title)
+        webpage = self._download_webpage(url, title, website=website)
         mgid = self._extract_mgid(webpage)
         videos_info = self._get_videos_info(mgid)
         return videos_info
@@ -406,7 +406,7 @@ class MTVVideoIE(MTVServicesInfoExtractor):
         video_id = mobj.group('videoid')
         uri = mobj.groupdict().get('mgid')
         if uri is None:
-            webpage = self._download_webpage(url, video_id)
+            webpage = self._download_webpage(url, video_id, website=website)
 
             # Some videos come from Vevo.com
             m_vevo = re.search(

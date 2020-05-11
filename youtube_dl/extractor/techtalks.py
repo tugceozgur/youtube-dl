@@ -46,7 +46,7 @@ class TechTalksIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         talk_id = mobj.group('id')
-        webpage = self._download_webpage(url, talk_id)
+        webpage = self._download_webpage(url, talk_id,  website=website)
         rtmp_url = self._search_regex(
             r'netConnectionUrl: \'(.*?)\'', webpage, 'rtmp url')
         play_path = self._search_regex(

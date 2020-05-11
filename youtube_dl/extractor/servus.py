@@ -44,7 +44,7 @@ class ServusIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url).upper()
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         title = self._search_regex(
             (r'videoLabel\s*=\s*(["\'])(?P<title>(?:(?!\1).)+)\1',

@@ -28,7 +28,7 @@ class VuClipIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         ad_m = re.search(
             r'''value="No.*?" onClick="location.href='([^"']+)'"''', webpage)

@@ -102,7 +102,7 @@ class PlaytvakIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         info_url = self._html_search_regex(
             r'Misc\.video(?:FLV)?\(\s*{\s*data\s*:\s*"([^"]+)"', webpage, 'info url')

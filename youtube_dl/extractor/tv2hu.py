@@ -28,7 +28,7 @@ class TV2HuIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         json_url = self._search_regex(
             r'jsonUrl\s*=\s*"([^"]+)"', webpage, 'json url')
         json_data = self._download_json(json_url, video_id)

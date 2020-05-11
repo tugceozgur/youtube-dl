@@ -206,7 +206,7 @@ class VevoIE(VevoBaseIE):
         # Some videos are only available via webpage (e.g.
         # https://github.com/ytdl-org/youtube-dl/issues/9366)
         if not video_versions:
-            webpage = self._download_webpage(url, video_id)
+            webpage = self._download_webpage(url, video_id, website=website)
             json_data = self._extract_json(webpage, video_id)
             if 'streams' in json_data.get('default', {}):
                 video_versions = json_data['default']['streams'][video_id][0]
@@ -348,7 +348,7 @@ class VevoPlaylistIE(VevoBaseIE):
         playlist_id = mobj.group('id')
         playlist_kind = mobj.group('kind')
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         qs = compat_urlparse.parse_qs(compat_urlparse.urlparse(url).query)
         index = qs.get('index', [None])[0]

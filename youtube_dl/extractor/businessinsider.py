@@ -36,7 +36,7 @@ class BusinessInsiderIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         jwplatform_id = self._search_regex(
             (r'data-media-id=["\']([a-zA-Z0-9]{8})',
              r'id=["\']jwplayer_([a-zA-Z0-9]{8})',

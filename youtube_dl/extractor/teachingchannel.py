@@ -25,7 +25,7 @@ class TeachingChannelIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         mid = self._search_regex(
             r'(?:data-mid=["\']|id=["\']jw-video-player-)([a-zA-Z0-9]{8})',
             webpage, 'media id')

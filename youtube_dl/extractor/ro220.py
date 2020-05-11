@@ -21,7 +21,7 @@ class Ro220IE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         url = compat_urllib_parse_unquote(self._search_regex(
             r'(?s)clip\s*:\s*{.*?url\s*:\s*\'([^\']+)\'', webpage, 'url'))
         title = self._og_search_title(webpage)

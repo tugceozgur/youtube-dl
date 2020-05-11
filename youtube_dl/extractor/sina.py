@@ -68,7 +68,7 @@ class SinaIE(InfoExtractor):
                 return self._real_extract(urlh.geturl())
             else:
                 pseudo_id = mobj.group('pseudo_id')
-                webpage = self._download_webpage(url, pseudo_id)
+                webpage = self._download_webpage(url, pseudo_id,  website=website)
                 error = get_element_by_attribute('class', 'errtitle', webpage)
                 if error:
                     raise ExtractorError('%s said: %s' % (

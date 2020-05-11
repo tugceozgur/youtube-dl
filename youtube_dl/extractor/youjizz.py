@@ -35,7 +35,7 @@ class YouJizzIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id') or mobj.group('embed_id')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         title = self._html_search_regex(
             r'<title>(.+?)</title>', webpage, 'title')

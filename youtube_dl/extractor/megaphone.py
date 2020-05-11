@@ -26,7 +26,7 @@ class MegaphoneIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         title = self._og_search_property('audio:title', webpage)
         author = self._og_search_property('audio:artist', webpage)

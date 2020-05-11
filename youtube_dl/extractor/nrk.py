@@ -423,7 +423,7 @@ class NRKTVEpisodeIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         nrk_id = self._parse_json(
             self._search_regex(JSON_LD_RE, webpage, 'JSON-LD', group='json_ld'),
@@ -494,7 +494,7 @@ class NRKTVSeasonIE(NRKTVSerieBaseIE):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         series = self._extract_series(webpage, display_id)
 
@@ -623,7 +623,7 @@ class NRKPlaylistBaseIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         entries = [
             self.url_result('nrk:%s' % video_id, NRKIE.ie_key())

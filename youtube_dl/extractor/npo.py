@@ -506,7 +506,7 @@ class NPOLiveIE(NPOBaseIE):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url) or 'npo-1'
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         live_id = self._search_regex(
             [r'media-id="([^"]+)"', r'data-prid="([^"]+)"'], webpage, 'live id')
@@ -548,7 +548,7 @@ class NPORadioIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         title = self._html_search_regex(
             self._html_get_attribute_regex('data-channel'), webpage, 'title')
@@ -586,7 +586,7 @@ class NPORadioFragmentIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         audio_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, audio_id)
+        webpage = self._download_webpage(url, audio_id,  website=website)
 
         title = self._html_search_regex(
             r'href="/radio/[^/]+/fragment/%s" title="([^"]+)"' % audio_id,
@@ -605,7 +605,7 @@ class NPORadioFragmentIE(InfoExtractor):
 class NPODataMidEmbedIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         video_id = self._search_regex(
             r'data-mid=(["\'])(?P<id>(?:(?!\1).)+)\1', webpage, 'video_id', group='id')
         return {
@@ -660,7 +660,7 @@ class NPOPlaylistBaseIE(NPOIE):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         entries = [
             self.url_result('npo:%s' % video_id if not video_id.startswith('http') else video_id)

@@ -32,7 +32,7 @@ class StreamcloudIE(InfoExtractor):
         video_id = self._match_id(url)
         url = 'http://streamcloud.eu/%s' % video_id
 
-        orig_webpage = self._download_webpage(url, video_id)
+        orig_webpage = self._download_webpage(url, video_id, website=website)
 
         if '>File Not Found<' in orig_webpage:
             raise ExtractorError(

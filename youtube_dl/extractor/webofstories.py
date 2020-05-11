@@ -57,7 +57,7 @@ class WebOfStoriesIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         # Sometimes og:title meta is malformed
         title = self._og_search_title(webpage, default=None) or self._html_search_regex(
             r'(?s)<strong>Title:\s*</strong>(.+?)<', webpage, 'title')
@@ -133,7 +133,7 @@ class WebOfStoriesPlaylistIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         entries = [
             self.url_result(

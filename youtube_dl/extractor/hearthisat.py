@@ -59,7 +59,7 @@ class HearThisAtIE(InfoExtractor):
         m = re.match(self._VALID_URL, url)
         display_id = '{artist:s} - {title:s}'.format(**m.groupdict())
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         track_id = self._search_regex(
             r'intTrackId\s*=\s*(\d+)', webpage, 'track ID')
 

@@ -40,7 +40,7 @@ class RadioJavanIE(InfoExtractor):
                 'Referer': url,
             }).get('host', 'https://host1.rjmusicmedia.com')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         formats = []
         for format_id, _, video_path in re.findall(

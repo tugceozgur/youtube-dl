@@ -109,7 +109,7 @@ class NickBrIE(MTVServicesInfoExtractor):
 
     def _real_extract(self, url, website=''):
         domain, display_id = re.match(self._VALID_URL, url).groups()
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         uri = self._search_regex(
             r'data-(?:contenturi|mgid)="([^"]+)', webpage, 'mgid')
         video_id = self._id_from_uri(uri)
@@ -186,7 +186,7 @@ class NickDeIE(MTVServicesInfoExtractor):
         video_id = mobj.group('id')
         host = mobj.group('host')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         mrss_url = self._extract_mrss_url(webpage, host)
 
@@ -244,6 +244,6 @@ class NickRuIE(MTVServicesInfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         mgid = self._extract_mgid(webpage)
         return self.url_result('http://media.mtvnservices.com/embed/%s' % mgid)

@@ -164,7 +164,7 @@ class WashingtonPostArticleIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
-        webpage = self._download_webpage(url, page_id)
+        webpage = self._download_webpage(url, page_id, website=website)
 
         title = self._og_search_title(webpage)
 

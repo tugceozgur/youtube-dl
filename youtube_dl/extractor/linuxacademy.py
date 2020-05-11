@@ -140,7 +140,7 @@ class LinuxAcademyIE(InfoExtractor):
         chapter_id, lecture_id, course_id = mobj.group('chapter_id', 'lesson_id', 'course_id')
         item_id = course_id if course_id else '%s-%s' % (chapter_id, lecture_id)
 
-        webpage = self._download_webpage(url, item_id)
+        webpage = self._download_webpage(url, item_id, website=website)
 
         # course path
         if course_id:

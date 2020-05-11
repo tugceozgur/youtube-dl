@@ -183,7 +183,7 @@ class IviIE(InfoExtractor):
             'id': preview.get('content_format'),
         } for preview in result.get('preview', []) if preview.get('url')]
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         season = self._search_regex(
             r'<li[^>]+class="season active"[^>]*><a[^>]+>([^<]+)',

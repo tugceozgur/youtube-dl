@@ -62,7 +62,7 @@ class PolskieRadioIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
 
         content = self._search_regex(
             r'(?s)<div[^>]+class="\s*this-article\s*"[^>]*>(.+?)<div[^>]+class="tags"[^>]*>',
@@ -171,7 +171,7 @@ class PolskieRadioCategoryIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         category_id = self._match_id(url)
-        webpage = self._download_webpage(url, category_id)
+        webpage = self._download_webpage(url, category_id, website=website)
         title = self._html_search_regex(
             r'<title>([^<]+) - [^<]+ - [^<]+</title>',
             webpage, 'title', fatal=False)

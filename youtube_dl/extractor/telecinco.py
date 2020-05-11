@@ -154,7 +154,7 @@ class TelecincoIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
         article = self._parse_json(self._search_regex(
             r'window\.\$REACTBASE_STATE\.article(?:_multisite)?\s*=\s*({.+})',
             webpage, 'article'), display_id)['article']

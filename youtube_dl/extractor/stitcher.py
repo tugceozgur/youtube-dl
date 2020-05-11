@@ -52,7 +52,7 @@ class StitcherIE(InfoExtractor):
         audio_id = mobj.group('id')
         display_id = mobj.group('display_id') or audio_id
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         episode = self._parse_json(
             js_to_json(self._search_regex(

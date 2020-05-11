@@ -27,7 +27,7 @@ class PhotobucketIE(InfoExtractor):
         video_id = mobj.group('id')
         video_extension = mobj.group('ext')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         # Extract URL, uploader, and title from webpage
         self.report_extraction(video_id)

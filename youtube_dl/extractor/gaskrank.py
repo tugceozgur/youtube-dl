@@ -45,7 +45,7 @@ class GaskrankIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         title = self._og_search_title(
             webpage, default=None) or self._html_search_meta(

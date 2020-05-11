@@ -24,7 +24,7 @@ class HotNewHipHopIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         video_url_base64 = self._search_regex(
             r'data-path="(.*?)"', webpage, 'video URL', default=None)

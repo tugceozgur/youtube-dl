@@ -146,15 +146,15 @@ class TEDIE(InfoExtractor):
         if m.group('type_talk'):
             return self._talk_info(url, name)
         elif m.group('type_watch'):
-            return self._watch_info(url, name)
+            return self._watch_info(url, name, website=website)
         else:
-            return self._playlist_videos_info(url, name)
+            return self._playlist_videos_info(url, name, website=website)
 
-    def _playlist_videos_info(self, url, name):
+    def _playlist_videos_info(self, url, name, website=''):
         '''Returns the videos of the playlist'''
 
         webpage = self._download_webpage(url, name,
-                                         'Downloading playlist webpage')
+                                         'Downloading playlist webpage', website=website)
 
         playlist_entries = []
         for entry in re.findall(r'(?s)<[^>]+data-ga-context=["\']playlist["\'][^>]*>', webpage):
@@ -172,8 +172,8 @@ class TEDIE(InfoExtractor):
             playlist_title=self._og_search_title(webpage, fatal=False),
             playlist_description=self._og_search_description(webpage))
 
-    def _talk_info(self, url, video_name):
-        webpage = self._download_webpage(url, video_name)
+    def _talk_info(self, url, video_name, website=''):
+        webpage = self._download_webpage(url, video_name, website=website)
 
         info = self._extract_info(webpage)
 
@@ -331,8 +331,8 @@ class TEDIE(InfoExtractor):
             ]
         return sub_lang_list
 
-    def _watch_info(self, url, name):
-        webpage = self._download_webpage(url, name)
+    def _watch_info(self, url, name, website=''):
+        webpage = self._download_webpage(url, name, website=website)
 
         config_json = self._html_search_regex(
             r'"pages\.jwplayer"\s*,\s*({.+?})\s*\)\s*</script>',

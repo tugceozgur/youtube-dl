@@ -46,7 +46,7 @@ class Zaq1IE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         video_url = self._search_regex(
             r'data-video-url=(["\'])(?P<url>(?:(?!\1).)+)\1', webpage,

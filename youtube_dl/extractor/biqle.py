@@ -40,7 +40,7 @@ class BIQLEIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         embed_url = self._proto_relative_url(self._search_regex(
             r'<iframe.+?src="((?:https?:)?//(?:daxab\.com|dxb\.to|[^/]+/player)/[^"]+)".*?></iframe>',
             webpage, 'embed url'))

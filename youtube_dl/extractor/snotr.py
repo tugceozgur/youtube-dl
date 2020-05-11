@@ -42,7 +42,7 @@ class SnotrIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
         title = self._og_search_title(webpage)
 
         description = self._og_search_description(webpage)

@@ -42,7 +42,7 @@ class SRMediathekIE(ARDMediathekBaseIE):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         if '>Der gew&uuml;nschte Beitrag ist leider nicht mehr verf&uuml;gbar.<' in webpage:
             raise ExtractorError('Video %s is no longer available' % video_id, expected=True)

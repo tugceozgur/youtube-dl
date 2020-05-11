@@ -148,7 +148,7 @@ class DouyuShowIE(InfoExtractor):
         url = url.replace('vmobile.', 'v.')
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         room_info = self._parse_json(self._search_regex(
             r'var\s+\$ROOM\s*=\s*({.+});', webpage, 'room info'), video_id)

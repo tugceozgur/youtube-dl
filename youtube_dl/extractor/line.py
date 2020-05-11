@@ -29,7 +29,7 @@ class LineTVIE(InfoExtractor):
         series_id, segment = re.match(self._VALID_URL, url).groups()
         video_id = '%s_%s' % (series_id, segment)
 
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         player_params = self._parse_json(self._search_regex(
             r'naver\.WebPlayer\(({[^}]+})\)', webpage, 'player parameters'),

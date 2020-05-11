@@ -36,7 +36,7 @@ class PopcornTVIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         display_id, video_id = mobj.group('display_id', 'id')
 
-        webpage = self._download_webpage(url, display_id)
+        webpage = self._download_webpage(url, display_id, website=website)
 
         m3u8_url = extract_attributes(
             self._search_regex(

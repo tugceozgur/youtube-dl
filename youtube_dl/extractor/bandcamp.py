@@ -82,7 +82,7 @@ class BandcampIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         title = mobj.group('title')
-        webpage = self._download_webpage(url, title)
+        webpage = self._download_webpage(url, title, website=website)
         thumbnail = self._html_search_meta('og:image', webpage, default=None)
 
         track_id = None
@@ -298,7 +298,7 @@ class BandcampAlbumIE(InfoExtractor):
         uploader_id = mobj.group('subdomain')
         album_id = mobj.group('album_id')
         playlist_id = album_id or uploader_id
-        webpage = self._download_webpage(url, playlist_id)
+        webpage = self._download_webpage(url, playlist_id, website=website)
         track_elements = re.findall(
             r'(?s)<div[^>]*>(.*?<a[^>]+href="([^"]+?)"[^>]+itemprop="url"[^>]*>.*?)</div>', webpage)
         if not track_elements:
@@ -353,7 +353,7 @@ class BandcampWeeklyIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id)
+        webpage = self._download_webpage(url, video_id, website=website)
 
         blob = self._parse_json(
             self._search_regex(

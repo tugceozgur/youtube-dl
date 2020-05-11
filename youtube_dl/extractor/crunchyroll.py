@@ -264,8 +264,8 @@ class CrunchyrollIE(CrunchyrollBaseIE, VRVIE):
     }
 
     def _download_webpage(self, url_or_request, *args, **kwargs):
-        request = (url_or_request if isinstance(url_or_request, compat_urllib_request.Request)
-                   else sanitized_Request(url_or_request))
+        # request = (url_or_request if isinstance(url_or_request, compat_urllib_request.Request)
+        #            else sanitized_Request(url_or_request))
         # Accept-Language must be set explicitly to accept any language to avoid issues
         # similar to https://github.com/ytdl-org/youtube-dl/issues/6797.
         # Along with IP address Crunchyroll uses Accept-Language to guess whether georestriction
@@ -273,8 +273,9 @@ class CrunchyrollIE(CrunchyrollBaseIE, VRVIE):
         # ignoring the priority and requires it to correspond the IP). By the way this causes
         # Crunchyroll to not work in georestriction cases in some browsers that don't place
         # the locale lang first in header. However allowing any language seems to workaround the issue.
-        request.add_header('Accept-Language', '*')
-        return super(CrunchyrollBaseIE, self)._download_webpage(request, *args, **kwargs)
+        # request.add_header('Accept-Language', '*')
+        # return super(CrunchyrollBaseIE, self)._download_webpage(request, *args, **kwargs)
+        return 
 
     def _decrypt_subtitles(self, data, iv, id):
         data = bytes_to_intlist(compat_b64decode(data))

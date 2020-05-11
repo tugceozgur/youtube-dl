@@ -93,7 +93,7 @@ class AppleTrailersIE(InfoExtractor):
 
     _JSON_RE = r'iTunes.playURL\((.*?)\);'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         movie = mobj.group('movie')
         uploader_id = mobj.group('company')
@@ -272,7 +272,7 @@ class AppleTrailersSectionIE(InfoExtractor):
         'playlist_mincount': 80,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         section = self._match_id(url)
         section_data = self._download_json(
             'http://trailers.apple.com/trailers/home/feeds/%s.json' % self._SECTIONS[section]['feed_path'],

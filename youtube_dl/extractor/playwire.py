@@ -45,7 +45,7 @@ class PlaywireIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         publisher_id, video_id = mobj.group('publisher_id'), mobj.group('id')
 

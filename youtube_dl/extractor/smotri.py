@@ -160,7 +160,7 @@ class SmotriIE(InfoExtractor):
             display_name = name
         return self._html_search_meta(name, html, display_name)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video_form = {
@@ -261,7 +261,7 @@ class SmotriCommunityIE(InfoExtractor):
         'playlist_mincount': 4,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         community_id = self._match_id(url)
 
         rss = self._download_xml(
@@ -288,7 +288,7 @@ class SmotriUserIE(InfoExtractor):
         'playlist_mincount': 9,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         user_id = self._match_id(url)
 
         rss = self._download_xml(
@@ -312,7 +312,7 @@ class SmotriBroadcastIE(InfoExtractor):
     _VALID_URL = r'https?://(?:www\.)?(?P<url>smotri\.com/live/(?P<id>[^/]+))/?.*'
     _NETRC_MACHINE = 'smotri'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         broadcast_id = mobj.group('id')
 

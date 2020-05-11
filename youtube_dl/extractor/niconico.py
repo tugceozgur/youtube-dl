@@ -266,7 +266,7 @@ class NiconicoIE(InfoExtractor):
             'width': resolution.get('width'),
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         # Get video webpage. We are not actually interested in it for normal
@@ -448,7 +448,7 @@ class NiconicoPlaylistIE(InfoExtractor):
         'playlist_mincount': 225,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         list_id = self._match_id(url)
         webpage = self._download_webpage(url, list_id)
 

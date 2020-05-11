@@ -30,7 +30,7 @@ class NTVCoJpCUIE(InfoExtractor):
     }
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/%s/default_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         player_config = self._parse_json(self._search_regex(

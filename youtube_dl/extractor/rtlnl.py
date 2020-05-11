@@ -78,7 +78,7 @@ class RtlNlIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         uuid = self._match_id(url)
         info = self._download_json(
             'http://www.rtl.nl/system/s4m/vfd/version=2/uuid=%s/fmt=adaptive/' % uuid,

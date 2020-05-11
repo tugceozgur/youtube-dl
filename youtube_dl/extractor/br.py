@@ -85,7 +85,7 @@ class BRIE(InfoExtractor):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         base_url, display_id = re.search(self._VALID_URL, url).groups()
         page = self._download_webpage(url, display_id)
         xml_url = self._search_regex(
@@ -191,7 +191,7 @@ class BRMediathekIE(InfoExtractor):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         clip_id = self._match_id(url)
 
         clip = self._download_json(

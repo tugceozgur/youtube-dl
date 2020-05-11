@@ -22,7 +22,7 @@ class OutsideTVIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         jw_media_id = self._match_id(url)
         return self.url_result(
             'jwplatform:' + jw_media_id, 'JWPlatform', jw_media_id)

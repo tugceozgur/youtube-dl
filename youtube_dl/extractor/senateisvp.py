@@ -99,7 +99,7 @@ class SenateISVPIE(InfoExtractor):
             if entry[0] == committee:
                 return entry[1:]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
 
         qs = compat_parse_qs(re.match(self._VALID_URL, url).group('qs'))

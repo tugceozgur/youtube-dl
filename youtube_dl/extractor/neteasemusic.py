@@ -149,7 +149,7 @@ class NetEaseMusicIE(NetEaseMusicBaseIE):
         ])
         return lyrics
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         song_id = self._match_id(url)
 
         params = {
@@ -199,7 +199,7 @@ class NetEaseMusicAlbumIE(NetEaseMusicBaseIE):
         'skip': 'Blocked outside Mainland China',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         album_id = self._match_id(url)
 
         info = self.query_api(
@@ -240,7 +240,7 @@ class NetEaseMusicSingerIE(NetEaseMusicBaseIE):
         'skip': 'Blocked outside Mainland China',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         singer_id = self._match_id(url)
 
         info = self.query_api(
@@ -286,7 +286,7 @@ class NetEaseMusicListIE(NetEaseMusicBaseIE):
         'skip': 'Blocked outside Mainland China',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         list_id = self._match_id(url)
 
         info = self.query_api(
@@ -326,7 +326,7 @@ class NetEaseMusicMvIE(NetEaseMusicBaseIE):
         'skip': 'Blocked outside Mainland China',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mv_id = self._match_id(url)
 
         info = self.query_api(
@@ -395,7 +395,7 @@ class NetEaseMusicProgramIE(NetEaseMusicBaseIE):
         'skip': 'Blocked outside Mainland China',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         program_id = self._match_id(url)
 
         info = self.query_api(
@@ -455,7 +455,7 @@ class NetEaseMusicDjRadioIE(NetEaseMusicBaseIE):
     }
     _PAGE_SIZE = 1000
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         dj_id = self._match_id(url)
 
         name = None

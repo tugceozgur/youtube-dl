@@ -22,7 +22,7 @@ class DFBIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, video_id = re.match(self._VALID_URL, url).groups()
 
         player_info = self._download_xml(

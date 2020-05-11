@@ -116,7 +116,7 @@ class RTVEALaCartaIE(InfoExtractor):
             None, 'Fetching manager info')
         self._manager = manager_info['manager']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         info = self._download_json(
@@ -191,7 +191,7 @@ class RTVEInfantilIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         info = self._download_json(
             'http://www.rtve.es/api/videos/%s/config/alacarta_videos.json' % video_id,
@@ -232,7 +232,7 @@ class RTVELiveIE(InfoExtractor):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         start_time = time.gmtime()
         video_id = mobj.group('id')
@@ -278,7 +278,7 @@ class RTVETelevisionIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
         webpage = self._download_webpage(url, page_id)
 

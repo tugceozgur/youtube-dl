@@ -23,7 +23,7 @@ class ParliamentLiveUKIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
             'http://vodplayer.parliamentlive.tv/?mid=' + video_id, video_id)

@@ -88,7 +88,7 @@ class AdultSwimIE(TurnerBaseIE):
         'skip': '404 Not Found',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         show_path, episode_path = re.match(self._VALID_URL, url).groups()
         display_id = episode_path or show_path
         query = '''query {

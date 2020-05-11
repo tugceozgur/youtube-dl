@@ -199,7 +199,7 @@ class TwitchItemBaseIE(TwitchBaseIE):
             'is_live': is_live,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_media(self._match_id(url))
 
 
@@ -309,7 +309,7 @@ class TwitchVodIE(TwitchItemBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         item_id = self._match_id(url)
 
         info = self._download_info(self._ITEM_SHORTCUT, item_id)
@@ -409,7 +409,7 @@ class TwitchPlaylistBaseIE(TwitchBaseIE):
         videos = response.get('videos')
         return [video['url'] for video in videos] if videos else []
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_playlist(self._match_id(url))
 
 
@@ -571,7 +571,7 @@ class TwitchStreamIE(TwitchBaseIE):
                     TwitchClipsIE))
                 else super(TwitchStreamIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
 
         stream = self._call_api(
@@ -684,7 +684,7 @@ class TwitchClipsIE(TwitchBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         clip = self._download_json(

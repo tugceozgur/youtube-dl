@@ -29,7 +29,7 @@ class WeiboIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         # to get Referer url for genvisitor
         webpage, urlh = self._download_webpage_handle(url, video_id)
@@ -117,7 +117,7 @@ class WeiboMobileIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         # to get Referer url for genvisitor
         webpage = self._download_webpage(url, video_id, note='visit the page')

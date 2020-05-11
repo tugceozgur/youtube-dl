@@ -167,7 +167,7 @@ class HBOIE(HBOBaseIE):
         'expected_warnings': ['Unknown MIME type application/mp4 in DASH manifest'],
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         location_path = self._parse_json(self._html_search_regex(

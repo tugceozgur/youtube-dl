@@ -166,7 +166,7 @@ class TVNowIE(TVNowBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = '%s/%s' % mobj.group(2, 3)
 
@@ -193,7 +193,7 @@ class TVNowNewIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         base_url = re.sub(r'(?:shows|serien)', '_', mobj.group('base_url'))
         show, episode = mobj.group('show', 'episode')
@@ -341,7 +341,7 @@ class TVNowIE(TVNowNewBaseIE):
             'formats': formats,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, video_id = re.match(self._VALID_URL, url).groups()
         info = self._call_api('player/' + video_id, video_id)
         return self._extract_video(info, video_id, display_id)
@@ -393,7 +393,7 @@ class TVNowSeasonIE(TVNowListBaseIE):
         'playlist_mincount': 22,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         _, show_id, season_id = re.match(self._VALID_URL, url).groups()
         return self._extract_items(
             url, show_id, season_id, {'season': season_id})
@@ -409,7 +409,7 @@ class TVNowAnnualIE(TVNowListBaseIE):
         'playlist_mincount': 2,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         _, show_id, year, month = re.match(self._VALID_URL, url).groups()
         return self._extract_items(
             url, show_id, '%s-%s' % (year, month), {
@@ -441,7 +441,7 @@ class TVNowShowIE(TVNowListBaseIE):
         return (False if TVNowNewIE.suitable(url) or TVNowSeasonIE.suitable(url) or TVNowAnnualIE.suitable(url)
                 else super(TVNowShowIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         base_url, show_id = re.match(self._VALID_URL, url).groups()
 
         result = self._call_api(

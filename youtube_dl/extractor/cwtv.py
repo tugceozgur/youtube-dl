@@ -65,7 +65,7 @@ class CWTVIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         data = self._download_json(
             'http://images.cwtv.com/feed/mobileapp/video-meta/apiversion_8/guid_' + video_id,

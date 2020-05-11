@@ -61,7 +61,7 @@ class VineIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         data = self._download_json(
@@ -131,7 +131,7 @@ class VineUserIE(InfoExtractor):
     def suitable(cls, url):
         return False if VineIE.suitable(url) else super(VineUserIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         user = mobj.group('user')
         u = mobj.group('u')

@@ -34,7 +34,7 @@ class STVPlayerIE(InfoExtractor):
         'video': 'shortform',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         ptype, video_id = re.match(self._VALID_URL, url).groups()
         resp = self._download_json(
             'https://player.api.stv.tv/v1/%s/%s' % (self._PTYPE_MAP[ptype], video_id),

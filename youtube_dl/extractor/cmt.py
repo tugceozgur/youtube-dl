@@ -47,7 +47,7 @@ class CMTIE(MTVIE):
             mgid = self._extract_triforce_mgid(webpage)
         return mgid
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
         mgid = self._extract_mgid(webpage)

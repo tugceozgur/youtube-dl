@@ -25,7 +25,7 @@ class NRKBaseIE(InfoExtractor):
 
     _api_host = None
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         api_hosts = (self._api_host, ) if self._api_host else self._API_HOSTS
@@ -420,7 +420,7 @@ class NRKTVEpisodeIE(InfoExtractor):
         'skip': 'ProgramRightsHasExpired',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -491,7 +491,7 @@ class NRKTVSeasonIE(NRKTVSerieBaseIE):
         return (False if NRKTVIE.suitable(url) or NRKTVEpisodeIE.suitable(url)
                 else super(NRKTVSeasonIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -563,7 +563,7 @@ class NRKTVSeriesIE(NRKTVSerieBaseIE):
                          for ie in (NRKTVIE, NRKTVEpisodeIE, NRKTVSeasonIE))
             else super(NRKTVSeriesIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         series_id = self._match_id(url)
 
         webpage = self._download_webpage(url, series_id)
@@ -620,7 +620,7 @@ class NRKPlaylistBaseIE(InfoExtractor):
     def _extract_description(self, webpage):
         pass
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(url, playlist_id)
@@ -701,7 +701,7 @@ class NRKSkoleIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(

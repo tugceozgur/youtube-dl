@@ -68,7 +68,7 @@ class TVPIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
         webpage = self._download_webpage(url, page_id)
         video_id = self._search_regex([
@@ -114,7 +114,7 @@ class TVPEmbedIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
@@ -245,7 +245,7 @@ class TVPWebsiteIE(InfoExtractor):
                     'tvp:%s' % video_id, ie=TVPEmbedIE.ie_key(),
                     video_id=video_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id, playlist_id = mobj.group('display_id', 'id')
         return self.playlist_result(

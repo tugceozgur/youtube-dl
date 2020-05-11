@@ -56,7 +56,7 @@ class PuhuTVIE(InfoExtractor):
         'عربى': 'ar'
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         info = self._download_json(
@@ -220,7 +220,7 @@ class PuhuTVSerieIE(InfoExtractor):
                 page += 1
                 has_more = season.get('hasMore')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         info = self._download_json(

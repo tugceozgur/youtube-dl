@@ -126,7 +126,7 @@ class NBAIE(TurnerBaseIE):
 
         return self.playlist_result(entries, team, playlist_title)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         path, video_id = re.match(self._VALID_URL, url).groups()
         orig_path = path
         if path.startswith('nba/'):

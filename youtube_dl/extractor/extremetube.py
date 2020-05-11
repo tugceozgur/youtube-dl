@@ -28,7 +28,7 @@ class ExtremeTubeIE(KeezMoviesIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage, info = self._extract_info(url)
 
         if not info['title']:

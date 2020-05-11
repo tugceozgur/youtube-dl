@@ -107,7 +107,7 @@ class SeznamZpravyIE(InfoExtractor):
         self._sort_formats(formats)
         return formats
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         params = compat_parse_qs(compat_urllib_parse_urlparse(url).query)
 
         src = params['src'][0]
@@ -153,7 +153,7 @@ class SeznamZpravyArticleIE(InfoExtractor):
         'playlist_count': 1,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         article_id = self._match_id(url)
 
         webpage = self._download_webpage(url, article_id)

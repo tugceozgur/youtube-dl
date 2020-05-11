@@ -26,7 +26,7 @@ class SlideshareIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         page_title = mobj.group('title')
         webpage = self._download_webpage(url, page_title)

@@ -54,7 +54,7 @@ class HiDiveIE(InfoExtractor):
         self._download_webpage(
             self._LOGIN_URL, None, 'Logging in', data=urlencode_postdata(data))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         title, key = mobj.group('title', 'key')
         video_id = '%s/%s' % (title, key)

@@ -38,7 +38,7 @@ class ThisOldHouseIE(InfoExtractor):
     }]
     _ZYPE_TMPL = 'https://player.zype.com/embed/%s.html?api_key=hsOk_yMSPYNrT22e9pu8hihLXjaZf0JW5jsOWv4ZqyHJFvkJn6rtToHl09tbbsbe'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         video_id = self._search_regex(

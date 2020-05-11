@@ -29,7 +29,7 @@ class VideofyMeIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         config = self._download_json('http://vf-player-info-loader.herokuapp.com/%s.json' % video_id, video_id)['videoinfo']

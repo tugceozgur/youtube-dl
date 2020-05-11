@@ -27,7 +27,7 @@ class SyfyIE(AdobePassIE):
         'add_ie': ['ThePlatform'],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         syfy_mpx = list(self._parse_json(self._search_regex(

@@ -73,7 +73,7 @@ class QQMusicIE(InfoExtractor):
         curMs = int(time.time() * 1000) % 1000
         return int(round(random.random() * 2147483647) * curMs % 1E10)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mid = self._match_id(url)
 
         detail_info_page = self._download_webpage(
@@ -206,7 +206,7 @@ class QQMusicSingerIE(QQPlaylistBaseIE):
         'playlist_mincount': 12,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mid = self._match_id(url)
 
         entries = self.get_entries_from_page(mid)
@@ -250,7 +250,7 @@ class QQMusicAlbumIE(QQPlaylistBaseIE):
         'playlist_count': 8,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mid = self._match_id(url)
 
         album = self._download_json(
@@ -301,7 +301,7 @@ class QQMusicToplistIE(QQPlaylistBaseIE):
         'playlist_count': 50,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         list_id = self._match_id(url)
 
         toplist_json = self._download_json(
@@ -344,7 +344,7 @@ class QQMusicPlaylistIE(QQPlaylistBaseIE):
         'playlist_count': 20,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         list_id = self._match_id(url)
 
         list_json = self._download_json(

@@ -52,7 +52,7 @@ class MicrosoftVirtualAcademyIE(MicrosoftVirtualAcademyBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
 
         mobj = re.match(self._VALID_URL, url)
@@ -151,7 +151,7 @@ class MicrosoftVirtualAcademyCourseIE(MicrosoftVirtualAcademyBaseIE):
         return False if MicrosoftVirtualAcademyIE.suitable(url) else super(
             MicrosoftVirtualAcademyCourseIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         course_id = mobj.group('id')
         display_id = mobj.group('display_id')

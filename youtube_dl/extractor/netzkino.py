@@ -34,7 +34,7 @@ class NetzkinoIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         category_id = mobj.group('category')
         video_id = mobj.group('id')

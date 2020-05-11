@@ -566,7 +566,7 @@ class InfoExtractor(object):
         """Real initialization process. Redefine in subclasses."""
         pass
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         """Real extraction process. Redefine in subclasses."""
         pass
 
@@ -2985,7 +2985,7 @@ class SearchInfoExtractor(InfoExtractor):
     def suitable(cls, url):
         return re.match(cls._make_valid_url(), url) is not None
 
-    def _real_extract(self, query):
+    def _real_extract(self, query, website=''):
         mobj = re.match(self._make_valid_url(), query)
         if mobj is None:
             raise ExtractorError('Invalid search query "%s"' % query)

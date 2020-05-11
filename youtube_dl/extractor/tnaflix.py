@@ -72,7 +72,7 @@ class TNAFlixNetworkBaseIE(InfoExtractor):
             'height': height,
         } for i in range(first, last + 1)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         for display_id_key in ('display_id', 'display_id_2'):

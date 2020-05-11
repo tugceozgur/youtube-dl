@@ -33,7 +33,7 @@ class VH1IE(MTVServicesInfoExtractor):
 
     _VALID_URL = r'https?://(?:www\.)?vh1\.com/(?:video-clips|episodes)/(?P<id>[^/?#.]+)'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
         webpage = self._download_webpage(url, playlist_id)
         mgid = self._extract_triforce_mgid(webpage)

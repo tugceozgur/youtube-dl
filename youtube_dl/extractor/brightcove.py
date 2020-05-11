@@ -280,7 +280,7 @@ class BrightcoveLegacyIE(InfoExtractor):
         return [src for _, src in re.findall(
             r'<iframe[^>]+src=([\'"])((?:https?:)?//link\.brightcove\.com/services/player/(?!\1).+)\1', webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
 
         # Change the 'videoId' and others field to '@videoPlayer'
@@ -577,7 +577,7 @@ class BrightcoveNewIE(AdobePassIE):
             'is_live': is_live,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
         self._initialize_geo_bypass({
             'countries': smuggled_data.get('geo_countries'),

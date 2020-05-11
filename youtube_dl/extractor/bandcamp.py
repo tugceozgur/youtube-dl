@@ -79,7 +79,7 @@ class BandcampIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         title = mobj.group('title')
         webpage = self._download_webpage(url, title)
@@ -293,7 +293,7 @@ class BandcampAlbumIE(InfoExtractor):
                 if BandcampWeeklyIE.suitable(url) or BandcampIE.suitable(url)
                 else super(BandcampAlbumIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         uploader_id = mobj.group('subdomain')
         album_id = mobj.group('album_id')
@@ -351,7 +351,7 @@ class BandcampWeeklyIE(InfoExtractor):
         'only_matching': True
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 

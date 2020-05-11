@@ -187,7 +187,7 @@ class DreiSatIE(InfoExtractor):
             'formats': formats,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         details_url = 'http://www.3sat.de/mediathek/xmlservice/web/beitragsDetails?id=%s' % video_id
         return self.extract_from_xml_url(video_id, details_url)

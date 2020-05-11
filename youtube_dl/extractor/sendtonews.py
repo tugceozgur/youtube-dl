@@ -55,7 +55,7 @@ class SendtoNewsIE(InfoExtractor):
             sc = mobj.group('SC')
             return cls._URL_TEMPLATE % sc
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         data_url = update_url_query(

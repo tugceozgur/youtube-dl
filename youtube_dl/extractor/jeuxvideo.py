@@ -24,7 +24,7 @@ class JeuxVideoIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         title = mobj.group(1)
         webpage = self._download_webpage(url, title)

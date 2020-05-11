@@ -40,7 +40,7 @@ class CCMAIE(InfoExtractor):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         media_type, media_id = re.match(self._VALID_URL, url).groups()
 
         media = self._download_json(

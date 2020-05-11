@@ -43,7 +43,7 @@ class KakaoIE(InfoExtractor):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         display_id = video_id.rstrip('@my')
         api_base = self._API_BASE_TMPL % video_id

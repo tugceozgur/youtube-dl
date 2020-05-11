@@ -50,7 +50,7 @@ class UplynkIE(InfoExtractor):
             'formats': formats,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_uplynk_info(url)
 
 
@@ -59,7 +59,7 @@ class UplynkPreplayIE(UplynkIE):
     _VALID_URL = r'https?://.*?\.uplynk\.com/preplay2?/(?P<path>ext/[0-9a-f]{32}/(?P<external_id>[^/?&]+)|(?P<id>[0-9a-f]{32}))\.json'
     _TEST = None
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         path, external_id, video_id = re.match(self._VALID_URL, url).groups()
         display_id = video_id or external_id
         preplay = self._download_json(url, display_id)

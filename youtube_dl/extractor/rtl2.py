@@ -50,7 +50,7 @@ class RTL2IE(InfoExtractor):
         'expected_warnings': ['Unable to download f4m manifest', 'Failed to download m3u8 information'],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         vico_id, vivi_id, display_id = re.match(self._VALID_URL, url).groups()
         if not vico_id:
             webpage = self._download_webpage(url, display_id)
@@ -135,7 +135,7 @@ class RTL2YouIE(RTL2YouBaseIE):
     _AES_KEY = b'\xe9W\xe4.<*\xb8\x1a\xd2\xb6\x92\xf3C\xd3\xefL\x1b\x03*\xbbbH\xc0\x03\xffo\xc2\xf2(\xaa\xaa!'
     _GEO_COUNTRIES = ['DE']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         stream_data = self._download_json(
@@ -187,7 +187,7 @@ class RTL2YouSeriesIE(RTL2YouBaseIE):
         'playlist_mincount': 5,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         series_id = self._match_id(url)
         stream_data = self._download_json(
             self._BACKWERK_BASE_URL + 'videos',

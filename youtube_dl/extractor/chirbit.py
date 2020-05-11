@@ -32,7 +32,7 @@ class ChirbitIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         audio_id = self._match_id(url)
 
         webpage = self._download_webpage(
@@ -79,7 +79,7 @@ class ChirbitProfileIE(InfoExtractor):
         'playlist_mincount': 3,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         profile_id = self._match_id(url)
 
         webpage = self._download_webpage(url, profile_id)

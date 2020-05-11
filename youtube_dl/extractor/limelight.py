@@ -256,7 +256,7 @@ class LimelightMediaIE(LimelightBaseIE):
     }]
     _PLAYLIST_SERVICE_PATH = 'media'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
         video_id = self._match_id(url)
         source_url = smuggled_data.get('source_url')
@@ -299,7 +299,7 @@ class LimelightChannelIE(LimelightBaseIE):
     }]
     _PLAYLIST_SERVICE_PATH = 'channel'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
         channel_id = self._match_id(url)
         source_url = smuggled_data.get('source_url')
@@ -344,7 +344,7 @@ class LimelightChannelListIE(LimelightBaseIE):
     }]
     _PLAYLIST_SERVICE_PATH = 'channel_list'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_list_id = self._match_id(url)
 
         channel_list = self._call_playlist_service(

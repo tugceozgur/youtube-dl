@@ -111,7 +111,7 @@ class RTSIE(SRGSSRIE):
         }
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         m = re.match(self._VALID_URL, url)
         media_id = m.group('rts_id') or m.group('id')
         display_id = m.group('display_id') or media_id

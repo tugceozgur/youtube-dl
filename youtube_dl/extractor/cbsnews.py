@@ -23,7 +23,7 @@ class CBSNewsEmbedIE(CBSIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         item = self._parse_json(zlib.decompress(compat_b64decode(
             compat_urllib_parse_unquote(self._match_id(url))),
             -zlib.MAX_WBITS), None)['video']['items'][0]
@@ -89,7 +89,7 @@ class CBSNewsIE(CBSIE):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -125,7 +125,7 @@ class CBSNewsLiveVideoIE(InfoExtractor):
         'skip': 'Video gone',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         video_info = self._download_json(

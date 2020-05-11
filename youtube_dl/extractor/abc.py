@@ -60,7 +60,7 @@ class ABCIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 
@@ -127,7 +127,7 @@ class ABCIViewIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_params = self._download_json(
             'https://iview.abc.net.au/api/programs/' + video_id, video_id)

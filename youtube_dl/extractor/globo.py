@@ -90,7 +90,7 @@ class GloboIE(InfoExtractor):
                 raise ExtractorError(resp.get('userMessage') or resp['id'], expected=True)
             raise
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video = self._download_json(
@@ -226,7 +226,7 @@ class GloboArticleIE(InfoExtractor):
     def suitable(cls, url):
         return False if GloboIE.suitable(url) else super(GloboArticleIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         video_ids = []

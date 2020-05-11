@@ -20,7 +20,7 @@ class MoviezineIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 

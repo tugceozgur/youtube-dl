@@ -142,7 +142,7 @@ class TumblrIE(InfoExtractor):
 
         self.report_warning('Login has probably failed')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         m_url = re.match(self._VALID_URL, url)
         video_id = m_url.group('id')
         blog = m_url.group('blog_name')

@@ -33,7 +33,7 @@ class WashingtonPostIE(InfoExtractor):
         return re.findall(
             r'<iframe[^>]+\bsrc=["\'](%s)' % cls._EMBED_URL, webpage)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_data = self._download_json(
             'http://www.washingtonpost.com/posttv/c/videojson/%s?resType=jsonp' % video_id,
@@ -162,7 +162,7 @@ class WashingtonPostArticleIE(InfoExtractor):
     def suitable(cls, url):
         return False if WashingtonPostIE.suitable(url) else super(WashingtonPostArticleIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
         webpage = self._download_webpage(url, page_id)
 

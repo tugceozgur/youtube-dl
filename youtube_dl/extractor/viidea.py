@@ -116,7 +116,7 @@ class ViideaIE(InfoExtractor):
         'playlist_count': 2,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         lecture_slug, explicit_part_id = re.match(self._VALID_URL, url).groups()
 
         webpage = self._download_webpage(url, lecture_slug)

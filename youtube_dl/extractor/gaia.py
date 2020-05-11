@@ -75,7 +75,7 @@ class GaiaIE(InfoExtractor):
         if auth:
             self._jwt = auth.get('jwt')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, vtype = re.search(self._VALID_URL, url).groups()
         node_id = self._download_json(
             'https://brooklyn.gaia.com/pathinfo', display_id, query={

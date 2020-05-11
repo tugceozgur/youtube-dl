@@ -93,7 +93,7 @@ class ToggleIE(InfoExtractor):
     _API_USER = 'tvpapi_147'
     _API_PASS = '11111'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(

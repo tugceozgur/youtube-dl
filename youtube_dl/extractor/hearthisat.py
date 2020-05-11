@@ -55,7 +55,7 @@ class HearThisAtIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         m = re.match(self._VALID_URL, url)
         display_id = '{artist:s} - {title:s}'.format(**m.groupdict())
 

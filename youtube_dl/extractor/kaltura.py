@@ -219,7 +219,7 @@ class KalturaIE(InfoExtractor):
         return self._kaltura_api_call(
             video_id, actions, service_url, note='Downloading video info JSON')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
 
         mobj = re.match(self._VALID_URL, url)

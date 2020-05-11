@@ -32,7 +32,7 @@ class NextMediaIE(InfoExtractor):
 
     _URL_PATTERN = r'\{ url: \'(.+)\' \}'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         news_id = self._match_id(url)
         page = self._download_webpage(url, news_id)
         return self._extract_from_nextmedia_page(news_id, url, page)
@@ -97,7 +97,7 @@ class NextMediaActionNewsIE(NextMediaIE):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         news_id = self._match_id(url)
         actionnews_page = self._download_webpage(url, news_id)
         article_url = self._og_search_url(actionnews_page)
@@ -210,7 +210,7 @@ class NextTVIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)

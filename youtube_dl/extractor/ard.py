@@ -158,7 +158,7 @@ class ARDMediathekIE(ARDMediathekBaseIE):
     def suitable(cls, url):
         return False if ARDBetaMediathekIE.suitable(url) else super(ARDMediathekIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         # determine video id from url
         m = re.match(self._VALID_URL, url)
 
@@ -268,7 +268,7 @@ class ARDIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('display_id')
 
@@ -333,7 +333,7 @@ class ARDBetaMediathekIE(ARDMediathekBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('video_id')
         display_id = mobj.group('display_id') or video_id

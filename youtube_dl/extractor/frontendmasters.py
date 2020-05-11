@@ -141,7 +141,7 @@ class FrontendMastersIE(FrontendMastersBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         lesson_id = self._match_id(url)
 
         source_url = '%s/video/%s/source' % (self._API_BASE, lesson_id)
@@ -206,7 +206,7 @@ class FrontendMastersLessonIE(FrontendMastersPageBaseIE):
         'skip': 'Requires FrontendMasters account credentials',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         course_name, lesson_name = mobj.group('course_name', 'lesson_name')
 
@@ -239,7 +239,7 @@ class FrontendMastersCourseIE(FrontendMastersPageBaseIE):
         return False if FrontendMastersLessonIE.suitable(url) else super(
             FrontendMastersBaseIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_name = self._match_id(url)
 
         course = self._download_course(course_name, url)

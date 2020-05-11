@@ -536,7 +536,7 @@ class PBSIE(InfoExtractor):
                 string, name, default='{}'),
             video_id, transform_source=js_to_json, fatal=fatal)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id, display_id, upload_date, description = self._extract_webpage(url)
 
         if isinstance(video_id, list):

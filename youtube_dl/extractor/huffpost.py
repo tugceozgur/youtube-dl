@@ -38,7 +38,7 @@ class HuffPostIE(InfoExtractor):
         'expected_warnings': ['HTTP Error 404: Not Found'],
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         api_url = 'http://embed.live.huffingtonpost.com/api/segments/%s.json' % video_id

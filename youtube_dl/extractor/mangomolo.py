@@ -15,7 +15,7 @@ class MangomoloBaseIE(InfoExtractor):
     def _get_real_id(self, page_id):
         return page_id
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_id = self._get_real_id(self._match_id(url))
         webpage = self._download_webpage(
             'https://player.mangomolo.com/v1/%s?%s' % (self._TYPE, url.split('?')[1]), page_id)

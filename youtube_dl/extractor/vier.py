@@ -134,7 +134,7 @@ class VierIE(InfoExtractor):
         else:
             self._logged_in = True
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         embed_id = mobj.group('embed_id')
         display_id = mobj.group('display_id') or embed_id
@@ -233,7 +233,7 @@ class VierVideosIE(InfoExtractor):
         'playlist_mincount': 13,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         program = mobj.group('program')
         site = mobj.group('site')

@@ -153,7 +153,7 @@ class NFLIE(InfoExtractor):
             'format_note': note,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id, host = mobj.group('id'), mobj.group('host')
 

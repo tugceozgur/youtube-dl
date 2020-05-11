@@ -31,7 +31,7 @@ class InternetVideoArchiveIE(InfoExtractor):
     def _build_json_url(query):
         return 'http://video.internetvideoarchive.net/player/6/configuration.ashx?' + query
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         query = compat_parse_qs(compat_urlparse.urlparse(url).query)
         video_id = query['publishedid'][0]
         data = self._download_json(

@@ -16,7 +16,7 @@ class TudouPlaylistIE(InfoExtractor):
         'playlist_mincount': 209,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
         playlist_data = self._download_json(
             'http://www.tudou.com/tvp/plist.action?lcode=%s' % playlist_id, playlist_id)
@@ -38,7 +38,7 @@ class TudouAlbumIE(InfoExtractor):
         'playlist_mincount': 45,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         album_id = self._match_id(url)
         album_data = self._download_json(
             'http://www.tudou.com/tvp/alist.action?acode=%s' % album_id, album_id)

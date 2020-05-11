@@ -137,7 +137,7 @@ class TEDIE(InfoExtractor):
             webpage, 'info json')
         return json.loads(info_json)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         m = re.match(self._VALID_URL, url, re.VERBOSE)
         if m.group('type').startswith('embed'):
             desktop_url = m.group('proto') + 'www' + m.group('urlmain')

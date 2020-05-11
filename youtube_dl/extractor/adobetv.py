@@ -104,7 +104,7 @@ class AdobeTVEmbedIE(AdobeTVBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video_data = self._call_api(
@@ -131,7 +131,7 @@ class AdobeTVIE(AdobeTVBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         language, show_urlname, urlname = re.match(self._VALID_URL, url).groups()
         if not language:
             language = 'en'
@@ -177,7 +177,7 @@ class AdobeTVShowIE(AdobeTVPlaylistBaseIE):
     _RESOURCE = 'episode'
     _process_data = AdobeTVBaseIE._parse_video_data
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         language, show_urlname = re.match(self._VALID_URL, url).groups()
         if not language:
             language = 'en'
@@ -214,7 +214,7 @@ class AdobeTVChannelIE(AdobeTVPlaylistBaseIE):
         return self.url_result(
             show_data['url'], 'AdobeTVShow', str_or_none(show_data.get('id')))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         language, channel_urlname, category_urlname = re.match(self._VALID_URL, url).groups()
         if not language:
             language = 'en'
@@ -247,7 +247,7 @@ class AdobeTVVideoIE(AdobeTVBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 

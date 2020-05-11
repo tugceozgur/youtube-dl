@@ -13,7 +13,7 @@ from ..utils import (
 class VoxMediaVolumeIE(OnceIE):
     _VALID_URL = r'https?://volume\.vox-cdn\.com/embed/(?P<id>[0-9a-f]{9})'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 
@@ -164,7 +164,7 @@ class VoxMediaIE(InfoExtractor):
         'add_ie': ['VoxMediaVolume'],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = compat_urllib_parse_unquote(self._download_webpage(url, display_id))
 

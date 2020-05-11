@@ -26,7 +26,7 @@ class TruTVIE(TurnerBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         series_slug, clip_slug, video_id = re.match(self._VALID_URL, url).groups()
 
         if video_id:

@@ -166,7 +166,7 @@ class RaiPlayIE(RaiBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         url, video_id = mobj.group('url', 'id')
 
@@ -235,7 +235,7 @@ class RaiPlayLiveIE(RaiBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -265,7 +265,7 @@ class RaiPlayPlaylistIE(InfoExtractor):
         'playlist_mincount': 12,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(url, playlist_id)
@@ -428,7 +428,7 @@ class RaiIE(RaiBaseIE):
 
         return info
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)

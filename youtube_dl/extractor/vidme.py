@@ -132,7 +132,7 @@ class VidmeIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         try:
@@ -247,7 +247,7 @@ class VidmeListBaseIE(InfoExtractor):
             if total and self._LIMIT * page_num >= total:
                 break
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         user_name = self._match_id(url)
 
         user_id = self._download_json(

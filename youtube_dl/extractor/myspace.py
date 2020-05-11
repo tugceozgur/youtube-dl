@@ -65,7 +65,7 @@ class MySpaceIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('video_id') or mobj.group('song_id')
         is_song = mobj.group('mediatype').startswith('music/song')
@@ -190,7 +190,7 @@ class MySpaceAlbumIE(InfoExtractor):
         'playlist_count': 5,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         playlist_id = mobj.group('id')
         display_id = mobj.group('title') + playlist_id

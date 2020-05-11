@@ -55,7 +55,7 @@ class ITVIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
         params = extract_attributes(self._search_regex(
@@ -289,7 +289,7 @@ class ITVBTCCIE(InfoExtractor):
     }
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/1582188683001/HkiHLnNRx_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(url, playlist_id)

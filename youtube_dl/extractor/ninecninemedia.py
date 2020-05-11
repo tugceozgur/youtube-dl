@@ -18,7 +18,7 @@ class NineCNineMediaIE(InfoExtractor):
     _VALID_URL = r'9c9media:(?P<destination_code>[^:]+):(?P<id>\d+)'
     _API_BASE_TEMPLATE = 'http://capi.9c9media.com/destinations/%s/platforms/desktop/contents/%s/'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         destination_code, content_id = re.match(self._VALID_URL, url).groups()
         api_base_url = self._API_BASE_TEMPLATE % (destination_code, content_id)
         content = self._download_json(api_base_url, content_id, query={

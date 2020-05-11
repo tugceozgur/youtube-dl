@@ -74,7 +74,7 @@ class BellMediaIE(InfoExtractor):
         'marilyn': 'ctv_marilyn',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, video_id = re.match(self._VALID_URL, url).groups()
         domain = domain.split('.')[0]
         return {

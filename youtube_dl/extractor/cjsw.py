@@ -29,7 +29,7 @@ class CJSWIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         program, episode_id = mobj.group('program', 'id')
         audio_id = '%s/%s' % (program, episode_id)

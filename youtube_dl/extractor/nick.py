@@ -69,7 +69,7 @@ class NickIE(MTVServicesInfoExtractor):
             'mgid': uri,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, display_id = re.match(self._VALID_URL, url).groups()
         video_data = self._download_json(
             'http://%s/data/video.endLevel.json' % domain,
@@ -107,7 +107,7 @@ class NickBrIE(MTVServicesInfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, display_id = re.match(self._VALID_URL, url).groups()
         webpage = self._download_webpage(url, display_id)
         uri = self._search_regex(
@@ -181,7 +181,7 @@ class NickDeIE(MTVServicesInfoExtractor):
             r'data-mrss=(["\'])(?P<url>http.+?)\1', webpage, 'mrss url', group='url'),
             {'siteKey': host})
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         host = mobj.group('host')
@@ -242,7 +242,7 @@ class NickRuIE(MTVServicesInfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
         mgid = self._extract_mgid(webpage)

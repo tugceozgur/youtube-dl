@@ -24,7 +24,7 @@ class VyboryMosIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         station_id = self._match_id(url)
 
         channels = self._download_json(

@@ -43,7 +43,7 @@ class TechTalksIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         talk_id = mobj.group('id')
         webpage = self._download_webpage(url, talk_id)

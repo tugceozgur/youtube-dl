@@ -51,7 +51,7 @@ class KanalPlayIE(InfoExtractor):
             video_id, 'Downloading subtitles JSON', fatal=False)
         return {'sv': [{'ext': 'srt', 'data': self._fix_subtitles(subs)}]} if subs else {}
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         channel_id = mobj.group('channel_id')

@@ -359,7 +359,7 @@ class YoutubePlaylistsBaseInfoExtractor(YoutubeEntryListBaseInfoExtractor):
             yield self.url_result(
                 'https://www.youtube.com/playlist?list=%s' % playlist_id, 'YoutubePlaylist')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
         webpage = self._download_webpage(url, playlist_id)
         title = self._og_search_title(webpage, fatal=False)
@@ -1679,7 +1679,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
             })
         return chapters
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
 
         proto = (
@@ -2774,7 +2774,7 @@ class YoutubePlaylistIE(YoutubePlaylistBaseInfoExtractor):
                 return video_id, None
         return None, None
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         # Extract playlist id
         mobj = re.match(self._VALID_URL, url)
         if mobj is None:
@@ -2843,7 +2843,7 @@ class YoutubeChannelIE(YoutubePlaylistBaseInfoExtractor):
     def _build_template_url(self, url, channel_id):
         return self._TEMPLATE_URL % channel_id
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
 
         url = self._build_template_url(url, channel_id)
@@ -2993,7 +2993,7 @@ class YoutubeLiveIE(YoutubeBaseInfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         channel_id = mobj.group('id')
         base_url = mobj.group('base_url')
@@ -3116,7 +3116,7 @@ class YoutubeSearchURLIE(YoutubeSearchBaseInfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         query = compat_urllib_parse_unquote_plus(mobj.group('query'))
         webpage = self._download_webpage(url, query)
@@ -3136,7 +3136,7 @@ class YoutubeShowIE(YoutubePlaylistsBaseInfoExtractor):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
         return super(YoutubeShowIE, self)._real_extract(
             'https://www.youtube.com/show/%s/playlists' % playlist_id)
@@ -3187,7 +3187,7 @@ class YoutubeFeedsInfoExtractor(YoutubeBaseInfoExtractor):
             content_html = more['content_html']
             more_widget_html = more['load_more_widget_html']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page = self._download_webpage(
             'https://www.youtube.com/feed/%s' % self._FEED_NAME,
             self._PLAYLIST_TITLE)
@@ -3208,7 +3208,7 @@ class YoutubeWatchLaterIE(YoutubePlaylistIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         _, video = self._check_download_just_video(url, 'WL')
         if video:
             return video
@@ -3222,7 +3222,7 @@ class YoutubeFavouritesIE(YoutubeBaseInfoExtractor):
     _VALID_URL = r'https?://(?:www\.)?youtube\.com/my_favorites|:ytfav(?:ou?rites)?'
     _LOGIN_REQUIRED = True
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage = self._download_webpage('https://www.youtube.com/my_favorites', 'Youtube Favourites videos')
         playlist_id = self._search_regex(r'list=(.+?)["&]', webpage, 'favourites playlist id')
         return self.url_result(playlist_id, 'YoutubePlaylist')
@@ -3288,7 +3288,7 @@ class YoutubeTruncatedURLIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         raise ExtractorError(
             'Did you forget to quote the URL? Remember that & is a meta '
             'character in most shells, so you want to put the URL in quotes, '
@@ -3308,7 +3308,7 @@ class YoutubeTruncatedIDIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         raise ExtractorError(
             'Incomplete YouTube ID %s. URL %s looks truncated.' % (video_id, url),

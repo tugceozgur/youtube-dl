@@ -142,7 +142,7 @@ class RadioCanadaIE(InfoExtractor):
             'formats': formats,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_info(*re.match(self._VALID_URL, url).groups())
 
 
@@ -167,5 +167,5 @@ class RadioCanadaAudioVideoIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self.url_result('radiocanada:medianet:%s' % self._match_id(url))

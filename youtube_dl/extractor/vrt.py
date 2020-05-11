@@ -51,7 +51,7 @@ class VRTIE(InfoExtractor):
         'sporza.be': 'sporza',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         site, display_id = re.match(self._VALID_URL, url).groups()
         webpage = self._download_webpage(url, display_id)
         attrs = extract_attributes(self._search_regex(

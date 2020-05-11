@@ -164,7 +164,7 @@ class VRVIE(VRVBaseIE):
                     f['language'] = audio_lang
         return adaptive_formats
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         object_data = self._call_cms(self._get_cms_resource(
@@ -257,7 +257,7 @@ class VRVSeriesIE(VRVBaseIE):
         'playlist_mincount': 11,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         series_id = self._match_id(url)
 
         seasons_path = self._get_cms_resource(

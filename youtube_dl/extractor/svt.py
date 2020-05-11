@@ -114,7 +114,7 @@ class SVTIE(SVTBaseIE):
         if mobj:
             return mobj.group('url')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         widget_id = mobj.group('widget_id')
         article_id = mobj.group('id')
@@ -194,7 +194,7 @@ class SVTPlayIE(SVTPlayBaseIE):
         self._adjust_title(info_dict)
         return info_dict
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id, svt_id = mobj.group('id', 'svt_id')
 
@@ -255,7 +255,7 @@ class SVTSeriesIE(SVTPlayBaseIE):
     def suitable(cls, url):
         return False if SVTIE.suitable(url) or SVTPlayIE.suitable(url) else super(SVTSeriesIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         series_slug, season_id = re.match(self._VALID_URL, url).groups()
 
         series = self._download_json(
@@ -354,7 +354,7 @@ class SVTPageIE(InfoExtractor):
     def suitable(cls, url):
         return False if SVTIE.suitable(url) else super(SVTPageIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         path, display_id = re.match(self._VALID_URL, url).groups()
 
         article = self._download_json(

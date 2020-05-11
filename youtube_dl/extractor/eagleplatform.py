@@ -120,7 +120,7 @@ class EaglePlatformIE(InfoExtractor):
     def _get_video_url(self, url_or_request, video_id, note='Downloading JSON metadata'):
         return self._download_json(url_or_request, video_id, note)['data'][0]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
 
         mobj = re.match(self._VALID_URL, url)

@@ -27,7 +27,7 @@ class VidioIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id, display_id = mobj.group('id', 'display_id')
 

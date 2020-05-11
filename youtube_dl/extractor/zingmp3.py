@@ -121,7 +121,7 @@ class ZingMp3IE(ZingMp3BaseInfoExtractor):
     IE_NAME = 'zingmp3'
     IE_DESC = 'mp3.zing.vn'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
 
         webpage = self._download_webpage(url, page_id)

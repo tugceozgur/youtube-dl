@@ -33,7 +33,7 @@ class PerformGroupIE(InfoExtractor):
                 '_fmt': 'json',
             })
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         player_id, auth_token = re.search(self._VALID_URL, url).groups()
         bootstrap = self._call_api('bootstrap', auth_token, player_id, url)
         video = bootstrap['config']['dataSource']['sourceItems'][0]['videos'][0]

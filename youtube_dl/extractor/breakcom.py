@@ -40,7 +40,7 @@ class BreakIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, video_id = re.match(self._VALID_URL, url).groups()
 
         webpage = self._download_webpage(url, display_id)

@@ -237,7 +237,7 @@ class DPlayIE(InfoExtractor):
             'formats': formats,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('id')
         domain = mobj.group('domain').lstrip('www.')

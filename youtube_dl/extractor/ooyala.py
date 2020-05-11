@@ -163,7 +163,7 @@ class OoyalaIE(OoyalaBaseIE):
         return cls.url_result(cls._url_for_embed_code(embed_code),
                               ie=cls.ie_key())
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
         embed_code = self._match_id(url)
         domain = smuggled_data.get('domain')
@@ -204,7 +204,7 @@ class OoyalaExternalIE(OoyalaBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         partner_id, video_id, pcode = re.match(self._VALID_URL, url).groups()
         content_tree_url = self._CONTENT_TREE_BASE + 'external_id/%s/%s:%s' % (pcode, partner_id, video_id)
         return self._extract(content_tree_url, video_id)

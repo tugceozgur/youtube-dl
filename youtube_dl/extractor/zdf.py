@@ -224,7 +224,7 @@ class ZDFIE(ZDFBaseIE):
             'formats': formats,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id, fatal=False)
@@ -261,7 +261,7 @@ class ZDFChannelIE(ZDFBaseIE):
     def suitable(cls, url):
         return False if ZDFIE.suitable(url) else super(ZDFChannelIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
 
         webpage = self._download_webpage(url, channel_id)

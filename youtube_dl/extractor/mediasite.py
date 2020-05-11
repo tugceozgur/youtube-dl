@@ -122,7 +122,7 @@ class MediasiteIE(InfoExtractor):
                 r'(?xi)<iframe\b[^>]+\bsrc=(["\'])(?P<url>(?:(?:https?:)?//[^/]+)?/Mediasite/Play/%s(?:\?.*?)?)\1' % _ID_RE,
                 webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, data = unsmuggle_url(url, {})
         mobj = re.match(self._VALID_URL, url)
         resource_id = mobj.group('id')
@@ -275,7 +275,7 @@ class MediasiteCatalogIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         mediasite_url = mobj.group('url')
         catalog_id = mobj.group('catalog_id')
@@ -351,7 +351,7 @@ class MediasiteNamedCatalogIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         mediasite_url = mobj.group('url')
         catalog_name = mobj.group('catalog_name')

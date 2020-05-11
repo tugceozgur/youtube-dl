@@ -45,7 +45,7 @@ class TriluliluIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         media_info = self._download_json('http://m.trilulilu.ro/%s?format=json' % display_id, display_id)
 

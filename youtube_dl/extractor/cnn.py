@@ -87,7 +87,7 @@ class CNNIE(TurnerBaseIE):
         # TODO: fix timestamp extraction
         return None
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         sub_domain, path, page_title = re.match(self._VALID_URL, url).groups()
         if sub_domain not in ('money', 'edition'):
             sub_domain = 'edition'
@@ -116,7 +116,7 @@ class CNNBlogsIE(InfoExtractor):
         'add_ie': ['CNN'],
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage = self._download_webpage(url, url_basename(url))
         cnn_url = self._html_search_regex(r'data-url="(.+?)"', webpage, 'cnn url')
         return self.url_result(cnn_url, CNNIE.ie_key())
@@ -138,7 +138,7 @@ class CNNArticleIE(InfoExtractor):
         'add_ie': ['CNN'],
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage = self._download_webpage(url, url_basename(url))
         cnn_url = self._html_search_regex(r"video:\s*'([^']+)'", webpage, 'cnn url')
         return self.url_result('http://cnn.com/video/?/video/' + cnn_url, CNNIE.ie_key())

@@ -37,7 +37,7 @@ class Tube8IE(KeezMoviesIE):
             r'<iframe[^>]+\bsrc=["\']((?:https?:)?//(?:www\.)?tube8\.com/embed/(?:[^/]+/)+\d+)',
             webpage)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage, info = self._extract_info(url)
 
         if not info['title']:

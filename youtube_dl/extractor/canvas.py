@@ -43,7 +43,7 @@ class CanvasIE(InfoExtractor):
     }
     _REST_API_BASE = 'https://media-services-public.vrt.be/vualto-video-aggregator-web/rest/external/v1'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         site_id, video_id = mobj.group('site_id'), mobj.group('id')
 
@@ -177,7 +177,7 @@ class CanvasEenIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         site_id, display_id = mobj.group('site_id'), mobj.group('id')
 
@@ -297,7 +297,7 @@ class VrtNUIE(GigyaBaseIE):
             else:
                 break
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage, urlh = self._download_webpage_handle(url, display_id)

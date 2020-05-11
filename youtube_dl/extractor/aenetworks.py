@@ -137,7 +137,7 @@ class AENetworksIE(AENetworksBaseIE):
         'fyi.tv': 'FYI',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, show_path, movie_display_id, special_display_id, collection_display_id = re.match(self._VALID_URL, url).groups()
         display_id = show_path or movie_display_id or special_display_id or collection_display_id
         webpage = self._download_webpage(url, display_id, headers=self.geo_verification_headers())
@@ -228,7 +228,7 @@ class HistoryTopicIE(AENetworksBaseIE):
             'ie_key': 'ThePlatform',
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         video_id = self._search_regex(

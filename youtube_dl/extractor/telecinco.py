@@ -152,7 +152,7 @@ class TelecincoIE(InfoExtractor):
             'duration': duration,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         article = self._parse_json(self._search_regex(

@@ -36,7 +36,7 @@ class NhkVodIE(InfoExtractor):
     }]
     _API_URL_TEMPLATE = 'https://api.nhk.or.jp/nhkworld/%sod%slist/v7a/episode/%s/%s/all%s.json'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         lang, m_type, episode_id = re.match(self._VALID_URL, url).groups()
         if episode_id.isdigit():
             episode_id = episode_id[:4] + '-' + episode_id[4:]

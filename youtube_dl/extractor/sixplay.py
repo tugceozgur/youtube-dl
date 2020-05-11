@@ -40,7 +40,7 @@ class SixPlayIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, video_id = re.search(self._VALID_URL, url).groups()
         service, consumer_name = {
             '6play.fr': ('6play', 'm6web'),

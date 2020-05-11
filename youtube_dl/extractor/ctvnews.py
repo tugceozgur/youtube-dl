@@ -45,7 +45,7 @@ class CTVNewsIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
 
         def ninecninemedia_url_result(clip_id):

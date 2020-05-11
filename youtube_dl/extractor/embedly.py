@@ -12,5 +12,5 @@ class EmbedlyIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self.url_result(compat_urllib_parse_unquote(self._match_id(url)))

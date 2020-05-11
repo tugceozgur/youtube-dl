@@ -232,7 +232,7 @@ class ThePlatformIE(ThePlatformBaseIE, AdobePassIE):
         sig = flags + expiration_date + checksum + str_to_hex(sig_secret)
         return '%s&sig=%s' % (url, sig)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
 
         mobj = re.match(self._VALID_URL, url)
@@ -400,7 +400,7 @@ class ThePlatformFeedIE(ThePlatformBaseIE):
 
         return ret
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
 
         video_id = mobj.group('id')

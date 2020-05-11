@@ -128,7 +128,7 @@ class KinjaEmbedIE(InfoExtractor):
             r'(?x)<iframe[^>]+?src=(?P<q>["\'])(?P<url>(?:(?:https?:)?//%s)?%s(?:(?!\1).)+)\1' % (KinjaEmbedIE._DOMAIN_REGEX, KinjaEmbedIE._COMMON_REGEX),
             webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_type, video_id = re.match(self._VALID_URL, url).groups()
 
         provider = self._PROVIDER_MAP.get(video_type)

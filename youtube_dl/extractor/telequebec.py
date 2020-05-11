@@ -51,7 +51,7 @@ class TeleQuebecIE(TeleQuebecBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
 
         media_data = self._download_json(
@@ -91,7 +91,7 @@ class TeleQuebecSquatIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video = self._download_json(
@@ -148,7 +148,7 @@ class TeleQuebecEmissionIE(TeleQuebecBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -180,7 +180,7 @@ class TeleQuebecLiveIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         m3u8_url = None

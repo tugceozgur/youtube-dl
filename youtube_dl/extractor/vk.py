@@ -300,7 +300,7 @@ class VKIE(VKBaseIE):
             'only_matching': True,
         }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('videoid')
 
@@ -526,7 +526,7 @@ class VKUserVideosIE(VKBaseIE):
             yield self.url_result(
                 'http://vk.com/video' + video_id, VKIE.ie_key(), video_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_id, section = re.match(self._VALID_URL, url).groups()
         if not section:
             section = 'all'
@@ -632,7 +632,7 @@ class VKWallPostIE(VKBaseIE):
             mask_url = ''.join(mask_url)
         return mask_url
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         post_id = self._match_id(url)
 
         webpage = self._download_payload('wkview', post_id, {

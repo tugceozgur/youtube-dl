@@ -55,7 +55,7 @@ class Laola1TvEmbedIE(InfoExtractor):
         self._sort_formats(formats)
         return formats
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
         flash_vars = self._search_regex(
@@ -220,7 +220,7 @@ class Laola1TvIE(Laola1TvBaseIE):
         'skip': 'This live stream has already finished.',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_video(url)
 
 
@@ -243,7 +243,7 @@ class EHFTVIE(Laola1TvBaseIE):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_video(url)
 
 
@@ -254,7 +254,7 @@ class ITTFIE(InfoExtractor):
         'only_matching': True,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self.url_result(
             update_url_query('https://www.laola1.tv/titanplayer.php', {
                 'videoid': self._match_id(url),

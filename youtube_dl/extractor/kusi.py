@@ -34,7 +34,7 @@ class KUSIIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         clip_id = mobj.group('clipId')
         video_id = clip_id or mobj.group('path')

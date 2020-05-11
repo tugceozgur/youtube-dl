@@ -55,7 +55,7 @@ class WatIE(InfoExtractor):
         (2500, 1280, 720),
     )
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_id = video_id if video_id.isdigit() and len(video_id) > 6 else compat_str(int(video_id, 36))
 

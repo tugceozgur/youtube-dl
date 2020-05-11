@@ -61,7 +61,7 @@ class DiscoveryIE(DiscoveryGoBaseIE):
     _GEO_BYPASS = False
     _API_BASE_URL = 'https://api.discovery.com/v1/'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         site, show_slug, display_id = re.match(self._VALID_URL, url).groups()
 
         access_token = None

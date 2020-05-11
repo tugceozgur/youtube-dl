@@ -121,7 +121,7 @@ class LeIE(InfoExtractor):
             else:
                 raise ExtractorError('Generic error. flag = %d' % flag, expected=True)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
         page = self._download_webpage(url, media_id)
 
@@ -238,7 +238,7 @@ class LePlaylistIE(InfoExtractor):
     def suitable(cls, url):
         return False if LeIE.suitable(url) else super(LePlaylistIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
         page = self._download_webpage(url, playlist_id)
 
@@ -347,7 +347,7 @@ class LetvCloudIE(InfoExtractor):
 
         return formats
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         uu_mobj = re.search(r'uu=([\w]+)', url)
         vu_mobj = re.search(r'vu=([\w]+)', url)
 

@@ -52,7 +52,7 @@ class ACastIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel, display_id = re.match(self._VALID_URL, url).groups()
         s = self._download_json(
             'https://feeder.acast.com/api/v1/shows/%s/episodes/%s' % (channel, display_id),
@@ -125,7 +125,7 @@ class ACastChannelIE(InfoExtractor):
                 'https://play.acast.com/s/%s/%s' % (channel_slug, cast['url']),
                 'ACast', cast['id'])
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_slug = self._match_id(url)
         channel_data = self._download_json(
             self._API_BASE_URL + 'channels/%s' % channel_slug, channel_slug)

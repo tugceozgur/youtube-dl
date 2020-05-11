@@ -41,7 +41,7 @@ class LibsynIE(InfoExtractor):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, video_id = re.match(self._VALID_URL, url).groups()
         webpage = self._download_webpage(url, video_id)
 

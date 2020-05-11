@@ -124,7 +124,7 @@ class GoIE(AdobePassIE):
             'http://api.contents.watchabc.go.com/vp2/ws/contents/3000/videos/%s/001/-1/%s/-1/%s/-1/-1.json' % (brand, show_id, video_id),
             display_id)['video']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         sub_domain = mobj.group('sub_domain') or mobj.group('sub_domain_2')
         video_id, display_id = mobj.group('id', 'display_id')

@@ -883,7 +883,7 @@ class TestYoutubeDL(unittest.TestCase):
         class Foo1IE(InfoExtractor):
             _VALID_URL = r'foo1:'
 
-            def _real_extract(self, url):
+            def _real_extract(self, url, website=''):
                 return {
                     '_type': 'url_transparent',
                     'url': 'foo2:',
@@ -895,7 +895,7 @@ class TestYoutubeDL(unittest.TestCase):
         class Foo2IE(InfoExtractor):
             _VALID_URL = r'foo2:'
 
-            def _real_extract(self, url):
+            def _real_extract(self, url, website=''):
                 return {
                     '_type': 'url',
                     'url': 'foo3:',
@@ -905,7 +905,7 @@ class TestYoutubeDL(unittest.TestCase):
         class Foo3IE(InfoExtractor):
             _VALID_URL = r'foo3:'
 
-            def _real_extract(self, url):
+            def _real_extract(self, url, website=''):
                 return _make_result([{'url': TEST_URL}], title='foo3 title')
 
         ydl.add_info_extractor(Foo1IE(ydl))

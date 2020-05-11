@@ -74,7 +74,7 @@ class FC2IE(InfoExtractor):
 
         return True
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         self._login()
         webpage = None
@@ -137,7 +137,7 @@ class FC2EmbedIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         query = compat_parse_qs(mobj.group('query'))
 

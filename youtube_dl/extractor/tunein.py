@@ -17,7 +17,7 @@ class TuneInBaseIE(InfoExtractor):
             r'<iframe[^>]+src=["\'](?P<url>(?:https?://)?tunein\.com/embed/player/[pst]\d+)',
             webpage)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         content_id = self._match_id(url)
 
         content_info = self._download_json(
@@ -173,7 +173,7 @@ class TuneInShortenerIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         redirect_id = self._match_id(url)
         # The server doesn't support HEAD requests
         urlh = self._request_webpage(

@@ -48,7 +48,7 @@ class CloudflareStreamIE(InfoExtractor):
                 r'<script[^>]+\bsrc=(["\'])(?P<url>(?:https?:)?//%s(?:%s).*?)\1' % (CloudflareStreamIE._EMBED_RE, CloudflareStreamIE._ID_RE),
                 webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         domain = 'bytehighway.net' if 'bytehighway.net/' in url else 'videodelivery.net'
         base_url = 'https://%s/%s/' % (domain, video_id)

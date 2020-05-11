@@ -41,7 +41,7 @@ class ClypIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         audio_id = self._match_id(url)
 
         qs = compat_parse_qs(compat_urllib_parse_urlparse(url).query)

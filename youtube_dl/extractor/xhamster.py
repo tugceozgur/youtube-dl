@@ -107,7 +107,7 @@ class XHamsterIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id') or mobj.group('id_2')
         display_id = mobj.group('display_id') or mobj.group('display_id_2')
@@ -320,7 +320,7 @@ class XHamsterEmbedIE(InfoExtractor):
             r'<iframe[^>]+?src=(["\'])(?P<url>(?:https?:)?//(?:www\.)?xhamster\.com/xembed\.php\?video=\d+)\1',
             webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)
@@ -379,6 +379,6 @@ class XHamsterUserIE(InfoExtractor):
             if not next_page_url:
                 break
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         user_id = self._match_id(url)
         return self.playlist_result(self._entries(user_id), user_id)

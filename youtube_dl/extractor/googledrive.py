@@ -169,7 +169,7 @@ class GoogleDriveIE(InfoExtractor):
         return self._get_captions_by_type(
             video_id, subtitles_id, 'automatic_captions', origin_lang_code)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
             'http://docs.google.com/file/d/%s' % video_id, video_id)

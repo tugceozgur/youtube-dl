@@ -48,7 +48,7 @@ class DWIE(InfoExtractor):
         'skip': 'Video removed',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
         webpage = self._download_webpage(url, media_id)
         hidden_inputs = self._hidden_inputs(webpage)
@@ -98,7 +98,7 @@ class DWArticleIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         article_id = self._match_id(url)
         webpage = self._download_webpage(url, article_id)
         hidden_inputs = self._hidden_inputs(webpage)

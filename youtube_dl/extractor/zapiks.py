@@ -45,7 +45,7 @@ class ZapiksIE(InfoExtractor):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         display_id = mobj.group('display_id') or video_id

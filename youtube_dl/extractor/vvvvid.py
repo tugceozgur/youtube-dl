@@ -45,7 +45,7 @@ class VVVVIDIE(InfoExtractor):
             'https://www.vvvvid.it/user/login',
             None, headers=self.geo_verification_headers())['data']['conn_id']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         show_id, season_id, video_id = re.match(self._VALID_URL, url).groups()
         response = self._download_json(
             'https://www.vvvvid.it/vvvvid/ondemand/%s/season/%s' % (show_id, season_id),

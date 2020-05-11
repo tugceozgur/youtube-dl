@@ -26,7 +26,7 @@ class PeopleIE(InfoExtractor):
         'add_ie': ['BrightcoveNew'],
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self.url_result(
             'http://players.brightcove.net/416418724/default_default/index.html?videoId=ref:%s'
             % self._match_id(url), 'BrightcoveNew')

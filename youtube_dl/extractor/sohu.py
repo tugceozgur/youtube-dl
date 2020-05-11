@@ -84,7 +84,7 @@ class SohuIE(InfoExtractor):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
 
         def _fetch_data(vid_id, mytv=False):
             if mytv:

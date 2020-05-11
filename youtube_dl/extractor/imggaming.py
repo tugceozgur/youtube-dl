@@ -61,7 +61,7 @@ class ImgGamingBaseIE(InfoExtractor):
                     expected=True)
             raise
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, media_type, media_id, playlist_id = re.match(self._VALID_URL, url).groups()
 
         if playlist_id:

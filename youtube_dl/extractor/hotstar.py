@@ -95,7 +95,7 @@ class HotStarIE(HotStarBaseIE):
     }]
     _GEO_BYPASS = False
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)
@@ -195,7 +195,7 @@ class HotStarPlaylistIE(HotStarBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         collection = self._call_api('o/v1/tray/find', playlist_id, 'uqId')

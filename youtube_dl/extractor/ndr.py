@@ -16,7 +16,7 @@ from ..utils import (
 
 
 class NDRBaseIE(InfoExtractor):
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = next(group for group in mobj.groups() if group)
         webpage = self._download_webpage(url, display_id)
@@ -178,7 +178,7 @@ class NDREmbedBaseIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id') or mobj.group('id_s')
 

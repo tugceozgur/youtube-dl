@@ -126,7 +126,7 @@ class SafariIE(SafariBaseIE):
     _PARTNER_ID = '1926081'
     _UICONF_ID = '29375172'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
 
         reference_id = mobj.group('reference_id')
@@ -188,7 +188,7 @@ class SafariApiIE(SafariBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         part = self._download_json(
             url, '%s/%s' % (mobj.group('course_id'), mobj.group('part')),
@@ -244,7 +244,7 @@ class SafariCourseIE(SafariBaseIE):
         return (False if SafariIE.suitable(url) or SafariApiIE.suitable(url)
                 else super(SafariCourseIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_id = self._match_id(url)
 
         course_json = self._download_json(

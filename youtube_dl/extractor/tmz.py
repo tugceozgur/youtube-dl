@@ -23,7 +23,7 @@ class TMZIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url).replace('-', '_')
         return self.url_result('kaltura:591531:%s' % video_id, 'Kaltura', video_id)
 
@@ -44,7 +44,7 @@ class TMZArticleIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)

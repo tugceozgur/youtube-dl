@@ -62,7 +62,7 @@ class Vbox7IE(InfoExtractor):
         if mobj:
             return mobj.group('url')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         response = self._download_json(

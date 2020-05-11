@@ -135,7 +135,7 @@ class LinuxAcademyIE(InfoExtractor):
             'https://linuxacademy.com/cp/login/tokenValidateLogin/token/%s'
             % access_token, None, 'Downloading token validation page')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         chapter_id, lecture_id, course_id = mobj.group('chapter_id', 'lesson_id', 'course_id')
         item_id = course_id if course_id else '%s-%s' % (chapter_id, lecture_id)

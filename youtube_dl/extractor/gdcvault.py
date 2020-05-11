@@ -127,7 +127,7 @@ class GDCVaultIE(InfoExtractor):
 
         return start_page
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id, name = re.match(self._VALID_URL, url).groups()
         display_id = name or video_id
 

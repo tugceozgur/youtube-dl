@@ -164,7 +164,7 @@ class PornHubIE(PornHubBaseIE):
         return str_to_int(self._search_regex(
             pattern, webpage, '%s count' % name, fatal=False))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         host = mobj.group('host') or 'pornhub.com'
         video_id = mobj.group('id')
@@ -393,7 +393,7 @@ class PornHubPlaylistBaseIE(PornHubBaseIE):
                 container))
         ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         host = mobj.group('host')
         playlist_id = mobj.group('id')
@@ -436,7 +436,7 @@ class PornHubUserIE(PornHubPlaylistBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         user_id = mobj.group('id')
         return self.url_result(
@@ -454,7 +454,7 @@ class PornHubPagedPlaylistBaseIE(PornHubPlaylistBaseIE):
                 <button[^>]+\bid=["\']moreDataBtn
             ''', webpage) is not None
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         host = mobj.group('host')
         item_id = mobj.group('id')

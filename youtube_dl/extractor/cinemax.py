@@ -22,7 +22,7 @@ class CinemaxIE(HBOBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         path, video_id = re.match(self._VALID_URL, url).groups()
         info = self._extract_info('https://www.cinemax.com/%s.xml' % path, video_id)
         info['id'] = video_id

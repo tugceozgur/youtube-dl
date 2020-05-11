@@ -20,7 +20,7 @@ class MyChannelsIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         id_type, url_id = re.match(self._VALID_URL, url).groups()
         webpage = self._download_webpage(url, url_id)
         video_data = self._html_search_regex(r'<div([^>]+data-%s-id="%s"[^>]+)>' % (id_type, url_id), webpage, 'video data')

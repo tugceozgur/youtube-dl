@@ -35,7 +35,7 @@ class FusionIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video = self._download_json(
             'https://platform.fusion.net/wp-json/fusiondotnet/v1/video/' + video_id, video_id)

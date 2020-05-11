@@ -20,6 +20,6 @@ class M6IE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         return self.url_result('6play:%s' % video_id, 'SixPlay', video_id)

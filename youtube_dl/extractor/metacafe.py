@@ -128,7 +128,7 @@ class MetacafeIE(InfoExtractor):
     def report_disclaimer(self):
         self.to_screen('Retrieving disclaimer')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         # Extract id and simplified title from URL
         video_id, display_id = re.match(self._VALID_URL, url).groups()
 

@@ -30,7 +30,7 @@ class TVAIE(InfoExtractor):
     }]
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/5481942443001/default_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_data = self._download_json(
             'https://videos.tva.ca/proxy/item/_' + video_id, video_id, headers={

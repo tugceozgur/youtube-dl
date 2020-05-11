@@ -29,7 +29,7 @@ class CBSSportsIE(CBSBaseIE):
     def _extract_video_info(self, filter_query, video_id):
         return self._extract_feed_info('dJ5BDC', 'VxxJg8Ymh8sE', filter_query, video_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         video_id = self._search_regex(

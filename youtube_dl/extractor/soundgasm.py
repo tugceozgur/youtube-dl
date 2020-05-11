@@ -21,7 +21,7 @@ class SoundgasmIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('display_id')
 
@@ -65,7 +65,7 @@ class SoundgasmProfileIE(InfoExtractor):
         'playlist_count': 1,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         profile_id = self._match_id(url)
 
         webpage = self._download_webpage(url, profile_id)

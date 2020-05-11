@@ -31,7 +31,7 @@ class UrortIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         fstr = compat_urllib_parse.quote("InternalBandUrl eq '%s'" % playlist_id)

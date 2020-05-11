@@ -102,7 +102,7 @@ class LecturioIE(LecturioBaseIE):
         'Russian': 'ru',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         nt = mobj.group('nt') or mobj.group('nt_de')
         lecture_id = mobj.group('id')
@@ -195,7 +195,7 @@ class LecturioCourseIE(LecturioBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         nt, course_id = re.match(self._VALID_URL, url).groups()
         display_id = nt or course_id
         api_path = 'courses/' + course_id if course_id else 'course/content/' + nt + '.json'
@@ -223,7 +223,7 @@ class LecturioDeCourseIE(LecturioBaseIE):
         'only_matching': True,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)

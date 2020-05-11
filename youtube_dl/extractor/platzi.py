@@ -100,7 +100,7 @@ class PlatziIE(PlatziBaseIE):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         lecture_id = self._match_id(url)
 
         webpage = self._download_webpage(url, lecture_id)
@@ -181,7 +181,7 @@ class PlatziCourseIE(PlatziBaseIE):
     def suitable(cls, url):
         return False if PlatziIE.suitable(url) else super(PlatziCourseIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_name = self._match_id(url)
 
         webpage = self._download_webpage(url, course_name)

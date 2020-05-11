@@ -37,7 +37,7 @@ class RMCDecouverteIE(InfoExtractor):
     }]
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/1969646226001/default_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('id') or mobj.group('live_id')
         webpage = self._download_webpage(url, display_id)

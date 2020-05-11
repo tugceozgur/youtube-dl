@@ -103,7 +103,7 @@ class ShahidIE(ShahidBaseIE):
                 'sessionId': user_data['sessionId'],
             }))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_type, video_id = re.match(self._VALID_URL, url).groups()
         if page_type == 'clip':
             page_type = 'episode'
@@ -177,7 +177,7 @@ class ShahidShowIE(ShahidBaseIE):
     }]
     _PAGE_SIZE = 30
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         show_id = self._match_id(url)
 
         product = self._call_api(

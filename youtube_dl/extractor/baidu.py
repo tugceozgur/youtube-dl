@@ -32,7 +32,7 @@ class BaiduVideoIE(InfoExtractor):
         return self._download_json('http://app.video.baidu.com/%s/?worktype=adnative%s&id=%s' % (
             path, category, playlist_id), playlist_id, note)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         category, playlist_id = re.match(self._VALID_URL, url).groups()
         if category == 'show':
             category = 'tvshow'

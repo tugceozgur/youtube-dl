@@ -87,7 +87,7 @@ class CiscoLiveSessionIE(CiscoLiveBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         rf_id = self._match_id(url)
         rf_result = self._call_api('session', rf_id, {'id': rf_id}, url)
         return self._parse_rf_item(rf_result['items'][0])
@@ -144,7 +144,7 @@ class CiscoLiveSearchIE(CiscoLiveBaseIE):
                 break
             query['from'] += query['size']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         query = compat_parse_qs(compat_urllib_parse_urlparse(url).query)
         query['type'] = 'session'
         return self.playlist_result(

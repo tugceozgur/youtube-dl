@@ -18,7 +18,7 @@ class RtmpIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._generic_id(url)
         title = self._generic_title(url)
         return {
@@ -49,7 +49,7 @@ class MmsIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._generic_id(url)
         title = self._generic_title(url)
 

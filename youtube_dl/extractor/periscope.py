@@ -96,7 +96,7 @@ class PeriscopeIE(PeriscopeBaseIE):
         if mobj:
             return mobj.group('url')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         token = self._match_id(url)
 
         stream = self._call_api(
@@ -155,7 +155,7 @@ class PeriscopeUserIE(PeriscopeBaseIE):
         'playlist_mincount': 0,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         user_name = self._match_id(url)
 
         webpage = self._download_webpage(url, user_name)

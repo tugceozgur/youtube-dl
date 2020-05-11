@@ -105,7 +105,7 @@ class XimalayaIE(XimalayaBaseIE):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
 
         is_m = 'm.ximalaya' in url
         scheme = 'https' if url.startswith('https') else 'http'
@@ -195,7 +195,7 @@ class XimalayaAlbumIE(XimalayaBaseIE):
     },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         self.scheme = scheme = 'https' if url.startswith('https') else 'http'
 
         mobj = re.match(self._VALID_URL, url)

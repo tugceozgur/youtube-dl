@@ -72,7 +72,7 @@ class DouyuTVIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         if video_id.isdigit():
@@ -144,7 +144,7 @@ class DouyuShowIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url = url.replace('vmobile.', 'v.')
         video_id = self._match_id(url)
 

@@ -25,7 +25,7 @@ class LineTVIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         series_id, segment = re.match(self._VALID_URL, url).groups()
         video_id = '%s_%s' % (series_id, segment)
 

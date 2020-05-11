@@ -26,7 +26,7 @@ class ClubicIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         player_url = 'http://player.m6web.fr/v1/player/clubic/%s.html' % video_id

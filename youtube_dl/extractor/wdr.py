@@ -33,7 +33,7 @@ class WDRIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         metadata = self._download_json(
@@ -215,7 +215,7 @@ class WDRPageIE(InfoExtractor):
         }
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('display_id')
         webpage = self._download_webpage(url, display_id)
@@ -275,7 +275,7 @@ class WDRElefantIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         # Table of Contents seems to always be at this address, so fetch it directly.
@@ -317,7 +317,7 @@ class WDRMobileIE(InfoExtractor):
         'skip': 'Problems with loading data.'
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         return {
             'id': mobj.group('id'),

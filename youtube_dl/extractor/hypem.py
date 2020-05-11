@@ -19,7 +19,7 @@ class HypemIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         track_id = self._match_id(url)
 
         response = self._download_webpage(url, track_id)

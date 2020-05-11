@@ -124,7 +124,7 @@ class MediasetIE(ThePlatformBaseIE):
             video.attrib['src'] = re.sub(r'(https?://vod05)t(-mediaset-it\.akamaized\.net/.+?.mpd)\?.+', r'\1\2', video.attrib['src'])
         return super(MediasetIE, self)._parse_smil_formats(smil, smil_url, video_id, namespace, f4m_params, transform_rtmp_url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         guid = self._match_id(url)
         tp_path = 'PR1GhC/media/guid/2702976343/' + guid
         info = self._extract_theplatform_metadata(tp_path, guid)

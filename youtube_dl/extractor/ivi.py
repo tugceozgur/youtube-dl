@@ -80,7 +80,7 @@ class IviIE(InfoExtractor):
         'MP4-low-mobile', 'MP4-mobile', 'FLV-lo', 'MP4-lo', 'FLV-hi', 'MP4-hi',
         'MP4-SHQ', 'MP4-HD720', 'MP4-HD1080')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         data = json.dumps({
@@ -241,7 +241,7 @@ class IviCompilationIE(InfoExtractor):
             for serie in re.findall(
                 r'<a\b[^>]+\bhref=["\']/watch/%s/(\d+)["\']' % compilation_id, html)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         compilation_id = mobj.group('compilationid')
         season_id = mobj.group('seasonid')

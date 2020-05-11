@@ -130,7 +130,7 @@ class OdnoklassnikiIE(InfoExtractor):
         if mobj:
             return mobj.group('url')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         start_time = int_or_none(compat_parse_qs(
             compat_urllib_parse_urlparse(url).query).get('fromTime', [None])[0])
 

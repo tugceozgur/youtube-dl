@@ -65,7 +65,7 @@ class PacktPubIE(PacktPubBaseIE):
                 raise ExtractorError(message, expected=True)
             raise
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_id, chapter_id, video_id, display_id = re.match(self._VALID_URL, url).groups()
 
         headers = {}
@@ -122,7 +122,7 @@ class PacktPubCourseIE(PacktPubBaseIE):
         return False if PacktPubIE.suitable(url) else super(
             PacktPubCourseIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         url, course_id = mobj.group('url', 'id')
 

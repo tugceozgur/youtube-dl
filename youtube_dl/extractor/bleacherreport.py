@@ -42,7 +42,7 @@ class BleacherReportIE(InfoExtractor):
         'add_ie': ['Youtube'],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         article_id = self._match_id(url)
 
         article_data = self._download_json('http://api.bleacherreport.com/api/v1/articles/%s' % article_id, article_id)['article']
@@ -99,7 +99,7 @@ class BleacherReportCMSIE(AMPIE):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         info = self._extract_feed_info('http://vid.bleacherreport.com/videos/%s.akamai' % video_id)
         info['id'] = video_id

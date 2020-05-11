@@ -27,7 +27,7 @@ class StreetVoiceIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         song_id = self._match_id(url)
 
         song = self._download_json(

@@ -31,7 +31,7 @@ class DTubeIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         uploader_id, video_id = re.match(self._VALID_URL, url).groups()
         result = self._download_json('https://api.steemit.com/', video_id, data=json.dumps({
             'jsonrpc': '2.0',

@@ -30,7 +30,7 @@ class SonyLIVIE(InfoExtractor):
     # BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/4338955589001/default_default/index.html?videoId=%s'
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/5182475815001/default_default/index.html?videoId=ref:%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         brightcove_id = self._match_id(url)
         return self.url_result(
             smuggle_url(self.BRIGHTCOVE_URL_TEMPLATE % brightcove_id, {

@@ -34,7 +34,7 @@ class BitChuteIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
@@ -136,7 +136,7 @@ class BitChuteChannelIE(InfoExtractor):
                     'https://www.bitchute.com/video/%s' % video_id,
                     ie=BitChuteIE.ie_key(), video_id=video_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
         return self.playlist_result(
             self._entries(channel_id), playlist_id=channel_id)

@@ -56,7 +56,7 @@ class VzaarIE(InfoExtractor):
             r'<iframe[^>]+src=["\']((?:https?:)?//(?:view\.vzaar\.com)/[0-9]+)',
             webpage)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_data = self._download_json(
             'http://view.vzaar.com/v2/%s/video' % video_id, video_id)

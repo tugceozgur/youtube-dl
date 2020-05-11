@@ -34,7 +34,7 @@ class MofosexIE(KeezMoviesIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage, info = self._extract_info(url)
 
         view_count = str_to_int(self._search_regex(
@@ -72,7 +72,7 @@ class MofosexEmbedIE(InfoExtractor):
             r'<iframe[^>]+\bsrc=["\']((?:https?:)?//(?:www\.)?mofosex\.com/embed/?\?.*?\bvideoid=\d+)',
             webpage)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         return self.url_result(
             'http://www.mofosex.com/videos/{0}/{0}.html'.format(video_id),

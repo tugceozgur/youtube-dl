@@ -21,7 +21,7 @@ class VideoDetectiveIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         query = 'customerid=69249&publishedid=' + video_id
         return self.url_result(

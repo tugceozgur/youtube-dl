@@ -43,7 +43,7 @@ class AudiomackIE(InfoExtractor):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         # URLs end with [uploader name]/[uploader title]
         # this title is whatever the user types in, and is rarely
         # the proper song title.  Real metadata is in the api response
@@ -108,7 +108,7 @@ class AudiomackAlbumIE(InfoExtractor):
         }
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         # URLs end with [uploader name]/[uploader title]
         # this title is whatever the user types in, and is rarely
         # the proper song title.  Real metadata is in the api response

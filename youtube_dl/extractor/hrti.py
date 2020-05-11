@@ -134,7 +134,7 @@ class HRTiIE(HRTiBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('short_id') or mobj.group('id')
         display_id = mobj.group('display_id') or video_id
@@ -190,7 +190,7 @@ class HRTiPlaylistIE(HRTiBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         category_id = mobj.group('id')
         display_id = mobj.group('display_id') or category_id

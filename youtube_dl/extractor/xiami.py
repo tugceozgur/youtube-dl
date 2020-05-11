@@ -137,12 +137,12 @@ class XiamiSongIE(XiamiBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_tracks(self._match_id(url), url)[0]
 
 
 class XiamiPlaylistBaseIE(XiamiBaseIE):
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         item_id = self._match_id(url)
         return self.playlist_result(self._extract_tracks(item_id, url, self._TYPE), item_id)
 

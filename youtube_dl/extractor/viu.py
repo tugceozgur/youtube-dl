@@ -78,7 +78,7 @@ class ViuIE(ViuBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video_data = self._call_api(
@@ -143,7 +143,7 @@ class ViuPlaylistIE(ViuBaseIE):
         'skip': 'Geo-restricted to Indonesia',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
         playlist_data = self._call_api(
             'container/load', playlist_id,
@@ -202,7 +202,7 @@ class ViuOTTIE(InfoExtractor):
         'PH': 5,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         country_code, video_id = re.match(self._VALID_URL, url).groups()
 
         query = {

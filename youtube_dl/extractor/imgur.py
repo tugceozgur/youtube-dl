@@ -33,7 +33,7 @@ class ImgurIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
             'https://i.imgur.com/{id}.gifv'.format(id=video_id), video_id)
@@ -124,7 +124,7 @@ class ImgurGalleryIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         gallery_id = self._match_id(url)
 
         data = self._download_json(

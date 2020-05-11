@@ -26,7 +26,7 @@ class RoxwelIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         filename = mobj.group('filename')
         info_url = 'http://www.roxwel.com/api/videos/%s' % filename

@@ -50,7 +50,7 @@ class AZMedienIE(InfoExtractor):
     _API_TEMPL = 'https://www.%s/api/pub/gql/%s/NewsArticleTeaser/cb9f2f81ed22e9b47f4ca64ea3cc5a5d13e88d1d'
     _PARTNER_ID = '1719221'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         host, display_id, article_id, entry_id = re.match(self._VALID_URL, url).groups()
 
         if not entry_id:

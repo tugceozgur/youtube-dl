@@ -71,7 +71,7 @@ class HKETVIE(InfoExtractor):
     }
     _APPS_BASE_URL = 'https://apps.hkedcity.net'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 

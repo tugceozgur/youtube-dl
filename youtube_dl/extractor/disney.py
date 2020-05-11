@@ -77,7 +77,7 @@ class DisneyIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, video_id, display_id = re.match(self._VALID_URL, url).groups()
         if not video_id:
             webpage = self._download_webpage(url, display_id)

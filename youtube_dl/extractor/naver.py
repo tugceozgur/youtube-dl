@@ -137,7 +137,7 @@ class NaverIE(NaverBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         content = self._download_json(
             'https://tv.naver.com/api/json/v/' + video_id,

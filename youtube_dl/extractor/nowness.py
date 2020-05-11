@@ -99,7 +99,7 @@ class NownessIE(NownessBaseIE):
         'add_ie': ['Vimeo'],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         _, post = self._api_request(url, 'post/getBySlug/%s')
         return self._extract_url_result(post)
 
@@ -115,7 +115,7 @@ class NownessPlaylistIE(NownessBaseIE):
         'playlist_mincount': 8,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id, playlist = self._api_request(url, 'post?PlaylistId=%s')
         entries = [self._extract_url_result(item) for item in playlist['items']]
         return self.playlist_result(entries, playlist_id)
@@ -134,7 +134,7 @@ class NownessSeriesIE(NownessBaseIE):
         'playlist_mincount': 4,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, series = self._api_request(url, 'series/getBySlug/%s')
         entries = [self._extract_url_result(post) for post in series['posts']]
         series_title = None

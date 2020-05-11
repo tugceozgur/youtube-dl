@@ -71,7 +71,7 @@ class RayWenderlichIE(InfoExtractor):
                 if video_id:
                     return compat_str(video_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         course_id, lesson_id = mobj.group('course_id', 'id')
         display_id = '%s/%s' % (course_id, lesson_id)
@@ -157,7 +157,7 @@ class RayWenderlichCourseIE(InfoExtractor):
         return False if RayWenderlichIE.suitable(url) else super(
             RayWenderlichCourseIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_id = self._match_id(url)
 
         webpage = self._download_webpage(url, course_id)

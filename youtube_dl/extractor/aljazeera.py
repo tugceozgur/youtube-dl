@@ -25,7 +25,7 @@ class AlJazeeraIE(InfoExtractor):
     }]
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/665003303001/default_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         program_name = self._match_id(url)
         webpage = self._download_webpage(url, program_name)
         brightcove_id = self._search_regex(

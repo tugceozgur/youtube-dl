@@ -62,7 +62,7 @@ class WatchBoxIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         kind, video_id = mobj.group('kind', 'id')
 

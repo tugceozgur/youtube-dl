@@ -120,7 +120,7 @@ class BiliBiliIE(InfoExtractor):
         else:
             raise ExtractorError('Can\'t extract Bangumi episode ID')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
 
         mobj = re.match(self._VALID_URL, url)
@@ -300,7 +300,7 @@ class BiliBiliBangumiIE(InfoExtractor):
     def suitable(cls, url):
         return False if BiliBiliIE.suitable(url) else super(BiliBiliBangumiIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         bangumi_id = self._match_id(url)
 
         # Sometimes this API returns a JSONP response
@@ -359,7 +359,7 @@ class BilibiliAudioIE(BilibiliAudioBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         au_id = self._match_id(url)
 
         play_data = self._call_api('url', au_id)
@@ -409,7 +409,7 @@ class BilibiliAudioAlbumIE(BilibiliAudioBaseIE):
         'playlist_count': 19,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         am_id = self._match_id(url)
 
         songs = self._call_api(
@@ -443,7 +443,7 @@ class BiliBiliPlayerIE(InfoExtractor):
         'only_matching': True,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         return self.url_result(
             'http://www.bilibili.tv/video/av%s/' % video_id,

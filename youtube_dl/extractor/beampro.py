@@ -59,7 +59,7 @@ class BeamProLiveIE(BeamProBaseIE):
     def suitable(cls, url):
         return False if BeamProVodIE.suitable(url) else super(BeamProLiveIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_name = self._match_id(url)
 
         chan = self._download_json(
@@ -156,7 +156,7 @@ class BeamProVodIE(BeamProBaseIE):
             'tbr': int_or_none(data.get('Bitrate'), 1000),
         }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         vod_id = self._match_id(url)
 
         vod_info = self._download_json(

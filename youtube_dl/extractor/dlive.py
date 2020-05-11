@@ -25,7 +25,7 @@ class DLiveVODIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         uploader_id, vod_id = re.match(self._VALID_URL, url).groups()
         broadcast = self._download_json(
             'https://graphigo.prd.dlive.tv/', vod_id,
@@ -60,7 +60,7 @@ class DLiveStreamIE(InfoExtractor):
     IE_NAME = 'dlive:stream'
     _VALID_URL = r'https?://(?:www\.)?dlive\.tv/(?!p/)(?P<id>[\w.-]+)'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_name = self._match_id(url)
         user = self._download_json(
             'https://graphigo.prd.dlive.tv/', display_name,

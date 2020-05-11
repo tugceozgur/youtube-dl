@@ -33,7 +33,7 @@ class CONtvIE(InfoExtractor):
         'playlist_mincount': 7,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         details = self._download_json(
             'http://metax.contv.live.junctiontv.net/metax/2.5/details/' + video_id,

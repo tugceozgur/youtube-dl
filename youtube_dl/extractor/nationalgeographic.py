@@ -43,7 +43,7 @@ class NationalGeographicVideoIE(InfoExtractor):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         name = url_basename(url)
 
         webpage = self._download_webpage(url, name)

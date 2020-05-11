@@ -25,7 +25,7 @@ class MatchTVIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = 'matchtv-live'
         video_url = self._download_json(
             'http://player.matchtv.ntvplus.tv/player/smil', video_id,

@@ -95,7 +95,7 @@ class AnimeOnDemandIE(InfoExtractor):
     def _real_initialize(self):
         self._login()
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         anime_id = self._match_id(url)
 
         webpage = self._download_webpage(url, anime_id)

@@ -27,7 +27,7 @@ class RedditIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         formats = self._extract_m3u8_formats(
@@ -93,7 +93,7 @@ class RedditRIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         url, video_id = mobj.group('url', 'id')
 

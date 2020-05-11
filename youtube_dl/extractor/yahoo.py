@@ -177,7 +177,7 @@ class YahooIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, country, display_id = re.match(self._VALID_URL, url).groups()
         if not country:
             country = 'us'
@@ -371,7 +371,7 @@ class YahooGyaOPlayerIE(InfoExtractor):
     }]
     _GEO_BYPASS = False
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url).replace('/', ':')
         headers = self.geo_verification_headers()
         headers['Accept'] = 'application/json'
@@ -427,7 +427,7 @@ class YahooGyaOIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         program_id = self._match_id(url).replace('/', ':')
         videos = self._download_json(
             'https://gyao.yahoo.co.jp/api/programs/%s/videos' % program_id, program_id)['videos']
@@ -507,7 +507,7 @@ class YahooJapanNewsIE(InfoExtractor):
 
         return formats
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         host = mobj.group('host')
         display_id = mobj.group('id') or host

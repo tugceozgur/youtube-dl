@@ -76,7 +76,7 @@ class CSpanIE(InfoExtractor):
     }]
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/%s/%s_%s/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_type = None
         webpage = self._download_webpage(url, video_id)

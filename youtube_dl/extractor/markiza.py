@@ -49,7 +49,7 @@ class MarkizaIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         data = self._download_json(
@@ -107,7 +107,7 @@ class MarkizaPageIE(InfoExtractor):
     def suitable(cls, url):
         return False if MarkizaIE.suitable(url) else super(MarkizaPageIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(

@@ -21,7 +21,7 @@ class TruNewsIE(InfoExtractor):
     }
     _ZYPE_TEMPL = 'https://player.zype.com/embed/%s.js?api_key=X5XnahkjCwJrT_l5zUqypnaLEObotyvtUKJWWlONxDoHVjP8vqxlArLV8llxMbyt'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         zype_id = self._download_json(

@@ -54,7 +54,7 @@ class IndavideoEmbedIE(InfoExtractor):
             r'<iframe[^>]+\bsrc=["\'](?P<url>(?:https?:)?//embed\.indavideo\.hu/player/video/[\da-f]+)',
             webpage)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video = self._download_json(

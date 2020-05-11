@@ -23,7 +23,7 @@ class ReutersIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
             'http://www.reuters.com/assets/iframe/yovideo?videoId=%s' % video_id, video_id)

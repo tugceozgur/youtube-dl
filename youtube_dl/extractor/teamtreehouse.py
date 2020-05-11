@@ -70,7 +70,7 @@ class TeamTreeHouseIE(InfoExtractor):
         if error_message:
             raise ExtractorError(clean_html(error_message), expected=True)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         title = self._html_search_meta(['og:title', 'twitter:title'], webpage)

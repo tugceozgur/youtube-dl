@@ -115,7 +115,7 @@ class InstagramIE(InfoExtractor):
         if mobj:
             return mobj.group('link')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         url = mobj.group('url')
@@ -348,7 +348,7 @@ class InstagramPlaylistIE(InfoExtractor):
             if not cursor or not isinstance(cursor, compat_str):
                 break
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         user_or_tag = self._match_id(url)
         webpage = self._download_webpage(url, user_or_tag)
         data = self._parse_graphql(webpage, user_or_tag)

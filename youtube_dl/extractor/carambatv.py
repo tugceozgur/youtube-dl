@@ -29,7 +29,7 @@ class CarambaTVIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video = self._download_json(
@@ -76,7 +76,7 @@ class CarambaTVPageIE(InfoExtractor):
         'add_ie': [VideomoreIE.ie_key()],
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)

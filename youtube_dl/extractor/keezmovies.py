@@ -124,7 +124,7 @@ class KeezMoviesIE(InfoExtractor):
             'formats': formats,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage, info = self._extract_info(url, fatal=False)
         if not info['formats']:
             return self.url_result(url, 'Generic')

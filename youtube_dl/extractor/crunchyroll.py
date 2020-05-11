@@ -411,7 +411,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
             subtitles[lang_code] = self._extract_subtitles(subtitle)
         return subtitles
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('video_id')
 
@@ -661,7 +661,7 @@ class CrunchyrollShowPlaylistIE(CrunchyrollBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         show_id = self._match_id(url)
 
         webpage = self._download_webpage(

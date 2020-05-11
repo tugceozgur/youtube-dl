@@ -67,7 +67,7 @@ class RTBFIE(InfoExtractor):
         ('high', 'HD'),
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         live, media_id = re.match(self._VALID_URL, url).groups()
         embed_page = self._download_webpage(
             'https://www.rtbf.be/auvio/embed/' + ('direct' if live else 'media'),

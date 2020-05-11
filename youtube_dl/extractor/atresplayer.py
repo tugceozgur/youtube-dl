@@ -74,7 +74,7 @@ class AtresPlayerIE(InfoExtractor):
 
         self._request_webpage(target_url, None, 'Following Target URL')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, video_id = re.match(self._VALID_URL, url).groups()
 
         try:

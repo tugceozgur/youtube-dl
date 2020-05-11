@@ -86,7 +86,7 @@ class LinkedInLearningIE(LinkedInLearningBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_slug, video_slug = re.match(self._VALID_URL, url).groups()
 
         video_data = None
@@ -153,7 +153,7 @@ class LinkedInLearningCourseIE(LinkedInLearningBaseIE):
     def suitable(cls, url):
         return False if LinkedInLearningIE.suitable(url) else super(LinkedInLearningCourseIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_slug = self._match_id(url)
         course_data = self._call_api(course_slug, 'chapters,description,title')
 

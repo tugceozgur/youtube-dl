@@ -49,7 +49,7 @@ class CanalplusIE(InfoExtractor):
         'expected_warnings': ['HTTP Error 403: Forbidden'],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         site, display_id, video_id = re.match(self._VALID_URL, url).groups()
 
         site_id = self._SITE_ID_MAP[site]

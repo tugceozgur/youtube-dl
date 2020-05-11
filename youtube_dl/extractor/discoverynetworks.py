@@ -31,7 +31,7 @@ class DiscoveryNetworksDeIE(DPlayIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, programme, alternate_id = re.match(self._VALID_URL, url).groups()
         country = 'GB' if domain == 'dplay.co.uk' else 'DE'
         realm = 'questuk' if country == 'GB' else domain.replace('.', '')

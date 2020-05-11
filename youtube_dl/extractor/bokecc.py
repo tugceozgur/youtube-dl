@@ -44,7 +44,7 @@ class BokeCCIE(BokeCCBaseIE):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         qs = compat_parse_qs(re.match(self._VALID_URL, url).group('query'))
         if not qs.get('vid') or not qs.get('uid'):
             raise ExtractorError('Invalid URL', expected=True)

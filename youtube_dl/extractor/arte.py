@@ -148,7 +148,7 @@ class ArteTVPlus7IE(ArteTVBaseIE):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         lang, video_id = re.match(self._VALID_URL, url).groups()
         return self._extract_from_json_url(
             'https://api.arte.tv/api/player/v1/config/%s/%s' % (lang, video_id),
@@ -168,7 +168,7 @@ class ArteTVEmbedIE(ArteTVPlus7IE):
 
     _TESTS = []
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         json_url, lang, video_id = re.match(self._VALID_URL, url).groups()
         return self._extract_from_json_url(json_url, video_id, lang)
 
@@ -187,7 +187,7 @@ class ArteTVPlaylistIE(ArteTVBaseIE):
         'playlist_mincount': 6,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         lang, playlist_id = re.match(self._VALID_URL, url).groups()
         collection = self._download_json(
             'https://api.arte.tv/api/player/v1/collectionData/%s/%s?source=videos'

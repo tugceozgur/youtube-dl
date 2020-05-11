@@ -17,7 +17,7 @@ class EbaumsWorldIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         config = self._download_xml(
             'http://www.ebaumsworld.com/video/player/%s' % video_id, video_id)

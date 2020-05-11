@@ -89,7 +89,7 @@ class HitboxIE(InfoExtractor):
             'categories': categories,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         player_config = self._download_json(
@@ -157,7 +157,7 @@ class HitboxLiveIE(HitboxIE):
     def suitable(cls, url):
         return False if HitboxIE.suitable(url) else super(HitboxLiveIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         player_config = self._download_json(

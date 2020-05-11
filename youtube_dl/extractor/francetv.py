@@ -194,7 +194,7 @@ class FranceTVIE(InfoExtractor):
             'subtitles': subtitles,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         catalog = mobj.group('catalog')
@@ -264,7 +264,7 @@ class FranceTVSiteIE(FranceTVBaseInfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -301,7 +301,7 @@ class FranceTVEmbedIE(FranceTVBaseInfoExtractor):
         'add_ie': [FranceTVIE.ie_key()],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video = self._download_json(
@@ -360,7 +360,7 @@ class FranceTVInfoIE(FranceTVBaseInfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -398,7 +398,7 @@ class FranceTVInfoSportIE(FranceTVBaseInfoExtractor):
         'add_ie': [FranceTVIE.ie_key()],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         video_id = self._search_regex(r'data-video="([^"]+)"', webpage, 'video_id')
@@ -428,7 +428,7 @@ class GenerationWhatIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -460,7 +460,7 @@ class CultureboxIE(FranceTVBaseInfoExtractor):
         'add_ie': [FranceTVIE.ie_key()],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -496,7 +496,7 @@ class FranceTVJeunesseIE(FranceTVBaseInfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         playlist_id = mobj.group('id')
 

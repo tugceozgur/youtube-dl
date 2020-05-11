@@ -150,7 +150,7 @@ class TeachableIE(TeachableBaseIE):
         if re.match(r'https?://[^/]+/(?:courses|p)', source_url):
             return '%s%s' % (TeachableBaseIE._URL_PREFIX, source_url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         site = mobj.group('site') or mobj.group('site_t')
         video_id = mobj.group('id')
@@ -247,7 +247,7 @@ class TeachableCourseIE(TeachableBaseIE):
         return False if TeachableIE.suitable(url) else super(
             TeachableCourseIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         site = mobj.group('site') or mobj.group('site_t')
         course_id = mobj.group('id')

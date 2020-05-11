@@ -77,7 +77,7 @@ class TagesschauPlayerIE(InfoExtractor):
             'formats': formats,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 
@@ -262,7 +262,7 @@ class TagesschauIE(InfoExtractor):
         self._sort_formats(formats)
         return formats
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id') or mobj.group('path')
         display_id = video_id.lstrip('-')

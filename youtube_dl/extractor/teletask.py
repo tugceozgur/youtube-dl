@@ -33,7 +33,7 @@ class TeleTaskIE(InfoExtractor):
         }]
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         lecture_id = self._match_id(url)
         webpage = self._download_webpage(url, lecture_id)
 

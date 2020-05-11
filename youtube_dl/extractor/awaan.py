@@ -21,7 +21,7 @@ from ..utils import (
 class AWAANIE(InfoExtractor):
     _VALID_URL = r'https?://(?:www\.)?(?:awaan|dcndigital)\.ae/(?:#/)?show/(?P<show_id>\d+)/[^/]+(?:/(?P<video_id>\d+)/(?P<season_id>\d+))?'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         show_id, video_id, season_id = re.match(self._VALID_URL, url).groups()
         if video_id and int(video_id) > 0:
             return self.url_result(
@@ -73,7 +73,7 @@ class AWAANVideoIE(AWAANBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video_data = self._download_json(
@@ -114,7 +114,7 @@ class AWAANLiveIE(AWAANBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
 
         channel_data = self._download_json(
@@ -150,7 +150,7 @@ class AWAANSeasonIE(InfoExtractor):
         'playlist_mincount': 27,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
         show_id, season_id = re.match(self._VALID_URL, url).groups()
 

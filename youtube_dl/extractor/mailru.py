@@ -96,7 +96,7 @@ class MailRuIE(InfoExtractor):
         }
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         meta_id = mobj.group('metaid')
 
@@ -264,7 +264,7 @@ class MailRuMusicIE(MailRuMusicSearchBaseIE):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         audio_id = self._match_id(url)
 
         webpage = self._download_webpage(url, audio_id)
@@ -290,7 +290,7 @@ class MailRuMusicSearchIE(MailRuMusicSearchBaseIE):
         'playlist_mincount': 532,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         query = compat_urllib_parse_unquote(self._match_id(url))
 
         entries = []

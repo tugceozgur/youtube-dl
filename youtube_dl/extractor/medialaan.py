@@ -126,7 +126,7 @@ class MedialaanIE(GigyaBaseIE):
 
         self._logged_in = True
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id, site_id = mobj.group('id', 'site_id')
 

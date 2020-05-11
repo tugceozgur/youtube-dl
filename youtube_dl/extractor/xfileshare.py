@@ -89,7 +89,7 @@ class XFileShareIE(InfoExtractor):
                 % '|'.join(site for site in list(zip(*XFileShareIE._SITES))[0]),
                 webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         host, video_id = re.match(self._VALID_URL, url).groups()
 
         url = 'https://%s/' % host + ('embed-%s.html' % video_id if host in ('govid.me', 'vidlo.us') else video_id)

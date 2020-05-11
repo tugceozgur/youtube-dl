@@ -22,7 +22,7 @@ class ReverbNationIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         song_id = self._match_id(url)
 
         api_res = self._download_json(

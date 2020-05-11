@@ -2236,7 +2236,7 @@ class GenericIE(InfoExtractor):
             'title': title,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         if url.startswith('//'):
             return self.url_result(self.http_scheme() + url)
 

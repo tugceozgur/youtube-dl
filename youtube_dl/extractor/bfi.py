@@ -22,7 +22,7 @@ class BFIPlayerIE(InfoExtractor):
         'skip': 'BFI Player films cannot be played outside of the UK',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
         entries = []

@@ -37,7 +37,7 @@ class DBTVIE(InfoExtractor):
             r'<iframe[^>]+src=(["\'])((?:https?:)?//(?:www\.)?dagbladet\.no/video/embed/(?:[0-9A-Za-z_-]{11}|[a-zA-Z0-9]{8}).*?)\1',
             webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, video_id = re.match(self._VALID_URL, url).groups()
         info = {
             '_type': 'url_transparent',

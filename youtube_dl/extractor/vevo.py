@@ -188,7 +188,7 @@ class VevoIE(VevoBaseIE):
             raise
         return data
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         self._initialize_api(video_id)
@@ -343,7 +343,7 @@ class VevoPlaylistIE(VevoBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         playlist_id = mobj.group('id')
         playlist_kind = mobj.group('kind')

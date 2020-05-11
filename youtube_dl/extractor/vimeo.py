@@ -561,7 +561,7 @@ class VimeoIE(VimeoBaseInfoExtractor):
     def _real_initialize(self):
         self._login()
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, data = unsmuggle_url(url, {})
         headers = std_headers.copy()
         if 'http_headers' in data:
@@ -876,7 +876,7 @@ class VimeoChannelIE(VimeoBaseInfoExtractor):
         list_title = next(title_and_entries)
         return self.playlist_result(title_and_entries, list_id, list_title)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
         return self._extract_videos(channel_id, self._BASE_URL_TEMPL % channel_id)
 
@@ -943,7 +943,7 @@ class VimeoAlbumIE(VimeoBaseInfoExtractor):
             video_id = self._search_regex(r'/videos/(\d+)', uri, 'video_id', default=None) if uri else None
             yield self.url_result(link, VimeoIE.ie_key(), video_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         album_id = self._match_id(url)
         webpage = self._download_webpage(url, album_id)
         viewer = self._parse_json(self._search_regex(
@@ -1044,7 +1044,7 @@ class VimeoReviewIE(VimeoBaseInfoExtractor):
     def _real_initialize(self):
         self._login()
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_url, video_id = re.match(self._VALID_URL, url).groups()
         clip_data = self._download_json(
             page_url.replace('/review/', '/review/data/'),
@@ -1083,7 +1083,7 @@ class VimeoWatchLaterIE(VimeoChannelIE):
         request.add_header('X-Requested-With', 'XMLHttpRequest')
         return request
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_videos('watchlater', 'https://vimeo.com/watchlater')
 
 
@@ -1106,7 +1106,7 @@ class VimeoLikesIE(VimeoChannelIE):
     def _page_url(self, base_url, pagenum):
         return '%s/page:%d/' % (base_url, pagenum)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         user_id = self._match_id(url)
         return self._extract_videos(user_id, 'https://vimeo.com/%s/likes' % user_id)
 
@@ -1115,7 +1115,7 @@ class VHXEmbedIE(VimeoBaseInfoExtractor):
     IE_NAME = 'vhx:embed'
     _VALID_URL = r'https?://embed\.vhx\.tv/videos/(?P<id>\d+)'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
         config_url = self._parse_json(self._search_regex(

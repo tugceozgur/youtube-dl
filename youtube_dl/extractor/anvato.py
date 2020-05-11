@@ -300,7 +300,7 @@ class AnvatoIE(InfoExtractor):
         return self._get_anvato_videos(
             anvplayer_data['accessKey'], anvplayer_data['video'])
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         url, smuggled_data = unsmuggle_url(url, {})
         self._initialize_geo_bypass({
             'countries': smuggled_data.get('geo_countries'),

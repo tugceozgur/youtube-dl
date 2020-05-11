@@ -63,7 +63,7 @@ class SpiegelIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         metadata_url = 'http://www.spiegel.de/video/metadata/video-%s.json' % video_id
         handle = self._request_webpage(metadata_url, video_id)
@@ -131,7 +131,7 @@ class SpiegelArticleIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 

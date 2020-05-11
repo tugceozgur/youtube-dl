@@ -41,7 +41,7 @@ class YouNowLiveIE(InfoExtractor):
                 if YouNowChannelIE.suitable(url) or YouNowMomentIE.suitable(url)
                 else super(YouNowLiveIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         username = self._match_id(url)
 
         data = self._download_json(
@@ -162,7 +162,7 @@ class YouNowChannelIE(InfoExtractor):
                                     yield entry
                 created_before = int_or_none(item.get('created'))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         username = self._match_id(url)
         channel_id = compat_str(self._download_json(
             'https://api.younow.com/php/api/broadcast/info/curId=0/user=%s'
@@ -196,7 +196,7 @@ class YouNowMomentIE(InfoExtractor):
                 if YouNowChannelIE.suitable(url)
                 else super(YouNowMomentIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         item = self._download_json(MOMENT_URL_FORMAT % video_id, video_id)
         return _extract_moment(item['item'])

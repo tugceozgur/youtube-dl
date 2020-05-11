@@ -272,7 +272,7 @@ query viewClip {
                 ))
         return srt
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         qs = compat_urlparse.parse_qs(compat_urlparse.urlparse(url).query)
 
         author = qs.get('author', [None])[0]
@@ -459,7 +459,7 @@ class PluralsightCourseIE(PluralsightBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_id = self._match_id(url)
 
         # TODO: PSM cookie

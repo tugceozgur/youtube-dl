@@ -33,7 +33,7 @@ class Puls4IE(ProSiebenSat1BaseIE):
     _SALT = '01!kaNgaiNgah1Ie4AeSha'
     _CLIENT_NAME = ''
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         path = self._match_id(url)
         content_path = self._download_json(
             'http://www.puls4.com/api/json-fe/page/' + path, path)['content'][0]['url']

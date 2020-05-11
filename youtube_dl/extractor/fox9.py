@@ -7,7 +7,7 @@ from .common import InfoExtractor
 class FOX9IE(InfoExtractor):
     _VALID_URL = r'https?://(?:www\.)?fox9\.com/video/(?P<id>\d+)'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         return self.url_result(
             'anvato:anvato_epfox_app_web_prod_b3373168e12f423f41504f207000188daf88251b:' + video_id,
@@ -33,7 +33,7 @@ class FOX9NewsIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         anvato_id = self._search_regex(

@@ -34,7 +34,7 @@ class CCCIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         event_id = self._search_regex(r"data-id='(\d+)'", webpage, 'event id')
@@ -95,7 +95,7 @@ class CCCPlaylistIE(InfoExtractor):
         'playlist_count': 135,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url).lower()
 
         conf = self._download_json(

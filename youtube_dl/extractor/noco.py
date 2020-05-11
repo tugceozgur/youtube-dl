@@ -110,7 +110,7 @@ class NocoIE(InfoExtractor):
             '%s returned error: %s - %s' % (self.IE_NAME, error, description),
             expected=True)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         # Timestamp adjustment offset between server time and local time

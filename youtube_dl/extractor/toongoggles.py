@@ -62,7 +62,7 @@ class ToonGogglesIE(InfoExtractor):
             'ie_key': 'Kaltura',
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         show_id, episode_id = re.match(self._VALID_URL, url).groups()
         if episode_id:
             episode_data = self._call_api('search', episode_id, {

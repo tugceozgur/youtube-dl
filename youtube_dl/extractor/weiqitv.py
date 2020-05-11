@@ -32,7 +32,7 @@ class WeiqiTVIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
         page = self._download_webpage(url, media_id)
 

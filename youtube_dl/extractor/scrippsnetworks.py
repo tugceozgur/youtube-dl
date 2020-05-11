@@ -54,7 +54,7 @@ class ScrippsNetworksWatchIE(AWSIE):
 
     _AWS_USER_AGENT = 'aws-sdk-js/2.80.0 callback'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         site_id, video_id = mobj.group('site', 'id')
 
@@ -145,7 +145,7 @@ class ScrippsNetworksIE(InfoExtractor):
     }
     _TP_TEMPL = 'https://link.theplatform.com/s/ip77QC/media/guid/%d/%s?mbr=true'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         site, guid = re.match(self._VALID_URL, url).groups()
         return self.url_result(smuggle_url(
             self._TP_TEMPL % (self._ACCOUNT_MAP[site], guid),

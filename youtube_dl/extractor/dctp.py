@@ -36,7 +36,7 @@ class DctpTvIE(InfoExtractor):
 
     _BASE_URL = 'http://dctp-ivms2-restapi.s3.amazonaws.com'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         version = self._download_json(

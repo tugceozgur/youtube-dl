@@ -27,7 +27,7 @@ class MassengeschmackTVIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         episode = self._match_id(url)
 
         webpage = self._download_webpage(url, episode)

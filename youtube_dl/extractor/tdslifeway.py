@@ -28,6 +28,6 @@ class TDSLifewayIE(InfoExtractor):
 
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/2034960640001/default_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         brightcove_id = self._match_id(url)
         return self.url_result(self.BRIGHTCOVE_URL_TEMPLATE % brightcove_id, 'BrightcoveNew', brightcove_id)

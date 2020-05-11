@@ -61,7 +61,7 @@ class CuriosityStreamIE(CuriosityStreamBaseIE):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         media = self._call_api('media/' + video_id, video_id)
         title = media['title']
@@ -146,7 +146,7 @@ class CuriosityStreamCollectionIE(CuriosityStreamBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         collection_id = self._match_id(url)
         collection = self._call_api(
             'collections/' + collection_id, collection_id)

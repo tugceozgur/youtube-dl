@@ -70,7 +70,7 @@ class CBSInteractiveIE(CBSIE):
         'zdnet': 2387448114,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         site, display_id = re.match(self._VALID_URL, url).groups()
         webpage = self._download_webpage(url, display_id)
 

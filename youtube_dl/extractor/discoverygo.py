@@ -113,7 +113,7 @@ class DiscoveryGoIE(DiscoveryGoBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -149,7 +149,7 @@ class DiscoveryGoPlaylistIE(DiscoveryGoBaseIE):
         return False if DiscoveryGoIE.suitable(url) else super(
             DiscoveryGoPlaylistIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)

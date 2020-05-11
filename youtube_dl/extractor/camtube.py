@@ -29,7 +29,7 @@ class CamTubeIE(InfoExtractor):
 
     _API_BASE = 'https://api.camtube.co'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         token = self._download_json(

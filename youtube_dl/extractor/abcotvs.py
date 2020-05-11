@@ -54,7 +54,7 @@ class ABCOTVSIE(InfoExtractor):
         'abc7ny': 'wabc',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         site, display_id, video_id = re.match(self._VALID_URL, url).groups()
         display_id = display_id or video_id
         station = self._SITE_MAP[site]
@@ -118,7 +118,7 @@ class ABCOTVSClipsIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_data = self._download_json('https://clips.abcotvs.com/vogo/video/getByIds?ids=' + video_id, video_id)['results'][0]
         title = video_data['title']

@@ -21,7 +21,7 @@ class FilmwebIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         article_type, article_id = re.match(self._VALID_URL, url).groups()
         if article_type == 'filmnytt':
             webpage = self._download_webpage(url, article_id)

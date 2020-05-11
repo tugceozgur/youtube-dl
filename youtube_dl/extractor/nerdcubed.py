@@ -17,7 +17,7 @@ class NerdCubedFeedIE(InfoExtractor):
         'playlist_mincount': 1300,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         feed = self._download_json(url, url, 'Downloading NerdCubed JSON feed')
 
         entries = [{

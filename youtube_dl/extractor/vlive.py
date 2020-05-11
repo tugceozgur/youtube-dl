@@ -95,7 +95,7 @@ class VLiveIE(NaverBaseIE):
         if not is_logged_in():
             raise ExtractorError('Unable to log in', expected=True)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
@@ -213,7 +213,7 @@ class VLiveChannelIE(InfoExtractor):
     }
     _APP_ID = '8c6cc7b45d2568fb668be6e05b6e5a3b'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_code = self._match_id(url)
 
         webpage = self._download_webpage(
@@ -324,7 +324,7 @@ class VLivePlaylistIE(InfoExtractor):
             self._VIDEO_URL_TEMPLATE % video_id,
             ie=VLiveIE.ie_key(), video_id=video_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id, playlist_id = mobj.group('video_id', 'id')
 

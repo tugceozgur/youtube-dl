@@ -49,7 +49,7 @@ class AbcNewsVideoIE(AMPIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('display_id')
         video_id = mobj.group('id')
@@ -102,7 +102,7 @@ class AbcNewsIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('display_id')
         video_id = mobj.group('id')

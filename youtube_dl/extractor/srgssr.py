@@ -51,7 +51,7 @@ class SRGSSRIE(InfoExtractor):
 
         return media_data
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         bu, media_type, media_id = re.match(self._VALID_URL, url).groups()
 
         media_data = self.get_media_data(bu, media_type, media_id)
@@ -177,7 +177,7 @@ class SRGSSRPlayIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         bu = mobj.group('bu')
         media_type = mobj.group('type') or mobj.group('type_2')

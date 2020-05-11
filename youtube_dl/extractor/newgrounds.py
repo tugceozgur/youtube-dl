@@ -53,7 +53,7 @@ class NewgroundsIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
 
         webpage = self._download_webpage(url, media_id)
@@ -140,7 +140,7 @@ class NewgroundsPlaylistIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(url, playlist_id)

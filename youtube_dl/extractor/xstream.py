@@ -111,7 +111,7 @@ class XstreamIE(InfoExtractor):
             'thumbnails': thumbnails,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         partner_id = mobj.group('partner_id')
         video_id = mobj.group('id')

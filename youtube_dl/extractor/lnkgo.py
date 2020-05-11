@@ -57,7 +57,7 @@ class LnkGoIE(InfoExtractor):
     }
     _M3U8_TEMPL = 'https://vod.lnk.lt/lnk_vod/lnk/lnk/%s:%s/playlist.m3u8%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, video_id = re.match(self._VALID_URL, url).groups()
 
         video_info = self._download_json(

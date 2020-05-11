@@ -59,7 +59,7 @@ class SpankBangIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
             url.replace('/%s/embed' % video_id, '/%s/video' % video_id),
@@ -165,7 +165,7 @@ class SpankBangPlaylistIE(InfoExtractor):
         'playlist_mincount': 50,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(

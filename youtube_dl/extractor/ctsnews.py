@@ -50,7 +50,7 @@ class CtsNewsIE(InfoExtractor):
         'add_ie': ['Youtube'],
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         news_id = self._match_id(url)
         page = self._download_webpage(url, news_id)
 

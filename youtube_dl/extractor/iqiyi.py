@@ -336,7 +336,7 @@ class IqiyiIE(InfoExtractor):
 
         return self.playlist_result(entries, album_id, album_title)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage = self._download_webpage(
             url, 'temp_id', note='download video page')
 

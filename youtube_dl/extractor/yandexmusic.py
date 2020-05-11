@@ -90,7 +90,7 @@ class YandexMusicTrackIE(YandexMusicBaseIE):
         'skip': 'Travis CI servers blocked by YandexMusic',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         album_id, track_id = mobj.group('album_id'), mobj.group('id')
 
@@ -210,7 +210,7 @@ class YandexMusicAlbumIE(YandexMusicPlaylistBaseIE):
         'skip': 'Travis CI servers blocked by YandexMusic',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         album_id = self._match_id(url)
 
         album = self._download_json(
@@ -253,7 +253,7 @@ class YandexMusicPlaylistIE(YandexMusicPlaylistBaseIE):
         'skip': 'Travis CI servers blocked by YandexMusic',
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         tld = mobj.group('tld')
         user = mobj.group('user')

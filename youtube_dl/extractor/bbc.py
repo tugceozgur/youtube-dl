@@ -548,7 +548,7 @@ class BBCCoUkIE(InfoExtractor):
 
         return programme_id, title, description, duration, formats, subtitles
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         group_id = self._match_id(url)
 
         webpage = self._download_webpage(url, group_id, 'Downloading video page')
@@ -876,7 +876,7 @@ class BBCIE(BBCCoUkIE):
             'subtitles': subtitles,
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(url, playlist_id)
@@ -1232,7 +1232,7 @@ class BBCCoUkArticleIE(InfoExtractor):
         'add_ie': ['BBCCoUk'],
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(url, playlist_id)
@@ -1266,7 +1266,7 @@ class BBCCoUkPlaylistBaseIE(InfoExtractor):
                 compat_urlparse.urljoin(url, next_page), playlist_id,
                 'Downloading page %d' % page_num, page_num)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(url, playlist_id)

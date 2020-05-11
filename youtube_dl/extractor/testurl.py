@@ -12,7 +12,7 @@ class TestURLIE(InfoExtractor):
     IE_DESC = False  # Do not list
     _VALID_URL = r'test(?:url)?:(?P<id>(?P<extractor>.+?)(?:_(?P<num>[0-9]+))?)$'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         from ..extractor import gen_extractors
 
         mobj = re.match(self._VALID_URL, url)

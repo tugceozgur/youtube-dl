@@ -89,7 +89,7 @@ class KuwoIE(KuwoBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         song_id = self._match_id(url)
         webpage, urlh = self._download_webpage_handle(
             url, song_id, note='Download song detail info',
@@ -150,7 +150,7 @@ class KuwoAlbumIE(InfoExtractor):
         'playlist_count': 2,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         album_id = self._match_id(url)
 
         webpage = self._download_webpage(
@@ -184,7 +184,7 @@ class KuwoChartIE(InfoExtractor):
         'playlist_mincount': 7,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         chart_id = self._match_id(url)
         webpage = self._download_webpage(
             url, chart_id, note='Download chart info',
@@ -220,7 +220,7 @@ class KuwoSingerIE(InfoExtractor):
 
     PAGE_SIZE = 15
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         singer_id = self._match_id(url)
         webpage = self._download_webpage(
             url, singer_id, note='Download singer info',
@@ -268,7 +268,7 @@ class KuwoCategoryIE(InfoExtractor):
         'playlist_mincount': 24,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         category_id = self._match_id(url)
         webpage = self._download_webpage(
             url, category_id, note='Download category info',
@@ -317,7 +317,7 @@ class KuwoMvIE(KuwoBaseIE):
         {'format': 'mp4', 'ext': 'mp4', 'preference': 200},
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         song_id = self._match_id(url)
         webpage = self._download_webpage(
             url, song_id, note='Download mv detail info: %s' % song_id,

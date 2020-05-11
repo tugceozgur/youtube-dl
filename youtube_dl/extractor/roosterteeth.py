@@ -81,7 +81,7 @@ class RoosterTeethIE(InfoExtractor):
             return
         self._login()
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         api_episode_url = self._EPISODE_BASE_URL + display_id
 

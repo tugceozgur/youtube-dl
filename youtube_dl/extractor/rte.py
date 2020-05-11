@@ -17,7 +17,7 @@ from ..utils import (
 
 
 class RteBaseIE(InfoExtractor):
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         item_id = self._match_id(url)
 
         info_dict = {}

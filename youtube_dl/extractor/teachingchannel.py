@@ -23,7 +23,7 @@ class TeachingChannelIE(InfoExtractor):
         'add_ie': ['JWPlatform'],
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         mid = self._search_regex(

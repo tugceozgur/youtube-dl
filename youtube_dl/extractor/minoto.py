@@ -13,7 +13,7 @@ from ..utils import (
 class MinotoIE(InfoExtractor):
     _VALID_URL = r'(?:minoto:|https?://(?:play|iframe|embed)\.minoto-video\.com/(?P<player_id>[0-9]+)/)(?P<id>[a-zA-Z0-9]+)'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         player_id = mobj.group('player_id') or '1'
         video_id = mobj.group('id')

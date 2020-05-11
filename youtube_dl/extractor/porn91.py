@@ -25,7 +25,7 @@ class Porn91IE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         self._set_cookie('91porn.com', 'language', 'cn_CN')
 

@@ -24,7 +24,7 @@ class TVANouvellesIE(InfoExtractor):
     }
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/1741764581/default_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         brightcove_id = self._match_id(url)
         return self.url_result(
             self.BRIGHTCOVE_URL_TEMPLATE % brightcove_id,
@@ -47,7 +47,7 @@ class TVANouvellesArticleIE(InfoExtractor):
     def suitable(cls, url):
         return False if TVANouvellesIE.suitable(url) else super(TVANouvellesArticleIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)

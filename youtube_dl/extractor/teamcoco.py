@@ -107,7 +107,7 @@ class TeamcocoIE(TurnerBaseIE):
                 'Content-Type': 'application/json',
             })['data'][find_object]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         response = self._graphql_call('''{

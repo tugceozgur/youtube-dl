@@ -130,7 +130,7 @@ class CBCIE(InfoExtractor):
                     clip_id)['entries'][0]['id'].split('/')[-1]
         return self.url_result('cbcplayer:%s' % media_id, 'CBCPlayer', media_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         title = self._og_search_title(webpage, default=None) or self._html_search_meta(
@@ -196,7 +196,7 @@ class CBCPlayerIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         return {
             '_type': 'url_transparent',
@@ -367,7 +367,7 @@ class CBCWatchVideoIE(CBCWatchBaseIE):
         'only_matching': True,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         result = self._call_api(url, video_id)
 
@@ -431,7 +431,7 @@ class CBCWatchIE(CBCWatchBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         rss = self._call_api('web/browse/' + video_id, video_id)
         return self._parse_rss_feed(rss)
@@ -445,7 +445,7 @@ class CBCOlympicsIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         video_id = self._hidden_inputs(webpage)['videoId']

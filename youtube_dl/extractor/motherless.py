@@ -63,7 +63,7 @@ class MotherlessIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 
@@ -175,7 +175,7 @@ class MotherlessGroupIE(InfoExtractor):
                     r'data-codename=["\']([A-Z0-9]+)', webpage))]
         return entries
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         group_id = self._match_id(url)
         page_url = compat_urlparse.urljoin(url, '/gv/%s' % group_id)
         webpage = self._download_webpage(page_url, group_id)

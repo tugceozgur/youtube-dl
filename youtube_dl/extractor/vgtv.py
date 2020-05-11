@@ -158,7 +158,7 @@ class VGTVIE(XstreamIE):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         host = mobj.group('host')
@@ -267,7 +267,7 @@ class BTArticleIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         webpage = self._download_webpage(url, self._match_id(url))
         video_id = self._search_regex(
             r'<video[^>]+data-id="(\d+)"', webpage, 'video id')
@@ -303,5 +303,5 @@ class BTVestlendingenIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self.url_result('bttv:%s' % self._match_id(url), 'VGTV')

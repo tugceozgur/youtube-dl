@@ -23,7 +23,7 @@ class SverigesRadioBaseIE(InfoExtractor):
         13: 96,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         audio_id = self._match_id(url)
         query = {
             'id': audio_id,

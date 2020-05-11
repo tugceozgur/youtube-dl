@@ -23,7 +23,7 @@ class TwentyThreeVideoIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, query, photo_id = re.match(self._VALID_URL, url).groups()
         base_url = 'https://video.%s' % domain
         photo_data = self._download_json(

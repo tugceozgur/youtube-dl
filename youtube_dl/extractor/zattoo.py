@@ -216,7 +216,7 @@ class QuicklineIE(QuicklineBaseIE):
         'only_matching': True,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_name, video_id = re.match(self._VALID_URL, url).groups()
         return self._extract_video(channel_name, video_id)
 
@@ -233,7 +233,7 @@ class QuicklineLiveIE(QuicklineBaseIE):
     def suitable(cls, url):
         return False if QuicklineIE.suitable(url) else super(QuicklineLiveIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_name = video_id = self._match_id(url)
         return self._extract_video(channel_name, video_id, is_live=True)
 
@@ -261,7 +261,7 @@ class ZattooIE(ZattooBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_name, video_id, record_id = re.match(self._VALID_URL, url).groups()
         return self._extract_video(channel_name, video_id, record_id)
 
@@ -278,7 +278,7 @@ class ZattooLiveIE(ZattooBaseIE):
     def suitable(cls, url):
         return False if ZattooIE.suitable(url) else super(ZattooLiveIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_name = video_id = self._match_id(url)
         return self._extract_video(channel_name, video_id, is_live=True)
 

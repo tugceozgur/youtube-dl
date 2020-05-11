@@ -108,7 +108,7 @@ class IGNIE(InfoExtractor):
         ]
         return self._search_regex(res_id, webpage, 'video id', default=None)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         name_or_id = mobj.group('name_or_id')
         page_type = mobj.group('type')
@@ -192,7 +192,7 @@ class OneUPIE(IGNIE):
         }
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         result = super(OneUPIE, self)._real_extract(url)
         result['id'] = mobj.group('name_or_id')

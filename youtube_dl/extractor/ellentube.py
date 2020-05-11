@@ -79,7 +79,7 @@ class EllenTubeIE(EllenTubeBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         data = self._download_json(
             'https://api-prod.ellentube.com/ellenapi/api/item/%s' % video_id,
@@ -94,7 +94,7 @@ class EllenTubeVideoIE(EllenTubeBaseIE):
         'only_matching': True,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         video_id = self._extract_data_config(webpage, display_id)['id']
@@ -118,7 +118,7 @@ class EllenTubePlaylistIE(EllenTubeBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         data = self._extract_data_config(webpage, display_id)['data']

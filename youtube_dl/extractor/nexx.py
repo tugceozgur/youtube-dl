@@ -288,7 +288,7 @@ class NexxIE(InfoExtractor):
 
         return formats
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         domain_id = mobj.group('domain_id') or mobj.group('domain_id_s')
         video_id = mobj.group('id')
@@ -445,7 +445,7 @@ class NexxEmbedIE(InfoExtractor):
             r'<iframe[^>]+\bsrc=(["\'])(?P<url>(?:https?:)?//embed\.nexx(?:\.cloud|cdn\.com)/\d+/(?:(?!\1).)+)\1',
             webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         embed_id = self._match_id(url)
 
         webpage = self._download_webpage(url, embed_id)

@@ -13,7 +13,7 @@ from ..utils import (
 
 
 class NHLBaseIE(InfoExtractor):
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         site, tmp_id = re.match(self._VALID_URL, url).groups()
         video_data = self._download_json(
             'https://%s/%s/%sid/v1/%s/details/web-v1.json'

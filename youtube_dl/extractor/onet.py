@@ -112,7 +112,7 @@ class OnetMVPIE(OnetBaseIE):
         'only_matching': True,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_from_id(self._match_id(url))
 
 
@@ -137,7 +137,7 @@ class OnetIE(OnetBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         display_id, video_id = mobj.group('display_id', 'id')
 
@@ -171,7 +171,7 @@ class OnetChannelIE(OnetBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
 
         webpage = self._download_webpage(url, channel_id)
@@ -249,7 +249,7 @@ class OnetPlIE(InfoExtractor):
             r'data-(?:params-)?mvp=["\'](\d+\.\d+)', webpage, 'mvp id',
             default=default)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)

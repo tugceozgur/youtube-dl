@@ -63,7 +63,7 @@ class CamdemyIE(InfoExtractor):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)
@@ -140,7 +140,7 @@ class CamdemyFolderIE(InfoExtractor):
         'playlist_mincount': 20
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         folder_id = self._match_id(url)
 
         # Add displayMode=list so that all links are displayed in a single page

@@ -27,7 +27,7 @@ class WebcasterIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video = self._download_xml(url, video_id)
@@ -91,7 +91,7 @@ class WebcasterFeedIE(InfoExtractor):
                 if mobj:
                     return mobj.group('url')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         feed = self._download_xml(url, video_id)

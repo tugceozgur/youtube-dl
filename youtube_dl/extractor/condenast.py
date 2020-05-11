@@ -210,7 +210,7 @@ class CondeNastIE(InfoExtractor):
             'categories': video_info.get('categories'),
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id, player_id, target, url_type, display_id = re.match(self._VALID_URL, url).groups()
 
         if video_id:

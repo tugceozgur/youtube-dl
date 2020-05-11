@@ -26,7 +26,7 @@ class UKTVPlayIE(InfoExtractor):
     }
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/1242911124001/H1xnMOqP_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         return self.url_result(
             self.BRIGHTCOVE_URL_TEMPLATE % video_id,

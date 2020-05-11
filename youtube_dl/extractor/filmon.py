@@ -35,7 +35,7 @@ class FilmOnIE(InfoExtractor):
         'playlist_mincount': 8,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         try:
@@ -121,7 +121,7 @@ class FilmOnChannelIE(InfoExtractor):
         ('extra_big_logo', 300, 300),
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
 
         try:

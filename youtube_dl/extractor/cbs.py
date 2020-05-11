@@ -107,6 +107,6 @@ class CBSIE(CBSBaseIE):
         })
         return info
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         content_id = self._match_id(url)
         return self._extract_video_info(content_id)

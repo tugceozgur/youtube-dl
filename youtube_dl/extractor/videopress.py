@@ -44,7 +44,7 @@ class VideoPressIE(InfoExtractor):
             r'<iframe[^>]+src=["\']((?:https?://)?videopress\.com/embed/[\da-zA-Z]+)',
             webpage)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         query = random_birthday('birth_year', 'birth_month', 'birth_day')

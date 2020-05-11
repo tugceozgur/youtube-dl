@@ -203,7 +203,7 @@ class DailymotionIE(DailymotionBaseInfoExtractor):
             urls.append('https://www.dailymotion.com/embed/video/' + mobj.group('id'))
         return urls
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id, playlist_id = re.match(self._VALID_URL, url).groups()
 
         if playlist_id:
@@ -343,7 +343,7 @@ class DailymotionPlaylistBaseIE(DailymotionBaseInfoExtractor):
             yield self.url_result(
                 node['url'], DailymotionIE.ie_key(), node['xid'])
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
         entries = OnDemandPagedList(functools.partial(
             self._fetch_page, playlist_id), self._PAGE_SIZE)

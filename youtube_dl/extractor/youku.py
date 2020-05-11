@@ -140,7 +140,7 @@ class YoukuIE(InfoExtractor):
         }
         return _dict.get(fm)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         self._set_cookie('youku.com', '__ysuid', self.get_ysuid())
@@ -267,7 +267,7 @@ class YoukuShowIE(InfoExtractor):
             self.url_result(self._proto_relative_url(video_url, 'http:'), YoukuIE.ie_key())
             for video_url in video_urls]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         show_id = self._match_id(url)
         webpage = self._download_webpage(url, show_id)
 

@@ -56,7 +56,7 @@ class SpringboardPlatformIE(InfoExtractor):
                 r'<iframe\b[^>]+\bsrc=(["\'])(?P<url>(?:https?:)?//cms\.springboardplatform\.com/embed_iframe/\d+/video/\d+.*?)\1',
                 webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id') or mobj.group('id_2')
         index = mobj.group('index') or mobj.group('index_2')

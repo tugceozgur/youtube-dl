@@ -211,7 +211,7 @@ class UdemyIE(InfoExtractor):
                 raise ExtractorError('Unable to login: %s' % error, expected=True)
             raise ExtractorError('Unable to log in')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         lecture_id = self._match_id(url)
 
         webpage = self._download_webpage(url, lecture_id)
@@ -434,7 +434,7 @@ class UdemyCourseIE(UdemyIE):
     def suitable(cls, url):
         return False if UdemyIE.suitable(url) else super(UdemyCourseIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         course_path = self._match_id(url)
 
         webpage = self._download_webpage(url, course_path)

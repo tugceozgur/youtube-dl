@@ -121,7 +121,7 @@ class NYTimesIE(NYTimesBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         return self._extract_video_from_id(video_id)
@@ -205,7 +205,7 @@ class NYTimesArticleIE(NYTimesBaseIE):
             'duration': int_or_none(track.get('duration')),
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
 
         webpage = self._download_webpage(url, page_id)

@@ -20,7 +20,7 @@ class ToypicsIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)
@@ -56,7 +56,7 @@ class ToypicsUserIE(InfoExtractor):
         'playlist_mincount': 19,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         username = self._match_id(url)
 
         profile_page = self._download_webpage(

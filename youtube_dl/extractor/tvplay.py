@@ -231,7 +231,7 @@ class TVPlayIE(InfoExtractor):
         }
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         geo_country = self._search_regex(
             r'https?://[^/]+\.([a-z]{2})', url,
@@ -377,7 +377,7 @@ class ViafreeIE(InfoExtractor):
     def suitable(cls, url):
         return False if TVPlayIE.suitable(url) else super(ViafreeIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         country, path = re.match(self._VALID_URL, url).groups()
         content = self._download_json(
             'https://viafree-content.mtg-api.com/viafree-content/v1/%s/path/%s' % (country, path), path)
@@ -442,7 +442,7 @@ class TVPlayHomeIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)

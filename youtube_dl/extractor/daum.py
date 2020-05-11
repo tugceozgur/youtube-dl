@@ -87,7 +87,7 @@ class DaumIE(DaumBaseIE):
         },
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = compat_urllib_parse_unquote(self._match_id(url))
         if not video_id.isdigit():
             video_id += '@my'
@@ -124,7 +124,7 @@ class DaumClipIE(DaumBaseIE):
     def suitable(cls, url):
         return False if DaumPlaylistIE.suitable(url) or DaumUserIE.suitable(url) else super(DaumClipIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         return self.url_result(
             self._KAKAO_EMBED_BASE + video_id, 'Kakao', video_id)
@@ -197,7 +197,7 @@ class DaumPlaylistIE(DaumListIE):
     def suitable(cls, url):
         return False if DaumUserIE.suitable(url) else super(DaumPlaylistIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         list_id = self._match_id(url)
 
         clip_result = self._check_clip(url, list_id)
@@ -249,7 +249,7 @@ class DaumUserIE(DaumListIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         list_id = self._match_id(url)
 
         clip_result = self._check_clip(url, list_id)

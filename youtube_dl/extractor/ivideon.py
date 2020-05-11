@@ -37,7 +37,7 @@ class IvideonIE(InfoExtractor):
 
     _QUALITIES = ('low', 'mid', 'hi')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         server_id, camera_id = mobj.group('id'), mobj.group('camera_id')
         camera_name, description = None, None

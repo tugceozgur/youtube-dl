@@ -115,7 +115,7 @@ class VideomoreIE(InfoExtractor):
         if mobj:
             return mobj.group('url')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('sid') or mobj.group('id')
 
@@ -206,7 +206,7 @@ class VideomoreVideoIE(InfoExtractor):
     def suitable(cls, url):
         return False if VideomoreIE.suitable(url) else super(VideomoreVideoIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -247,7 +247,7 @@ class VideomoreSeasonIE(InfoExtractor):
         return (False if (VideomoreIE.suitable(url) or VideomoreVideoIE.suitable(url))
                 else super(VideomoreSeasonIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)

@@ -93,7 +93,7 @@ class TikTokIE(TikTokBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
             'https://m.tiktok.com/v/%s.html' % video_id, video_id)
@@ -122,7 +122,7 @@ class TikTokUserIE(TikTokBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         user_id = self._match_id(url)
         data = self._download_json(
             'https://m.tiktok.com/h5/share/usr/list/%s/' % user_id, user_id,

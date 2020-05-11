@@ -11,7 +11,7 @@ class SpiegeltvIE(InfoExtractor):
         'only_matching': True,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self.url_result(
             'https://api.nexx.cloud/v3/748/videos/byid/%s'
             % self._match_id(url), ie=NexxIE.ie_key())

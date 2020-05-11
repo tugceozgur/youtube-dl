@@ -45,7 +45,7 @@ class SoundcloudEmbedIE(InfoExtractor):
             r'<iframe[^>]+src=(["\'])(?P<url>(?:https?://)?(?:w\.)?soundcloud\.com/player.+?)\1',
             webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         query = compat_urlparse.parse_qs(
             compat_urlparse.urlparse(url).query)
         api_url = query['url'][0]
@@ -467,7 +467,7 @@ class SoundcloudIE(InfoExtractor):
             'formats': formats
         }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
 
         track_id = mobj.group('track_id')
@@ -538,7 +538,7 @@ class SoundcloudSetIE(SoundcloudPlaylistBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
 
         full_title = '%s/sets/%s' % mobj.group('uploader', 'slug_title')
@@ -688,7 +688,7 @@ class SoundcloudUserIE(SoundcloudPagedPlaylistBaseIE):
         'spotlight': 'users/%s/spotlight',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         uploader = mobj.group('user')
 
@@ -716,7 +716,7 @@ class SoundcloudTrackStationIE(SoundcloudPagedPlaylistBaseIE):
         'playlist_mincount': 47,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         track_name = self._match_id(url)
 
         track = self._download_json(self._resolv_url(url), track_name)
@@ -741,7 +741,7 @@ class SoundcloudPlaylistIE(SoundcloudPlaylistBaseIE):
         'playlist_count': 6,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         playlist_id = mobj.group('id')
 

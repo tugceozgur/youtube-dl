@@ -20,7 +20,7 @@ class CommonMistakesIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         msg = (
             'You\'ve asked youtube-dl to download the URL "%s". '
             'That doesn\'t make any sense. '
@@ -42,7 +42,7 @@ class UnicodeBOMIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         real_url = self._match_id(url)
         self.report_warning(
             'Your URL starts with a Byte Order Mark (BOM). '

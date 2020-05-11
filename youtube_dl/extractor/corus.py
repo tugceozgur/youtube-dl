@@ -95,7 +95,7 @@ class CorusIE(ThePlatformFeedIE):
         'disneylachaine': 'disneyfr',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         domain, video_id = re.match(self._VALID_URL, url).groups()
         site = domain.split('.')[0]
         path = self._SITE_MAP.get(site, site)

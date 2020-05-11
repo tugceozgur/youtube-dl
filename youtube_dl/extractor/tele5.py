@@ -50,7 +50,7 @@ class Tele5IE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         qs = compat_urlparse.parse_qs(compat_urlparse.urlparse(url).query)
         video_id = (qs.get('vid') or qs.get('ve_id') or [None])[0]
 

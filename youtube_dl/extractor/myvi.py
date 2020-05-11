@@ -66,7 +66,7 @@ class MyviIE(SprutoBaseIE):
         if mobj:
             return mobj.group('url')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         spruto = self._download_json(
@@ -98,7 +98,7 @@ class MyviEmbedIE(InfoExtractor):
     def suitable(cls, url):
         return False if MyviIE.suitable(url) else super(MyviEmbedIE, cls).suitable(url)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(

@@ -161,7 +161,7 @@ class UstreamIE(InfoExtractor):
             formats.append(f)
         return formats
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         m = re.match(self._VALID_URL, url)
         video_id = m.group('id')
 
@@ -254,7 +254,7 @@ class UstreamChannelIE(InfoExtractor):
         'playlist_mincount': 17,
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         m = re.match(self._VALID_URL, url)
         display_id = m.group('slug')
         webpage = self._download_webpage(url, display_id)

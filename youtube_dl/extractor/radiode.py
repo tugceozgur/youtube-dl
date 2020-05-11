@@ -21,7 +21,7 @@ class RadioDeIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         radio_id = self._match_id(url)
         webpage = self._download_webpage(url, radio_id)
         jscode = self._search_regex(

@@ -66,7 +66,7 @@ class FoxNewsIE(AMPIE):
                 r'<(?:amp-)?iframe[^>]+\bsrc=(["\'])(?P<url>(?:https?:)?//video\.foxnews\.com/v/video-embed\.html?.*?\bvideo_id=\d+.*?)\1',
                 webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         host, video_id = re.match(self._VALID_URL, url).groups()
 
         info = self._extract_feed_info(
@@ -112,7 +112,7 @@ class FoxNewsArticleIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
 

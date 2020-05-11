@@ -90,7 +90,7 @@ class FOXIE(AdobePassIE):
                         'deviceId': compat_str(uuid.uuid4()),
                     }).encode())['accessToken']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         video = self._call_api('vodplayer/' + video_id, video_id)

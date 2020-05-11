@@ -42,7 +42,7 @@ class USATodayIE(InfoExtractor):
     }]
     BRIGHTCOVE_URL_TEMPLATE = 'http://players.brightcove.net/%s/default_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(update_url_query(url, {'ajax': 'true'}), display_id)
         ui_video_data = get_element_by_attribute('class', 'ui-video-data', webpage)

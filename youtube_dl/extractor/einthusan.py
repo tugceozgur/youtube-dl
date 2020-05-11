@@ -47,7 +47,7 @@ class EinthusanIE(InfoExtractor):
             encrypted_data[:10] + encrypted_data[-1] + encrypted_data[12:-1]
         )).decode('utf-8'), video_id)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         host = mobj.group('host')
         video_id = mobj.group('id')

@@ -60,7 +60,7 @@ class SkyNewsArabiaIE(SkyNewsArabiaBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_data = self._call_api('video', video_id)
         return self._extract_video_info(video_data)
@@ -94,7 +94,7 @@ class SkyNewsArabiaArticleIE(SkyNewsArabiaBaseIE):
         'playlist_mincount': 2,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         article_id = self._match_id(url)
         article_data = self._call_api('article', article_id)
         media_asset = article_data['mediaAsset']

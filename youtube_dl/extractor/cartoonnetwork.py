@@ -21,7 +21,7 @@ class CartoonNetworkIE(TurnerBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
 

@@ -28,7 +28,7 @@ class UstudioIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id, display_id = re.match(self._VALID_URL, url).groups()
 
         config = self._download_xml(
@@ -82,7 +82,7 @@ class UstudioEmbedIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         uploader_id, video_id = re.match(self._VALID_URL, url).groups()
         video_data = self._download_json(
             'http://app.ustudio.com/embed/%s/%s/config.json' % (uploader_id, video_id),

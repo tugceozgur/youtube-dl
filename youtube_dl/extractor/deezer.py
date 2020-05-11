@@ -25,7 +25,7 @@ class DeezerPlaylistIE(InfoExtractor):
         'skip': 'Only available in .de',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         if 'test' not in self._downloader.params:
             self._downloader.report_warning('For now, this extractor only supports the 30 second previews. Patches welcome!')
 

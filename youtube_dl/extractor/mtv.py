@@ -280,7 +280,7 @@ class MTVServicesInfoExtractor(InfoExtractor):
 
         return mgid
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         title = url_basename(url)
         webpage = self._download_webpage(url, title)
         mgid = self._extract_mgid(webpage)
@@ -319,7 +319,7 @@ class MTVServicesEmbeddedIE(MTVServicesInfoExtractor):
             'http://media.mtvnservices.com/pmt/e1/access/index.html?uri=%s&configtype=edge' % uri, video_id)
         return self._remove_template_parameter(config['feedWithQueryParams'])
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         mgid = mobj.group('mgid')
         return self._get_videos_info(mgid)
@@ -401,7 +401,7 @@ class MTVVideoIE(MTVServicesInfoExtractor):
     def _get_thumbnail_url(self, uri, itemdoc):
         return 'http://mtv.mtvnimages.com/uri/' + uri
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('videoid')
         uri = mobj.groupdict().get('mgid')

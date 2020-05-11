@@ -46,7 +46,7 @@ class PokemonIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id, display_id = re.match(self._VALID_URL, url).groups()
         webpage = self._download_webpage(url, video_id or display_id)
         video_data = extract_attributes(self._search_regex(

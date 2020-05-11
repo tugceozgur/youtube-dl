@@ -84,7 +84,7 @@ class NBCIE(AdobePassIE):
         }
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         permalink, video_id = re.match(self._VALID_URL, url).groups()
         permalink = 'http' + compat_urllib_parse_unquote(permalink)
         video_data = self._download_json(
@@ -184,7 +184,7 @@ class NBCSportsVPlayerIE(InfoExtractor):
         if iframe_m:
             return iframe_m.group('url')
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
         theplatform_url = self._og_search_video_url(webpage).replace(
@@ -209,7 +209,7 @@ class NBCSportsIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
         return self.url_result(
@@ -233,7 +233,7 @@ class NBCSportsStreamIE(AdobePassIE):
         'skip': 'Requires Adobe Pass Authentication',
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         live_source = self._download_json(
             'http://stream.nbcsports.com/data/live_sources_%s.json' % video_id,
@@ -291,7 +291,7 @@ class CSNNEIE(InfoExtractor):
         }
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         return {
@@ -389,7 +389,7 @@ class NBCNewsIE(ThePlatformIE):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 
@@ -469,7 +469,7 @@ class NBCOlympicsIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(url, display_id)
@@ -507,7 +507,7 @@ class NBCOlympicsStreamIE(AdobePassIE):
     }
     _DATA_URL_TEMPLATE = 'http://stream.nbcolympics.com/data/%s_%s.json'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         pid = self._search_regex(r'pid\s*=\s*(\d+);', webpage, 'pid')

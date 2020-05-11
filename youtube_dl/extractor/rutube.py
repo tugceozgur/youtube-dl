@@ -138,7 +138,7 @@ class RutubeIE(RutubeBaseIE):
             r'<iframe[^>]+?src=(["\'])(?P<url>(?:https?:)?//rutube\.ru/embed/[\da-z]{32}.*?)\1',
             webpage)]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         info = self._download_and_extract_info(video_id)
         info['formats'] = self._download_and_extract_formats(video_id)
@@ -174,7 +174,7 @@ class RutubeEmbedIE(RutubeBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         embed_id = self._match_id(url)
         # Query may contain private videos token and should be passed to API
         # requests (see #19163)
@@ -227,7 +227,7 @@ class RutubePlaylistBaseIE(RutubeBaseIE):
             self._entries(playlist_id, *args, **kwargs),
             playlist_id, kwargs.get('playlist_name'))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         return self._extract_playlist(self._match_id(url))
 
 
@@ -255,7 +255,7 @@ class RutubeMovieIE(RutubePlaylistBaseIE):
     _MOVIE_TEMPLATE = 'http://rutube.ru/api/metainfo/tv/%s/?format=json'
     _PAGE_TEMPLATE = 'http://rutube.ru/api/metainfo/tv/%s/video?page=%s&format=json'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         movie_id = self._match_id(url)
         movie = self._download_json(
             self._MOVIE_TEMPLATE % movie_id, movie_id,
@@ -306,7 +306,7 @@ class RutubePlaylistIE(RutubePlaylistBaseIE):
     def _next_page_url(self, page_num, playlist_id, item_kind):
         return self._PAGE_TEMPLATE % (item_kind, playlist_id, page_num)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         qs = compat_parse_qs(compat_urllib_parse_urlparse(url).query)
         playlist_kind = qs['pl_type'][0]
         playlist_id = qs['pl_id'][0]

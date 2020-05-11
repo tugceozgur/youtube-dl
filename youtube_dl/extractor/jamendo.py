@@ -42,7 +42,7 @@ class JamendoIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         track_id, display_id = self._VALID_URL_RE.match(url).groups()
         webpage = self._download_webpage(
             'https://www.jamendo.com/track/' + track_id, track_id)
@@ -163,7 +163,7 @@ class JamendoAlbumIE(InfoExtractor):
                 'X-Jam-Call': '$%s*%s~' % (hashlib.sha1((path + rand).encode()).hexdigest(), rand)
             })[0]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         album_id = self._match_id(url)
         album = self._call_api('album', album_id)
         album_name = album.get('name')

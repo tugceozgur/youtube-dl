@@ -27,7 +27,7 @@ class TechTVMITIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         raw_page = self._download_webpage(
             'http://techtv.mit.edu/videos/%s' % video_id, video_id)
@@ -97,7 +97,7 @@ class OCWMITIE(InfoExtractor):
         }
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         topic = mobj.group('topic')
 

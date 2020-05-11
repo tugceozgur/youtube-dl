@@ -25,7 +25,7 @@ class RadioBremenIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         meta_url = 'http://www.radiobremen.de/apps/php/mediathek/metadaten.php?id=%s' % video_id

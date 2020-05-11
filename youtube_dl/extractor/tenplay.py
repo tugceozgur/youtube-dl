@@ -33,7 +33,7 @@ class TenPlayIE(InfoExtractor):
     }]
     BRIGHTCOVE_URL_TEMPLATE = 'https://players.brightcove.net/2199827728001/cN6vRtRQt_default/index.html?videoId=%s'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         content_id = self._match_id(url)
         data = self._download_json(
             'https://10play.com.au/api/video/' + content_id, content_id)

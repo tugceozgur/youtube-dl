@@ -64,7 +64,7 @@ class TouTvIE(RadioCanadaIE):
             raise
         self._claims = self._call_api('validation/v2/getClaims')['claims']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         path = self._match_id(url)
         metadata = self._download_json(
             'https://services.radio-canada.ca/toutv/presentation/%s' % path, path, query={

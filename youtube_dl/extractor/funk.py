@@ -30,7 +30,7 @@ class FunkIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id, nexx_id = re.match(self._VALID_URL, url).groups()
         video = self._download_json(
             'https://www.funk.net/api/v4.0/videos/' + nexx_id, nexx_id)

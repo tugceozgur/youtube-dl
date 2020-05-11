@@ -179,7 +179,7 @@ class NPOIE(NPOBaseIE):
                 for ie in (NPOLiveIE, NPORadioIE, NPORadioFragmentIE))
                 else super(NPOIE, cls).suitable(url))
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         return self._get_info(url, video_id) or self._get_old_info(video_id)
 
@@ -503,7 +503,7 @@ class NPOLiveIE(NPOBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url) or 'npo-1'
 
         webpage = self._download_webpage(url, display_id)
@@ -545,7 +545,7 @@ class NPORadioIE(InfoExtractor):
     def _html_get_attribute_regex(attribute):
         return r'{0}\s*=\s*\'([^\']+)\''.format(attribute)
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(url, video_id)
@@ -583,7 +583,7 @@ class NPORadioFragmentIE(InfoExtractor):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         audio_id = self._match_id(url)
 
         webpage = self._download_webpage(url, audio_id)
@@ -603,7 +603,7 @@ class NPORadioFragmentIE(InfoExtractor):
 
 
 class NPODataMidEmbedIE(InfoExtractor):
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
         webpage = self._download_webpage(url, display_id)
         video_id = self._search_regex(
@@ -657,7 +657,7 @@ class HetKlokhuisIE(NPODataMidEmbedIE):
 
 
 class NPOPlaylistBaseIE(NPOIE):
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(url, playlist_id)

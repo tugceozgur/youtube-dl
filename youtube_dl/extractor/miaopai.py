@@ -19,7 +19,7 @@ class MiaoPaiIE(InfoExtractor):
 
     _USER_AGENT_IPAD = 'Mozilla/5.0 (iPad; CPU OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
             url, video_id, headers={'User-Agent': self._USER_AGENT_IPAD})

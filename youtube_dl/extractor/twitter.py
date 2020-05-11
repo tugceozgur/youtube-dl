@@ -177,7 +177,7 @@ class TwitterCardIE(InfoExtractor):
         },
     ]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         status_id = self._match_id(url)
         return self.url_result(
             'https://twitter.com/statuses/' + status_id,
@@ -382,7 +382,7 @@ class TwitterIE(TwitterBaseIE):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         twid = self._match_id(url)
         status = self._call_api(
             'statuses/show/%s.json' % twid, twid, {
@@ -533,7 +533,7 @@ class TwitterAmplifyIE(TwitterBaseIE):
         },
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(url, video_id)
 
@@ -578,7 +578,7 @@ class TwitterBroadcastIE(TwitterBaseIE, PeriscopeBaseIE):
     IE_NAME = 'twitter:broadcast'
     _VALID_URL = TwitterBaseIE._BASE_REGEX + r'i/broadcasts/(?P<id>[0-9a-zA-Z]{13})'
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         broadcast_id = self._match_id(url)
         broadcast = self._call_api(
             'broadcasts/show.json', broadcast_id,

@@ -63,7 +63,7 @@ class LEGOIE(InfoExtractor):
         'Highest': (128, 720, 1280),
     }
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         locale, video_id = re.match(self._VALID_URL, url).groups()
         countries = [locale.split('-')[1].upper()]
         self._initialize_geo_bypass({

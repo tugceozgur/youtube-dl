@@ -86,7 +86,7 @@ class XuiteIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         # /play/ URLs provide embedded video URL and more metadata
         url = url.replace('/embed/', '/play/')
         video_id = self._match_id(url)

@@ -62,7 +62,7 @@ class PlayPlusTVIE(InfoExtractor):
 
         self._profile = self._call_api('Profiles')['list'][0]['_id']
 
-    def _real_extract(self, url):
+    def _real_extract(self, url, website=''):
         project_id, media_id = re.match(self._VALID_URL, url).groups()
         media = self._call_api(
             'Media', media_id, {

@@ -868,12 +868,12 @@ class YoutubeDL(object):
             return self.extract_info(ie_result['url'],
                                      download,
                                      ie_key=ie_result.get('ie_key'),
-                                     extra_info=extra_info, website='')
+                                     extra_info=extra_info, website=website)
         elif result_type == 'url_transparent':
             # Use the information from the embedding page
             info = self.extract_info(
                 ie_result['url'], ie_key=ie_result.get('ie_key'),
-                extra_info=extra_info, download=False, process=False, website='')
+                extra_info=extra_info, download=False, process=False, website=website)
 
             # extract_info may return None when ignoreerrors is enabled and
             # extraction failed with an error, don't crash and return early
@@ -2018,7 +2018,7 @@ class YoutubeDL(object):
             try:
                 # It also downloads the videos
                 res = self.extract_info(
-                    url, force_generic_extractor=self.params.get('force_generic_extractor', False), website='')
+                    url, force_generic_extractor=self.params.get('force_generic_extractor', False), website=website)
             except UnavailableVideoError:
                 self.report_error('unable to download video')
             except MaxDownloadsReached:

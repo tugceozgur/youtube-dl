@@ -148,7 +148,7 @@ class TumblrIE(InfoExtractor):
         blog = m_url.group('blog_name')
 
         url = 'http://%s.tumblr.com/post/%s/' % (blog, video_id)
-        webpage, urlh = self._download_webpage_handle(url, video_id)
+        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
 
         redirect_url = urlh.geturl()
         if 'tumblr.com/safe-mode' in redirect_url or redirect_url.startswith('/safe-mode'):

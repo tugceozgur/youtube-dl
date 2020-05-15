@@ -190,7 +190,7 @@ class ViideaIE(InfoExtractor):
         # It's probably a playlist
         if not parts or lecture_type == 'evt':
             playlist_webpage = self._download_webpage(
-                '%s/site/ajax/drilldown/?id=%s' % (base_url, lecture_id), lecture_id)
+                '%s/site/ajax/drilldown/?id=%s' % (base_url, lecture_id), lecture_id, website=website)
             entries = [
                 self.url_result(compat_urlparse.urljoin(url, video_url), 'Viidea')
                 for _, video_url in re.findall(

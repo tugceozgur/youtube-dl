@@ -34,7 +34,7 @@ class VidbitIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            compat_urlparse.urljoin(url, '/watch?v=%s' % video_id), video_id)
+            compat_urlparse.urljoin(url, '/watch?v=%s' % video_id), video_id, website=website)
 
         video_url, title = [None] * 2
 

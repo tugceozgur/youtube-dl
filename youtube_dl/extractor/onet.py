@@ -261,7 +261,7 @@ class OnetPlIE(InfoExtractor):
                 r'data-src=(["\'])(?P<url>(?:https?:)?//pulsembed\.eu/.+?)\1',
                 webpage, 'pulsembed url', group='url')
             webpage = self._download_webpage(
-                pulsembed_url, video_id, 'Downloading pulsembed webpage')
+                pulsembed_url, video_id, 'Downloading pulsembed webpage', website=website)
             mvp_id = self._search_mvp_id(webpage)
 
         return self.url_result(

@@ -26,7 +26,7 @@ class ReutersIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
-            'http://www.reuters.com/assets/iframe/yovideo?videoId=%s' % video_id, video_id)
+            'http://www.reuters.com/assets/iframe/yovideo?videoId=%s' % video_id, video_id, website=website)
         video_data = js_to_json(self._search_regex(
             r'(?s)Reuters\.yovideo\.drawPlayer\(({.*?})\);',
             webpage, 'video data'))

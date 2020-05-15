@@ -1706,7 +1706,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
 
         # Get video webpage
         url = proto + '://www.youtube.com/watch?v=%s&gl=US&hl=en&has_verified=1&bpctr=9999999999' % video_id
-        video_webpage, urlh = self._download_webpage_handle(url, video_id)
+        video_webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
 
         qs = compat_parse_qs(compat_urllib_parse_urlparse(urlh.geturl()).query)
         video_id = qs.get('v', [None])[0] or video_id
@@ -1769,7 +1769,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                 video_info_webpage = self._download_webpage(
                     video_info_url, video_id,
                     note='Refetching age-gated info webpage',
-                    errnote='unable to download video info webpage')
+                    errnote='unable to download video info webpage', website=website)
             except ExtractorError:
                 video_info_webpage = None
             if video_info_webpage:
@@ -1999,7 +1999,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                             if embed_webpage is None:
                                 embed_url = proto + '://www.youtube.com/embed/%s' % video_id
                                 embed_webpage = self._download_webpage(
-                                    embed_url, video_id, 'Downloading embed webpage')
+                                    embed_url, video_id, 'Downloading embed webpage', website=website)
                             jsplayer_url_json = self._search_regex(
                                 ASSETS_RE, embed_webpage, 'JS player URL')
 
@@ -2673,7 +2673,7 @@ class YoutubePlaylistIE(YoutubePlaylistBaseInfoExtractor):
         for n in itertools.count(1):
             url = 'https://youtube.com/watch?v=%s&list=%s' % (last_id, playlist_id)
             webpage = self._download_webpage(
-                url, playlist_id, 'Downloading page {0} of Youtube mix'.format(n))
+                url, playlist_id, 'Downloading page {0} of Youtube mix'.format(n), website=website)
             new_ids = orderedSet(re.findall(
                 r'''(?xs)data-video-username=".*?".*?
                            href="/watch\?v=([0-9A-Za-z_-]{11})&amp;[^"]*?list=%s''' % re.escape(playlist_id),
@@ -3223,7 +3223,7 @@ class YoutubeFavouritesIE(YoutubeBaseInfoExtractor):
     _LOGIN_REQUIRED = True
 
     def _real_extract(self, url, website=''):
-        webpage = self._download_webpage('https://www.youtube.com/my_favorites', 'Youtube Favourites videos')
+        webpage = self._download_webpage('https://www.youtube.com/my_favorites', 'Youtube Favourites videos', website=website)
         playlist_id = self._search_regex(r'list=(.+?)["&]', webpage, 'favourites playlist id')
         return self.url_result(playlist_id, 'YoutubePlaylist')
 

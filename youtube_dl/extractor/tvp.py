@@ -118,7 +118,7 @@ class TVPEmbedIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'http://www.tvp.pl/sess/tvplayer.php?object_id=%s' % video_id, video_id)
+            'http://www.tvp.pl/sess/tvplayer.php?object_id=%s' % video_id, video_id, website=websit)
 
         error = self._html_search_regex(
             r'(?s)<p[^>]+\bclass=["\']notAvailable__text["\'][^>]*>(.+?)</p>',

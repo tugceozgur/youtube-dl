@@ -41,7 +41,7 @@ class RedTubeIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
-            'http://www.redtube.com/%s' % video_id, video_id)
+            'http://www.redtube.com/%s' % video_id, video_id, website=website)
 
         ERRORS = (
             (('video-deleted-info', '>This video has been removed'), 'has been removed'),

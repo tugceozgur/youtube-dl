@@ -300,7 +300,7 @@ class VrtNUIE(GigyaBaseIE):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage, urlh = self._download_webpage_handle(url, display_id)
+        webpage, urlh = self._download_webpage_handle(url, display_id, website=website)
 
         info = self._search_json_ld(webpage, display_id, default={})
 

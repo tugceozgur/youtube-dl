@@ -43,7 +43,7 @@ class VodlockerIE(InfoExtractor):
             req = sanitized_Request(url, post)
             req.add_header('Content-type', 'application/x-www-form-urlencoded')
             webpage = self._download_webpage(
-                req, video_id, 'Downloading video page')
+                req, video_id, 'Downloading video page', website=website)
 
         def extract_file_url(html, default=NO_DEFAULT):
             return self._search_regex(
@@ -56,7 +56,7 @@ class VodlockerIE(InfoExtractor):
                 r'<iframe[^>]+src=(["\'])(?P<url>(?:https?://)?vodlocker\.(?:com|city)/embed-.+?)\1',
                 webpage, 'embed url', group='url')
             embed_webpage = self._download_webpage(
-                embed_url, video_id, 'Downloading embed webpage')
+                embed_url, video_id, 'Downloading embed webpage', website=website)
             video_url = extract_file_url(embed_webpage)
             thumbnail_webpage = embed_webpage
         else:

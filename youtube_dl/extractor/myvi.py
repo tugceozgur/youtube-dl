@@ -102,7 +102,7 @@ class MyviEmbedIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'https://www.myvi.tv/embed/%s' % video_id, video_id)
+            'https://www.myvi.tv/embed/%s' % video_id, video_id, website=website)
 
         myvi_id = self._search_regex(
             r'CreatePlayer\s*\(\s*["\'].*?\bv=([\da-zA-Z_]+)',

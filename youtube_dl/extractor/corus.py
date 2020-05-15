@@ -116,7 +116,7 @@ class CorusIE(ThePlatformFeedIE):
             note = 'Downloading%s smil file' % (' ' + source_type if source_type else '')
             resp = self._download_webpage(
                 smil_url, video_id, note, fatal=False,
-                headers=self.geo_verification_headers())
+                headers=self.geo_verification_headers(), website=website)
             if not resp:
                 continue
             error = self._parse_json(resp, video_id, fatal=False)

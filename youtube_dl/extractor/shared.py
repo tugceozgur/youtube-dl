@@ -22,7 +22,7 @@ class SharedBaseIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage, urlh = self._download_webpage_handle(url, video_id)
+        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
 
         if self._FILE_NOT_FOUND in webpage:
             raise ExtractorError(

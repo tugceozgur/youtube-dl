@@ -44,7 +44,7 @@ class VidziIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'http://vidzi.tv/%s' % video_id, video_id)
+            'http://vidzi.tv/%s' % video_id, video_id, website=website)
         title = self._html_search_regex(
             r'(?s)<h2 class="video-title">(.*?)</h2>', webpage, 'title')
 

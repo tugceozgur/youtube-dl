@@ -47,7 +47,7 @@ class DrTuberIE(InfoExtractor):
         display_id = mobj.group('display_id') or video_id
 
         webpage = self._download_webpage(
-            'http://www.drtuber.com/video/%s' % video_id, display_id)
+            'http://www.drtuber.com/video/%s' % video_id, display_id, website=website))
 
         video_data = self._download_json(
             'http://www.drtuber.com/player_config_json/', video_id, query={

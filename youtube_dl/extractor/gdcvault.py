@@ -132,7 +132,7 @@ class GDCVaultIE(InfoExtractor):
         display_id = name or video_id
 
         webpage_url = 'http://www.gdcvault.com/play/' + video_id
-        start_page = self._download_webpage(webpage_url, display_id)
+        start_page = self._download_webpage(webpage_url, display_id, website=website)
 
         direct_url = self._search_regex(
             r's1\.addVariable\("file",\s*encodeURIComponent\("(/[^"]+)"\)\);',

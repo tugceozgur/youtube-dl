@@ -53,13 +53,13 @@ class MTVServicesInfoExtractor(InfoExtractor):
             return None
         return thumb_node.get('url') or thumb_node.text or None
 
-    def _extract_mobile_video_formats(self, mtvn_id):
+    def _extract_mobile_video_formats(self, mtvn_id, website=''):
         webpage_url = self._MOBILE_TEMPLATE % mtvn_id
         req = sanitized_Request(webpage_url)
         # Otherwise we get a webpage that would execute some javascript
         req.add_header('User-Agent', 'curl/7')
         webpage = self._download_webpage(req, mtvn_id,
-                                         'Downloading mobile page')
+                                         'Downloading mobile page', website=website)
         metrics_url = unescapeHTML(self._search_regex(r'<a href="(http://metrics.+?)"', webpage, 'url'))
         req = HEADRequest(metrics_url)
         response = self._request_webpage(req, mtvn_id, 'Resolving url')
@@ -68,12 +68,12 @@ class MTVServicesInfoExtractor(InfoExtractor):
         url = re.sub(r'.+pxE=mp4', 'http://mtvnmobile.vo.llnwd.net/kip0/_pxn=0+_pxK=18639+_pxE=mp4', url, 1)
         return [{'url': url, 'ext': 'mp4'}]
 
-    def _extract_video_formats(self, mdoc, mtvn_id, video_id):
+    def _extract_video_formats(self, mdoc, mtvn_id, video_id, website=''):
         if re.match(r'.*/(error_country_block\.swf|geoblock\.mp4|copyright_error\.flv(?:\?geo\b.+?)?)$', mdoc.find('.//src').text) is not None:
             if mtvn_id is not None and self._MOBILE_TEMPLATE is not None:
                 self.to_screen('The normal version is not available from your '
                                'country, trying with the mobile version')
-                return self._extract_mobile_video_formats(mtvn_id)
+                return self._extract_mobile_video_formats(mtvn_id, website=website)
             raise ExtractorError('This video is not available from your country.',
                                  expected=True)
 
@@ -129,7 +129,7 @@ class MTVServicesInfoExtractor(InfoExtractor):
                 })
         return subtitles
 
-    def _get_video_info(self, itemdoc, use_hls=True):
+    def _get_video_info(self, itemdoc, use_hls=True, website=''):
         uri = itemdoc.find('guid').text
         video_id = self._id_from_uri(uri)
         self.report_extraction(video_id)
@@ -183,7 +183,7 @@ class MTVServicesInfoExtractor(InfoExtractor):
         if mtvn_id_node is not None:
             mtvn_id = mtvn_id_node.text
 
-        formats = self._extract_video_formats(mediagen_doc, mtvn_id, video_id)
+        formats = self._extract_video_formats(mediagen_doc, mtvn_id, video_id, website=website)
 
         # Some parts of complete video may be missing (e.g. missing Act 3 in
         # http://www.southpark.de/alle-episoden/s14e01-sexual-healing)
@@ -209,13 +209,13 @@ class MTVServicesInfoExtractor(InfoExtractor):
             data['lang'] = self._LANG
         return data
 
-    def _get_videos_info(self, uri, use_hls=True):
+    def _get_videos_info(self, uri, use_hls=True, website=''):
         video_id = self._id_from_uri(uri)
         feed_url = self._get_feed_url(uri)
         info_url = update_url_query(feed_url, self._get_feed_query(uri))
-        return self._get_videos_info_from_url(info_url, video_id, use_hls)
+        return self._get_videos_info_from_url(info_url, video_id, use_hls, website=website)
 
-    def _get_videos_info_from_url(self, url, video_id, use_hls=True):
+    def _get_videos_info_from_url(self, url, video_id, use_hls=True, website=''):
         idoc = self._download_xml(
             url, video_id,
             'Downloading info', transform_source=fix_xml_ampersands)
@@ -225,7 +225,7 @@ class MTVServicesInfoExtractor(InfoExtractor):
 
         entries = []
         for item in idoc.findall('.//item'):
-            info = self._get_video_info(item, use_hls)
+            info = self._get_video_info(item, use_hls, website=website)
             if info:
                 entries.append(info)
 
@@ -284,7 +284,7 @@ class MTVServicesInfoExtractor(InfoExtractor):
         title = url_basename(url)
         webpage = self._download_webpage(url, title, website=website)
         mgid = self._extract_mgid(webpage)
-        videos_info = self._get_videos_info(mgid)
+        videos_info = self._get_videos_info(mgid, website=website)
         return videos_info
 
 
@@ -322,7 +322,7 @@ class MTVServicesEmbeddedIE(MTVServicesInfoExtractor):
     def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         mgid = mobj.group('mgid')
-        return self._get_videos_info(mgid)
+        return self._get_videos_info(mgid, website=website)
 
 
 class MTVIE(MTVServicesInfoExtractor):
@@ -417,7 +417,7 @@ class MTVVideoIE(MTVServicesInfoExtractor):
                 return self.url_result('vevo:%s' % vevo_id, ie='Vevo')
 
             uri = self._html_search_regex(r'/uri/(.*?)\?', webpage, 'uri')
-        return self._get_videos_info(uri)
+        return self._get_videos_info(uri, website=website)
 
 
 class MTVDEIE(MTVServicesInfoExtractor):

@@ -45,7 +45,7 @@ class TunePkIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'https://tune.pk/video/%s' % video_id, video_id)
+            'https://tune.pk/video/%s' % video_id, video_id, website=websit)
 
         details = self._parse_json(
             self._search_regex(

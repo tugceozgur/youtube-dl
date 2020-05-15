@@ -49,8 +49,7 @@ class StreamcloudIE(InfoExtractor):
 
         webpage = self._download_webpage(
             url, video_id, data=urlencode_postdata(fields), headers={
-                b'Content-Type': b'application/x-www-form-urlencoded',
-            })
+                b'Content-Type': b'application/x-www-form-urlencoded',}, website=website)
 
         try:
             title = self._html_search_regex(

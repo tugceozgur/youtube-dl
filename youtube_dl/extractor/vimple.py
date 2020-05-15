@@ -51,7 +51,7 @@ class VimpleIE(SprutoBaseIE):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'http://player.vimple.ru/iframe/%s' % video_id, video_id)
+            'http://player.vimple.ru/iframe/%s' % video_id, video_id, website=website)
 
         spruto = self._parse_json(
             self._search_regex(

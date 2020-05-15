@@ -61,8 +61,7 @@ class CTVNewsIE(InfoExtractor):
         else:
             webpage = self._download_webpage('http://www.ctvnews.ca/%s' % page_id, page_id, query={
                 'ot': 'example.AjaxPageLayout.ot',
-                'maxItemsPerPage': 1000000,
-            })
+                'maxItemsPerPage': 1000000,}website=website,)
             entries = [ninecninemedia_url_result(clip_id) for clip_id in orderedSet(
                 re.findall(r'clip\.id\s*=\s*(\d+);', webpage))]
             return self.playlist_result(entries, page_id)

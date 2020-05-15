@@ -112,7 +112,7 @@ class XFileShareIE(InfoExtractor):
                 data=urlencode_postdata(fields), headers={
                     'Referer': url,
                     'Content-type': 'application/x-www-form-urlencoded',
-                })
+                }, website=website)
 
         title = (self._search_regex(
             (r'style="z-index: [0-9]+;">([^<]+)</span>',

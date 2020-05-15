@@ -137,7 +137,7 @@ class OdnoklassnikiIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'http://ok.ru/video/%s' % video_id, video_id)
+            'http://ok.ru/video/%s' % video_id, video_id, website=website)
 
         error = self._search_regex(
             r'[^>]+class="vp_video_stub_txt"[^>]*>([^<]+)<',

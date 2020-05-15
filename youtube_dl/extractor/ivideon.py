@@ -44,7 +44,7 @@ class IvideonIE(InfoExtractor):
         camera_url = compat_urlparse.urljoin(
             url, '/tv/camera/%s/%s/' % (server_id, camera_id))
 
-        webpage = self._download_webpage(camera_url, server_id, fatal=False)
+        webpage = self._download_webpage(camera_url, server_id, fatal=False, website=website)
         if webpage:
             config_string = self._search_regex(
                 r'var\s+config\s*=\s*({.+?});', webpage, 'config', default=None)

@@ -51,7 +51,7 @@ class IwaraIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage, urlh = self._download_webpage_handle(url, video_id)
+        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
 
         hostname = compat_urllib_parse_urlparse(urlh.geturl()).hostname
         # ecchi is 'sexy' in Japanese

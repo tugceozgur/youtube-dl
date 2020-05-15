@@ -73,7 +73,7 @@ class TwentyFourVideoIE(InfoExtractor):
         host = mobj.group('host')
 
         webpage = self._download_webpage(
-            'http://%s/video/view/%s' % (host, video_id), video_id)
+            'http://%s/video/view/%s' % (host, video_id), video_id, website=websit)
 
         title = self._og_search_title(webpage)
         description = self._html_search_regex(

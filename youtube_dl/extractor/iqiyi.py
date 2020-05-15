@@ -338,7 +338,7 @@ class IqiyiIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         webpage = self._download_webpage(
-            url, 'temp_id', note='download video page')
+            url, 'temp_id', note='download video page', website=website)
 
         # There's no simple way to determine whether an URL is a playlist or not
         # Sometimes there are playlist links in individual videos, so treat it

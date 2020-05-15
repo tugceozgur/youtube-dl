@@ -147,7 +147,7 @@ class YoukuIE(InfoExtractor):
         self._set_cookie('youku.com', 'xreferrer', 'http://www.youku.com')
 
         _, urlh = self._download_webpage_handle(
-            'https://log.mmstat.com/eg.js', video_id, 'Retrieving cna info')
+            'https://log.mmstat.com/eg.js', video_id, 'Retrieving cna info', website=website)
         # The etag header is '"foobar"'; let's remove the double quotes
         cna = urlh.headers['etag'][1:-1]
 

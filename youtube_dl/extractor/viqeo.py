@@ -50,7 +50,7 @@ class ViqeoIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'https://cdn.viqeo.tv/embed/?vid=%s' % video_id, video_id)
+            'https://cdn.viqeo.tv/embed/?vid=%s' % video_id, video_id, website=website)
 
         data = self._parse_json(
             self._search_regex(

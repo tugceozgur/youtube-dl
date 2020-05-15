@@ -102,7 +102,7 @@ class PladformIE(InfoExtractor):
 
         webpage = self._download_webpage(
             'http://video.pladform.ru/catalog/video/videoid/%s' % video_id,
-            video_id)
+            video_id, website=website)
 
         title = self._og_search_title(webpage, fatal=False) or xpath_text(
             video, './/title', 'title', fatal=True)

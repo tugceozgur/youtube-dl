@@ -58,13 +58,13 @@ class MoeVideoIE(InfoExtractor):
 
         webpage = self._download_webpage(
             'http://%s/video/%s' % (host, video_id),
-            video_id, 'Downloading webpage')
+            video_id, 'Downloading webpage', website=website)
 
         title = self._og_search_title(webpage)
 
         embed_webpage = self._download_webpage(
             'http://%s/embed/%s' % (host, video_id),
-            video_id, 'Downloading embed webpage')
+            video_id, 'Downloading embed webpage', website=website)
         video = self._parse_json(self._search_regex(
             r'mvplayer\("#player"\s*,\s*({.+})',
             embed_webpage, 'mvplayer'), video_id)['video']

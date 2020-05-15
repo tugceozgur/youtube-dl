@@ -43,7 +43,7 @@ class TrailerAddictIE(InfoExtractor):
             fvar = 'fvar'
 
         info_url = 'http://www.traileraddict.com/%s.php?tid=%s' % (fvar, str(video_id))
-        info_webpage = self._download_webpage(info_url, video_id, 'Downloading the info webpage')
+        info_webpage = self._download_webpage(info_url, video_id, 'Downloading the info webpage', website=websit)
 
         final_url = self._search_regex(r'&fileurl=(.+)',
                                        info_webpage, 'Download url').replace('%3F', '?')

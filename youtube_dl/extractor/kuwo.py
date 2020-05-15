@@ -93,7 +93,7 @@ class KuwoIE(KuwoBaseIE):
         song_id = self._match_id(url)
         webpage, urlh = self._download_webpage_handle(
             url, song_id, note='Download song detail info',
-            errnote='Unable to get song detail info')
+            errnote='Unable to get song detail info', website=website)
         if song_id not in urlh.geturl() or '对不起，该歌曲由于版权问题已被下线，将返回网站首页' in webpage:
             raise ExtractorError('this song has been offline because of copyright issues', expected=True)
 
@@ -155,7 +155,7 @@ class KuwoAlbumIE(InfoExtractor):
 
         webpage = self._download_webpage(
             url, album_id, note='Download album info',
-            errnote='Unable to get album info')
+            errnote='Unable to get album info', website=website)
 
         album_name = self._html_search_regex(
             r'<div[^>]+class="comm"[^<]+<h1[^>]+title="([^"]+)"', webpage,
@@ -188,7 +188,7 @@ class KuwoChartIE(InfoExtractor):
         chart_id = self._match_id(url)
         webpage = self._download_webpage(
             url, chart_id, note='Download chart info',
-            errnote='Unable to get chart info')
+            errnote='Unable to get chart info', website=website)
 
         entries = [
             self.url_result(song_url, 'Kuwo') for song_url in re.findall(
@@ -224,7 +224,7 @@ class KuwoSingerIE(InfoExtractor):
         singer_id = self._match_id(url)
         webpage = self._download_webpage(
             url, singer_id, note='Download singer info',
-            errnote='Unable to get singer info')
+            errnote='Unable to get singer info', website=website)
 
         singer_name = self._html_search_regex(
             r'<h1>([^<]+)</h1>', webpage, 'singer name')
@@ -240,7 +240,7 @@ class KuwoSingerIE(InfoExtractor):
                 'http://www.kuwo.cn/artist/contentMusicsAjax',
                 singer_id, note='Download song list page #%d' % (page_num + 1),
                 errnote='Unable to get song list page #%d' % (page_num + 1),
-                query={'artistId': artist_id, 'pn': page_num, 'rn': self.PAGE_SIZE})
+                query={'artistId': artist_id, 'pn': page_num, 'rn': self.PAGE_SIZE}, website=website)
 
             return [
                 self.url_result(compat_urlparse.urljoin(url, song_url), 'Kuwo')
@@ -272,7 +272,7 @@ class KuwoCategoryIE(InfoExtractor):
         category_id = self._match_id(url)
         webpage = self._download_webpage(
             url, category_id, note='Download category info',
-            errnote='Unable to get category info')
+            errnote='Unable to get category info', website=website)
 
         category_name = self._html_search_regex(
             r'<h1[^>]+title="([^<>]+?)">[^<>]+?</h1>', webpage, 'category name')
@@ -321,7 +321,7 @@ class KuwoMvIE(KuwoBaseIE):
         song_id = self._match_id(url)
         webpage = self._download_webpage(
             url, song_id, note='Download mv detail info: %s' % song_id,
-            errnote='Unable to get mv detail info: %s' % song_id)
+            errnote='Unable to get mv detail info: %s' % song_id, website=website)
 
         mobj = re.search(
             r'<h1[^>]+title="(?P<song>[^"]+)">[^<]+<span[^>]+title="(?P<singer>[^"]+)"',

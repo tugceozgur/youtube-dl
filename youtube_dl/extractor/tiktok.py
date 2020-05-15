@@ -98,7 +98,7 @@ class TikTokIE(TikTokBaseIE):
         webpage = self._download_webpage(
             'https://m.tiktok.com/v/%s.html' % video_id, video_id)
         data = self._parse_json(self._search_regex(
-            r'\bdata\s*=\s*({.+?})\s*;', webpage, 'data'), video_id)
+            r'\bdata\s*=\s*({.+?})\s*;', webpage, 'data'), video_id, website=website)
         return self._extract_aweme(data)
 
 

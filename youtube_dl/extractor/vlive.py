@@ -99,7 +99,7 @@ class VLiveIE(NaverBaseIE):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'https://www.vlive.tv/video/%s' % video_id, video_id)
+            'https://www.vlive.tv/video/%s' % video_id, video_id, website=website)
 
         VIDEO_PARAMS_RE = r'\bvlive\.video\.init\(([^)]+)'
         VIDEO_PARAMS_FIELD = 'video params'
@@ -217,7 +217,7 @@ class VLiveChannelIE(InfoExtractor):
         channel_code = self._match_id(url)
 
         webpage = self._download_webpage(
-            'http://channels.vlive.tv/%s/video' % channel_code, channel_code)
+            'http://channels.vlive.tv/%s/video' % channel_code, channel_code, website=website)
 
         app_id = None
 
@@ -340,7 +340,7 @@ class VLivePlaylistIE(InfoExtractor):
 
         webpage = self._download_webpage(
             'http://www.vlive.tv/video/%s/playlist/%s'
-            % (video_id, playlist_id), playlist_id)
+            % (video_id, playlist_id), playlist_id, website=website)
 
         raw_item_ids = self._search_regex(
             r'playlistVideoSeqs\s*=\s*(\[[^]]+\])', webpage,

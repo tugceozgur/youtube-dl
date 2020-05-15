@@ -34,7 +34,7 @@ class KeezMoviesIE(InfoExtractor):
         'only_matching': True,
     }]
 
-    def _extract_info(self, url, fatal=True):
+    def _extract_info(self, url, fatal=True, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
         display_id = (mobj.group('display_id')
@@ -42,7 +42,7 @@ class KeezMoviesIE(InfoExtractor):
                       else None) or mobj.group('id')
 
         webpage = self._download_webpage(
-            url, display_id, headers={'Cookie': 'age_verified=1'})
+            url, display_id, headers={'Cookie': 'age_verified=1'}, website=website)
 
         formats = []
         format_urls = set()
@@ -125,7 +125,7 @@ class KeezMoviesIE(InfoExtractor):
         }
 
     def _real_extract(self, url, website=''):
-        webpage, info = self._extract_info(url, fatal=False)
+        webpage, info = self._extract_info(url, fatal=False, website=website)
         if not info['formats']:
             return self.url_result(url, 'Generic')
         info['view_count'] = str_to_int(self._search_regex(

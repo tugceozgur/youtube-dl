@@ -206,7 +206,7 @@ class SmotriIE(InfoExtractor):
         # Video JSON does not provide enough meta data
         # We will extract some from the video web page instead
         webpage_url = 'http://smotri.com/video/view/?id=%s' % video_id
-        webpage = self._download_webpage(webpage_url, video_id, 'Downloading video page')
+        webpage = self._download_webpage(webpage_url, video_id, 'Downloading video page', website=website)
 
         # Warning if video is unavailable
         warning = self._html_search_regex(
@@ -226,7 +226,7 @@ class SmotriIE(InfoExtractor):
             confirm_url = webpage_url + '&confirm=%s' % confirm_string
             webpage = self._download_webpage(
                 confirm_url, video_id,
-                'Downloading video page (age confirmed)')
+                'Downloading video page (age confirmed)', website=website)
             adult_content = True
         else:
             adult_content = False

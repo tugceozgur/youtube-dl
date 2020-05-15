@@ -204,7 +204,7 @@ class XimalayaAlbumIE(XimalayaBaseIE):
 
         webpage = self._download_webpage(self._TEMPLATE_URL % (scheme, uid, playlist_id), playlist_id,
                                          note='Download album page for %s' % playlist_id,
-                                         errnote='Unable to get album info')
+                                         errnote='Unable to get album info', website=website)
 
         title = self._html_search_regex(r'detailContent_title[^>]*><h1(?:[^>]+)?>([^<]+)</h1>',
                                         webpage, 'title', fatal=False)

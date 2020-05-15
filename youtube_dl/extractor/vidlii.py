@@ -44,7 +44,7 @@ class VidLiiIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'https://www.vidlii.com/watch?v=%s' % video_id, video_id)
+            'https://www.vidlii.com/watch?v=%s' % video_id, video_id, website=website)
 
         video_url = self._search_regex(
             r'src\s*:\s*(["\'])(?P<url>(?:https?://)?(?:(?!\1).)+)\1', webpage,

@@ -32,7 +32,7 @@ class MallTVIE(InfoExtractor):
         display_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            url, display_id, headers=self.geo_verification_headers())
+            url, display_id, headers=self.geo_verification_headers(), website=website)
 
         SOURCE_RE = r'(<source[^>]+\bsrc=(?:(["\'])(?:(?!\2).)+|[^\s]+)/(?P<id>[\da-z]+)/index)\b'
         video_id = self._search_regex(

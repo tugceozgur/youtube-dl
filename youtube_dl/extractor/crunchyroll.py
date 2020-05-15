@@ -425,7 +425,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         webpage = self._download_webpage(
             self._add_skip_wall(webpage_url), video_id,
             website,
-            headers=self.geo_verification_headers())
+            headers=self.geo_verification_headers(),
+            website=website)
         note_m = self._html_search_regex(
             r'<div class="showmedia-trailer-notice">(.+?)</div>',
             webpage, 'trailer-notice', default='')
@@ -668,7 +669,8 @@ class CrunchyrollShowPlaylistIE(CrunchyrollBaseIE):
 
         webpage = self._download_webpage(
             self._add_skip_wall(url), show_id,
-            headers=self.geo_verification_headers())
+            headers=self.geo_verification_headers(),
+            website=website)
         title = self._html_search_meta('name', webpage, default=None)
 
         episode_paths = re.findall(

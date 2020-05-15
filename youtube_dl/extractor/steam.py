@@ -78,12 +78,12 @@ class SteamIE(InfoExtractor):
 
         self._set_cookie('steampowered.com', 'mature_content', '1')
 
-        webpage = self._download_webpage(videourl, playlist_id)
+        webpage = self._download_webpage(videourl, playlist_id, website=website)
 
         if re.search('<h2>Please enter your birth date to continue:</h2>', webpage) is not None:
             videourl = self._AGECHECK_TEMPLATE % playlist_id
             self.report_age_confirmation()
-            webpage = self._download_webpage(videourl, playlist_id)
+            webpage = self._download_webpage(videourl, playlist_id, website=website)
 
         flash_vars = self._parse_json(self._search_regex(
             r'(?s)rgMovieFlashvars\s*=\s*({.+?});', webpage,

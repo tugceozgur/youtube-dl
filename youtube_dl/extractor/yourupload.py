@@ -29,7 +29,7 @@ class YourUploadIE(InfoExtractor):
 
         embed_url = 'http://www.yourupload.com/embed/%s' % video_id
 
-        webpage = self._download_webpage(embed_url, video_id)
+        webpage = self._download_webpage(embed_url, video_id, website=website)
 
         title = self._og_search_title(webpage)
         video_url = urljoin(embed_url, self._og_search_video_url(webpage))

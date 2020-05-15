@@ -141,7 +141,7 @@ class SpankwireIE(InfoExtractor):
 
         webpage = self._download_webpage(
             'https://www.spankwire.com/_/video%s/' % video_id, video_id,
-            fatal=False)
+            fatal=False, website=website)
         if webpage:
             info = self._search_json_ld(webpage, video_id, default={})
             thumbnail_url = None

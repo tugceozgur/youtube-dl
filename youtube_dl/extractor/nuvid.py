@@ -27,13 +27,13 @@ class NuvidIE(InfoExtractor):
 
         page_url = 'http://m.nuvid.com/video/%s' % video_id
         webpage = self._download_webpage(
-            page_url, video_id, 'Downloading video page')
+            page_url, video_id, 'Downloading video page', website=website)
         # When dwnld_speed exists and has a value larger than the MP4 file's
         # bitrate, Nuvid returns the MP4 URL
         # It's unit is 100bytes/millisecond, see mobile-nuvid-min.js for the algorithm
         self._set_cookie('nuvid.com', 'dwnld_speed', '10.0')
         mp4_webpage = self._download_webpage(
-            page_url, video_id, 'Downloading video page for MP4 format')
+            page_url, video_id, 'Downloading video page for MP4 format', website=website)
 
         html5_video_re = r'(?s)<(?:video|audio)[^<]*(?:>.*?<source[^>]*)?\s+src=["\'](.*?)["\']',
         video_url = self._html_search_regex(html5_video_re, webpage, video_id)

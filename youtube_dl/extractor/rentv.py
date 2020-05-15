@@ -32,7 +32,7 @@ class RENTVIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage('http://ren.tv/player/' + video_id, video_id)
+        webpage = self._download_webpage('http://ren.tv/player/' + video_id, video_id, website=website)
         config = self._parse_json(self._search_regex(
             r'config\s*=\s*({.+})\s*;', webpage, 'config'), video_id)
         title = config['title']

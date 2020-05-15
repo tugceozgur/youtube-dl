@@ -17,6 +17,8 @@ from ..utils import (
     parse_age_limit,
     parse_duration,
     try_get,
+    HEADRequest,
+    sanitized_Request,
 )
 
 
@@ -26,11 +28,17 @@ class NRKBaseIE(InfoExtractor):
     _api_host = None
 
     def _real_extract(self, url, website=''):
+        head_req = HEADRequest(url)
+        print('HEAD REQUEST', head_req)
+        sanitizad = sanitized_Request(url)
+        print('SANITIZED', sanitizad)
         video_id = self._match_id(url)
 
         api_hosts = (self._api_host, ) if self._api_host else self._API_HOSTS
-
+        print('API HOST', api_hosts)
+        print('VIDEO ID', video_id)
         for api_host in api_hosts:
+            print('http://%s/mediaelement/%s' % (api_host, video_id))
             data = self._download_json(
                 'http://%s/mediaelement/%s' % (api_host, video_id),
                 video_id, 'Downloading mediaelement JSON',
@@ -91,6 +99,7 @@ class NRKBaseIE(InfoExtractor):
 
         if not entries:
             media_url = data.get('mediaUrl')
+            print('MEDIA URL', media_url)
             if media_url:
                 formats = self._extract_akamai_formats(media_url, video_id)
                 self._sort_formats(formats)
@@ -706,7 +715,7 @@ class NRKSkoleIE(InfoExtractor):
 
         webpage = self._download_webpage(
             'https://mimir.nrk.no/plugin/1.0/static?mediaId=%s' % video_id,
-            video_id)
+            video_id, website=website)
 
         nrk_id = self._parse_json(
             self._search_regex(

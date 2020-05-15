@@ -36,7 +36,7 @@ class ImgurIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
-            'https://i.imgur.com/{id}.gifv'.format(id=video_id), video_id)
+            'https://i.imgur.com/{id}.gifv'.format(id=video_id), video_id, website=website)
 
         width = int_or_none(self._og_search_property(
             'video:width', webpage, default=None))

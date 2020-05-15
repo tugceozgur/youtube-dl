@@ -137,7 +137,7 @@ class SafariIE(SafariBaseIE):
         else:
             video_id = '%s-%s' % (mobj.group('course_id'), mobj.group('part'))
 
-            webpage, urlh = self._download_webpage_handle(url, video_id)
+            webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
 
             mobj = re.match(self._VALID_URL, urlh.geturl())
             reference_id = mobj.group('reference_id')

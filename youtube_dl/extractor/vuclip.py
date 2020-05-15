@@ -36,7 +36,7 @@ class VuClipIE(InfoExtractor):
             urlr = compat_urllib_parse_urlparse(url)
             adfree_url = urlr.scheme + '://' + urlr.netloc + ad_m.group(1)
             webpage = self._download_webpage(
-                adfree_url, video_id, note='Download post-ad page')
+                adfree_url, video_id, note='Download post-ad page', website=website)
 
         error_msg = self._html_search_regex(
             r'<p class="message">(.*?)</p>', webpage, 'error message',

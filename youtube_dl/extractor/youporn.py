@@ -77,7 +77,7 @@ class YouPornIE(InfoExtractor):
 
         webpage = self._download_webpage(
             'http://www.youporn.com/watch/%s' % video_id, display_id,
-            headers={'Cookie': 'age_verified=1'})
+            headers={'Cookie': 'age_verified=1'}, website=website)
 
         title = self._html_search_regex(
             r'(?s)<div[^>]+class=["\']watchVideoTitle[^>]+>(.+?)</div>',

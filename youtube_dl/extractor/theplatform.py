@@ -278,7 +278,7 @@ class ThePlatformIE(ThePlatformBaseIE, AdobePassIE):
             if source_url:
                 headers['Referer'] = source_url
             request = sanitized_Request(url, headers=headers)
-            webpage = self._download_webpage(request, video_id)
+            webpage = self._download_webpage(request, video_id, website=website)
             smil_url = self._search_regex(
                 r'<link[^>]+href=(["\'])(?P<url>.+?)\1[^>]+type=["\']application/smil\+xml',
                 webpage, 'smil url', group='url')

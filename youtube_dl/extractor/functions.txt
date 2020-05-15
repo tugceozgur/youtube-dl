@@ -1,0 +1,1223 @@
+leeco.py:            req = self._request_webpage(
+miomio.py:        self._request_webpage(
+mtv.py:        response = self._request_webpage(req, mtvn_id, 'Resolving url')
+niconico.py:        urlh = self._request_webpage(
+njpwworld.py:        self._request_webpage(
+orf.py:                    self._request_webpage(
+platzi.py:        urlh = self._request_webpage(
+sixplay.py:                        urlh = self._request_webpage(
+soundcloud.py:                urlh = self._request_webpage(
+spiegel.py:        handle = self._request_webpage(metadata_url, video_id)
+tfo.py:        self._request_webpage(HEADRequest('http://www.tfo.org/'), video_id)
+tunein.py:        urlh = self._request_webpage(grep -r "self._extract_m3u8_formats("
+umg.py:                urlh = self._request_webpage(f_url, video_id, fatal=False)
+viu.py:        viu_auth_res = self._request_webpage(
+vlive.py:        self._request_webpage(
+wat.py:            head = self._request_webpage(HEADRequest(req_url), video_id, 'Extracting %s url' % url_type, fatal=False)
+wdr.py:                        urlh = self._request_webpage(
+yesjapan.py:        req = self._request_webpage(
+youtube.py:            urlh = self._request_webpage(
+zattoo.py:        self._request_webpage(
+gdcvault.py:            video_url = self._request_webpage(
+generic.py:        head_response = self._request_webpage(
+generic.py:            full_response = self._request_webpage(request, video_id)
+generic.py:            full_response = self._request_webpage(request, video_id)
+googledrive.py:        urlh = self._request_webpage(
+hearthisat.py:            ext_handle = self._request_webpage(
+hotnewhiphop.py:        req = self._request_webpage(
+atresplayer.py:        self._request_webpage(
+atresplayer.py:        self._request_webpage(target_url, None, 'Following Target URL')
+biqle.py:        self._request_webpage(
+canalplus.py:        #     response = self._request_webpage(
+canvas.py:                self._request_webpage(
+common.py:        urlh = self._request_webpage(url_or_request, video_id, note, errnote, fatal, data=data, headers=headers, query=query, expected_status=expected_status)
+common.py:        #     self._request_webpage(url, video_id, 'Checking %s URL' % item, headers=headers)
+cultureunplugged.py:        self._request_webpage(HEADRequest(
+kuwo.py:        webpage, urlh = self._download_webpage_handle(
+lecturio.py:        _, urlh = self._download_webpage_handle(
+lecturio.py:        response, urlh = self._download_webpage_handle(
+linuxacademy.py:        webpage, urlh = self._download_webpage_handle(
+linuxacademy.py:        callback_page, urlh = self._download_webpage_handle(
+mediasite.py:        webpage, urlh = self._download_webpage_handle(url, resource_id, website=website)  # XXX: add UrlReferrer?
+niconico.py:        webpage, handle = self._download_webpage_handle(
+njpwworld.py:        webpage, urlh = self._download_webpage_handle(
+rts.py:                page, urlh = self._download_webpage_handle(url, display_id)
+safari.py:        _, urlh = self._download_webpage_handle(
+safari.py:        _, urlh = self._download_webpage_handle(
+safari.py:            webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+shared.py:        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+sina.py:                _, urlh = self._download_webpage_handle(request, 'NA', False, website=website)
+teachable.py:        login_page, urlh = self._download_webpage_handle(
+tumblr.py:        response, urlh = self._download_webpage_handle(
+tumblr.py:        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+twitch.py:            return self._download_webpage_handle(
+twitch.py:        login_page, handle = self._download_webpage_handle(
+vimeo.py:            webpage, urlh = self._download_webpage_handle(
+vk.py:        login_page, url_handle = self._download_webpage_handle(
+weibo.py:        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+xhamster.py:        webpage, urlh = self._download_webpage_handle(desktop_url, video_id, website=website)
+youku.py:        _, urlh = self._download_webpage_handle(
+youtube.py:        video_webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+eporner.py:        webpage, urlh = self._download_webpage_handle(url, display_id, website=website)
+iwara.py:        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+adobepass.py:            return self._download_webpage_handle(
+adobepass.py:                provider_redirect_page_res = self._download_webpage_handle(
+adobepass.py:                            provider_login_page_res = self._download_webpage_handle(
+adobepass.py:                        provider_redirect_page_res = self._download_webpage_handle(
+bbc.py:        response, urlh = self._download_webpage_handle(
+canvas.py:        webpage, urlh = self._download_webpage_handle(url, display_id, website=website)
+common.py:        #         res = self._download_webpage_handle(
+common.py:        res = self._download_webpage_handle(
+common.py:        res = self._download_webpage_handle(
+common.py:        res = self._download_webpage_handle(
+kuwo.py:        webpage, urlh = self._download_webpage_handle(
+lecturio.py:        _, urlh = self._download_webpage_handle(
+lecturio.py:        response, urlh = self._download_webpage_handle(
+linuxacademy.py:        webpage, urlh = self._download_webpage_handle(
+linuxacademy.py:        callback_page, urlh = self._download_webpage_handle(
+mediasite.py:        webpage, urlh = self._download_webpage_handle(url, resource_id, website=website)  # XXX: add UrlReferrer?
+niconico.py:        webpage, handle = self._download_webpage_handle(
+njpwworld.py:        webpage, urlh = self._download_webpage_handle(
+rts.py:                page, urlh = self._download_webpage_handle(url, display_id)
+safari.py:        _, urlh = self._download_webpage_handle(
+safari.py:        _, urlh = self._download_webpage_handle(
+safari.py:            webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+shared.py:        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+sina.py:                _, urlh = self._download_webpage_handle(request, 'NA', False, website=website)
+teachable.py:        login_page, urlh = self._download_webpage_handle(
+tumblr.py:        response, urlh = self._download_webpage_handle(
+tumblr.py:        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+twitch.py:            return self._download_webpage_handle(
+twitch.py:        login_page, handle = self._download_webpage_handle(
+vimeo.py:            webpage, urlh = self._download_webpage_handle(
+vk.py:        login_page, url_handle = self._download_webpage_handle(
+weibo.py:        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+xhamster.py:        webpage, urlh = self._download_webpage_handle(desktop_url, video_id, website=website)
+youku.py:        _, urlh = self._download_webpage_handle(
+youtube.py:        video_webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+eporner.py:        webpage, urlh = self._download_webpage_handle(url, display_id, website=website)
+iwara.py:        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
+adobepass.py:            return self._download_webpage_handle(
+adobepass.py:                provider_redirect_page_res = self._download_webpage_handle(
+adobepass.py:                            provider_login_page_res = self._download_webpage_handle(
+adobepass.py:                        provider_redirect_page_res = self._download_webpage_handle(
+bbc.py:        response, urlh = self._download_webpage_handle(
+canvas.py:        webpage, urlh = self._download_webpage_handle(url, display_id, website=website)
+common.py:        #         res = self._download_webpage_handle(
+common.py:        res = self._download_webpage_handle(
+common.py:        res = self._download_webpage_handle(
+common.py:        res = self._download_webpage_handle(
+platzi.py:        login_error = self._webpage_read_content(
+spiegel.py:        video_data = self._parse_json(self._webpage_read_content(
+generic.py:        webpage = self._webpage_read_content(
+googledrive.py:                confirmation_webpage = self._webpage_read_content(
+common.py:        content = self._webpage_read_content(urlh, url_or_request, video_id, note, errnote, fatal, encoding=encoding)
+kusi.py:        doc = self._download_xml(xml_url, video_id)
+laola1tv.py:        token_doc = self._download_xml(
+laola1tv.py:        hd_doc = self._download_xml(
+livestream.py:        info = self._download_xml(api_url, video_id)
+matchtv.py:        f4m_url = xpath_text(self._download_xml(video_url, video_id), './to')
+mdr.py:        doc = self._download_xml(
+metacafe.py:                config_doc = self._download_xml(
+metacafe.py:                smil_doc = self._download_xml(
+metacritic.py:        info = self._download_xml('http://www.metacritic.com/video_data?video=' + video_id,
+microsoftvirtualacademy.py:        settings = self._download_xml(
+miomio.py:        vid_config = self._download_xml(vid_config_request, video_id)
+mtv.py:        mediagen_doc = self._download_xml(
+mtv.py:        idoc = self._download_xml(
+myspass.py:        metadata = self._download_xml(
+niconico.py:            video_info_xml = self._download_xml(
+nosvideo.py:        playlist = self._download_xml(playlist_url, video_id)
+noz.py:        doc = self._download_xml(config_url, 'video configuration')
+npo.py:                    asx = self._download_xml(
+ntvru.py:        player = self._download_xml(
+nuevo.py:        config = self._download_xml(
+pladform.py:        video = self._download_xml(
+qqmusic.py:            singer_desc_page = self._download_xml(
+rai.py:            relinker = self._download_xml(
+regiotv.py:        video_data = self._download_xml(request, video_id, 'Downloading video XML')
+rice.py:        content_data = self._download_xml('https://mediahub.rice.edu/api/portal/GetContentTitle', content_id, query={
+rice.py:        player_data = self._download_xml('https://mediahub.rice.edu/api/player/GetPlayerConfig', content_id, query={
+ruutu.py:        video_xml = self._download_xml(
+sapo.py:        item = self._download_xml(
+scrippsnetworks.py:        sts = self._download_xml(
+smotri.py:        rss = self._download_xml(
+smotri.py:        rss = self._download_xml(
+sport5.py:        metadata = self._download_xml(
+sportdeutschland.py:            smil_doc = self._download_xml(
+springboardplatform.py:        video = self._download_xml(
+stanfordoc.py:            mdoc = self._download_xml(xmlUrl, info['id'])
+theplatform.py:        meta = self._download_xml(
+tnaflix.py:        cfg_xml = self._download_xml(
+turbo.py:        playlist = self._download_xml(self._API_URL.format(video_id), video_id)
+turner.py:            auth = self._download_xml(
+turner.py:        video_data = self._download_xml(data_src, video_id)
+twentyfourvideo.py:        self._download_xml(
+twentyfourvideo.py:        video_xml = self._download_xml(
+twitter.py:        vmap_data = self._download_xml(vmap_url, video_id)
+ustudio.py:        config = self._download_xml(
+videa.py:        info = self._download_xml(
+videomore.py:        video = self._download_xml(
+walla.py:        video = self._download_xml(
+wdr.py:        xml_metadata = self._download_xml(
+webcaster.py:        video = self._download_xml(url, video_id)
+webcaster.py:        feed = self._download_xml(url, video_id)
+xbef.py:        config = self._download_xml(
+xstream.py:        data = self._download_xml(
+youtube.py:            subs_doc = self._download_xml(
+youtube.py:                caption_list = self._download_xml(list_url, video_id)
+zapiks.py:        playlist = self._download_xml(
+dispeak.py:        xml_description = self._download_xml(url, video_id)
+dreisat.py:        doc = self._download_xml(
+ebaumsworld.py:        config = self._download_xml(
+europa.py:        playlist = self._download_xml(
+eyedotv.py:        video_data = self._download_xml('http://eyedo.tv/api/live/GetLive/%s' % video_id, video_id)
+folketinget.py:        doc = self._download_xml(xml_url, video_id)
+generic.py:        camtasia_cfg = self._download_xml(
+godtube.py:        config = self._download_xml(
+godtube.py:        media = self._download_xml(
+golem.py:        config = self._download_xml(
+googledrive.py:        self._captions_xml = self._download_xml(
+hbo.py:        video_data = self._download_xml(url, display_id)
+heise.py:        doc = self._download_xml(
+howstuffworks.py:            smil = self._download_xml(
+ina.py:        info_doc = self._download_xml(
+itv.py:        resp_env = self._download_xml(
+joj.py:            playlist = self._download_xml(
+jove.py:        chapters_xml = self._download_xml(
+karrierevideos.py:        playlist = self._download_xml(
+afreecatv.py:            video_xml = self._download_xml(
+appletrailers.py:        doc = self._download_xml(playlist_url, movie, transform_source=fix_html)
+ard.py:        doc = self._download_xml(player_url, display_id)
+bbc.py:        asx = self._download_xml(connection.get('href'), programme_id, 'Downloading ASX playlist')
+bbc.py:            captions = self._download_xml(
+bbc.py:        media_selection = self._download_xml(
+bbc.py:        return self._download_xml(
+bokecc.py:        info_xml = self._download_xml(
+br.py:        xml = self._download_xml(base_url + xml_url, display_id)
+camdemy.py:        file_list_doc = self._download_xml(
+cbc.py:                result = self._download_xml(url, video_id, headers={
+cbc.py:        result = self._download_xml(
+cbc.py:            result = self._download_xml(
+cbc.py:        video_doc = self._download_xml(
+cbs.py:        items_data = self._download_xml(
+channel9.py:        rss = self._download_xml(rss_url, video_id, 'Downloading RSS')
+cinchcast.py:        doc = self._download_xml(
+clipsyndicate.py:        pdoc = self._download_xml(
+common.py:        manifest = self._download_xml(
+common.py:        return self._download_xml(
+common.py:        xspf = self._download_xml(
+crunchyroll.py:        return self._download_xml(
+cspan.py:        doc = self._download_xml(
+dfb.py:        player_info = self._download_xml(
+dfb.py:            stream_access_info = self._download_xml(sa_url, display_id)
+mediasite.py:                    stream_formats.extend(self._extract_mpd_formats(
+mixcloud.py:                formats.extend(self._extract_mpd_formats(
+msn.py:                    formats.extend(self._extract_mpd_formats(
+nexx.py:            formats.extend(self._extract_mpd_formats(
+nexx.py:        formats.extend(self._extract_mpd_formats(
+ninecninemedia.py:        formats.extend(self._extract_mpd_formats(
+nova.py:                        formats.extend(self._extract_mpd_formats(
+npo.py:                formats.extend(self._extract_mpd_formats(
+nytimes.py:            #     formats.extend(self._extract_mpd_formats(
+onet.py:                        formats.extend(self._extract_mpd_formats(
+ooyala.py:                formats.extend(self._extract_mpd_formats(
+platzi.py:                    formats.extend(self._extract_mpd_formats(
+plays.py:        formats = self._extract_mpd_formats(
+pornhub.py:                formats.extend(self._extract_mpd_formats(
+prosiebensat1.py:                        formats.extend(self._extract_mpd_formats(
+prosiebensat1.py:                        formats.extend(self._extract_mpd_formats(
+reddit.py:        formats.extend(self._extract_mpd_formats(
+rtbf.py:            formats.extend(self._extract_mpd_formats(
+ruutu.py:                        formats.extend(self._extract_mpd_formats(
+seznamzpravy.py:            formats.extend(self._extract_mpd_formats(
+sixplay.py:                        formats.extend(self._extract_mpd_formats(
+spankbang.py:                formats.extend(self._extract_mpd_formats(
+svt.py:                    formats.extend(self._extract_mpd_formats(
+telegraaf.py:                formats.extend(self._extract_mpd_formats(
+threeqsdn.py:                formats.extend(self._extract_mpd_formats(
+toggle.py:                formats.extend(self._extract_mpd_formats(
+tv2.py:                    formats.extend(self._extract_mpd_formats(
+tv2dk.py:                formats.extend(self._extract_mpd_formats(
+tv4.py:        formats.extend(self._extract_mpd_formats(
+tvigle.py:                formats.extend(self._extract_mpd_formats(
+tvnow.py:                formats = self._extract_mpd_formats(
+tvnow.py:            formats = self._extract_mpd_formats(
+tvp.py:            # formats.extend(self._extract_mpd_formats(
+vevo.py:                formats.extend(self._extract_mpd_formats(
+vidme.py:                formats.extend(self._extract_mpd_formats(
+vimeo.py:                        mpd_formats = self._extract_mpd_formats(
+vine.py:                formats.extend(self._extract_mpd_formats(
+vrv.py:            adaptive_formats = self._extract_mpd_formats(
+wat.py:                    formats.extend(self._extract_mpd_formats(
+watchbox.py:            formats.extend(self._extract_mpd_formats(
+yandexvideo.py:            formats = self._extract_mpd_formats(
+youtube.py:                    for df in self._extract_mpd_formats(
+zattoo.py:                    this_formats = self._extract_mpd_formats(
+dplay.py:                formats.extend(self._extract_mpd_formats(
+dvtv.py:                    formats.extend(self._extract_mpd_formats(
+egghead.py:                formats.extend(self._extract_mpd_formats(
+generic.py:                    formats.extend(self._extract_mpd_formats(
+generic.py:                entry_info_dict['formats'] = self._extract_mpd_formats(video_url, video_id)
+globo.py:                formats.extend(self._extract_mpd_formats(
+hbo.py:                    formats.extend(self._extract_mpd_formats(
+hotstar.py:                    formats.extend(self._extract_mpd_formats(
+imggaming.py:                formats.extend(self._extract_mpd_formats(
+internazionale.py:        formats.extend(self._extract_mpd_formats(
+internetvideoarchive.py:            formats.extend(self._extract_mpd_formats(
+iprima.py:                new_formats = self._extract_mpd_formats(
+animeondemand.py:                            file_formats = self._extract_mpd_formats(
+arkena.py:                    formats.extend(self._extract_mpd_formats(
+atresplayer.py:                formats.extend(self._extract_mpd_formats(
+bbc.py:                        formats.extend(self._extract_mpd_formats(
+brightcove.py:                formats.extend(self._extract_mpd_formats(src, video_id, 'dash', fatal=False))
+byutv.py:                formats.extend(self._extract_mpd_formats(
+canvas.py:                formats.extend(self._extract_mpd_formats(
+ceskatelevize.py:                        stream_formats = self._extract_mpd_formats(
+cloudflarestream.py:        formats.extend(self._extract_mpd_formats(
+common.py:                formats.extend(self._extract_mpd_formats(
+common.py:                formats = self._extract_mpd_formats(
+common.py:            formats.extend(self._extract_mpd_formats(
+common.py:                formats.extend(self._extract_mpd_formats(
+crackle.py:                    formats.extend(self._extract_mpd_formats(
+mediasite.py:                    stream_formats.extend(self._extract_ism_formats(
+microsoftvirtualacademy.py:                    formats.extend(self._extract_ism_formats(
+msn.py:                    formats.extend(self._extract_ism_formats(
+nexx.py:        formats.extend(self._extract_ism_formats(
+npo.py:                formats.extend(self._extract_ism_formats(
+onet.py:                        formats.extend(self._extract_ism_formats(
+ooyala.py:                self._extract_ism_formats(
+toggle.py:                formats.extend(self._extract_ism_formats(
+tv4.py:        formats.extend(self._extract_ism_formats(
+tvnow.py:                formats.extend(self._extract_ism_formats(
+tvnow.py:            formats.extend(self._extract_ism_formats(
+tvp.py:            formats.extend(self._extract_ism_formats(
+zattoo.py:                    this_formats = self._extract_ism_formats(
+globo.py:                formats.extend(self._extract_ism_formats(
+internetvideoarchive.py:            formats.extend(self._extract_ism_formats(
+canvas.py:                formats.extend(self._extract_ism_formats(
+cbc.py:                formats.extend(self._extract_ism_formats(
+common.py:                formats.extend(self._extract_ism_formats(
+crackle.py:                    formats.extend(self._extract_ism_formats(
+khanacademy.py:            data = self._download_json(
+khanacademy.py:            data = self._download_json(
+kinja.py:            data = self._download_json(
+kinja.py:            video_data = self._download_json(
+kinja.py:            data = self._download_json(
+konserthusetplay.py:        rest = self._download_json(
+ku6.py:        jsonData = self._download_json(dataUrl, video_id)
+laola1tv.py:        return self._download_json(
+laola1tv.py:        config = self._download_json(conf['configUrl'], video_id, query={
+lecturio.py:        video = self._download_json(
+lecturio.py:        course = self._download_json(
+leeco.py:        play_json_flash = self._download_json(
+leeco.py:            nodes_data = self._download_json(
+leeco.py:            return self._download_json(
+lego.py:            item = self._download_json(
+libraryofcongress.py:        data = self._download_json(
+limelight.py:            return self._download_json(
+line.py:        video_info = self._download_json(
+linkedin.py:        return self._download_json(
+litv.py:            program_info = self._download_json(
+litv.py:            video_data = self._download_json(
+livestream.py:            videos_info = self._download_json(
+livestream.py:            video_data = self._download_json(
+livestream.py:            event_data = self._download_json(api_url, video_id)
+livestream.py:            video_data = self._download_json(stream_url, content_id)
+lnkgo.py:        video_info = self._download_json(
+lynda.py:        response = self._download_json(
+lynda.py:        video = self._download_json(
+lynda.py:            play = self._download_json(
+lynda.py:            conviva = self._download_json(
+lynda.py:        course = self._download_json(
+mailru.py:            video_data = self._download_json(
+mailru.py:            video_data = self._download_json(
+mailru.py:        search = self._download_json(
+markiza.py:        data = self._download_json(
+matchtv.py:        video_url = self._download_json(
+medialaan.py:            data = self._download_json(
+medialaan.py:                videos = self._download_json(
+mediaset.py:        feed_data = self._download_json(
+mediasite.py:        player_options = self._download_json(
+mediasite.py:        catalog = self._download_json(
+medici.py:        data = self._download_json(
+melonvod.py:        play_info = self._download_json(
+melonvod.py:        info = self._download_json(
+mgoon.py:        data = self._download_json(self._API_URL.format(video_id), video_id)
+mgtv.py:            api_data = self._download_json(
+mgtv.py:        stream_data = self._download_json(
+mgtv.py:            format_data = self._download_json(
+microsoftvirtualacademy.py:        return self._download_json(
+microsoftvirtualacademy.py:        manifest = self._download_json(
+minoto.py:        video_data = self._download_json('http://play.minoto-video.com/%s/%s.js' % (player_id, video_id), video_id)
+mixcloud.py:        return self._download_json(
+mnet.py:        info = self._download_json(
+mnet.py:        cdn_data = self._download_json(
+mtv.py:        feed = self._download_json(feed_url, video_id, fatal=False)
+mtv.py:        config = self._download_json(
+mwave.py:        vod_info = self._download_json(
+mwave.py:            f4m_stream = self._download_json(
+myvi.py:        spruto = self._download_json(
+naver.py:        video_data = self._download_json(
+naver.py:        content = self._download_json(
+nba.py:        results = self._download_json(
+nbc.py:        video_data = self._download_json(
+nbc.py:        live_source = self._download_json(
+nbc.py:        tokenized_url = self._download_json(
+nbc.py:        event_config = self._download_json(
+nbc.py:        source_url = self._download_json(
+ndr.py:        ppjson = self._download_json(
+nerdcubed.py:        feed = self._download_json(url, url, 'Downloading NerdCubed JSON feed')
+neteasemusic.py:        return self._download_json(req, video_id, note)
+netzkino.py:        api_info = self._download_json(api_url, video_id)
+nexx.py:        result = self._download_json(
+nexx.py:        response = self._download_json(
+nfl.py:        config = self._download_json(config_url, video_id, 'Downloading player config')
+nfl.py:        video_data = self._download_json(
+nhk.py:        episode = self._download_json(
+nhl.py:        video_data = self._download_json(
+nick.py:        video_data = self._download_json(
+nick.py:        config = self._download_json(
+niconico.py:        session_response = self._download_json(
+ninecninemedia.py:        content = self._download_json(api_base_url, content_id, query={
+ninecninemedia.py:        content_package = self._download_json(
+noco.py:        login = self._download_json(
+noco.py:        resp = self._download_json(request, video_id, note)
+nova.py:        config = self._download_json(
+nowness.py:        return display_id, self._download_json(request, display_id)
+npo.py:        return self._download_json(
+npo.py:        token = self._download_json(
+npo.py:        player = self._download_json(
+npo.py:            streams = self._download_json(
+npo.py:        metadata = self._download_json(
+npo.py:        items = self._download_json(
+npo.py:                stream_info = self._download_json(
+npr.py:        story = self._download_json(
+nrk.py:            data = self._download_json(
+nytimes.py:        video_data = self._download_json('http://www.nytimes.com' + path, video_id, 'Downloading video JSON', headers={
+nytimes.py:            video_data = self._download_json(
+odnoklassniki.py:            metadata = self._download_json(
+onet.py:        response = self._download_json(
+ooyala.py:        content_tree = self._download_json(content_tree_url, video_id)['content_tree']
+ooyala.py:        auth_data = self._download_json(
+orf.py:        data = self._download_json(
+orf.py:        data = self._download_json(
+orf.py:        rendition = self._download_json(
+orf.py:            data = self._download_json(
+orf.py:            rendition = self._download_json(
+packtpub.py:            self._TOKEN = self._download_json(
+packtpub.py:            video_url = self._download_json(
+packtpub.py:        # metadata = self._download_json(
+packtpub.py:        course = self._download_json(
+packtpub.py:        metadata = self._download_json(
+pandoratv.py:        data = self._download_json(
+pandoratv.py:            play_url = self._download_json(
+parliamentliveuk.py:        event_title = self._download_json(
+patreon.py:        post = self._download_json(
+pbs.py:        cookie = (self._download_json(
+pbs.py:                getdir = self._download_json(
+pbs.py:            redirect_info = self._download_json(
+peertube.py:        return self._download_json(
+performgroup.py:        return self._download_json(
+periscope.py:        return self._download_json(
+philharmoniedeparis.py:        config = self._download_json(
+picarto.py:        metadata = self._download_json(
+picarto.py:        cdn_data = self._download_json(
+piksel.py:        response = self._download_json(
+playfm.py:        recordings = self._download_json(
+playplustv.py:        return self._download_json('https://api.playplus.tv/api/media/v2/get' + resource, video_id, headers={
+playplustv.py:            self._token = self._download_json(req, None)['token']
+playtvak.py:        json_info = self._download_json(
+playwire.py:        player = self._download_json(
+pluralsight.py:            return self._download_json(
+pluralsight.py:        response = self._download_json(
+pluralsight.py:            captions = self._download_json(
+pluralsight.py:            captions = self._download_json(
+pluralsight.py:                    viewclip = self._download_json(
+pluralsight.py:                    viewclip = self._download_json(
+pornotube.py:        token = self._download_json(
+pornotube.py:        video_url = self._download_json(
+pornotube.py:        info = self._download_json(
+pornovoisines.py:        settings_url = self._download_json(
+pornovoisines.py:        settings = self._download_json(settings_url, video_id)['data']
+prosiebensat1.py:        video = self._download_json(
+prosiebensat1.py:            protocols = self._download_json(
+prosiebensat1.py:                urls = (self._download_json(
+prosiebensat1.py:            sources = self._download_json(
+prosiebensat1.py:                urls = self._download_json(
+puhutv.py:        info = self._download_json(
+puhutv.py:            videos = self._download_json(
+puhutv.py:                season = self._download_json(
+puhutv.py:        info = self._download_json(
+puls4.py:        content_path = self._download_json(
+puls4.py:        media = self._download_json(
+pyvideo.py:        data = self._download_json(
+qqmusic.py:        vkey = self._download_json(
+qqmusic.py:        album = self._download_json(
+qqmusic.py:        toplist_json = self._download_json(
+qqmusic.py:        list_json = self._download_json(
+r7.py:        video = self._download_json(
+radiocanada.py:            return self._download_json(
+radiojavan.py:        download_host = self._download_json(
+rai.py:        media = self._download_json(
+rai.py:        media = self._download_json(
+raywenderlich.py:            video = self._download_json(
+redbulltv.py:        session = self._download_json(
+redbulltv.py:            video = self._download_json(
+reddit.py:        data = self._download_json(
+reuters.py:        mas_data = self._download_json(
+reverbnation.py:        api_res = self._download_json(
+rockstargames.py:        video = self._download_json(
+roosterteeth.py:            self._download_json(
+roosterteeth.py:            m3u8_url = self._download_json(
+roosterteeth.py:        episode = self._download_json(
+roxwel.py:        info = self._download_json(info_url, filename)
+rte.py:                data = self._download_json(ep_url + item_id, item_id)
+rtl2.py:        info = self._download_json(
+rtl2.py:        stream_data = self._download_json(
+rtl2.py:        video_data = self._download_json(
+rtl2.py:        stream_data = self._download_json(
+rtlnl.py:        info = self._download_json(
+rts.py:            return self._download_json(
+rtve.py:        manager_info = self._download_json(
+rtve.py:        info = self._download_json(
+rtve.py:        subs = self._download_json(
+rtve.py:        info = self._download_json(
+rtvs.py:        data = self._download_json(
+rutube.py:        return self._download_json(
+rutube.py:        return self._download_json(
+rutube.py:            page = self._download_json(
+rutube.py:        movie = self._download_json(
+rutv.py:        json_data = self._download_json(
+safari.py:            kaltura_session = self._download_json(
+safari.py:        part = self._download_json(
+safari.py:        course_json = self._download_json(
+sbs.py:        player_params = self._download_json(
+scrippsnetworks.py:        token = self._download_json(
+sendtonews.py:        playlist_data = self._download_json(data_url, playlist_id)
+sevenplus.py:        media = self._download_json(
+sevenplus.py:        content = self._download_json(
+seznamzpravy.py:        sdn_data = self._download_json(sdn_url, video_id)
+seznamzpravy.py:            sdn_data = self._download_json(sdn_url, video_id)
+shahid.py:            user_data = self._download_json(
+shahid.py:        response = self._download_json(
+showroomlive.py:        room = self._download_json(
+showroomlive.py:        streaming_url_list = self._download_json(
+sina.py:        video_data = self._download_json(
+sixplay.py:        data = self._download_json(
+skynewsarabia.py:        return self._download_json('http://api.skynewsarabia.com/web/rest/v2/%s/%s.json' % (path, value), value)
+slideslive.py:        video_data = self._download_json(
+smotri.py:        video = self._download_json(
+sohu.py:            return self._download_json(
+soundcloud.py:            redirect_url = (self._download_json(download_url, track_id, fatal=False) or {}).get('redirectUri')
+soundcloud.py:            stream = self._download_json(
+soundcloud.py:        info = self._download_json(
+soundcloud.py:            tracks = self._download_json(
+soundcloud.py:        info = self._download_json(self._resolv_url(
+soundcloud.py:            response = self._download_json(
+soundcloud.py:        user = self._download_json(
+soundcloud.py:        track = self._download_json(self._resolv_url(url), track_name)
+soundcloud.py:        data = self._download_json(
+soundcloud.py:            response = self._download_json(
+spankbang.py:            stream = self._download_json(
+spankwire.py:        video = self._download_json(
+sportdeutschland.py:        data = self._download_json(req, video_id)
+srgssr.py:        token = self._download_json(
+srgssr.py:        media_data = self._download_json(
+streamable.py:        video = self._download_json(
+streamcz.py:        data = self._download_json(req, video_id)
+streetvoice.py:        song = self._download_json(
+stretchinternet.py:        event = self._download_json(
+stv.py:        resp = self._download_json(
+sverigesradio.py:        item = self._download_json(
+sverigesradio.py:            audio_url_data = self._download_json(
+svt.py:        info = self._download_json(
+svt.py:        data = self._download_json(
+svt.py:        series = self._download_json(
+svt.py:        article = self._download_json(
+swrmediathek.py:        video = self._download_json(
+tagesschau.py:        info = self._download_json(
+teamcoco.py:        return self._download_json(
+teamcoco.py:            video_sources = self._download_json(
+tele5.py:            media = self._download_json(
+telecinco.py:        config = self._download_json(
+telecinco.py:            mmc = self._download_json(
+telecinco.py:                media = self._download_json(
+telegraaf.py:        video_id = self._download_json(
+telegraaf.py:        item = self._download_json(
+telequebec.py:        media_data = self._download_json(
+telequebec.py:        video = self._download_json(
+telewebion.py:        episode_details = self._download_json(
+tennistv.py:        login_result = self._download_json(
+tennistv.py:        check_result = self._download_json(
+tennistv.py:        vdata = self._download_json(vdata_url, video_id)
+tenplay.py:        data = self._download_json(
+tfo.py:        infos = self._download_json(
+theplatform.py:        return self._download_json(info_url, video_id)
+theplatform.py:            config = self._download_json(config_url, video_id, 'Downloading config')
+theplatform.py:        entry = self._download_json(real_url, video_id)['entries'][0]
+theweatherchannel.py:        video_data = self._download_json(
+tiktok.py:        data = self._download_json(
+toggle.py:        info = self._download_json(req, video_id, 'Downloading video info json')
+tonline.py:        video_data = self._download_json(
+toongoggles.py:        return self._download_json('http://api.toongoggles.com/' + action, page_id, query=query)
+toutv.py:            self._access_token = self._download_json(
+toutv.py:        metadata = self._download_json(
+trilulilu.py:        media_info = self._download_json('http://m.trilulilu.ro/%s?format=json' % display_id, display_id)
+trunews.py:        zype_id = self._download_json(
+trutv.py:        data = self._download_json(
+tubitv.py:        video_data = self._download_json(
+tudou.py:        playlist_data = self._download_json(
+tudou.py:        album_data = self._download_json(
+tunein.py:        content_info = self._download_json(
+tunein.py:        streams = self._download_json(
+turner.py:        streams_data = self._download_json(
+tv2.py:                data = self._download_json(
+tv2.py:        asset = self._download_json(
+tv2dk.py:        video = self._download_json(
+tv2hu.py:        json_data = self._download_json(json_url, video_id)
+tv4.py:        info = self._download_json(
+tv4.py:        manifest_url = self._download_json(
+tva.py:        video_data = self._download_json(
+tvc.py:        video = self._download_json(
+tvigle.py:        video_data = self._download_json(
+tvnet.py:        for stream in self._download_json(data_file, video_id):
+tvnow.py:        return self._download_json(
+tvnow.py:        result = self._download_json(
+tvp.py:            video_url = self._download_json(
+tvplay.py:        video = self._download_json(
+tvplay.py:            streams = self._download_json(
+tvplay.py:        content = self._download_json(
+tvplay.py:            stream_href = self._download_json(
+tvplayer.py:        context = self._download_json(
+tvplayer.py:            response = self._download_json(
+tweakers.py:        video_data = self._download_json(
+twentymin.py:        video = self._download_json(
+twentythreevideo.py:        photo_data = self._download_json(
+twitch.py:        response = self._download_json(
+twitch.py:            response = self._download_json(
+twitch.py:        clip = self._download_json(
+twitter.py:            self._GUEST_TOKEN = self._download_json(
+twitter.py:            return self._download_json(
+udemy.py:        return self._download_json(
+udemy.py:        response = self._download_json(
+umg.py:        video_data = self._download_json(
+uol.py:        video_data = self._download_json(
+uplynk.py:        asset = self._download_json('http://content.uplynk.com/player/assetinfo/%s.json' % path, display_id)
+uplynk.py:        preplay = self._download_json(url, display_id)
+urort.py:        songs = self._download_json(json_url, playlist_id)
+urplay.py:        host = self._download_json('http://streaming-loadbalancer.ur.se/loadbalancer.json', video_id)['redirect']
+ustream.py:        conn_info = self._download_json(
+ustream.py:        return self._download_json(
+ustream.py:        params = self._download_json(
+ustream.py:            reply = self._download_json(
+ustudio.py:        video_data = self._download_json(
+vbox7.py:        response = self._download_json(
+veoh.py:        video = self._download_json(
+vevo.py:            data = self._download_json(self._api_url_template % path, *args, **kwargs)
+vgtv.py:        data = self._download_json(
+vice.py:        return self._download_json(
+vice.py:            preplay = self._download_json(
+viddler.py:        data = self._download_json(
+videofyme.py:        config = self._download_json('http://vf-player-info-loader.herokuapp.com/%s.json' % video_id, video_id)['videoinfo']
+videopress.py:        video = self._download_json(
+vidme.py:            response = self._download_json(
+vidme.py:            page = self._download_json(
+vidme.py:        user_id = self._download_json(
+viewlift.py:                resp = self._download_json(
+viewlift.py:                resp = self._download_json(
+viewlift.py:        return self._download_json(
+viidea.py:            lecture_data = self._download_json(
+viki.py:        resp = self._download_json(
+viki.py:                resp = self._download_json(
+vimeo.py:                            real_m_url = (self._download_json(m_url, video_id, fatal=False) or {}).get('url')
+vimeo.py:        download_data = self._download_json(
+vimeo.py:        checked = self._download_json(
+vimeo.py:                config = self._download_json(config_url, video_id)
+vimeo.py:        videos = self._download_json(
+vimeo.py:        album = self._download_json(
+vimeo.py:                hashed_pass = self._download_json(
+vimeo.py:        clip_data = self._download_json(
+vimeo.py:        config = self._download_json(config_url, video_id)
+vimeo.py:        config = self._download_json(config_url, video_id)
+vine.py:        data = self._download_json(
+vine.py:        profile_data = self._download_json(
+vine.py:        profile = self._download_json(
+viu.py:        response = self._download_json(
+viu.py:        product_data = self._download_json(
+viu.py:        stream_data = self._download_json(
+vk.py:        code, payload = self._download_json(
+vlive.py:            login_info = self._download_json(
+vlive.py:        channel_info = self._download_json(
+vlive.py:            video_list = self._download_json(
+voot.py:        media_info = self._download_json(
+vrv.py:            return self._download_json(
+vrv.py:        return self._download_json(
+vube.py:        video = self._download_json(
+vube.py:            comment_data = self._download_json(
+vvvvid.py:        self._conn_id = self._download_json(
+vvvvid.py:        response = self._download_json(
+vvvvid.py:                    kenc = self._download_json(
+vyborymos.py:        channels = self._download_json(
+vyborymos.py:        info = self._download_json(
+vzaar.py:        video_data = self._download_json(
+washingtonpost.py:        video_data = self._download_json(
+wat.py:        video_data = self._download_json(
+wat.py:            manifest_urls = self._download_json(
+watchbox.py:        devapi = self._download_json(
+wdr.py:        metadata = self._download_json(
+wdr.py:        table_of_contents = self._download_json(
+weibo.py:            visitor_data = self._download_json(
+wistia.py:        data_json = self._download_json(
+wsj.py:        info = self._download_json(
+xiami.py:        playlist = self._download_json(
+ximalaya.py:        audio_info = self._download_json(audio_info_file, audio_id,
+xtube.py:            page = self._download_json(
+yahoo.py:            content = self._download_json(
+yahoo.py:        video = self._download_json(
+yahoo.py:            media_obj = self._download_json(
+yahoo.py:            info = self._download_json(result_url, query,
+yahoo.py:        resp = self._download_json(
+yahoo.py:        videos = self._download_json(
+yahoo.py:        json_data = self._download_json(
+yandexdisk.py:        models = self._download_json(
+yandexmusic.py:        track = self._download_json(
+yandexmusic.py:        download_data = self._download_json(
+yandexmusic.py:        fd_data = self._download_json(
+yandexmusic.py:        album = self._download_json(
+yandexmusic.py:        playlist = self._download_json(
+yandexmusic.py:            missing_tracks = self._download_json(
+yandexvideo.py:        content = self._download_json(
+yapfiles.py:        player = self._download_json(
+yapfiles.py:        playlist = self._download_json(
+yinyuetai.py:        info = self._download_json(
+youku.py:        data = self._download_json(
+youku.py:        playlist_data = self._download_json(
+younow.py:        data = self._download_json(
+younow.py:            info = self._download_json(
+younow.py:                            m = self._download_json(
+younow.py:        channel_id = compat_str(self._download_json(
+younow.py:        item = self._download_json(MOMENT_URL_FORMAT % video_id, video_id)
+youtube.py:            return self._download_json(
+youtube.py:                    more = self._download_json(
+youtube.py:            data = self._download_json(
+youtube.py:            more = self._download_json(
+zattoo.py:            data = self._download_json(
+zattoo.py:        channel_groups = self._download_json(
+zattoo.py:        data = self._download_json(
+zattoo.py:            data = self._download_json(
+zdf.py:        return self._download_json(
+zdf.py:        document = self._download_json(
+zingmp3.py:        player_json = self._download_json(player_json_url, id, 'Downloading Player JSON')
+zype.py:            response = self._download_json(re.sub(
+dlive.py:        broadcast = self._download_json(
+dlive.py:        user = self._download_json(
+dotsub.py:        info = self._download_json(
+douyutv.py:        room = self._download_json(
+douyutv.py:        video_url = self._download_json(
+douyutv.py:                video_info = self._download_json(
+dplay.py:        token = self._download_json(
+dplay.py:        video = self._download_json(
+dplay.py:            streaming = self._download_json(
+drtuber.py:        video_data = self._download_json(
+drtv.py:        data = self._download_json(
+drtv.py:        channel_data = self._download_json(
+dtube.py:        result = self._download_json('https://api.steemit.com/', video_id, data=json.dumps({
+dumpert.py:        item = self._download_json(
+eagleplatform.py:        return self._download_json(url_or_request, video_id, note)['data'][0]
+eagleplatform.py:        player_data = self._download_json(
+eagleplatform.py:        mp4_data = self._download_json(
+egghead.py:        lessons = self._download_json(
+egghead.py:        course = self._download_json(
+egghead.py:        lesson = self._download_json(
+einthusan.py:        video_data = self._download_json(
+eitb.py:        video = self._download_json(
+eitb.py:            token_data = self._download_json(
+ellentube.py:        data = self._download_json(
+ellentube.py:        feed = self._download_json(
+elpais.py:            url_info = self._download_json(
+eporner.py:        video = self._download_json(
+espn.py:        clip = self._download_json(
+everyonesmixtape.py:        playlist_list = self._download_json(
+everyonesmixtape.py:        playlist = self._download_json(
+expotv.py:        config = self._download_json(
+fczenit.py:        msi_data = self._download_json(
+filmon.py:            response = self._download_json(
+filmon.py:            channel_data = self._download_json(
+filmweb.py:        embed_code = self._download_json(
+firsttv.py:        items = self._download_json(playlist_url, display_id)
+flickr.py:        data = self._download_json(self._API_BASE_URL + compat_urllib_parse_urlencode(query), video_id, note)
+flickr.py:        api_key = self._download_json(
+fourtube.py:        tokens = self._download_json(token_url, video_id, data=b'', headers={
+fox.py:            return self._download_json(
+fox.py:            m3u8_url = self._download_json(release_url, video_id)['playURL']
+francetv.py:        info = self._download_json(
+francetv.py:            geo_info = self._download_json(
+francetv.py:        video = self._download_json(
+francetv.py:        playlist = self._download_json(
+frontendmasters.py:        return self._download_json(
+frontendmasters.py:                format_url = self._download_json(
+funimation.py:            data = self._download_json(
+funimation.py:            sources = self._download_json(
+funk.py:        video = self._download_json(
+fusion.py:        video = self._download_json(
+gaia.py:            auth = self._download_json(
+gaia.py:        node_id = self._download_json(
+gaia.py:        node = self._download_json(
+gaia.py:        media = self._download_json(
+gfycat.py:        gfy = self._download_json(
+giga.py:        playlist = self._download_json(
+gigya.py:        auth_info = self._download_json(
+globo.py:            glb_id = (self._download_json(
+globo.py:        video = self._download_json(
+globo.py:            security = self._download_json(
+go.py:        return self._download_json(
+go.py:                entitlement = self._download_json(
+hearthisat.py:        track = self._download_json(req, track_id, 'Downloading playlist')[0]
+hidive.py:        settings = self._download_json(
+hitbox.py:        metadata = self._download_json(
+hitbox.py:        player_config = self._download_json(
+hitbox.py:        player_config = self._download_json(
+hitrecord.py:        video = self._download_json(
+hketv.py:        response = self._download_json(
+hketv.py:        emotion = self._download_json(
+hotnewhiphop.py:        mkd = self._download_json(
+hotstar.py:        response = self._download_json(
+hrti.py:        uuid = self._download_json(
+hrti.py:        resources = self._download_json(
+hrti.py:            auth_info = self._download_json(
+hrti.py:        video = self._download_json(
+hrti.py:        response = self._download_json(
+huffpost.py:        data = self._download_json(api_url, video_id)['data']
+hungama.py:        m3u8_url = self._download_json(
+hungama.py:        data = self._download_json(
+hungama.py:        m3u8_url = self._download_json(
+hypem.py:        final_url = self._download_json(
+ign.py:        api_data = self._download_json(
+imdb.py:        data = self._download_json(
+imggaming.py:        self._HEADERS['Authorization'] = 'Bearer ' + self._download_json(
+imggaming.py:        return self._download_json(
+imggaming.py:        video_data = self._download_json(dve_api_url, media_id)
+imgur.py:        data = self._download_json(
+indavideo.py:        video = self._download_json(
+instagram.py:                    json_data = self._download_json(
+internetvideoarchive.py:        data = self._download_json(
+iqiyi.py:        data = self._download_json(
+iqiyi.py:        validation_result = self._download_json(
+iqiyi.py:        return self._download_json(
+itv.py:            ios_playlist = self._download_json(
+ivi.py:                timestamp = (self._download_json(
+ivi.py:            video_json = self._download_json(
+iwara.py:        video_data = self._download_json('http://www.iwara.tv/api/video/%s' % video_id, video_id)
+jamendo.py:        return self._download_json(
+jeuxvideo.py:        config = self._download_json(
+jwplatform.py:        json_data = self._download_json('https://cdn.jwplayer.com/v2/media/' + video_id, video_id)
+kakao.py:        impress = self._download_json(
+kakao.py:                fmt_url_json = self._download_json(
+kaltura.py:        data = self._download_json(
+kanalplay.py:        subs = self._download_json(
+kanalplay.py:        video = self._download_json(
+abc.py:        video_params = self._download_json(
+abcotvs.py:        data = self._download_json(
+abcotvs.py:        video_data = self._download_json('https://clips.abcotvs.com/vogo/video/getByIds?ids=' + video_id, video_id)['results'][0]
+acast.py:        s = self._download_json(
+acast.py:        cast_data = self._download_json(
+acast.py:        casts = self._download_json(
+acast.py:        channel_data = self._download_json(
+adn.py:            player_config = self._download_json(
+adn.py:            links_data = self._download_json(
+adn.py:                load_balancer_data = self._download_json(
+adobepass.py:                    saml_response_json = self._download_json(
+adobetv.py:        return self._download_json(
+adultswim.py:        show_data = self._download_json(
+adultswim.py:                extract_data = self._download_json(
+aenetworks.py:        result = self._download_json(
+afreecatv.py:        response = self._download_json(
+allocine.py:            media_data = self._download_json(
+amp.py:        feed = self._download_json(
+animeondemand.py:                    playlist = self._download_json(
+anvato.py:        self.__server_time = int(self._download_json(
+anvato.py:        return self._download_json(
+aol.py:        response = self._download_json(
+appletrailers.py:        film_data = self._download_json(
+appletrailers.py:            settings = self._download_json(settings_json_url, trailer_id, 'Downloading settings json')
+appletrailers.py:        section_data = self._download_json(
+archiveorg.py:        metadata = self._download_json(
+ard.py:        media_info = self._download_json(
+ard.py:        player_page = self._download_json(
+ard.py:            media_collection = self._download_json(
+arkena.py:        playlist = self._download_json(
+arte.py:        info = self._download_json(json_url, video_id)
+arte.py:        collection = self._download_json(
+atresplayer.py:            target_url = self._download_json(
+atresplayer.py:            episode = self._download_json(
+audimedia.py:            video_data = self._download_json(
+audiomack.py:        api_response = self._download_json(
+audiomack.py:            api_response = self._download_json(
+awaan.py:        video_data = self._download_json(
+awaan.py:        channel_data = self._download_json(
+awaan.py:                season = self._download_json(
+awaan.py:        show = self._download_json(
+aws.py:        return self._download_json(
+azmedien.py:            entry_id = self._download_json(
+baidu.py:        return self._download_json('http://app.video.baidu.com/%s/?worktype=adnative%s&id=%s' % (
+bandcamp.py:                        stat = self._download_json(
+bbc.py:            playlist = self._download_json(
+beampro.py:        chan = self._download_json(
+beampro.py:        vod_info = self._download_json(
+beeg.py:            video = self._download_json(
+bild.py:        video_data = self._download_json(
+bilibili.py:            js = self._download_json(
+bilibili.py:            video_info = self._download_json(
+bilibili.py:        season_info = self._download_json(
+bilibili.py:        return self._download_json(
+biqle.py:        item = self._download_json(
+bitchute.py:            data = self._download_json(
+bleacherreport.py:        article_data = self._download_json('http://api.bleacherreport.com/api/v1/articles/%s' % article_id, article_id)['article']
+bloomberg.py:        embed_info = self._download_json(
+br.py:        clip = self._download_json(
+brightcove.py:                json_data = self._download_json(api_url, video_id, headers=headers)
+brightcove.py:            json_data = self._download_json(
+byutv.py:        video = self._download_json(
+c56.py:        page = self._download_json(
+camdemy.py:        oembed_obj = self._download_json(
+cammodels.py:        manifest = self._download_json(
+camtube.py:        token = self._download_json(
+camtube.py:        video = self._download_json(
+canalplus.py:        video_data = self._download_json(info_url, video_id, 'Downloading video JSON')
+canvas.py:        data = self._download_json(
+canvas.py:            token = self._download_json(
+canvas.py:            data = self._download_json(
+canvas.py:            video = self._download_json(securevideo_url, display_id)
+carambatv.py:        video = self._download_json(
+cbc.py:            feed = self._download_json(
+cbc.py:                media_id = self._download_json(
+cbc.py:        resp = self._download_json(self._LOGIN_URL, None, data=data, headers=headers, query=query)
+cbc.py:        resp = self._download_json(self._TOKEN_URL, None, headers=headers, query=query)
+cbc.py:            tokenize = self._download_json(
+cbsnews.py:        video_info = self._download_json(
+ccc.py:        event_data = self._download_json('https://media.ccc.de/public/events/%s' % event_id, event_id)
+ccc.py:        conf = self._download_json(
+ccma.py:        media = self._download_json(
+cctv.py:        data = self._download_json(
+ceskatelevize.py:            playlistpage = self._download_json(req, playlist_id, fatal=False)
+ceskatelevize.py:            playlist = self._download_json(req, playlist_id, fatal=False)
+channel9.py:            content_data = self._download_json(content_url, content_id)
+ciscolive.py:        return self._download_json(
+clyp.py:        metadata = self._download_json(
+condenast.py:        info_page = self._download_json(
+condenast.py:                info_page = self._download_json(
+contv.py:        details = self._download_json(
+contv.py:            seasons = self._download_json(
+corus.py:        video = self._download_json(
+coub.py:        coub = self._download_json(
+crackle.py:                media = self._download_json(
+cspan.py:        data = self._download_json(
+ctsnews.py:            mp4_feed = self._download_json(
+cultureunplugged.py:        movie_data = self._download_json(
+curiositystream.py:        result = self._download_json(
+curiositystream.py:        result = self._download_json(
+cwtv.py:        data = self._download_json(
+dailymail.py:        video_sources = self._download_json(sources_url, video_id)
+dailymotion.py:                    token = self._download_json(
+dailymotion.py:        resp = self._download_json(
+dailymotion.py:        metadata = self._download_json(
+daum.py:            list_info = self._download_json(
+dctp.py:        version = self._download_json(
+dctp.py:        info = self._download_json(
+dctp.py:        media = self._download_json(
+defense.py:        info = self._download_json(json_url, title, 'Downloading JSON config')
+digiteka.py:        deliver_info = self._download_json(
+discovery.py:            access_token = self._download_json(
+discovery.py:            video = self._download_json(
+discovery.py:            stream = self._download_json(
+kinja.py:                    formats.extend(self._extract_m3u8_formats(
+kinja.py:                formats = self._extract_m3u8_formats(
+kinopoisk.py:        formats = self._extract_m3u8_formats(
+konserthusetplay.py:            formats.extend(self._extract_m3u8_formats(
+lecture2go.py:                formats.extend(self._extract_m3u8_formats(url, video_id, ext='mp4', m3u8_id='hls'))
+lego.py:                formats.extend(self._extract_m3u8_formats(
+lifenews.py:            formats.extend(self._extract_m3u8_formats(
+limelight.py:                formats.extend(self._extract_m3u8_formats(
+line.py:        formats = self._extract_m3u8_formats(
+linkedin.py:            formats.extend(self._extract_m3u8_formats(
+litv.py:        formats = self._extract_m3u8_formats(
+livestream.py:            formats.extend(self._extract_m3u8_formats(
+livestream.py:            formats.extend(self._extract_m3u8_formats(
+livestream.py:            formats.extend(self._extract_m3u8_formats(
+lnkgo.py:        formats = self._extract_m3u8_formats(
+lrt.py:                formats.extend(self._extract_m3u8_formats(
+manyvids.py:            formats = self._extract_m3u8_formats(
+massengeschmacktv.py:                formats.extend(self._extract_m3u8_formats(
+mdr.py:                    url_formats = self._extract_m3u8_formats(
+medialaan.py:            formats = self._extract_m3u8_formats(
+meipai.py:            formats.extend(self._extract_m3u8_formats(
+melonvod.py:        formats = self._extract_m3u8_formats(
+metacafe.py:                        video_url.extend(self._extract_m3u8_formats(
+mixcloud.py:                formats.extend(self._extract_m3u8_formats(
+movingimage.py:        formats = self._extract_m3u8_formats(
+msn.py:                    formats.extend(self._extract_m3u8_formats(
+mtv.py:                formats.extend(self._extract_m3u8_formats(
+naver.py:                formats.extend(self._extract_m3u8_formats(
+nbc.py:        formats = self._extract_m3u8_formats(tokenized_url, video_id, 'mp4')
+nbc.py:                formats.extend(self._extract_m3u8_formats(
+nbc.py:        formats = self._extract_m3u8_formats(self._download_webpage(
+ndr.py:                formats.extend(self._extract_m3u8_formats(
+nexx.py:        formats.extend(self._extract_m3u8_formats(
+nexx.py:        formats = self._extract_m3u8_formats(
+nhk.py:            info['formats'] = self._extract_m3u8_formats(
+nhl.py:                m3u8_formats = self._extract_m3u8_formats(
+ninecninemedia.py:        formats.extend(self._extract_m3u8_formats(
+nobelprize.py:                formats.extend(self._extract_m3u8_formats(
+nova.py:                        formats.extend(self._extract_m3u8_formats(
+nova.py:                        formats.extend(self._extract_m3u8_formats(
+noz.py:                    formats.extend(self._extract_m3u8_formats(
+npo.py:                formats.extend(self._extract_m3u8_formats(
+npo.py:                formats.extend(self._extract_m3u8_formats(
+npo.py:                    formats.extend(self._extract_m3u8_formats(
+npr.py:                        formats.extend(self._extract_m3u8_formats(
+npr.py:                formats.extend(self._extract_m3u8_formats(
+ntvde.py:            formats.extend(self._extract_m3u8_formats(
+nytimes.py:                formats.extend(self._extract_m3u8_formats(
+odnoklassniki.py:            formats.extend(self._extract_m3u8_formats(
+odnoklassniki.py:            formats.extend(self._extract_m3u8_formats(
+once.py:        formats = self._extract_m3u8_formats(
+onet.py:                        formats.extend(self._extract_m3u8_formats(
+ooyala.py:                formats.extend(self._extract_m3u8_formats(
+ora.py:            formats = self._extract_m3u8_formats(
+orf.py:                    m3u8_formats = self._extract_m3u8_formats(
+orf.py:                formats.extend(self._extract_m3u8_formats(
+orf.py:                    formats.extend(self._extract_m3u8_formats(
+pbs.py:                formats.extend(self._extract_m3u8_formats(
+performgroup.py:            formats.extend(self._extract_m3u8_formats(hls_url, video_id, 'mp4', 'm3u8_native', m3u8_id='hls', fatal=False))
+periscope.py:        m3u8_formats = self._extract_m3u8_formats(
+philharmoniedeparis.py:                formats.extend(self._extract_m3u8_formats(
+picarto.py:                    formats.extend(self._extract_m3u8_formats(
+picarto.py:        formats = self._extract_m3u8_formats(
+piksel.py:            formats.extend(self._extract_m3u8_formats(
+pladform.py:                formats.extend(self._extract_m3u8_formats(
+platzi.py:                    formats.extend(self._extract_m3u8_formats(
+popcorntv.py:        formats = self._extract_m3u8_formats(
+pornhub.py:                formats.extend(self._extract_m3u8_formats(
+pornovoisines.py:                formats.extend(self._extract_m3u8_formats(
+prosiebensat1.py:                        formats.extend(self._extract_m3u8_formats(
+prosiebensat1.py:                        formats.extend(self._extract_m3u8_formats(
+puhutv.py:                formats.extend(self._extract_m3u8_formats(
+r7.py:            formats.extend(self._extract_m3u8_formats(
+radiocanada.py:        formats = self._extract_m3u8_formats(v_url, video_id, 'mp4')
+rai.py:                formats.extend(self._extract_m3u8_formats(
+redbulltv.py:        formats = self._extract_m3u8_formats(
+reddit.py:        formats = self._extract_m3u8_formats(
+rentv.py:                formats.extend(self._extract_m3u8_formats(
+reuters.py:                formats.extend(self._extract_m3u8_formats(
+rice.py:                formats.extend(self._extract_m3u8_formats(video_url, content_id, 'mp4', 'm3u8_native', m3u8_id='hls', fatal=False))
+roosterteeth.py:        formats = self._extract_m3u8_formats(
+rtbf.py:            formats.extend(self._extract_m3u8_formats(
+rte.py:                formats.extend(self._extract_m3u8_formats(
+rtl2.py:        formats = self._extract_m3u8_formats(
+rtlnl.py:        formats = self._extract_m3u8_formats(
+rtp.py:            formats = self._extract_m3u8_formats(
+rts.py:                    formats.extend(self._extract_m3u8_formats(
+rtve.py:            formats.extend(self._extract_m3u8_formats(
+rtve.py:        formats = self._extract_m3u8_formats(m3u8_url, video_id, ext='mp4')
+rtvnh.py:            formats.extend(self._extract_m3u8_formats(
+rutube.py:                formats.extend(self._extract_m3u8_formats(
+rutv.py:                    formats.extend(self._extract_m3u8_formats(
+ruutu.py:                        formats.extend(self._extract_m3u8_formats(
+ruv.py:            formats = self._extract_m3u8_formats(
+senateisvp.py:            for entry in self._extract_m3u8_formats(m3u8_url, video_id, ext='mp4', m3u8_id='m3u8'):
+servus.py:        formats = self._extract_m3u8_formats(
+seznamzpravy.py:            formats.extend(self._extract_m3u8_formats(
+shahid.py:        formats = self._extract_m3u8_formats(playout['url'], video_id, 'mp4')
+showroomlive.py:                m3u8_formats = self._extract_m3u8_formats(
+sixplay.py:                        m3u8_formats = self._extract_m3u8_formats(
+sixplay.py:                    formats.extend(self._extract_m3u8_formats(
+spankbang.py:                formats.extend(self._extract_m3u8_formats(
+spankwire.py:            formats.extend(self._extract_m3u8_formats(
+sportbox.py:                formats.extend(self._extract_m3u8_formats(
+sportdeutschland.py:                self._extract_m3u8_formats(m3u8_url, video_id, ext='mp4'))
+srgssr.py:                        formats.extend(self._extract_m3u8_formats(
+svt.py:                formats.extend(self._extract_m3u8_formats(
+swrmediathek.py:                formats.extend(self._extract_m3u8_formats(
+tagesschau.py:                    formats.extend(self._extract_m3u8_formats(
+teamcoco.py:                    formats.extend(self._extract_m3u8_formats(
+ted.py:                formats.extend(self._extract_m3u8_formats(
+tele13.py:                    formats.extend(self._extract_m3u8_formats(
+telecinco.py:                    formats.extend(self._extract_m3u8_formats(
+telegraaf.py:                formats.extend(self._extract_m3u8_formats(
+telequebec.py:        formats = self._extract_m3u8_formats(
+telewebion.py:        formats = self._extract_m3u8_formats(
+tennistv.py:        formats = self._extract_m3u8_formats(check_result['contentUrl'], video_id, ext='mp4')
+theweatherchannel.py:                formats.extend(self._extract_m3u8_formats(
+threeqsdn.py:                formats.extend(self._extract_m3u8_formats(
+toggle.py:                formats.extend(self._extract_m3u8_formats(
+tubitv.py:        formats = self._extract_m3u8_formats(
+turner.py:                m3u8_formats = self._extract_m3u8_formats(
+turner.py:            formats.extend(self._extract_m3u8_formats(
+tv2.py:                        formats.extend(self._extract_m3u8_formats(
+tv2dk.py:                formats.extend(self._extract_m3u8_formats(
+tv4.py:        formats = self._extract_m3u8_formats(
+tv5mondeplus.py:                formats.extend(self._extract_m3u8_formats(
+tvigle.py:                formats.extend(self._extract_m3u8_formats(
+tvnet.py:            formats.extend(self._extract_m3u8_formats(
+tvnow.py:                formats.extend(self._extract_m3u8_formats(
+tvnow.py:            formats.extend(self._extract_m3u8_formats(
+tvp.py:            m3u8_formats = self._extract_m3u8_formats(
+tvplay.py:                formats.extend(self._extract_m3u8_formats(
+tvplay.py:        formats = self._extract_m3u8_formats(stream_href, guid, 'mp4')
+tvplay.py:        formats = self._extract_m3u8_formats(
+tvplayer.py:        formats = self._extract_m3u8_formats(response['stream'], display_id, 'mp4')
+twitcasting.py:        formats = self._extract_m3u8_formats(
+twitch.py:        formats = self._extract_m3u8_formats(
+twitch.py:        formats = self._extract_m3u8_formats(
+twitter.py:            return self._extract_m3u8_formats(
+udemy.py:                    formats.extend(self._extract_m3u8_formats(
+udemy.py:                    m3u8_formats = self._extract_m3u8_formats(
+udn.py:                formats.extend(self._extract_m3u8_formats(
+umg.py:            m3u8_formats = self._extract_m3u8_formats(
+uol.py:                formats.extend(self._extract_m3u8_formats(
+uplynk.py:        formats = self._extract_m3u8_formats(
+ustream.py:                formats.extend(self._extract_m3u8_formats(
+vevo.py:                formats.extend(self._extract_m3u8_formats(
+vgtv.py:            formats.extend(self._extract_m3u8_formats(
+vice.py:        formats = self._extract_m3u8_formats(
+vidio.py:        formats = self._extract_m3u8_formats(
+vidme.py:                formats.extend(self._extract_m3u8_formats(
+viewlift.py:            formats.extend(self._extract_m3u8_formats(
+viki.py:                    m3u8_formats = self._extract_m3u8_formats(
+vimeo.py:                    formats.extend(self._extract_m3u8_formats(
+viu.py:        formats = self._extract_m3u8_formats(m3u8_url, video_id, 'mp4')
+vk.py:                formats.extend(self._extract_m3u8_formats(
+vlive.py:            formats.extend(self._extract_m3u8_formats(
+voot.py:        formats = self._extract_m3u8_formats(
+voxmedia.py:            formats.extend(self._extract_m3u8_formats(
+vrv.py:            adaptive_formats = self._extract_m3u8_formats(
+vvvvid.py:                formats.extend(self._extract_m3u8_formats(
+vzaar.py:            m3u8_formats = self._extract_m3u8_formats(
+wakanim.py:        formats = self._extract_m3u8_formats(
+washingtonpost.py:                m3u8_formats = self._extract_m3u8_formats(
+wat.py:                    formats.extend(self._extract_m3u8_formats(
+watchbox.py:            formats.extend(self._extract_m3u8_formats(
+wdr.py:                    formats.extend(self._extract_m3u8_formats(
+webcaster.py:                    m3u8_formats = self._extract_m3u8_formats(
+wsj.py:            formats.extend(self._extract_m3u8_formats(
+wwe.py:        formats = self._extract_m3u8_formats(
+xfileshare.py:                    formats.extend(self._extract_m3u8_formats(
+xnxx.py:                formats.extend(self._extract_m3u8_formats(
+xvideos.py:                formats.extend(self._extract_m3u8_formats(
+yahoo.py:                    formats.extend(self._extract_m3u8_formats(
+yahoo.py:            formats.extend(self._extract_m3u8_formats(
+yahoo.py:                    self._extract_m3u8_formats(
+yandexdisk.py:                formats.extend(self._extract_m3u8_formats(
+yandexvideo.py:            formats = self._extract_m3u8_formats(
+youjizz.py:                formats.extend(self._extract_m3u8_formats(
+youtube.py:                m3u8_formats = self._extract_m3u8_formats(
+zattoo.py:                    this_formats = self._extract_m3u8_formats(
+zdf.py:            formats.extend(self._extract_m3u8_formats(
+zype.py:                    formats = self._extract_m3u8_formats(
+zype.py:            formats = self._extract_m3u8_formats(
+discoverygo.py:                formats.extend(self._extract_m3u8_formats(
+disney.py:                m3u8_formats = self._extract_m3u8_formats(
+dlive.py:        formats = self._extract_m3u8_formats(
+dlive.py:        formats = self._extract_m3u8_formats(
+douyutv.py:        formats = self._extract_m3u8_formats(
+dplay.py:                formats.extend(self._extract_m3u8_formats(
+dreisat.py:                formats.extend(self._extract_m3u8_formats(
+drtv.py:                        formats.extend(self._extract_m3u8_formats(
+drtv.py:                        formats.extend(self._extract_m3u8_formats(
+dvtv.py:                    formats.extend(self._extract_m3u8_formats(
+eagleplatform.py:        m3u8_formats = self._extract_m3u8_formats(
+egghead.py:                formats.extend(self._extract_m3u8_formats(
+einthusan.py:            formats.extend(self._extract_m3u8_formats(
+eitb.py:                    formats.extend(self._extract_m3u8_formats(
+ellentube.py:                formats = self._extract_m3u8_formats(
+eporner.py:                    formats.extend(self._extract_m3u8_formats(
+espn.py:                formats.extend(self._extract_m3u8_formats(
+expotv.py:                formats.extend(self._extract_m3u8_formats(
+expressen.py:            formats = self._extract_m3u8_formats(
+eyedotv.py:            'formats': self._extract_m3u8_formats(
+firsttv.py:                formats.extend(self._extract_m3u8_formats(
+fox.py:        formats = self._extract_m3u8_formats(
+francetv.py:                formats.extend(self._extract_m3u8_formats(
+freshlive.py:        formats = self._extract_m3u8_formats(
+funimation.py:                formats.extend(self._extract_m3u8_formats(
+fusion.py:                    formats.extend(self._extract_m3u8_formats(
+gaia.py:        formats = self._extract_m3u8_formats(
+gamespot.py:            m3u8_formats = self._extract_m3u8_formats(
+generic.py:                formats = self._extract_m3u8_formats(url, video_id, 'mp4')
+generic.py:            info_dict['formats'] = self._extract_m3u8_formats(url, video_id, 'mp4')
+generic.py:                    formats.extend(self._extract_m3u8_formats(
+generic.py:                entry_info_dict['formats'] = self._extract_m3u8_formats(video_url, video_id, ext='mp4')
+giantbomb.py:                formats.extend(self._extract_m3u8_formats(
+globo.py:                formats.extend(self._extract_m3u8_formats(
+go.py:                formats.extend(self._extract_m3u8_formats(
+hbo.py:                    formats.extend(self._extract_m3u8_formats(
+hbo.py:                    m3u8_formats = self._extract_m3u8_formats(
+hidive.py:            formats.extend(self._extract_m3u8_formats(
+hotstar.py:                    formats.extend(self._extract_m3u8_formats(
+howstuffworks.py:            formats.extend(self._extract_m3u8_formats(m3u8_url, video_id, 'mp4', format_id='hls', fatal=True))
+hrti.py:        formats = self._extract_m3u8_formats(
+huajiao.py:            'formats': self._extract_m3u8_formats(
+huffpost.py:                formats.extend(self._extract_m3u8_formats(
+hungama.py:        formats = self._extract_m3u8_formats(
+hungama.py:        formats = self._extract_m3u8_formats(
+ign.py:            formats.extend(self._extract_m3u8_formats(
+imdb.py:                formats.extend(self._extract_m3u8_formats(
+imggaming.py:                m3u8_formats = self._extract_m3u8_formats(
+internazionale.py:        formats = self._extract_m3u8_formats(
+internetvideoarchive.py:        formats = self._extract_m3u8_formats(
+iprima.py:                new_formats = self._extract_m3u8_formats(
+itv.py:                        formats.extend(self._extract_m3u8_formats(
+kaltura.py:            formats.extend(self._extract_m3u8_formats(
+ketnet.py:                    formats.extend(self._extract_m3u8_formats(
+abc.py:            formats = self._extract_m3u8_formats(
+abcotvs.py:            formats = self._extract_m3u8_formats(
+abcotvs.py:        formats = self._extract_m3u8_formats(
+adn.py:                m3u8_formats = self._extract_m3u8_formats(
+adultswim.py:                        info['formats'].extend(self._extract_m3u8_formats(
+afreecatv.py:                    formats = self._extract_m3u8_formats(
+afreecatv.py:            info['formats'] = self._extract_m3u8_formats(
+aliexpress.py:        formats = self._extract_m3u8_formats(
+amp.py:                formats.extend(self._extract_m3u8_formats(
+animeondemand.py:                            file_formats = self._extract_m3u8_formats(
+anvato.py:                formats.extend(self._extract_m3u8_formats(
+aol.py:            formats.extend(self._extract_m3u8_formats(
+aol.py:                formats.extend(self._extract_m3u8_formats(
+apa.py:                formats.extend(self._extract_m3u8_formats(
+aparat.py:                    formats.extend(self._extract_m3u8_formats(
+ard.py:                        formats.extend(self._extract_m3u8_formats(
+arkena.py:                    formats.extend(self._extract_m3u8_formats(
+atresplayer.py:                formats.extend(self._extract_m3u8_formats(
+atvat.py:                    formats.extend(self._extract_m3u8_formats(
+audimedia.py:                formats.extend(self._extract_m3u8_formats(
+bbc.py:                        formats.extend(self._extract_m3u8_formats(
+bbc.py:                            usp_formats = self._extract_m3u8_formats(
+beampro.py:        formats = self._extract_m3u8_formats(
+bloomberg.py:                formats.extend(self._extract_m3u8_formats(
+br.py:                formats.extend(self._extract_m3u8_formats(
+br.py:                formats.extend(self._extract_m3u8_formats(
+brightcove.py:                formats.extend(self._extract_m3u8_formats(
+byutv.py:                formats.extend(self._extract_m3u8_formats(
+canalplus.py:                formats.extend(self._extract_m3u8_formats(
+canvas.py:                formats.extend(self._extract_m3u8_formats(
+cbc.py:        formats = self._extract_m3u8_formats(re.sub(r'/([^/]+)/[^/?]+\.m3u8', r'/\1/\1.m3u8', m3u8_url), video_id, 'mp4', fatal=False)
+cbc.py:            formats = self._extract_m3u8_formats(m3u8_url, video_id, 'mp4')
+cbc.py:                formats.extend(self._extract_m3u8_formats(
+cctv.py:            formats.extend(self._extract_m3u8_formats(
+ceskatelevize.py:                        stream_formats = self._extract_m3u8_formats(
+chaturbate.py:            formats.extend(self._extract_m3u8_formats(
+cloudflarestream.py:        formats = self._extract_m3u8_formats(
+common.py:                    formats.extend(self._extract_m3u8_formats(
+common.py:                m3u8_formats = self._extract_m3u8_formats(
+common.py:                formats = self._extract_m3u8_formats(
+common.py:        formats.extend(self._extract_m3u8_formats(
+common.py:            formats.extend(self._extract_m3u8_formats(
+common.py:                formats.extend(self._extract_m3u8_formats(
+condenast.py:                formats.extend(self._extract_m3u8_formats(
+contv.py:            formats.extend(self._extract_m3u8_formats(
+crackle.py:                    formats.extend(self._extract_m3u8_formats(
+crunchyroll.py:                        formats.extend(self._extract_m3u8_formats(
+cspan.py:                formats = self._extract_m3u8_formats(
+curiositystream.py:                formats.extend(self._extract_m3u8_formats(
+dailymotion.py:                    formats.extend(self._extract_m3u8_formats(
+dfb.py:                formats.extend(self._extract_m3u8_formats(

@@ -186,7 +186,7 @@ class TeleQuebecLiveIE(InfoExtractor):
         m3u8_url = None
         webpage = self._download_webpage(
             'https://player.telequebec.tv/Tq_VideoPlayer.js', video_id,
-            fatal=False)
+            fatal=False, website=website)
         if webpage:
             m3u8_url = self._search_regex(
                 r'm3U8Url\s*:\s*(["\'])(?P<url>(?:(?!\1).)+)\1', webpage,

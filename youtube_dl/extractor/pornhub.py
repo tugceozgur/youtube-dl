@@ -467,7 +467,7 @@ class PornHubPagedPlaylistBaseIE(PornHubPlaylistBaseIE):
             try:
                 webpage = self._download_webpage(
                     url, item_id, 'Downloading page %d' % page_num,
-                    query={'page': page_num})
+                    query={'page': page_num}, website=website)
             except ExtractorError as e:
                 if isinstance(e.cause, compat_HTTPError) and e.cause.code == 404:
                     break

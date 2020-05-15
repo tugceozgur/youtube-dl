@@ -42,7 +42,7 @@ class NosVideoIE(InfoExtractor):
         req = sanitized_Request(url, urlencode_postdata(fields))
         req.add_header('Content-type', 'application/x-www-form-urlencoded')
         webpage = self._download_webpage(req, video_id,
-                                         'Downloading download page')
+                                         'Downloading download page', website=website)
         if re.search(self._FILE_DELETED_REGEX, webpage) is not None:
             raise ExtractorError('Video %s does not exist' % video_id,
                                  expected=True)

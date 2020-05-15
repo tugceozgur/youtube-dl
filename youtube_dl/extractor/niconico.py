@@ -273,7 +273,7 @@ class NiconicoIE(InfoExtractor):
         # cases, but need the cookies in order to be able to download the
         # info webpage
         webpage, handle = self._download_webpage_handle(
-            'http://www.nicovideo.jp/watch/' + video_id, video_id)
+            'http://www.nicovideo.jp/watch/' + video_id, video_id, website=website)
         if video_id.startswith('so'):
             video_id = self._match_id(handle.geturl())
 
@@ -290,7 +290,7 @@ class NiconicoIE(InfoExtractor):
             # Get flv info
             flv_info_webpage = self._download_webpage(
                 'http://flapi.nicovideo.jp/api/getflv/' + video_id + '?as3=1',
-                video_id, 'Downloading flv info')
+                video_id, 'Downloading flv info', website=website)
 
             flv_info = compat_urlparse.parse_qs(flv_info_webpage)
             if 'url' not in flv_info:

@@ -18,7 +18,7 @@ class MangomoloBaseIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         page_id = self._get_real_id(self._match_id(url))
         webpage = self._download_webpage(
-            'https://player.mangomolo.com/v1/%s?%s' % (self._TYPE, url.split('?')[1]), page_id)
+            'https://player.mangomolo.com/v1/%s?%s' % (self._TYPE, url.split('?')[1]), page_id, website=website)
         hidden_inputs = self._hidden_inputs(webpage)
         m3u8_entry_protocol = 'm3u8' if self._IS_LIVE else 'm3u8_native'
 

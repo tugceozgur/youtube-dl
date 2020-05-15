@@ -53,7 +53,7 @@ class ZattooPlatformBaseIE(InfoExtractor):
 
     def _real_initialize(self):
         webpage = self._download_webpage(
-            self._host_url(), None, 'Downloading app token')
+            self._host_url(), None, 'Downloading app token', website=website)
         app_token = self._html_search_regex(
             r'appToken\s*=\s*(["\'])(?P<token>(?:(?!\1).)+?)\1',
             webpage, 'app token', group='token')

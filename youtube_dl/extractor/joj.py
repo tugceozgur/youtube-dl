@@ -52,7 +52,7 @@ class JojIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'https://media.joj.sk/embed/%s' % video_id, video_id)
+            'https://media.joj.sk/embed/%s' % video_id, video_id, website=website)
 
         title = self._search_regex(
             (r'videoTitle\s*:\s*(["\'])(?P<title>(?:(?!\1).)+)\1',

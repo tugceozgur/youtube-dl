@@ -32,7 +32,7 @@ class WeiboIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         # to get Referer url for genvisitor
-        webpage, urlh = self._download_webpage_handle(url, video_id)
+        webpage, urlh = self._download_webpage_handle(url, video_id, website=website)
 
         visitor_url = urlh.geturl()
 
@@ -71,7 +71,7 @@ class WeiboIE(InfoExtractor):
                 })
 
             webpage = self._download_webpage(
-                url, video_id, note='Revisiting webpage')
+                url, video_id, note='Revisiting webpage', website=website)
 
         title = self._html_search_regex(
             r'<title>(.+?)</title>', webpage, 'title')

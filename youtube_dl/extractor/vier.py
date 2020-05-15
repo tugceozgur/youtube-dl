@@ -151,7 +151,7 @@ class VierIE(InfoExtractor):
                 'Log in to extract metadata', video_id=display_id)
             webpage = self._download_webpage(
                 'http://www.%s.be/video/v3/embed/%s' % (site, video_id),
-                display_id)
+                display_id, website=website)
 
         video_id = self._search_regex(
             [r'data-nid="(\d+)"', r'"nid"\s*:\s*"(\d+)"'],

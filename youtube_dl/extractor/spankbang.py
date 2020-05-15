@@ -63,7 +63,7 @@ class SpankBangIE(InfoExtractor):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
             url.replace('/%s/embed' % video_id, '/%s/video' % video_id),
-            video_id, headers={'Cookie': 'country=US'})
+            video_id, headers={'Cookie': 'country=US'}, website=website)
 
         if re.search(r'<[^>]+\b(?:id|class)=["\']video_removed', webpage):
             raise ExtractorError(
@@ -169,7 +169,7 @@ class SpankBangPlaylistIE(InfoExtractor):
         playlist_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            url, playlist_id, headers={'Cookie': 'country=US; mobile=on'})
+            url, playlist_id, headers={'Cookie': 'country=US; mobile=on'}, website=website)
 
         entries = [self.url_result(
             'https://spankbang.com/%s/video' % video_id,

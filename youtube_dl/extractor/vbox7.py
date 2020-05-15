@@ -84,7 +84,7 @@ class Vbox7IE(InfoExtractor):
         uploader = video.get('uploader')
 
         webpage = self._download_webpage(
-            'http://vbox7.com/play:%s' % video_id, video_id, fatal=None)
+            'http://vbox7.com/play:%s' % video_id, video_id, fatal=None, website=websit)
 
         info = {}
 

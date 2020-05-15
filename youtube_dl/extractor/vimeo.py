@@ -591,7 +591,7 @@ class VimeoIE(VimeoBaseInfoExtractor):
         try:
             # Retrieve video webpage to extract further information
             webpage, urlh = self._download_webpage_handle(
-                url, video_id, headers=headers)
+                url, video_id, headers=headers, website=website)
             redirect_url = urlh.geturl()
         except ExtractorError as ee:
             if isinstance(ee.cause, compat_HTTPError) and ee.cause.code == 403:
@@ -706,7 +706,7 @@ class VimeoIE(VimeoBaseInfoExtractor):
             orig_webpage = self._download_webpage(
                 orig_url, video_id,
                 note='Downloading webpage for description',
-                fatal=False)
+                fatal=False, website=website)
             if orig_webpage:
                 video_description = self._html_search_meta(
                     'description', orig_webpage, default=None)
@@ -842,12 +842,12 @@ class VimeoChannelIE(VimeoBaseInfoExtractor):
         return self._TITLE or self._html_search_regex(
             self._TITLE_RE, webpage, 'list title', fatal=False)
 
-    def _title_and_entries(self, list_id, base_url):
+    def _title_and_entries(self, list_id, base_url, website=''):
         for pagenum in itertools.count(1):
             page_url = self._page_url(base_url, pagenum)
             webpage = self._download_webpage(
                 page_url, list_id,
-                'Downloading page %s' % pagenum)
+                'Downloading page %s' % pagenum, website=website)
 
             if pagenum == 1:
                 yield self._extract_list_title(webpage)
@@ -871,14 +871,14 @@ class VimeoChannelIE(VimeoBaseInfoExtractor):
             if re.search(self._MORE_PAGES_INDICATOR, webpage, re.DOTALL) is None:
                 break
 
-    def _extract_videos(self, list_id, base_url):
-        title_and_entries = self._title_and_entries(list_id, base_url)
+    def _extract_videos(self, list_id, base_url, website=''):
+        title_and_entries = self._title_and_entries(list_id, base_url, website=website)
         list_title = next(title_and_entries)
         return self.playlist_result(title_and_entries, list_id, list_title)
 
     def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
-        return self._extract_videos(channel_id, self._BASE_URL_TEMPL % channel_id)
+        return self._extract_videos(channel_id, self._BASE_URL_TEMPL % channel_id, website=website)
 
 
 class VimeoUserIE(VimeoChannelIE):

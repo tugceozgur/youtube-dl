@@ -30,7 +30,7 @@ class Porn91IE(InfoExtractor):
         self._set_cookie('91porn.com', 'language', 'cn_CN')
 
         webpage = self._download_webpage(
-            'http://91porn.com/view_video.php?viewkey=%s' % video_id, video_id)
+            'http://91porn.com/view_video.php?viewkey=%s' % video_id, video_id, website=website)
 
         if '作为游客，你每天只可观看10个视频' in webpage:
             raise ExtractorError('91 Porn says: Daily limit 10 videos exceeded', expected=True)

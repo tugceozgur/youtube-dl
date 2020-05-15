@@ -157,7 +157,7 @@ class VevoIE(VevoBaseIE):
         4: 'amazon',
     }
 
-    def _initialize_api(self, video_id):
+    def _initialize_api(self, video_id, website=''):
         webpage = self._download_webpage(
             'https://accounts.vevo.com/token', None,
             note='Retrieving oauth token',
@@ -168,7 +168,7 @@ class VevoIE(VevoBaseIE):
             }).encode('utf-8'),
             headers={
                 'Content-Type': 'application/json',
-            })
+            }, website=website)
 
         if re.search(r'(?i)THIS PAGE IS CURRENTLY UNAVAILABLE IN YOUR REGION', webpage):
             self.raise_geo_restricted(
@@ -191,7 +191,7 @@ class VevoIE(VevoBaseIE):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        self._initialize_api(video_id)
+        self._initialize_api(video_id, website=website)
 
         video_info = self._call_api(
             'video/%s' % video_id, video_id, 'Downloading api video info',

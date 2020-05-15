@@ -34,7 +34,7 @@ class SunPornoIE(InfoExtractor):
         video_id = self._match_id(url)
 
         webpage = self._download_webpage(
-            'http://www.sunporno.com/videos/%s' % video_id, video_id)
+            'http://www.sunporno.com/videos/%s' % video_id, video_id, website=website)
 
         title = self._html_search_regex(
             r'<title>([^<]+)</title>', webpage, 'title')

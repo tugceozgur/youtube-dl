@@ -97,7 +97,7 @@ class FC2IE(InfoExtractor):
             format(video_id, mimi, compat_urllib_request.quote(refer, safe=b'').replace('.', '%2E')))
 
         info_webpage = self._download_webpage(
-            info_url, video_id, note='Downloading info page')
+            info_url, video_id, note='Downloading info page', website=website)
         info = compat_urlparse.parse_qs(info_webpage)
 
         if 'err_code' in info:

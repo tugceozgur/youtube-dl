@@ -136,7 +136,7 @@ class RTSIE(SRGSSRIE):
             if not entries:
                 page, urlh = self._download_webpage_handle(url, display_id)
                 if re.match(self._VALID_URL, urlh.geturl()).group('id') != media_id:
-                    return self.url_result(urlh.geturl(), 'RTS')
+                    return self.url_result(urlh.geturl(), 'RTS', website=website)
 
                 # article with videos on rhs
                 videos = re.findall(

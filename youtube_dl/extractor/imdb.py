@@ -87,7 +87,7 @@ class ImdbIE(InfoExtractor):
         self._sort_formats(formats)
 
         webpage = self._download_webpage(
-            'https://www.imdb.com/video/vi' + video_id, video_id)
+            'https://www.imdb.com/video/vi' + video_id, video_id, website=website)
         video_metadata = self._parse_json(self._search_regex(
             r'args\.push\(\s*({.+?})\s*\)\s*;', webpage,
             'video metadata'), video_id)

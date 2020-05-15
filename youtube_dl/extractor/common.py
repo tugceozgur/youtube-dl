@@ -527,10 +527,11 @@ class InfoExtractor(object):
         try:
             for _ in range(2):
                 try:
-                    self.initialize()
+                    #self.initialize() prevent login 
                     ie_result = self._real_extract(url, website=website)
                     if self._x_forwarded_for_ip:
                         ie_result['__x_forwarded_for_ip'] = self._x_forwarded_for_ip
+                    print("IE RESULT", ie_result)
                     return ie_result
                 except GeoRestrictedError as e:
                     if self.__maybe_fake_ip_and_retry(e.countries):
@@ -615,16 +616,20 @@ class InfoExtractor(object):
         if self._x_forwarded_for_ip:
             if 'X-Forwarded-For' not in headers:
                 headers['X-Forwarded-For'] = self._x_forwarded_for_ip
-
+        print("HEADER", headers)
         if isinstance(url_or_request, compat_urllib_request.Request):
             url_or_request = update_Request(
                 url_or_request, data=data, headers=headers, query=query)
+            print('URL OR REQUEST1', url_or_request)
         else:
             if query:
                 url_or_request = update_url_query(url_or_request, query)
+                print('URL OR REQUEST2', url_or_request)
             if data is not None or headers:
                 url_or_request = sanitized_Request(url_or_request, data, headers)
+                print('URL OR REQUEST3', url_or_request)
         try:
+            print('RESULT OF REQUEST WEBPAGE', self._downloader.urlopen(url_or_request))
             return self._downloader.urlopen(url_or_request)
         except (compat_urllib_error.URLError, compat_http_client.HTTPException, socket.error) as err:
             if isinstance(err, compat_urllib_error.HTTPError):
@@ -648,7 +653,7 @@ class InfoExtractor(object):
                 self._downloader.report_warning(errmsg)
                 return False
 
-    def _download_webpage_handle(self, url_or_request, video_id, note=None, errnote=None, fatal=True, encoding=None, data=None, headers={}, query={}, expected_status=None):
+    def _download_webpage_handle(self, url_or_request, video_id, note=None, errnote=None, fatal=True, encoding=None, data=None, headers={}, query={}, expected_status=None, website=''):
         """
         Return a tuple (page content as string, URL handle).
 
@@ -662,6 +667,7 @@ class InfoExtractor(object):
         if urlh is False:
             assert not fatal
             return False
+        #content = website
         content = self._webpage_read_content(urlh, url_or_request, video_id, note, errnote, fatal, encoding=encoding)
         return (content, urlh)
 
@@ -744,7 +750,10 @@ class InfoExtractor(object):
             content = webpage_bytes.decode('utf-8', 'replace')
 
         self.__check_blocked(content)
-
+        print("TYPE CONTENT", type(content))
+        print('CONTENT', content)
+        # with open('content.html', 'wb') as outf:
+        #     outf.write(content)
         return content
 
     def _download_webpage(
@@ -809,7 +818,7 @@ class InfoExtractor(object):
             self, url_or_request, video_id, note='Downloading XML',
             errnote='Unable to download XML', transform_source=None,
             fatal=True, encoding=None, data=None, headers={}, query={},
-            expected_status=None):
+            expected_status=None, website=''):
         """
         Return a tuple (xml as an compat_etree_Element, URL handle).
 
@@ -818,7 +827,7 @@ class InfoExtractor(object):
         res = self._download_webpage_handle(
             url_or_request, video_id, note, errnote, fatal=fatal,
             encoding=encoding, data=data, headers=headers, query=query,
-            expected_status=expected_status)
+            expected_status=expected_status, website=website)
         if res is False:
             return res
         xml_string, urlh = res
@@ -830,7 +839,7 @@ class InfoExtractor(object):
             self, url_or_request, video_id,
             note='Downloading XML', errnote='Unable to download XML',
             transform_source=None, fatal=True, encoding=None,
-            data=None, headers={}, query={}, expected_status=None):
+            data=None, headers={}, query={}, expected_status=None, website=''):
         """
         Return the xml as an compat_etree_Element.
 
@@ -840,8 +849,8 @@ class InfoExtractor(object):
             url_or_request, video_id, note=note, errnote=errnote,
             transform_source=transform_source, fatal=fatal, encoding=encoding,
             data=data, headers=headers, query=query,
-            expected_status=expected_status)
-        return res if res is False else res[0]
+            expected_status=expected_status, website=website)
+        return res if res is False else res
 
     def _parse_xml(self, xml_string, video_id, transform_source=None, fatal=True):
         if transform_source:
@@ -859,7 +868,7 @@ class InfoExtractor(object):
             self, url_or_request, video_id, note='Downloading JSON metadata',
             errnote='Unable to download JSON metadata', transform_source=None,
             fatal=True, encoding=None, data=None, headers={}, query={},
-            expected_status=None):
+            expected_status=None, website=''):
         """
         Return a tuple (JSON object, URL handle).
 
@@ -868,7 +877,7 @@ class InfoExtractor(object):
         res = self._download_webpage_handle(
             url_or_request, video_id, note, errnote, fatal=fatal,
             encoding=encoding, data=data, headers=headers, query=query,
-            expected_status=expected_status)
+            expected_status=expected_status, website=website)
         if res is False:
             return res
         json_string, urlh = res
@@ -880,7 +889,7 @@ class InfoExtractor(object):
             self, url_or_request, video_id, note='Downloading JSON metadata',
             errnote='Unable to download JSON metadata', transform_source=None,
             fatal=True, encoding=None, data=None, headers={}, query={},
-            expected_status=None):
+            expected_status=None, website=''):
         """
         Return the JSON object as a dict.
 
@@ -1443,15 +1452,16 @@ class InfoExtractor(object):
     def _is_valid_url(self, url, video_id, item='video', headers={}):
         url = self._proto_relative_url(url, scheme='http:')
         # For now assume non HTTP(S) URLs always valid
-        if not (url.startswith('http://') or url.startswith('https://')):
-            return True
-        try:
-            self._request_webpage(url, video_id, 'Checking %s URL' % item, headers=headers)
-            return True
-        except ExtractorError:
-            self.to_screen(
-                '%s: %s URL is invalid, skipping' % (video_id, item))
-            return False
+        # if not (url.startswith('http://') or url.startswith('https://')):
+        #     return True
+        # try:
+        #     self._request_webpage(url, video_id, 'Checking %s URL' % item, headers=headers)
+        #     return True
+        # except ExtractorError:
+        #     self.to_screen(
+        #         '%s: %s URL is invalid, skipping' % (video_id, item))
+        #     return False
+        return True
 
     def http_scheme(self):
         """ Either "http:" or "https:", depending on the user's preferences """
@@ -1611,12 +1621,12 @@ class InfoExtractor(object):
                               entry_protocol='m3u8', preference=None,
                               m3u8_id=None, note=None, errnote=None,
                               fatal=True, live=False, data=None, headers={},
-                              query={}):
+                              query={}, website=''):
         res = self._download_webpage_handle(
             m3u8_url, video_id,
             note=note or 'Downloading m3u8 information',
             errnote=errnote or 'Failed to download m3u8 information',
-            fatal=fatal, data=data, headers=headers, query=query)
+            fatal=fatal, data=data, headers=headers, query=query, website=website)
 
         if res is False:
             return []
@@ -2047,12 +2057,12 @@ class InfoExtractor(object):
             })
         return entries
 
-    def _extract_mpd_formats(self, mpd_url, video_id, mpd_id=None, note=None, errnote=None, fatal=True, formats_dict={}, data=None, headers={}, query={}):
+    def _extract_mpd_formats(self, mpd_url, video_id, mpd_id=None, note=None, errnote=None, fatal=True, formats_dict={}, data=None, headers={}, query={}, website=''):
         res = self._download_xml_handle(
             mpd_url, video_id,
             note=note or 'Downloading MPD manifest',
             errnote=errnote or 'Failed to download MPD manifest',
-            fatal=fatal, data=data, headers=headers, query=query)
+            fatal=fatal, data=data, headers=headers, query=query, website=website)
         if res is False:
             return []
         mpd_doc, urlh = res
@@ -2355,12 +2365,12 @@ class InfoExtractor(object):
                         self.report_warning('Unknown MIME type %s in DASH manifest' % mime_type)
         return formats
 
-    def _extract_ism_formats(self, ism_url, video_id, ism_id=None, note=None, errnote=None, fatal=True, data=None, headers={}, query={}):
+    def _extract_ism_formats(self, ism_url, video_id, ism_id=None, note=None, errnote=None, fatal=True, data=None, headers={}, query={}, website=''):
         res = self._download_xml_handle(
             ism_url, video_id,
             note=note or 'Downloading ISM manifest',
             errnote=errnote or 'Failed to download ISM manifest',
-            fatal=fatal, data=data, headers=headers, query=query)
+            fatal=fatal, data=data, headers=headers, query=query, website=website)
         if res is False:
             return []
         ism_doc, urlh = res

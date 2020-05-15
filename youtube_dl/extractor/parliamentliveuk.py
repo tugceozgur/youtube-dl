@@ -26,7 +26,7 @@ class ParliamentLiveUKIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         webpage = self._download_webpage(
-            'http://vodplayer.parliamentlive.tv/?mid=' + video_id, video_id)
+            'http://vodplayer.parliamentlive.tv/?mid=' + video_id, video_id, website=website)
         widget_config = self._parse_json(self._search_regex(
             r'(?s)kWidgetConfig\s*=\s*({.+});',
             webpage, 'kaltura widget config'), video_id)

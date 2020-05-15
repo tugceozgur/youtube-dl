@@ -181,9 +181,9 @@ class NPOIE(NPOBaseIE):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        return self._get_info(url, video_id) or self._get_old_info(video_id)
+        return self._get_info(url, video_id, website=website) or self._get_old_info(video_id)
 
-    def _get_info(self, url, video_id):
+    def _get_info(self, url, video_id, website=''):
         token = self._download_json(
             'https://www.npostart.nl/api/token', video_id,
             'Downloading token', headers={
@@ -261,7 +261,7 @@ class NPOIE(NPOBaseIE):
         embed_url = url_or_none(player.get('embedUrl'))
         if embed_url:
             webpage = self._download_webpage(
-                embed_url, video_id, 'Downloading embed page', fatal=False)
+                embed_url, video_id, 'Downloading embed page', fatal=False, website=website)
             if webpage:
                 video = self._parse_json(
                     self._search_regex(

@@ -36,7 +36,7 @@ class KinoPoiskIE(InfoExtractor):
 
         webpage = self._download_webpage(
             'https://ott-widget.kinopoisk.ru/v1/kp/', video_id,
-            query={'kpId': video_id})
+            query={'kpId': video_id}, website=website)
 
         data = self._parse_json(
             self._search_regex(

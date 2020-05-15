@@ -85,7 +85,7 @@ class VRVBaseIE(InfoExtractor):
 
     def _real_initialize(self):
         webpage = self._download_webpage(
-            'https://vrv.co/', None, headers=self.geo_verification_headers())
+            'https://vrv.co/', None, headers=self.geo_verification_headers(), website=website)
         self._API_PARAMS = self._parse_json(self._search_regex(
             [
                 r'window\.__APP_CONFIG__\s*=\s*({.+?})(?:</script>|;)',

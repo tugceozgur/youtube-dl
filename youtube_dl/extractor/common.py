@@ -527,7 +527,7 @@ class InfoExtractor(object):
         try:
             for _ in range(2):
                 try:
-                    #self.initialize() prevent login 
+                    self.initialize()
                     ie_result = self._real_extract(url, website=website)
                     if self._x_forwarded_for_ip:
                         ie_result['__x_forwarded_for_ip'] = self._x_forwarded_for_ip

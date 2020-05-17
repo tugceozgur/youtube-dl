@@ -750,8 +750,6 @@ class InfoExtractor(object):
             content = webpage_bytes.decode('utf-8', 'replace')
 
         self.__check_blocked(content)
-        print("TYPE CONTENT", type(content))
-        print('CONTENT', content)
         # with open('content.html', 'wb') as outf:
         #     outf.write(content)
         return content
@@ -1012,6 +1010,7 @@ class InfoExtractor(object):
         elif default is not NO_DEFAULT:
             return default
         elif fatal:
+            print("here?")
             raise RegexNotFoundError('Unable to extract %s' % _name)
         else:
             self._downloader.report_warning('unable to extract %s' % _name + bug_reports_message())

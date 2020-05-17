@@ -88,7 +88,7 @@ class DisneyIE(InfoExtractor):
             video_data = page_data['data'][0]
         else:
             webpage = self._download_webpage(
-                'http://%s/embed/%s' % (domain, video_id), video_id, website=website))
+                'http://%s/embed/%s' % (domain, video_id), video_id, website=website) 
             page_data = self._parse_json(self._search_regex(
                 r'Disney\.EmbedVideo\s*=\s*({.+});',
                 webpage, 'embed data'), video_id)

@@ -53,7 +53,7 @@ class SlutloadIE(InfoExtractor):
                 }
 
         webpage = self._download_webpage(
-            'http://www.slutload.com/video/_/%s/' % video_id, video_id, website=website, website=website)
+            'http://www.slutload.com/video/_/%s/' % video_id, video_id, website=website)
         title = self._html_search_regex(
             r'<h1><strong>([^<]+)</strong>', webpage, 'title').strip()
         info = self._parse_html5_media_entries(url, webpage, video_id)[0]

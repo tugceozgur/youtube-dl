@@ -358,6 +358,7 @@ class YoutubeDL(object):
         }
         self.params.update(params)
         self.cache = Cache(self)
+        self.url_list = []
 
         def check_deprecated(param, option, suggestion):
             if self.params.get(param) is not None:
@@ -848,6 +849,7 @@ class YoutubeDL(object):
         Returns the resolved ie_result.
         """
         result_type = ie_result.get('_type', 'video')
+        print(ie_result)
         print("RESULT TYPE", result_type)
         if result_type in ('url', 'url_transparent'):
             ie_result['url'] = sanitize_url(ie_result['url'])
@@ -865,6 +867,7 @@ class YoutubeDL(object):
         elif result_type == 'url':
             # We have to add extra_info to the results because it may be
             # contained in a playlist
+            print("IN URL ,",ie_result['url'])
             return self.extract_info(ie_result['url'],
                                      download,
                                      ie_key=ie_result.get('ie_key'),
@@ -1413,7 +1416,6 @@ class YoutubeDL(object):
 
     def process_video_result(self, info_dict, download=True, website=''):
         assert info_dict.get('_type', 'video') == 'video'
-        print('INFO DICT', info_dict)
         if 'id' not in info_dict:
             raise ExtractorError('Missing "id" field in extractor result')
         if 'title' not in info_dict:
@@ -1515,7 +1517,6 @@ class YoutubeDL(object):
 
         info_dict['requested_subtitles'] = self.process_subtitles(
             info_dict['id'], subtitles, automatic_captions)
-
         # We now pick which formats have to be downloaded
         if info_dict.get('formats') is None:
             # There's only one format available
@@ -1597,8 +1598,8 @@ class YoutubeDL(object):
         if self.params.get('listformats'):
             self.list_formats(info_dict)
             return
-
         req_format = self.params.get('format')
+        print("req format", req_format)
         if req_format is None:
             req_format = self._default_format_spec(info_dict, download=download)
             if self.params.get('verbose'):
@@ -1631,18 +1632,24 @@ class YoutubeDL(object):
             'formats': formats,
             'incomplete_formats': incomplete_formats,
         }
-
         formats_to_download = list(format_selector(ctx))
         if not formats_to_download:
             raise ExtractorError('requested format not available',
                                  expected=True)
-
+        # collect all best quality video urls in a list that is used in pyocl
+        for format in formats_to_download:
+            new_info = dict(info_dict)
+            new_info.update(format)
+            self.url_list.append(new_info.get('url'))
+            #print('FORMAT', format)
+            #print("URL LIST", self.url_list)
         if download:
             if len(formats_to_download) > 1:
                 self.to_screen('[info] %s: downloading video in %s formats' % (info_dict['id'], len(formats_to_download)))
             for format in formats_to_download:
                 new_info = dict(info_dict)
                 new_info.update(format)
+                
                 self.process_info(new_info)
         # We update the info dict with the best quality format (backwards compatibility)
         info_dict.update(formats_to_download[-1])
@@ -1714,6 +1721,7 @@ class YoutubeDL(object):
             if info_dict.get('requested_formats') is not None:
                 for f in info_dict['requested_formats']:
                     self.to_stdout(f['url'] + f.get('play_path', ''))
+                    #print("requested formats url", f['url'])
             else:
                 # For RTMP URLs, also include the playpath
                 self.to_stdout(info_dict['url'] + info_dict.get('play_path', ''))
@@ -2027,6 +2035,7 @@ class YoutubeDL(object):
             else:
                 if self.params.get('dump_single_json', False):
                     self.to_stdout(json.dumps(res))
+                    print(json.dumps(res))
 
         return self._download_retcode
 

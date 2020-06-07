@@ -27,7 +27,7 @@ class AlJazeeraIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         program_name = self._match_id(url)
-        webpage = self._download_webpage(url, program_name, website=website)
+        webpage = self._download_webpage_too(url, program_name, website=website)
         brightcove_id = self._search_regex(
             r'RenderPagesVideo\(\'(.+?)\'', webpage, 'brightcove id')
         return self.url_result(self.BRIGHTCOVE_URL_TEMPLATE % brightcove_id, 'BrightcoveNew', brightcove_id)

@@ -37,7 +37,7 @@ class ThisAVIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
 
         video_id = mobj.group('id')
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         title = remove_end(self._html_search_regex(
             r'<title>([^<]+)</title>', webpage, 'title'),
             ' - 視頻 - ThisAV.com-世界第一中文成人娛樂網站')

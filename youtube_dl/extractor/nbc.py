@@ -186,7 +186,7 @@ class NBCSportsVPlayerIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         theplatform_url = self._og_search_video_url(webpage).replace(
             'vplayer.nbcsports.com', 'player.theplatform.com')
         return self.url_result(theplatform_url, 'ThePlatform')
@@ -211,7 +211,7 @@ class NBCSportsIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         return self.url_result(
             NBCSportsVPlayerIE._extract_url(webpage), 'NBCSportsVPlayer')
 
@@ -293,7 +293,7 @@ class CSNNEIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         return {
             '_type': 'url_transparent',
             'ie_key': 'ThePlatform',
@@ -391,7 +391,7 @@ class NBCNewsIE(ThePlatformIE):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         data = self._parse_json(self._search_regex(
             r'window\.__data\s*=\s*({.+});', webpage,
@@ -472,7 +472,7 @@ class NBCOlympicsIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         drupal_settings = self._parse_json(self._search_regex(
             r'jQuery\.extend\(Drupal\.settings\s*,\s*({.+?})\);',
@@ -509,7 +509,7 @@ class NBCOlympicsStreamIE(AdobePassIE):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         pid = self._search_regex(r'pid\s*=\s*(\d+);', webpage, 'pid')
         resource = self._search_regex(
             r"resource\s*=\s*'(.+)';", webpage,

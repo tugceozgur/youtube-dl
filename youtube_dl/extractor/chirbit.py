@@ -82,7 +82,7 @@ class ChirbitProfileIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         profile_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, profile_id, website=website)
+        webpage = self._download_webpage_too(url, profile_id, website=website)
 
         entries = [
             self.url_result(self._proto_relative_url('//chirb.it/' + video_id))

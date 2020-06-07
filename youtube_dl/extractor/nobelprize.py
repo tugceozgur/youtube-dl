@@ -27,7 +27,7 @@ class NobelPrizeIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         media = self._parse_json(self._search_regex(
             r'(?s)var\s*config\s*=\s*({.+?});', webpage,
             'config'), video_id, js_to_json)['media']

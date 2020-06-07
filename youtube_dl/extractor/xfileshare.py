@@ -93,7 +93,7 @@ class XFileShareIE(InfoExtractor):
         host, video_id = re.match(self._VALID_URL, url).groups()
 
         url = 'https://%s/' % host + ('embed-%s.html' % video_id if host in ('govid.me', 'vidlo.us') else video_id)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         if any(re.search(p, webpage) for p in self._FILE_NOT_FOUND_REGEXES):
             raise ExtractorError('Video %s does not exist' % video_id, expected=True)

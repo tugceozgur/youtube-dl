@@ -141,7 +141,7 @@ class OnetIE(OnetBaseIE):
         mobj = re.match(self._VALID_URL, url)
         display_id, video_id = mobj.group('display_id', 'id')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         mvp_id = self._search_mvp_id(webpage)
 
@@ -174,7 +174,7 @@ class OnetChannelIE(OnetBaseIE):
     def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, channel_id, website=website)
+        webpage = self._download_webpage_too(url, channel_id, website=website)
 
         current_clip_info = self._parse_json(self._search_regex(
             r'var\s+currentClip\s*=\s*({[^}]+})', webpage, 'video info'), channel_id,
@@ -252,7 +252,7 @@ class OnetPlIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         mvp_id = self._search_mvp_id(webpage, default=None)
 

@@ -96,7 +96,7 @@ class ToggleIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, video_id, note='Downloading video page', website=websit)
 
         api_user = self._search_regex(

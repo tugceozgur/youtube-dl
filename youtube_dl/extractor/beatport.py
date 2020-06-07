@@ -44,7 +44,7 @@ class BeatportIE(InfoExtractor):
         track_id = mobj.group('id')
         display_id = mobj.group('display_id')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         playables = self._parse_json(
             self._search_regex(

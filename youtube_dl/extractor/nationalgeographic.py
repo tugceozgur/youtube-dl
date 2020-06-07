@@ -46,7 +46,7 @@ class NationalGeographicVideoIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         name = url_basename(url)
 
-        webpage = self._download_webpage(url, name, website=website)
+        webpage = self._download_webpage_too(url, name, website=website)
         guid = self._search_regex(
             r'id="(?:videoPlayer|player-container)"[^>]+data-guid="([^"]+)"',
             webpage, 'guid')

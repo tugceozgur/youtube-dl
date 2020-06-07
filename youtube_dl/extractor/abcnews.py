@@ -107,7 +107,7 @@ class AbcNewsIE(InfoExtractor):
         display_id = mobj.group('display_id')
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         video_url = self._search_regex(
             r'window\.abcnvideo\.url\s*=\s*"([^"]+)"', webpage, 'video URL')
         full_video_url = compat_urlparse.urljoin(url, video_url)

@@ -33,7 +33,7 @@ class XXXYMoviesIE(InfoExtractor):
         video_id = mobj.group('id')
         display_id = mobj.group('display_id')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         video_url = self._search_regex(
             r"video_url\s*:\s*'([^']+)'", webpage, 'video URL')

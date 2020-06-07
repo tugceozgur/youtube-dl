@@ -59,7 +59,7 @@ class TvigleIE(InfoExtractor):
         display_id = mobj.group('display_id')
 
         if not video_id:
-            webpage = self._download_webpage(url, display_id, website=website)
+            webpage = self._download_webpage_too(url, display_id, website=website)
             video_id = self._html_search_regex(
                 (r'<div[^>]+class=["\']player["\'][^>]+id=["\'](\d+)',
                  r'cloudId\s*=\s*["\'](\d+)',

@@ -31,7 +31,7 @@ class TinyPicIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id, 'Downloading page', website=website)
+        webpage = self._download_webpage_too(url, video_id, 'Downloading page', website=website)
 
         mobj = re.search(r'(?m)fo\.addVariable\("file",\s"(?P<fileid>[\da-z]+)"\);\n'
                          r'\s+fo\.addVariable\("s",\s"(?P<serverid>\d+)"\);', webpage)

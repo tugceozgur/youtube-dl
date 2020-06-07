@@ -78,7 +78,7 @@ class DouyuTVIE(InfoExtractor):
         if video_id.isdigit():
             room_id = video_id
         else:
-            page = self._download_webpage(url, video_id)
+            page = self._download_webpage_too(url, video_id, website=website)
             room_id = self._html_search_regex(
                 r'"room_id\\?"\s*:\s*(\d+),', page, 'room id')
 
@@ -148,7 +148,7 @@ class DouyuShowIE(InfoExtractor):
         url = url.replace('vmobile.', 'v.')
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         room_info = self._parse_json(self._search_regex(
             r'var\s+\$ROOM\s*=\s*({.+});', webpage, 'room info'), video_id)

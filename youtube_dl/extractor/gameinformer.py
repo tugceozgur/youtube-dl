@@ -42,7 +42,7 @@ class GameInformerIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, display_id, headers=self.geo_verification_headers(), website=website)
         brightcove_id = clean_html(get_element_by_class('field--name-field-brightcove-video-id', webpage) or get_element_by_id('video-source-content', webpage))
         brightcove_url = self.BRIGHTCOVE_URL_TEMPLATE % brightcove_id if brightcove_id else BrightcoveNewIE._extract_url(self, webpage)

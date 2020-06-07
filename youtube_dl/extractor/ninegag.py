@@ -71,7 +71,7 @@ class NineGagIE(InfoExtractor):
         video_id = mobj.group('id')
         display_id = mobj.group('display_id') or video_id
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         post_view = self._parse_json(
             self._search_regex(

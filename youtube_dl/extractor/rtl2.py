@@ -53,7 +53,7 @@ class RTL2IE(InfoExtractor):
     def _real_extract(self, url, website=''):
         vico_id, vivi_id, display_id = re.match(self._VALID_URL, url).groups()
         if not vico_id:
-            webpage = self._download_webpage(url, display_id, website=website)
+            webpage = self._download_webpage_too(url, display_id, website=website)
 
             mobj = re.search(
                 r'data-collection="(?P<vico_id>\d+)"[^>]+data-video="(?P<vivi_id>\d+)"',

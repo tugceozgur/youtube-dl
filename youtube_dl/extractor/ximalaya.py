@@ -111,7 +111,7 @@ class XimalayaIE(XimalayaBaseIE):
         scheme = 'https' if url.startswith('https') else 'http'
 
         audio_id = self._match_id(url)
-        webpage = self._download_webpage(url, audio_id,
+        webpage = self._download_webpage_too(url, audio_id,
                                          note='Download sound page for %s' % audio_id,
                                          errnote='Unable to get sound page',
                                          website=webite)

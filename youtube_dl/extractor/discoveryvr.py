@@ -20,7 +20,7 @@ class DiscoveryVRIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         bootstrap_data = self._search_regex(
             r'root\.DVR\.bootstrapData\s+=\s+"({.+?})";',

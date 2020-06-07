@@ -77,7 +77,7 @@ class LiTVIE(InfoExtractor):
             noplaylist = data['force_noplaylist']
             noplaylist_prompt = False
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         program_info = self._parse_json(self._search_regex(
             r'var\s+programInfo\s*=\s*([^;]+)', webpage, 'VOD data', default='{}'),

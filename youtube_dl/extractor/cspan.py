@@ -79,7 +79,7 @@ class CSpanIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
         video_type = None
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         ustream_url = UstreamIE._extract_url(webpage)
         if ustream_url:

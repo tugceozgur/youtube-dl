@@ -32,7 +32,7 @@ class NTVCoJpCUIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         player_config = self._parse_json(self._search_regex(
             r'(?s)PLAYER_CONFIG\s*=\s*({.+?})',
             webpage, 'player config'), display_id, js_to_json)

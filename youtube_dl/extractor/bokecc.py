@@ -51,7 +51,7 @@ class BokeCCIE(BokeCCBaseIE):
 
         video_id = '%s_%s' % (qs['uid'][0], qs['vid'][0])
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         return {
             'id': video_id,

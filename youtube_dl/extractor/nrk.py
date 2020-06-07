@@ -29,14 +29,14 @@ class NRKBaseIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         head_req = HEADRequest(url)
-        print('HEAD REQUEST', head_req)
+        #print('HEAD REQUEST', head_req)
         sanitizad = sanitized_Request(url)
-        print('SANITIZED', sanitizad)
+        #print('SANITIZED', sanitizad)
         video_id = self._match_id(url)
 
         api_hosts = (self._api_host, ) if self._api_host else self._API_HOSTS
-        print('API HOST', api_hosts)
-        print('VIDEO ID', video_id)
+        #print('API HOST', api_hosts)
+        #print('VIDEO ID', video_id)
         for api_host in api_hosts:
             print('http://%s/mediaelement/%s' % (api_host, video_id))
             data = self._download_json(
@@ -99,7 +99,7 @@ class NRKBaseIE(InfoExtractor):
 
         if not entries:
             media_url = data.get('mediaUrl')
-            print('MEDIA URL', media_url)
+            #print('MEDIA URL', media_url)
             if media_url:
                 formats = self._extract_akamai_formats(media_url, video_id)
                 self._sort_formats(formats)
@@ -432,7 +432,7 @@ class NRKTVEpisodeIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         nrk_id = self._parse_json(
             self._search_regex(JSON_LD_RE, webpage, 'JSON-LD', group='json_ld'),
@@ -503,7 +503,7 @@ class NRKTVSeasonIE(NRKTVSerieBaseIE):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         series = self._extract_series(webpage, display_id)
 
@@ -575,7 +575,7 @@ class NRKTVSeriesIE(NRKTVSerieBaseIE):
     def _real_extract(self, url, website=''):
         series_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, series_id)
+        webpage = self._download_webpage_too(url, series_id, website=website)
 
         # New layout (e.g. https://tv.nrk.no/serie/backstage)
         series = self._extract_series(webpage, series_id, fatal=False)
@@ -632,7 +632,7 @@ class NRKPlaylistBaseIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id, website=website)
+        webpage = self._download_webpage_too(url, playlist_id, website=website)
 
         entries = [
             self.url_result('nrk:%s' % video_id, NRKIE.ie_key())

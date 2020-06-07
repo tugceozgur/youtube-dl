@@ -96,7 +96,7 @@ class EllenTubeVideoIE(EllenTubeBaseIE):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         video_id = self._extract_data_config(webpage, display_id)['id']
         return self.url_result(
             'ellentube:%s' % video_id, ie=EllenTubeIE.ie_key(),
@@ -120,7 +120,7 @@ class EllenTubePlaylistIE(EllenTubeBaseIE):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         data = self._extract_data_config(webpage, display_id)['data']
         feed = self._download_json(
             'https://api-prod.ellentube.com/ellenapi/api/feed/?%s'

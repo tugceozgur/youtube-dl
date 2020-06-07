@@ -183,7 +183,7 @@ class IviIE(InfoExtractor):
             'id': preview.get('content_format'),
         } for preview in result.get('preview', []) if preview.get('url')]
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         season = self._search_regex(
             r'<li[^>]+class="season active"[^>]*><a[^>]+>([^<]+)',
@@ -247,13 +247,13 @@ class IviCompilationIE(InfoExtractor):
         season_id = mobj.group('seasonid')
 
         if season_id is not None:  # Season link
-            season_page = self._download_webpage(
-                url, compilation_id, 'Downloading season %s web page' % season_id)
+            season_page = self._download_webpage_too(
+                url, compilation_id, 'Downloading season %s web page' % season_id, website=website)
             playlist_id = '%s/season%s' % (compilation_id, season_id)
             playlist_title = self._html_search_meta('title', season_page, 'title')
             entries = self._extract_entries(season_page, compilation_id)
         else:  # Compilation link
-            compilation_page = self._download_webpage(url, compilation_id, 'Downloading compilation web page')
+            compilation_page = self._download_webpage_too(url, compilation_id, 'Downloading compilation web page')
             playlist_id = compilation_id
             playlist_title = self._html_search_meta('title', compilation_page, 'title')
             seasons = re.findall(

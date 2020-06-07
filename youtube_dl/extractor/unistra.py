@@ -36,7 +36,7 @@ class UnistraIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         files = set(re.findall(r'file\s*:\s*"(/[^"]+)"', webpage))
 

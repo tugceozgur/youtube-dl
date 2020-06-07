@@ -15,7 +15,7 @@ class VoxMediaVolumeIE(OnceIE):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         setup = self._parse_json(self._search_regex(
             r'setup\s*=\s*({.+});', webpage, 'setup'), video_id)
@@ -166,7 +166,7 @@ class VoxMediaIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = compat_urllib_parse_unquote(self._download_webpage(url, display_id))
+        webpage = compat_urllib_parse_unquote(self._download_webpage_too(url, display_id))
 
         def create_entry(provider_video_id, provider_video_type, title=None, description=None):
             video_url = {

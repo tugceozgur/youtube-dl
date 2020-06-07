@@ -292,7 +292,7 @@ class LyndaCourseIE(LyndaBaseIE):
             course_id, 'Downloading course JSON', fatal=False)
 
         if not course:
-            webpage = self._download_webpage(url, course_id, website=website)
+            webpage = self._download_webpage_too(url, course_id, website=website)
             entries = [
                 self.url_result(
                     item_template % video_id, ie=LyndaIE.ie_key(),

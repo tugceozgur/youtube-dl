@@ -28,7 +28,7 @@ class MorningstarIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         title = self._html_search_regex(
             r'<h1 id="titleLink">(.*?)</h1>', webpage, 'title')
         video_url = self._html_search_regex(

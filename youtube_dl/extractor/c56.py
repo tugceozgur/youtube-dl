@@ -34,7 +34,7 @@ class C56IE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url, flags=re.VERBOSE)
         text_id = mobj.group('textid')
 
-        webpage = self._download_webpage(url, text_id, website=website)
+        webpage = self._download_webpage_too(url, text_id, website=website)
         sohu_video_info_str = self._search_regex(
             r'var\s+sohuVideoInfo\s*=\s*({[^}]+});', webpage, 'Sohu video info', default=None)
         if sohu_video_info_str:

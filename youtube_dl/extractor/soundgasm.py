@@ -25,7 +25,7 @@ class SoundgasmIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('display_id')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         audio_url = self._html_search_regex(
             r'(?s)m4a\s*:\s*(["\'])(?P<url>(?:(?!\1).)+)\1', webpage,
@@ -68,7 +68,7 @@ class SoundgasmProfileIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         profile_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, profile_id, website=website)
+        webpage = self._download_webpage_too(url, profile_id, website=website)
 
         entries = [
             self.url_result(audio_url, 'Soundgasm')

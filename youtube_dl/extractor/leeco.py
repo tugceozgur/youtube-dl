@@ -123,7 +123,7 @@ class LeIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
-        page = self._download_webpage(url, media_id)
+        page = self._download_webpage_too(url, media_id, website=website)
 
         play_json_flash = self._download_json(
             'http://player-pc.le.com/mms/out/video/playJson',
@@ -240,7 +240,7 @@ class LePlaylistIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
-        page = self._download_webpage(url, playlist_id)
+        page = self._download_webpage_too(url, playlist_id, website=website)
 
         # Currently old domain names are still used in playlists
         media_ids = orderedSet(re.findall(

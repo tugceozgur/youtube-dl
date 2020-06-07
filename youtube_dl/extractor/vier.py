@@ -144,7 +144,7 @@ class VierIE(InfoExtractor):
         if not self._logged_in:
             self._login(site)
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         if r'id="user-login"' in webpage:
             self.report_warning(

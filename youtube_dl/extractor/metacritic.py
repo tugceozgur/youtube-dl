@@ -35,7 +35,7 @@ class MetacriticIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         # The xml is not well formatted, there are raw '&'
         info = self._download_xml('http://www.metacritic.com/video_data?video=' + video_id,
                                   video_id, 'Downloading info xml', transform_source=fix_xml_ampersands)

@@ -34,7 +34,7 @@ class CJSWIE(InfoExtractor):
         program, episode_id = mobj.group('program', 'id')
         audio_id = '%s/%s' % (program, episode_id)
 
-        webpage = self._download_webpage(url, episode_id, website=website)
+        webpage = self._download_webpage_too(url, episode_id, website=website)
 
         title = unescapeHTML(self._search_regex(
             (r'<h1[^>]+class=["\']episode-header__title["\'][^>]*>(?P<title>[^<]+)',

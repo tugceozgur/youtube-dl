@@ -62,7 +62,7 @@ class BetIE(MTVServicesInfoExtractor):
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         mgid = self._extract_mgid(webpage)
         videos_info = self._get_videos_info(mgid)
 

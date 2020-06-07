@@ -450,7 +450,7 @@ class NiconicoPlaylistIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         list_id = self._match_id(url)
-        webpage = self._download_webpage(url, list_id, website=website)
+        webpage = self._download_webpage_too(url, list_id, website=website)
 
         entries_json = self._search_regex(r'Mylist\.preload\(\d+, (\[.*\])\);',
                                           webpage, 'entries')

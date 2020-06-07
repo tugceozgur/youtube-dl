@@ -48,7 +48,7 @@ class GameSpotIE(OnceIE):
 
     def _real_extract(self, url, website=''):
         page_id = self._match_id(url)
-        webpage = self._download_webpage(url, page_id, website=website)
+        webpage = self._download_webpage_too(url, page_id, website=website)
         data_video_json = self._search_regex(
             r'data-video=["\'](.*?)["\']', webpage, 'data video')
         data_video = self._parse_json(unescapeHTML(data_video_json), page_id)

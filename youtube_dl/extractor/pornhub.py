@@ -398,7 +398,7 @@ class PornHubPlaylistBaseIE(PornHubBaseIE):
         host = mobj.group('host')
         playlist_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, playlist_id, website=website)
+        webpage = self._download_webpage_too(url, playlist_id, website=website)
 
         entries = self._extract_entries(webpage, host)
 
@@ -465,7 +465,7 @@ class PornHubPagedPlaylistBaseIE(PornHubPlaylistBaseIE):
         entries = []
         for page_num in (page, ) if page is not None else itertools.count(1):
             try:
-                webpage = self._download_webpage(
+                webpage = self._download_webpage_too(
                     url, item_id, 'Downloading page %d' % page_num,
                     query={'page': page_num}, website=website)
             except ExtractorError as e:

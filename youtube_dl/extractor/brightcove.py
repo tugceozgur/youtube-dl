@@ -315,7 +315,7 @@ class BrightcoveLegacyIE(InfoExtractor):
                             headers['Referer'] = referer
                         player_page = self._download_webpage(
                             'http://link.brightcove.com/services/player/bcpid' + player_id[0],
-                            video_id, headers=headers, fatal=False)
+                            video_id, headers=headers, fatal=False, website=website)
                         if player_page:
                             player_key = self._search_regex(
                                 r'<param\s+name="playerKey"\s+value="([\w~,-]+)"',

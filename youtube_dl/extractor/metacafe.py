@@ -154,7 +154,7 @@ class MetacafeIE(InfoExtractor):
             headers['Cookie'] += 'flashVersion=0; '
 
         # Retrieve video webpage to extract further information
-        webpage = self._download_webpage(url, video_id, headers=headers, website=website)
+        webpage = self._download_webpage_too(url, video_id, headers=headers, website=website)
 
         error = get_element_by_attribute(
             'class', 'notfound-page-title', webpage)

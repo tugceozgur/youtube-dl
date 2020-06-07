@@ -13,6 +13,7 @@ import socket
 import sys
 import time
 import math
+import pdb
 
 from ..compat import (
     compat_cookiejar_Cookie,
@@ -523,7 +524,7 @@ class InfoExtractor(object):
 
     def extract(self, url, website=''):
         """Extracts URL information and returns it in list of dicts."""
-        print('IN EXTRACT COMMON')
+        #pdb.set_trace()
         try:
             for _ in range(2):
                 try:
@@ -569,6 +570,8 @@ class InfoExtractor(object):
 
     def _real_extract(self, url, website=''):
         """Real extraction process. Redefine in subclasses."""
+        #print("where?")
+        #pdb.set_trace()
         pass
 
     @classmethod
@@ -616,20 +619,15 @@ class InfoExtractor(object):
         if self._x_forwarded_for_ip:
             if 'X-Forwarded-For' not in headers:
                 headers['X-Forwarded-For'] = self._x_forwarded_for_ip
-        print("HEADER", headers)
         if isinstance(url_or_request, compat_urllib_request.Request):
             url_or_request = update_Request(
                 url_or_request, data=data, headers=headers, query=query)
-            print('URL OR REQUEST1', url_or_request)
         else:
             if query:
                 url_or_request = update_url_query(url_or_request, query)
-                print('URL OR REQUEST2', url_or_request)
             if data is not None or headers:
                 url_or_request = sanitized_Request(url_or_request, data, headers)
-                print('URL OR REQUEST3', url_or_request)
         try:
-            print('RESULT OF REQUEST WEBPAGE', self._downloader.urlopen(url_or_request))
             return self._downloader.urlopen(url_or_request)
         except (compat_urllib_error.URLError, compat_http_client.HTTPException, socket.error) as err:
             if isinstance(err, compat_urllib_error.HTTPError):
@@ -753,6 +751,11 @@ class InfoExtractor(object):
         # with open('content.html', 'wb') as outf:
         #     outf.write(content)
         return content
+    def _download_webpage_too(
+            self, url_or_request, video_id, note=None, errnote=None,
+            fatal=True, tries=1, timeout=5, encoding=None, data=None,
+            headers={}, query={}, expected_status=None, website=''):
+        return website
 
     def _download_webpage(
             self, url_or_request, video_id, note=None, errnote=None,
@@ -792,25 +795,25 @@ class InfoExtractor(object):
             which are always accepted.
         """
 
-        # success = False
-        # try_count = 0
-        # while success is False:
-        #     try:
-        #         res = self._download_webpage_handle(
-        #             url_or_request, video_id, note, errnote, fatal,
-        #             encoding=encoding, data=data, headers=headers, query=query,
-        #             expected_status=expected_status)
-        #         success = True
-        #     except compat_http_client.IncompleteRead as e:
-        #         try_count += 1
-        #         if try_count >= tries:
-        #             raise e
-        #         self._sleep(timeout, video_id)
-        # if res is False:
-        #     return res
-        # else:
-        #     content, _ = res
-        return website
+        success = False
+        try_count = 0
+        while success is False:
+            try:
+                res = self._download_webpage_handle(
+                    url_or_request, video_id, note, errnote, fatal,
+                    encoding=encoding, data=data, headers=headers, query=query,
+                    expected_status=expected_status)
+                success = True
+            except compat_http_client.IncompleteRead as e:
+                try_count += 1
+                if try_count >= tries:
+                    raise e
+                self._sleep(timeout, video_id)
+        if res is False:
+            return res
+        else:
+             content, _ = res
+        return content
 
     def _download_xml_handle(
             self, url_or_request, video_id, note='Downloading XML',
@@ -988,6 +991,8 @@ class InfoExtractor(object):
         In case of failure return a default value or raise a WARNING or a
         RegexNotFoundError, depending on fatal, specifying the field name.
         """
+        #pdb.set_trace()
+        #print("pattern", pattern)
         if isinstance(pattern, (str, compat_str, compiled_regex_type)):
             mobj = re.search(pattern, string, flags)
         else:
@@ -1010,7 +1015,7 @@ class InfoExtractor(object):
         elif default is not NO_DEFAULT:
             return default
         elif fatal:
-            print("here?")
+            #print("here?")
             raise RegexNotFoundError('Unable to extract %s' % _name)
         else:
             self._downloader.report_warning('unable to extract %s' % _name + bug_reports_message())
@@ -1356,6 +1361,7 @@ class InfoExtractor(object):
 
     def _sort_formats(self, formats, field_preference=None):
         if not formats:
+            print("hello common")
             raise ExtractorError('No video formats found')
 
         for f in formats:
@@ -2596,6 +2602,7 @@ class InfoExtractor(object):
 
     def _extract_akamai_formats(self, manifest_url, video_id, hosts={}):
         formats = []
+        #pdb.set_trace()
         hdcore_sign = 'hdcore=3.7.0'
         f4m_url = re.sub(r'(https?://[^/]+)/i/', r'\1/z/', manifest_url).replace('/master.m3u8', '/manifest.f4m')
         hds_host = hosts.get('hds')

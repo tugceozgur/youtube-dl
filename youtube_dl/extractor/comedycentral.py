@@ -47,7 +47,7 @@ class ComedyCentralFullEpisodesIE(MTVServicesInfoExtractor):
 
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
-        webpage = self._download_webpage(url, playlist_id, website=website)
+        webpage = self._download_webpage_too(url, playlist_id, website=website)
         mgid = self._extract_triforce_mgid(webpage, data_zone='t2_lc_promo1')
         videos_info = self._get_videos_info(mgid)
         return videos_info
@@ -110,7 +110,7 @@ class ComedyCentralTVIE(MTVServicesInfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         mrss_url = self._search_regex(
             r'data-mrss=(["\'])(?P<url>(?:(?!\1).)+)\1',

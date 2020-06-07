@@ -69,13 +69,13 @@ class SharedIE(SharedBaseIE):
     def _extract_video_url(self, webpage, video_id, url):
         download_form = self._hidden_inputs(webpage)
 
-        video_page = self._download_webpage(
+        video_page = self._download_webpage_too(
             url, video_id, 'Downloading video page',
             data=urlencode_postdata(download_form),
             headers={
                 'Content-Type': 'application/x-www-form-urlencoded',
                 'Referer': url,
-            })
+            }, website=webpage)
 
         video_url = self._html_search_regex(
             r'data-url=(["\'])(?P<url>(?:(?!\1).)+)\1',

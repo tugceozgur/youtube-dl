@@ -39,8 +39,8 @@ class RadioBremenIE(InfoExtractor):
             r'L&auml;nge:</td>\s+<td>(?P<duration>[0-9]+:[0-9]+)</td>',
             meta_doc, 'duration', fatal=False))
 
-        page_doc = self._download_webpage(
-            url, video_id, 'Downloading video information')
+        page_doc = self._download_webpage_too(
+            url, video_id, 'Downloading video information', website=website)
         mobj = re.search(
             r"ardformatplayerclassic\(\'playerbereich\',\'(?P<width>[0-9]+)\',\'.*\',\'(?P<video_id>[0-9]+)\',\'(?P<secret>[0-9]+)\',\'(?P<thumbnail>.+)\',\'\'\)",
             page_doc)

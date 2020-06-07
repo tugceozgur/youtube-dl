@@ -25,6 +25,7 @@ import time
 import tokenize
 import traceback
 import random
+import pdb
 
 from string import ascii_letters
 
@@ -771,12 +772,14 @@ class YoutubeDL(object):
 
     def extract_info(self, url, download=True, ie_key=None, extra_info={},
                      process=True, force_generic_extractor=False, website=''):
+        #pdb.set_trace()
         '''
         Returns a list with a dictionary for each video we find.
         If 'download', also downloads the videos.
         extra_info is a dict containing the extra values to add to each result
         '''
-        print("IE KEYYY", ie_key)
+        #print("IE KEY-youtube_dl", ie_key)
+        #pdb.set_trace()
         if not ie_key and force_generic_extractor:
             ie_key = 'Generic'
 
@@ -790,12 +793,13 @@ class YoutubeDL(object):
                 continue
 
             ie = self.get_info_extractor(ie.ie_key())
+            #print("IEEEE", ie)
             if not ie.working():
                 self.report_warning('The program functionality for this site has been marked as broken, '
                                     'and will probably not work.')
 
             try:
-                print('EXTRACT youtubeDL')
+                #print('EXTRACT youtubeDL')
                 ie_result = ie.extract(url, website=website)
                 if ie_result is None:  # Finished already (backwards compatibility; listformats and friends should be moved here)
                     break
@@ -819,6 +823,7 @@ class YoutubeDL(object):
                 self.report_error(msg)
                 break
             except ExtractorError as e:  # An error we somewhat expected
+                #print("here")
                 self.report_error(compat_str(e), e.format_traceback())
                 break
             except MaxDownloadsReached:
@@ -849,16 +854,18 @@ class YoutubeDL(object):
         Returns the resolved ie_result.
         """
         result_type = ie_result.get('_type', 'video')
-        print(ie_result)
-        print("RESULT TYPE", result_type)
+        #print("RESULT TYPE", result_type)
         if result_type in ('url', 'url_transparent'):
             ie_result['url'] = sanitize_url(ie_result['url'])
+            #print(ie_result)
             extract_flat = self.params.get('extract_flat', False)
+            #print(extract_flat)
             if ((extract_flat == 'in_playlist' and 'playlist' in extra_info)
                     or extract_flat is True):
                 self.__forced_printings(
                     ie_result, self.prepare_filename(ie_result),
                     incomplete=True)
+                #print(ie_result)
                 return ie_result
 
         if result_type == 'video':
@@ -867,7 +874,8 @@ class YoutubeDL(object):
         elif result_type == 'url':
             # We have to add extra_info to the results because it may be
             # contained in a playlist
-            print("IN URL ,",ie_result['url'])
+            #print("IN URL ,",ie_result['url'])
+            #print(ie_result)
             return self.extract_info(ie_result['url'],
                                      download,
                                      ie_key=ie_result.get('ie_key'),
@@ -906,6 +914,7 @@ class YoutubeDL(object):
         elif result_type in ('playlist', 'multi_video'):
             # We process each entry in the playlist
             playlist = ie_result.get('title') or ie_result.get('id')
+            #print("playlist", playlist)
             self.to_screen('[download] Downloading playlist: %s' % playlist)
 
             playlist_results = []
@@ -928,6 +937,7 @@ class YoutubeDL(object):
                         else:
                             yield int(string_segment)
                 playlistitems = orderedSet(iter_playlistitems(playlistitems_str))
+                #print('playlistitems', playlistitems)
 
             ie_entries = ie_result['entries']
 
@@ -948,6 +958,7 @@ class YoutubeDL(object):
                     entries = make_playlistitems_entries(ie_entries)
                 else:
                     entries = ie_entries[playliststart:playlistend]
+                #print("entries", entries)
                 n_entries = len(entries)
                 self.to_screen(
                     '[%s] playlist %s: Collected %d video ids (downloading %d of them)' %
@@ -1012,9 +1023,11 @@ class YoutubeDL(object):
                                                       extra_info=extra,
                                                       website='')
                 playlist_results.append(entry_result)
+            #print("playlist_results", playlist_results)
+            #print("then will return")
+            #pdb.set_trace()
             ie_result['entries'] = playlist_results
             self.to_screen('[download] Finished downloading playlist: %s' % playlist)
-            return ie_result
         elif result_type == 'compat_list':
             self.report_warning(
                 'Extractor %s returned a compat_list result. '
@@ -1415,6 +1428,8 @@ class YoutubeDL(object):
         return pr.get_header('Cookie')
 
     def process_video_result(self, info_dict, download=True, website=''):
+        #print("giris")
+        #pdb.set_trace()
         assert info_dict.get('_type', 'video') == 'video'
         if 'id' not in info_dict:
             raise ExtractorError('Missing "id" field in extractor result')
@@ -1523,8 +1538,9 @@ class YoutubeDL(object):
             formats = [info_dict]
         else:
             formats = info_dict['formats']
-
+        #print("formats", formats)
         if not formats:
+            print("hellooo")
             raise ExtractorError('No video formats found!')
 
         def is_wellformed(f):
@@ -1599,7 +1615,6 @@ class YoutubeDL(object):
             self.list_formats(info_dict)
             return
         req_format = self.params.get('format')
-        print("req format", req_format)
         if req_format is None:
             req_format = self._default_format_spec(info_dict, download=download)
             if self.params.get('verbose'):
@@ -1640,6 +1655,7 @@ class YoutubeDL(object):
         for format in formats_to_download:
             new_info = dict(info_dict)
             new_info.update(format)
+            #print("NEW INFO", new_info.get('url'))
             self.url_list.append(new_info.get('url'))
             #print('FORMAT', format)
             #print("URL LIST", self.url_list)
@@ -2035,7 +2051,7 @@ class YoutubeDL(object):
             else:
                 if self.params.get('dump_single_json', False):
                     self.to_stdout(json.dumps(res))
-                    print(json.dumps(res))
+                    #print(json.dumps(res))
 
         return self._download_retcode
 

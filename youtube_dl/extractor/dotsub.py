@@ -51,7 +51,7 @@ class DotsubIE(InfoExtractor):
         video_url = info.get('mediaURI')
 
         if not video_url:
-            webpage = self._download_webpage(url, video_id, website=website)
+            webpage = self._download_webpage_too(url, video_id, website=website)
             video_url = self._search_regex(
                 [r'<source[^>]+src="([^"]+)"', r'"file"\s*:\s*\'([^\']+)'],
                 webpage, 'video url', default=None)

@@ -101,7 +101,7 @@ class OCWMITIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         topic = mobj.group('topic')
 
-        webpage = self._download_webpage(url, topic, website=website)
+        webpage = self._download_webpage_too(url, topic, website=website)
         title = self._html_search_meta('WT.cg_s', webpage)
         description = self._html_search_meta('Description', webpage)
 

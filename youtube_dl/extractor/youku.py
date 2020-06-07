@@ -269,7 +269,7 @@ class YoukuShowIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         show_id = self._match_id(url)
-        webpage = self._download_webpage(url, show_id, website=website)
+        webpage = self._download_webpage_too(url, show_id, website=website)
 
         entries = []
         page_config = self._parse_json(self._search_regex(

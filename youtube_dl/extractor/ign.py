@@ -112,7 +112,7 @@ class IGNIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         name_or_id = mobj.group('name_or_id')
         page_type = mobj.group('type')
-        webpage = self._download_webpage(url, name_or_id, website=website)
+        webpage = self._download_webpage_too(url, name_or_id, website=website)
         if page_type != 'video':
             multiple_urls = re.findall(
                 r'<param name="flashvars"[^>]*value="[^"]*?url=(https?://www\.ign\.com/videos/.*?)["&]',

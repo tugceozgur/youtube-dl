@@ -29,7 +29,7 @@ class DRBonanzaIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id, display_id = mobj.group('id', 'display_id')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         info = self._parse_html5_media_entries(
             url, webpage, display_id, m3u8_id='hls',

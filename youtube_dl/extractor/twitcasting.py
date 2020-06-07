@@ -50,7 +50,7 @@ class TwitCastingIE(InfoExtractor):
             request_data = urlencode_postdata({
                 'password': video_password,
             })
-        webpage = self._download_webpage(url, video_id, data=request_data, website=website)
+        webpage = self._download_webpage_too(url, video_id, data=request_data, website=website)
 
         title = self._html_search_regex(
             r'(?s)<[^>]+id=["\']movietitle[^>]+>(.+?)</',

@@ -251,7 +251,7 @@ class KalturaIE(InfoExtractor):
                 _, info, flavor_assets, captions = self._get_video_info(entry_id, partner_id)
             elif 'uiconf_id' in params and 'flashvars[referenceId]' in params:
                 reference_id = params['flashvars[referenceId]'][0]
-                webpage = self._download_webpage(url, reference_id, website=website)
+                webpage = self._download_webpage_too(url, reference_id, website=website)
                 entry_data = self._parse_json(self._search_regex(
                     r'window\.kalturaIframePackageData\s*=\s*({.*});',
                     webpage, 'kalturaIframePackageData'),

@@ -448,6 +448,6 @@ class NexxEmbedIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         embed_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, embed_id, website=website)
+        webpage = self._download_webpage_too(url, embed_id, website=website)
 
         return self.url_result(NexxIE._extract_url(webpage), ie=NexxIE.ie_key())

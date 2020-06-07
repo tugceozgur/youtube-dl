@@ -38,7 +38,7 @@ class GameStarIE(InfoExtractor):
         site = mobj.group('site')
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         # TODO: there are multiple ld+json objects in the webpage,
         # while _search_json_ld finds only the first one

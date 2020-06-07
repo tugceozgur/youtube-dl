@@ -104,7 +104,7 @@ class VestiIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 
-        page = self._download_webpage(url, video_id, 'Downloading page')
+        page = self._download_webpage_too(url, video_id, 'Downloading page')
 
         mobj = re.search(
             r'<meta[^>]+?property="og:video"[^>]+?content="http://www\.vesti\.ru/i/flvplayer_videoHost\.swf\?vid=(?P<id>\d+)',

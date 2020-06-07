@@ -169,7 +169,7 @@ class HBOIE(HBOBaseIE):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         location_path = self._parse_json(self._html_search_regex(
             r'data-state="({.+?})"', webpage, 'state'), display_id)['video']['locationUrl']
         return self._extract_info(urljoin(url, location_path), display_id)

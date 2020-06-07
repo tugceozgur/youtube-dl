@@ -20,7 +20,7 @@ class CamModelsIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         user_id = self._match_id(url)
 
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, user_id, headers=self.geo_verification_headers())
 
         manifest_root = self._html_search_regex(

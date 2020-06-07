@@ -131,7 +131,7 @@ class GoIE(AdobePassIE):
         site_info = self._SITE_INFO.get(sub_domain, {})
         brand = site_info.get('brand')
         if not video_id or not site_info:
-            webpage = self._download_webpage(url, display_id or video_id, website=website)
+            webpage = self._download_webpage_too(url, display_id or video_id, website=website)
             video_id = self._search_regex(
                 (
                     # There may be inner quotes, e.g. data-video-id="'VDKA3609139'"

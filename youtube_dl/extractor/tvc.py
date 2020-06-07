@@ -98,7 +98,7 @@ class TVCArticleIE(InfoExtractor):
     }]
 
     def _real_extract(self, url, website=''):
-        webpage = self._download_webpage(url, self._match_id(url), website=website)
+        webpage = self._download_webpage_too(url, self._match_id(url), website=website)
         return {
             '_type': 'url_transparent',
             'ie_key': 'TVC',

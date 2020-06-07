@@ -36,7 +36,7 @@ class PopcorntimesIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id, display_id = mobj.group('id', 'display_id')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         title = self._search_regex(
             r'<h1>([^<]+)', webpage, 'title',

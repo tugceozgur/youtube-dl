@@ -119,7 +119,7 @@ class ViideaIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         lecture_slug, explicit_part_id = re.match(self._VALID_URL, url).groups()
 
-        webpage = self._download_webpage(url, lecture_slug, website=website)
+        webpage = self._download_webpage_too(url, lecture_slug, website=website)
 
         cfg = self._parse_json(self._search_regex(
             [r'cfg\s*:\s*({.+?})\s*,\s*[\da-zA-Z_]+\s*:\s*\(?\s*function',

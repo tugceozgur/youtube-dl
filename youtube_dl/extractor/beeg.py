@@ -47,7 +47,7 @@ class BeegIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         beeg_version = self._search_regex(
             r'beeg_version\s*=\s*([\da-zA-Z_-]+)', webpage, 'beeg version',

@@ -120,7 +120,7 @@ class InstagramIE(InfoExtractor):
         video_id = mobj.group('id')
         url = mobj.group('url')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         (video_url, description, thumbnail, timestamp, uploader,
          uploader_id, like_count, comment_count, comments, height,
@@ -350,7 +350,7 @@ class InstagramPlaylistIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         user_or_tag = self._match_id(url)
-        webpage = self._download_webpage(url, user_or_tag, website=website)
+        webpage = self._download_webpage_too(url, user_or_tag, website=website)
         data = self._parse_graphql(webpage, user_or_tag)
 
         self._set_cookie('instagram.com', 'ig_pr', '1')

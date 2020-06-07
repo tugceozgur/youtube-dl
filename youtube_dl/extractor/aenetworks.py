@@ -140,7 +140,7 @@ class AENetworksIE(AENetworksBaseIE):
     def _real_extract(self, url, website=''):
         domain, show_path, movie_display_id, special_display_id, collection_display_id = re.match(self._VALID_URL, url).groups()
         display_id = show_path or movie_display_id or special_display_id or collection_display_id
-        webpage = self._download_webpage(url, display_id, headers=self.geo_verification_headers(), website=website)
+        webpage = self._download_webpage_too(url, display_id, headers=self.geo_verification_headers(), website=website)
         if show_path:
             url_parts = show_path.split('/')
             url_parts_len = len(url_parts)
@@ -230,7 +230,7 @@ class HistoryTopicIE(AENetworksBaseIE):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         video_id = self._search_regex(
             r'<phoenix-iframe[^>]+src="[^"]+\btpid=(\d+)', webpage, 'tpid')
         result = self._download_json(

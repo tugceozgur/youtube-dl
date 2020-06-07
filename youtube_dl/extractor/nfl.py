@@ -157,7 +157,7 @@ class NFLIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id, host = mobj.group('id'), mobj.group('host')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         config_url = NFLIE.prepend_host(host, self._search_regex(
             r'(?:(?:config|configURL)\s*:\s*|<nflcs:avplayer[^>]+data-config\s*=\s*)(["\'])(?P<config>.+?)\1',

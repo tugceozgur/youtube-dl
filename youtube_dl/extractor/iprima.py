@@ -66,7 +66,7 @@ class IPrimaIE(InfoExtractor):
 
         self._set_cookie('play.iprima.cz', 'ott_adult_confirmed', '1')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         video_id = self._search_regex(
             (r'<iframe[^>]+\bsrc=["\'](?:https?:)?//(?:api\.play-backend\.iprima\.cz/prehravac/embedded|prima\.iprima\.cz/[^/]+/[^/]+)\?.*?\bid=(p\d+)',

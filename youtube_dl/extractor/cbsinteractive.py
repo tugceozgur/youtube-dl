@@ -72,7 +72,7 @@ class CBSInteractiveIE(CBSIE):
 
     def _real_extract(self, url, website=''):
         site, display_id = re.match(self._VALID_URL, url).groups()
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         data_json = self._html_search_regex(
             r"data(?:-(?:cnet|zdnet))?-video(?:-(?:uvp(?:js)?|player))?-options='([^']+)'",

@@ -40,7 +40,7 @@ class CrackedIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         youtube_url = YoutubeIE._extract_url(webpage)
         if youtube_url:

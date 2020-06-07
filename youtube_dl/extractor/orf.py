@@ -63,7 +63,7 @@ class ORFTVthekIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
-        webpage = self._download_webpage(url, playlist_id, website=website)
+        webpage = self._download_webpage_too(url, playlist_id, website=website)
 
         data_jsb = self._parse_json(
             self._search_regex(
@@ -499,7 +499,7 @@ class ORFFM4StoryIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         story_id = self._match_id(url)
-        webpage = self._download_webpage(url, story_id, website=website)
+        webpage = self._download_webpage_too(url, story_id, website=website)
 
         entries = []
         all_ids = orderedSet(re.findall(r'data-video(?:id)?="(\d+)"', webpage))

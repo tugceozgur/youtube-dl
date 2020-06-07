@@ -3190,7 +3190,7 @@ class GenericIE(InfoExtractor):
         if viqeo_urls:
             return self.playlist_from_matches(
                 viqeo_urls, video_id, video_title, ie=ViqeoIE.ie_key())
-        print('ENTERS GENERIC')
+        #print('ENTERS GENERIC')
         expressen_urls = ExpressenIE._extract_urls(webpage)
         if expressen_urls:
             return self.playlist_from_matches(

@@ -25,7 +25,7 @@ class UnityIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         youtube_id = self._search_regex(
             r'data-video-id="([_0-9a-zA-Z-]+)"',
             webpage, 'youtube ID')

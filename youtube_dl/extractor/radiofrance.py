@@ -26,7 +26,7 @@ class RadioFranceIE(InfoExtractor):
         m = re.match(self._VALID_URL, url)
         video_id = m.group('id')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         title = self._html_search_regex(r'<h1>(.*?)</h1>', webpage, 'title')
         description = self._html_search_regex(
             r'<div class="bloc_page_wrapper"><div class="text">(.*?)</div>',

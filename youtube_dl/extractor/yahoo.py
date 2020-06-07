@@ -512,7 +512,7 @@ class YahooJapanNewsIE(InfoExtractor):
         host = mobj.group('host')
         display_id = mobj.group('id') or host
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         title = self._html_search_meta(
             ['og:title', 'twitter:title'], webpage, 'title', default=None

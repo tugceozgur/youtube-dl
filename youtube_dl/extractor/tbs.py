@@ -41,7 +41,7 @@ class TBSIE(TurnerBaseIE):
 
     def _real_extract(self, url, website=''):
         site, path, display_id = re.match(self._VALID_URL, url).groups()
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         drupal_settings = self._parse_json(self._search_regex(
             r'<script[^>]+?data-drupal-selector="drupal-settings-json"[^>]*?>({.+?})</script>',
             webpage, 'drupal setting'), display_id)

@@ -417,7 +417,7 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
         video_id = mobj.group('video_id')
 
         if mobj.group('prefix') == 'm':
-            mobile_webpage = self._download_webpage(url, video_id, website, 'Downloading mobile webpage')
+            mobile_webpage = self._download_webpage_too(url, video_id, 'Downloading mobile webpage', website=website)
             webpage_url = self._search_regex(r'<link rel="canonical" href="([^"]+)" />', mobile_webpage, 'webpage_url')
         else:
             webpage_url = 'http://www.' + mobj.group('url')

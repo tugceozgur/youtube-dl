@@ -22,7 +22,7 @@ class HypemIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         track_id = self._match_id(url)
 
-        response = self._download_webpage(url, track_id)
+        response = self._download_webpage_too(url, track_id, website=website)
 
         track = self._parse_json(self._html_search_regex(
             r'(?s)<script\s+type="application/json"\s+id="displayList-data">(.+?)</script>',

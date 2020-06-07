@@ -54,7 +54,7 @@ class ChilloutzoneIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         base64_video_info = self._html_search_regex(
             r'var cozVidData = "(.+?)";', webpage, 'video data')

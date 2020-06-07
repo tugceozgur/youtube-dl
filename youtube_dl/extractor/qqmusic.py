@@ -210,7 +210,7 @@ class QQMusicSingerIE(QQPlaylistBaseIE):
         mid = self._match_id(url)
 
         entries = self.get_entries_from_page(mid)
-        singer_page = self._download_webpage(url, mid, 'Download singer page')
+        singer_page = self._download_webpage_too(url, mid, 'Download singer page', website=website)
         singer_name = self._html_search_regex(
             r"singername\s*:\s*'(.*?)'", singer_page, 'singer name', default=None)
         singer_desc = None

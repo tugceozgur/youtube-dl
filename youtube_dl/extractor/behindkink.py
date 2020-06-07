@@ -27,7 +27,7 @@ class BehindKinkIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         display_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         video_url = self._search_regex(
             r'<source src="([^"]+)"', webpage, 'video URL')

@@ -98,13 +98,13 @@ class AnimeOnDemandIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         anime_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, anime_id, website=website)
+        webpage = self._download_webpage_too(url, anime_id, website=website)
 
         if 'data-playlist=' not in webpage:
             self._download_webpage(
                 self._APPLY_HTML5_URL, anime_id,
                 'Activating HTML5 beta', 'Unable to apply HTML5 beta')
-            webpage = self._download_webpage(url, anime_id, website=website)
+            webpage = self._download_webpage_too(url, anime_id, website=website)
 
         csrf_token = self._html_search_meta(
             'csrf-token', webpage, 'csrf token', fatal=True)

@@ -23,7 +23,7 @@ class OktoberfestTVIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         title = self._live_title(self._html_search_regex(
             r'<h1><strong>.*?</strong>(.*?)</h1>', webpage, 'title'))

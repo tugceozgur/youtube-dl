@@ -42,7 +42,7 @@ class NineNowIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         page_data = self._parse_json(self._search_regex(
             r'window\.__data\s*=\s*({.*?});', webpage,
             'page data', default='{}'), display_id, fatal=False)

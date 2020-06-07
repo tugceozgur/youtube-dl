@@ -130,7 +130,7 @@ class MedialaanIE(GigyaBaseIE):
         mobj = re.match(self._VALID_URL, url)
         video_id, site_id = mobj.group('id', 'site_id')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         config = self._parse_json(
             self._search_regex(

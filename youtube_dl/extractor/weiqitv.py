@@ -34,7 +34,7 @@ class WeiqiTVIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
-        page = self._download_webpage(url, media_id)
+        page = self._download_webpage_too(url, media_id, website=website)
 
         info_json_str = self._search_regex(
             r'var\s+video\s*=\s*(.+});', page, 'info json str')

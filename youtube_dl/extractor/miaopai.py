@@ -21,7 +21,7 @@ class MiaoPaiIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, video_id, headers={'User-Agent': self._USER_AGENT_IPAD}, website=website)
 
         title = self._html_search_regex(

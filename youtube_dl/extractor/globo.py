@@ -228,7 +228,7 @@ class GloboArticleIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         video_ids = []
         for video_regex in self._VIDEOID_REGEXES:
             video_ids.extend(re.findall(video_regex, webpage))

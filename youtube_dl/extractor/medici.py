@@ -28,7 +28,7 @@ class MediciIE(InfoExtractor):
         video_id = self._match_id(url)
 
         # Sets csrftoken cookie
-        self._download_webpage(url, video_id)
+        self._download_webpage_too(url, video_id, website=website)
 
         MEDICI_URL = 'http://www.medici.tv/'
 

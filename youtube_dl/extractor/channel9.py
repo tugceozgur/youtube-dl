@@ -102,7 +102,7 @@ class Channel9IE(InfoExtractor):
         if rss:
             return self._extract_list(content_path, url)
 
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, content_path, 'Downloading web page')
 
         episode_data = self._search_regex(

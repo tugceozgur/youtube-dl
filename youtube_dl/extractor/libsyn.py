@@ -43,7 +43,7 @@ class LibsynIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         url, video_id = re.match(self._VALID_URL, url).groups()
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         data = self._parse_json(self._search_regex(
             r'var\s+playlistItem\s*=\s*({.+?});',

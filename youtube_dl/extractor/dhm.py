@@ -33,7 +33,7 @@ class DHMIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id, website=website)
+        webpage = self._download_webpage_too(url, playlist_id, website=website)
 
         playlist_url = self._search_regex(
             r"file\s*:\s*'([^']+)'", webpage, 'playlist url')

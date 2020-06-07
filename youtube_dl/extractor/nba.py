@@ -133,7 +133,7 @@ class NBAIE(TurnerBaseIE):
             path = path[3:]
 
         if 'video/' not in path:
-            webpage = self._download_webpage(url, video_id, website=website)
+            webpage = self._download_webpage_too(url, video_id, website=website)
             path = remove_start(self._search_regex(r'data-videoid="([^"]+)"', webpage, 'video id'), '/')
 
             if path == '{{id}}':

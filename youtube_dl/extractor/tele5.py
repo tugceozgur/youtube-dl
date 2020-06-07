@@ -72,7 +72,7 @@ class Tele5IE(InfoExtractor):
 
         if not nexx_id:
             display_id = self._match_id(url)
-            webpage = self._download_webpage(url, display_id, website=website)
+            webpage = self._download_webpage_too(url, display_id, website=website)
 
             def extract_id(pattern, name, default=NO_DEFAULT):
                 return self._html_search_regex(

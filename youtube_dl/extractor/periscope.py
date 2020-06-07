@@ -158,7 +158,7 @@ class PeriscopeUserIE(PeriscopeBaseIE):
     def _real_extract(self, url, website=''):
         user_name = self._match_id(url)
 
-        webpage = self._download_webpage(url, user_name, website=website)
+        webpage = self._download_webpage_too(url, user_name, website=website)
 
         data_store = self._parse_json(
             unescapeHTML(self._search_regex(

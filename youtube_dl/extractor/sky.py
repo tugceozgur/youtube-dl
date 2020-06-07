@@ -13,7 +13,7 @@ from ..utils import (
 class SkyBaseIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         video_data = extract_attributes(self._search_regex(
             r'(<div.+?class="[^"]*sdc-article-video__media-ooyala[^"]*"[^>]+>)',
             webpage, 'video data'))
@@ -24,8 +24,8 @@ class SkyBaseIE(InfoExtractor):
                 'data-token-fetch-options', '{}'), video_id, fatal=False) or {}
             token_fetch_url = token_fetch_options.get('url')
             if token_fetch_url:
-                embed_token = self._download_webpage(urljoin(
-                    url, token_fetch_url), video_id, fatal=False)
+                embed_token = self._download_webpage_too(urljoin(
+                    url, token_fetch_url), video_id, fatal=False, website=website)
                 if embed_token:
                     video_url = smuggle_url(
                         video_url, {'embed_token': embed_token.strip('"')})

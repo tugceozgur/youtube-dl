@@ -62,7 +62,7 @@ class PornoVoisinesIE(InfoExtractor):
                     })
         self._sort_formats(formats)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         title = self._og_search_title(webpage)
         description = self._og_search_description(webpage)

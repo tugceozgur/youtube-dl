@@ -112,7 +112,7 @@ class InfoQIE(BokeCCBaseIE):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         video_title = self._html_search_regex(r'<title>(.*?)</title>', webpage, 'title')
         video_description = self._html_search_meta('description', webpage, 'description')

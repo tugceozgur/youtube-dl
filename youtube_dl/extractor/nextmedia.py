@@ -34,7 +34,7 @@ class NextMediaIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         news_id = self._match_id(url)
-        page = self._download_webpage(url, news_id)
+        page = self._download_webpage_too(url, news_id)
         return self._extract_from_nextmedia_page(news_id, url, page)
 
     def _extract_from_nextmedia_page(self, news_id, url, page):
@@ -99,7 +99,7 @@ class NextMediaActionNewsIE(NextMediaIE):
 
     def _real_extract(self, url, website=''):
         news_id = self._match_id(url)
-        actionnews_page = self._download_webpage(url, news_id)
+        actionnews_page = self._download_webpage_too(url, news_id, website=website)
         article_url = self._og_search_url(actionnews_page)
         article_page = self._download_webpage(article_url, news_id)
         return self._extract_from_nextmedia_page(news_id, url, article_page)
@@ -213,7 +213,7 @@ class NextTVIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         title = self._html_search_regex(
             r'<h1[^>]*>([^<]+)</h1>', webpage, 'title')

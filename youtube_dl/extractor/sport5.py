@@ -39,7 +39,7 @@ class Sport5IE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         media_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, media_id,  website=website)
+        webpage = self._download_webpage_too(url, media_id,  website=website)
 
         video_id = self._html_search_regex(r'clipId=([\w-]+)', webpage, 'video id')
 

@@ -45,7 +45,7 @@ class KarriereVideosIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         title = (self._html_search_meta('title', webpage, default=None)
                  or self._search_regex(r'<h1 class="title">([^<]+)</h1>', webpage, 'video title'))

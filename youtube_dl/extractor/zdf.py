@@ -227,7 +227,7 @@ class ZDFIE(ZDFBaseIE):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, fatal=False, website=website)
+        webpage = self._download_webpage_too(url, video_id, fatal=False, website=website)
         if webpage:
             player = self._extract_player(webpage, url, fatal=False)
             if player:
@@ -264,7 +264,7 @@ class ZDFChannelIE(ZDFBaseIE):
     def _real_extract(self, url, website=''):
         channel_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, channel_id, website=website)
+        webpage = self._download_webpage_too(url, channel_id, website=website)
 
         entries = [
             self.url_result(item_url, ie=ZDFIE.ie_key())

@@ -21,7 +21,7 @@ class TheSunIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         article_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, article_id,  website=website)
+        webpage = self._download_webpage_too(url, article_id,  website=website)
 
         entries = []
         for video in re.findall(

@@ -56,7 +56,7 @@ class NewgroundsIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         media_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, media_id,  website=website)
+        webpage = self._download_webpage_too(url, media_id,  website=website)
 
         title = self._html_search_regex(
             r'<title>([^>]+)</title>', webpage, 'title')
@@ -143,7 +143,7 @@ class NewgroundsPlaylistIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, playlist_id, website=website)
+        webpage = self._download_webpage_too(url, playlist_id, website=website)
 
         title = self._search_regex(
             r'<title>([^>]+)</title>', webpage, 'title', default=None)

@@ -41,7 +41,7 @@ class UDNEmbedIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        page = self._download_webpage(url, video_id)
+        page = self._download_webpage_too(url, video_id, website=website)
 
         options_str = self._html_search_regex(
             r'var\s+options\s*=\s*([^;]+);', page, 'options')

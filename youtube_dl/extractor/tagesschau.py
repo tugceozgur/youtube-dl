@@ -88,7 +88,7 @@ class TagesschauPlayerIE(InfoExtractor):
         # JSON api does not provide some audio formats (e.g. ogg) thus
         # extractiong audio via webpage
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         title = self._og_search_title(webpage).strip()
         formats = []
@@ -267,7 +267,7 @@ class TagesschauIE(InfoExtractor):
         video_id = mobj.group('id') or mobj.group('path')
         display_id = video_id.lstrip('-')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         title = self._html_search_regex(
             r'<span[^>]*class="headline"[^>]*>(.+?)</span>',

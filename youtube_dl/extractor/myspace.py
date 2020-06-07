@@ -69,7 +69,7 @@ class MySpaceIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('video_id') or mobj.group('song_id')
         is_song = mobj.group('mediatype').startswith('music/song')
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         player_url = self._search_regex(
             r'videoSwf":"([^"?]*)', webpage, 'player URL', fatal=False)
 
@@ -194,7 +194,7 @@ class MySpaceAlbumIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         playlist_id = mobj.group('id')
         display_id = mobj.group('title') + playlist_id
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
         tracks_paths = re.findall(r'"music:song" content="(.*?)"', webpage)
         if not tracks_paths:
             raise ExtractorError(

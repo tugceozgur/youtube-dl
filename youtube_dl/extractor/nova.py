@@ -32,7 +32,7 @@ class NovaEmbedIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         duration = None
         formats = []
@@ -194,7 +194,7 @@ class NovaIE(InfoExtractor):
         display_id = mobj.group('id')
         site = mobj.group('site')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         description = clean_html(self._og_search_description(webpage, default=None))
         if site == 'novaplus':

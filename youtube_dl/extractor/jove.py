@@ -44,7 +44,7 @@ class JoveIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         video_id = mobj.group('id')
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         chapters_id = self._html_search_regex(
             r'/video-chapters\?videoid=([0-9]+)', webpage, 'chapters id')

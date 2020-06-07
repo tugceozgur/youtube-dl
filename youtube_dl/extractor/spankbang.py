@@ -168,7 +168,7 @@ class SpankBangPlaylistIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         playlist_id = self._match_id(url)
 
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, playlist_id, headers={'Cookie': 'country=US; mobile=on'}, website=website)
 
         entries = [self.url_result(

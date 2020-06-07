@@ -153,7 +153,7 @@ class TEDIE(InfoExtractor):
     def _playlist_videos_info(self, url, name, website=''):
         '''Returns the videos of the playlist'''
 
-        webpage = self._download_webpage(url, name,
+        webpage = self._download_webpage_too(url, name,
                                          'Downloading playlist webpage', website=website)
 
         playlist_entries = []
@@ -173,7 +173,7 @@ class TEDIE(InfoExtractor):
             playlist_description=self._og_search_description(webpage))
 
     def _talk_info(self, url, video_name, website=''):
-        webpage = self._download_webpage(url, video_name, website=website)
+        webpage = self._download_webpage_too(url, video_name, website=website)
 
         info = self._extract_info(webpage)
 
@@ -332,7 +332,7 @@ class TEDIE(InfoExtractor):
         return sub_lang_list
 
     def _watch_info(self, url, name, website=''):
-        webpage = self._download_webpage(url, name, website=website)
+        webpage = self._download_webpage_too(url, name, website=website)
 
         config_json = self._html_search_regex(
             r'"pages\.jwplayer"\s*,\s*({.+?})\s*\)\s*</script>',

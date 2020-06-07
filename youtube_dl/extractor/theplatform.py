@@ -6,6 +6,7 @@ import time
 import hmac
 import binascii
 import hashlib
+import pdb
 
 
 from .once import OnceIE
@@ -35,9 +36,13 @@ class ThePlatformBaseIE(OnceIE):
     _TP_TLD = 'com'
 
     def _extract_theplatform_smil(self, smil_url, video_id, note='Downloading SMIL data'):
+        #pdb.set_trace()
         meta = self._download_xml(
             smil_url, video_id, note=note, query={'format': 'SMIL'},
             headers=self.geo_verification_headers())
+        #print(meta)
+        #print(type(meta))
+        #print(meta[0])
         error_element = find_xpath_attr(meta, _x('.//smil:ref'), 'src')
         if error_element is not None:
             exception = find_xpath_attr(
@@ -233,6 +238,8 @@ class ThePlatformIE(ThePlatformBaseIE, AdobePassIE):
         return '%s&sig=%s' % (url, sig)
 
     def _real_extract(self, url, website=''):
+        #print("HERE")
+        #pdb.set_trace()
         url, smuggled_data = unsmuggle_url(url, {})
 
         mobj = re.match(self._VALID_URL, url)
@@ -249,7 +256,7 @@ class ThePlatformIE(ThePlatformBaseIE, AdobePassIE):
 
         qs_dict = compat_parse_qs(compat_urllib_parse_urlparse(url).query)
         if 'guid' in qs_dict:
-            webpage = self._download_webpage(url, video_id, website=website)
+            webpage = self._download_webpage_too(url, video_id, website=website)
             scripts = re.findall(r'<script[^>]+src="([^"]+)"', webpage)
             feed_id = None
             # feed id usually locates in the last script.
@@ -401,6 +408,7 @@ class ThePlatformFeedIE(ThePlatformBaseIE):
         return ret
 
     def _real_extract(self, url, website=''):
+        #print("HERE2")
         mobj = re.match(self._VALID_URL, url)
 
         video_id = mobj.group('id')

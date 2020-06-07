@@ -30,7 +30,7 @@ class HuajiaoIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         feed_json = self._search_regex(
             r'var\s+feed\s*=\s*({.+})', webpage, 'feed json')

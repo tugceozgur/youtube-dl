@@ -49,6 +49,6 @@ class CMTIE(MTVIE):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
         mgid = self._extract_mgid(webpage)
         return self.url_result('http://media.mtvnservices.com/embed/%s' % mgid)

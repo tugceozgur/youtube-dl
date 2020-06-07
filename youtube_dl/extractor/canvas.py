@@ -181,7 +181,7 @@ class CanvasEenIE(InfoExtractor):
         mobj = re.match(self._VALID_URL, url)
         site_id, display_id = mobj.group('site_id'), mobj.group('id')
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         title = strip_or_none(self._search_regex(
             r'<h1[^>]+class="video__body__header__title"[^>]*>(.+?)</h1>',

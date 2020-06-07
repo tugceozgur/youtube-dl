@@ -282,7 +282,7 @@ class MediasiteCatalogIE(InfoExtractor):
         current_folder_id = mobj.group('current_folder_id') or catalog_id
         root_dynamic_folder_id = mobj.group('root_dynamic_folder_id')
 
-        webpage = self._download_webpage(url, catalog_id, website=website)
+        webpage = self._download_webpage_too(url, catalog_id, website=website)
 
         # AntiForgeryToken is optional (e.g. [1])
         # 1. https://live.libraries.psu.edu/Mediasite/Catalog/Full/8376d4b24dd1457ea3bfe4cf9163feda21
@@ -356,7 +356,7 @@ class MediasiteNamedCatalogIE(InfoExtractor):
         mediasite_url = mobj.group('url')
         catalog_name = mobj.group('catalog_name')
 
-        webpage = self._download_webpage(url, catalog_name, website=website)
+        webpage = self._download_webpage_too(url, catalog_name, website=website)
 
         catalog_id = self._search_regex(
             r'CatalogId\s*:\s*["\'](%s)' % _ID_RE, webpage, 'catalog id')

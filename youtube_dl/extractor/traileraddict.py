@@ -22,7 +22,7 @@ class TrailerAddictIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         name = mobj.group('movie') + '/' + mobj.group('trailer_name')
-        webpage = self._download_webpage(url, name, website=website)
+        webpage = self._download_webpage_too(url, name, website=website)
 
         title = self._search_regex(r'<title>(.+?)</title>',
                                    webpage, 'video title').replace(' - Trailer Addict', '')

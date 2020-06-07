@@ -304,7 +304,7 @@ class LivestreamOriginalIE(InfoExtractor):
         return formats
 
     def _extract_folder(self, url, folder_id):
-        webpage = self._download_webpage(url, folder_id, website=website)
+        webpage = self._download_webpage_too(url, folder_id, website=website)
         paths = orderedSet(re.findall(
             r'''(?x)(?:
                 <li\s+class="folder">\s*<a\s+href="|
@@ -334,7 +334,7 @@ class LivestreamOriginalIE(InfoExtractor):
                 info = self._extract_video_info(user, content_id)
             else:
                 content_id = user
-                webpage = self._download_webpage(url, content_id, website=website)
+                webpage = self._download_webpage_too(url, content_id, website=website)
                 info = {
                     'title': self._og_search_title(webpage),
                     'description': self._og_search_description(webpage),
@@ -361,6 +361,6 @@ class LivestreamShortenerIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         id = mobj.group('id')
-        webpage = self._download_webpage(url, id, website=website)
+        webpage = self._download_webpage_too(url, id, website=website)
 
         return self.url_result(self._og_search_url(webpage))

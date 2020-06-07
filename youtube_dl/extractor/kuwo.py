@@ -153,7 +153,7 @@ class KuwoAlbumIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         album_id = self._match_id(url)
 
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, album_id, note='Download album info',
             errnote='Unable to get album info', website=website)
 
@@ -222,7 +222,7 @@ class KuwoSingerIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         singer_id = self._match_id(url)
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, singer_id, note='Download singer info',
             errnote='Unable to get singer info', website=website)
 
@@ -270,7 +270,7 @@ class KuwoCategoryIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         category_id = self._match_id(url)
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, category_id, note='Download category info',
             errnote='Unable to get category info', website=website)
 
@@ -319,7 +319,7 @@ class KuwoMvIE(KuwoBaseIE):
 
     def _real_extract(self, url, website=''):
         song_id = self._match_id(url)
-        webpage = self._download_webpage(
+        webpage = self._download_webpage_too(
             url, song_id, note='Download mv detail info: %s' % song_id,
             errnote='Unable to get mv detail info: %s' % song_id, website=website)
 

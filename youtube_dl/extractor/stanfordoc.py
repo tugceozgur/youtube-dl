@@ -54,10 +54,10 @@ class StanfordOpenClassroomIE(InfoExtractor):
                 'upload_date': None,
             }
 
-            coursepage = self._download_webpage(
+            coursepage = self._download_webpage_too(
                 url, info['id'],
                 note='Downloading course info page',
-                errnote='Unable to download course info page')
+                errnote='Unable to download course info page', website=website)
 
             info['title'] = self._html_search_regex(
                 r'<h1>([^<]+)</h1>', coursepage, 'title', default=info['id'])

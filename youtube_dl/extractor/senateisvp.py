@@ -108,7 +108,7 @@ class SenateISVPIE(InfoExtractor):
 
         video_id = re.sub(r'.mp4$', '', qs['filename'][0])
 
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         if smuggled_data.get('force_title'):
             title = smuggled_data['force_title']

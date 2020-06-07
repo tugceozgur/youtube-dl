@@ -220,7 +220,7 @@ class CondeNastIE(InfoExtractor):
                 'target': target,
             })
 
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         if url_type == 'series':
             return self._extract_series(url, webpage)

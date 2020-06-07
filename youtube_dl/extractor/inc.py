@@ -43,7 +43,7 @@ class IncIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         display_id = self._match_id(url)
-        webpage = self._download_webpage(url, display_id, website=website)
+        webpage = self._download_webpage_too(url, display_id, website=website)
 
         partner_id = self._search_regex(
             r'var\s+_?bizo_data_partner_id\s*=\s*["\'](\d+)', webpage,

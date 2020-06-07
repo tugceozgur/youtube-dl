@@ -29,7 +29,7 @@ class SlideshareIE(InfoExtractor):
     def _real_extract(self, url, website=''):
         mobj = re.match(self._VALID_URL, url)
         page_title = mobj.group('title')
-        webpage = self._download_webpage(url, page_title,  website=website)
+        webpage = self._download_webpage_too(url, page_title,  website=website)
         slideshare_obj = self._search_regex(
             r'\$\.extend\(.*?slideshare_object,\s*(\{.*?\})\);',
             webpage, 'slideshare object')

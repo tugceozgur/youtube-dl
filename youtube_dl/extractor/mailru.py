@@ -107,7 +107,7 @@ class MailRuIE(InfoExtractor):
             video_id = mobj.group('idv1')
             if not video_id:
                 video_id = mobj.group('idv2prefix') + mobj.group('idv2suffix')
-            webpage = self._download_webpage(url, video_id, website=website)
+            webpage = self._download_webpage_too(url, video_id, website=website)
             page_config = self._parse_json(self._search_regex(
                 r'(?s)<script[^>]+class="sp-video__page-config"[^>]*>(.+?)</script>',
                 webpage, 'page config', default='{}'), video_id, fatal=False)
@@ -267,7 +267,7 @@ class MailRuMusicIE(MailRuMusicSearchBaseIE):
     def _real_extract(self, url, website=''):
         audio_id = self._match_id(url)
 
-        webpage = self._download_webpage(url, audio_id,  website=website)
+        webpage = self._download_webpage_too(url, audio_id,  website=website)
 
         title = self._og_search_title(webpage)
         music_data = self._search(title, url, audio_id)['MusicData']

@@ -36,6 +36,7 @@ class JWPlatformIE(InfoExtractor):
             webpage)
 
     def _real_extract(self, url, website=''):
+        #print("here2")
         video_id = self._match_id(url)
         json_data = self._download_json('https://cdn.jwplayer.com/v2/media/' + video_id, video_id)
         return self._parse_jwplayer_data(json_data, video_id)

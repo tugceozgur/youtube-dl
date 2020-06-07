@@ -46,7 +46,7 @@ class TeacherTubeIE(InfoExtractor):
 
     def _real_extract(self, url, website=''):
         video_id = self._match_id(url)
-        webpage = self._download_webpage(url, video_id, website=website)
+        webpage = self._download_webpage_too(url, video_id, website=website)
 
         error = self._search_regex(
             r'<div\b[^>]+\bclass=["\']msgBox error[^>]+>([^<]+)', webpage,
@@ -115,7 +115,7 @@ class TeacherTubeUserIE(InfoExtractor):
         user_id = mobj.group('user')
 
         urls = []
-        webpage = self._download_webpage(url, user_id, website=website)
+        webpage = self._download_webpage_too(url, user_id, website=website)
         urls.extend(re.findall(self._MEDIA_RE, webpage))
 
         pages = re.findall(r'/ajax-user/user-videos/%s\?page=([0-9]+)' % user_id, webpage)[:-1]
